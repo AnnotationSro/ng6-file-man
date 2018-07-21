@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {INode} from '../interfaces/i-node';
+import {Store} from '@ngrx/store';
+import {IState} from '../interfaces/i-state';
 
 @Component({
   selector: 'app-node',
@@ -13,7 +15,9 @@ export class NodeComponent implements OnInit {
   outputName: string;
   parents: string[];
 
-  constructor() {
+  constructor(
+    private store: Store<IState>
+  ) {
   }
 
   ngOnInit() {
@@ -27,6 +31,8 @@ export class NodeComponent implements OnInit {
       event: event,
       node: this.node
     });
+
+    this.store.dispatch({type: 'SET_PATH', payload: this.node.pathToNode});
   }
 
 }

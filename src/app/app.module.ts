@@ -2,18 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NodeComponent } from './tree/node/node.component';
-import { TreeComponent } from './tree/tree.component';
 import { CustomTreeComponent } from './custom-tree/custom-tree.component';
+import {TreeModule} from './tree/tree.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NodeComponent,
-    TreeComponent,
     CustomTreeComponent
   ],
   imports: [
+    TreeModule,
     BrowserModule
   ],
   providers: [],
