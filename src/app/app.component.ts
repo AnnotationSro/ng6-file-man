@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {MTree} from './models/m-tree';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  tree: MTree;
+
+  constructor() {
+    this.tree = new MTree('', 'treeId');
+  }
+
+  onItemClicked(event: any): void {
+    console.log('[app component] onItemClicked', event);
+  }
 }

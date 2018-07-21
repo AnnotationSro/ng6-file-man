@@ -1,0 +1,15 @@
+<span>Current Node Level: </span>
+<input type="text" placeholder="currentNodeLevel" (keyup)="onInputChange($event)">
+
+<div #customTemplate>
+  <ng-content></ng-content>
+</div>
+
+<ul *ngIf="customTemplate.childNodes.length === 0" style="list-style-type: none">
+  <li *ngFor="let node of nodes">
+    <app-node
+      [node]="node"
+      (nodeClickedEvent)="nodeClickedEvent($event)"
+    ></app-node>
+  </li>
+</ul>
