@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TREE} from '../tree.mock';
+import {TREE} from '../../tree.mock';
 import {INode} from '../interfaces/i-node';
 import {Observable, of} from 'rxjs';
 import {MTree} from '../models/m-tree';

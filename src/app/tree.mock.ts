@@ -1,4 +1,4 @@
-import {INode} from './interfaces/i-node';
+import {INode} from './tree/interfaces/i-node';
 
 export const TREE: INode[] = [
   <INode>{

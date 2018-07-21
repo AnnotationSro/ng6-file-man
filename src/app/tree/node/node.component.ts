@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {INode} from '../../interfaces/i-node';
+import {INode} from '../interfaces/i-node';
 
 @Component({
   selector: 'app-node',

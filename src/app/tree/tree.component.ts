@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {INode} from '../interfaces/i-node';
-import {MTree} from '../models/m-tree';
-import {NodeService} from '../services/node.service';
+import {INode} from './interfaces/i-node';
+import {MTree} from './models/m-tree';
+import {NodeService} from './services/node.service';
 
 @Component({
   selector: 'app-tree',

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MTree} from './models/m-tree';
+import {MTree} from './tree/models/m-tree';
 
 @Component({
   selector: 'app-root',

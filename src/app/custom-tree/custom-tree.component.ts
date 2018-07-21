@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {INode} from '../interfaces/i-node';
-import {MTree} from '../models/m-tree';
+import {INode} from '../tree/interfaces/i-node';
+import {MTree} from '../tree/models/m-tree';
 
 @Component({
   selector: 'app-custom-tree',
