@@ -3,6 +3,9 @@
 </div>
 
 <div *ngIf="customTemplate.children.length === 0" class="node-container" (click)="onClick($event)">
-  <i class="fas fa-caret-right"></i>
+  <div *ngIf="node.isFolder; then showArrow else showFile"></div>
+  <ng-template #showArrow><i class="fas fa-caret-right"></i></ng-template>
+  <ng-template #showFile><i class="fas fa-folder"></i></ng-template>
+
   {{outputName}}
 </div>
