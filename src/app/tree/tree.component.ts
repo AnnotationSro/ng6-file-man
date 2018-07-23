@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {INode} from './interfaces/i-node';
 import {MTree} from './models/m-tree';
 import {NodeService} from './services/node.service';
@@ -12,6 +12,8 @@ import {IState} from './interfaces/i-state';
   styleUrls: ['./tree.component.css']
 })
 export class TreeComponent implements OnInit {
+  @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
+
   @Input() treeModel: MTree;
   @Output() treeNodeClickedEvent = new EventEmitter();
 

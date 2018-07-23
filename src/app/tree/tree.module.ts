@@ -3,10 +3,8 @@ import {CommonModule} from '@angular/common';
 import {StoreModule} from '@ngrx/store';
 
 import {simpleReducer} from './simple.reducer';
-import {CustomTreeComponent} from '../custom-tree/custom-tree.component';
 import {NodeComponent} from './node/node.component';
 import {TreeComponent} from './tree.component';
-import { CustomNodeComponent } from './custom-node/custom-node.component';
 
 @NgModule({
   imports: [
@@ -15,12 +13,10 @@ import { CustomNodeComponent } from './custom-node/custom-node.component';
   ],
   declarations: [
     NodeComponent,
-    TreeComponent,
-    CustomNodeComponent
+    TreeComponent
   ],
   exports: [
-    TreeComponent,
-    CustomNodeComponent
+    TreeComponent
   ]
 })
 export class TreeModule {

@@ -1,14 +1,12 @@
 <span>Selected node: '{{message$ | async}}'</span>
 
-<div #customTemplate>
-    <ng-content></ng-content>
-</div>
-
-<ul *ngIf="customTemplate.childNodes.length === 0" style="list-style-type: none">
+<ul  style="list-style-type: none">
   <li *ngFor="let node of nodes">
     <app-node
       [node]="node"
       (nodeClickedEvent)="nodeClickedEvent($event)"
-    ></app-node>
+    >
+      <ng-container [ngTemplateOutletContext]="{$implicit: (node)}" [ngTemplateOutlet]="templateRef"></ng-container>
+    </app-node>
   </li>
 </ul>
