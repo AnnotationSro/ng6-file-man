@@ -25,8 +25,6 @@ export class TreeComponent implements OnInit {
     private store: Store<IState>
   ) {
     this.message$ = this.store.select('message');
-    console.log(this.message$);
-    console.log(this.store);
   }
 
   ngOnInit() {
@@ -40,20 +38,10 @@ export class TreeComponent implements OnInit {
 
     this.nodeService.tree = this.treeModel;
 
-    console.log(this);
-  }
-
-  onInputChange(event: any): void {
-    this.currentTreeLevel = event.target.value || '';
+    this.store.select('message').subscribe(path => this.treeModel.currentPath = path);
   }
 
   nodeClickedEvent(originalEvent: any) {
     this.treeNodeClickedEvent.emit(originalEvent);
-    this.nodeClickedHandler(originalEvent.node);
   }
-
-  nodeClickedHandler(node: INode): void {
-    this.treeModel.currentPath = node.pathToNode;
-  }
-
 }

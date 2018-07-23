@@ -1,10 +1,7 @@
-<span>Current Node Level: </span>
-<input type="text" placeholder="currentNodeLevel" (keyup)="onInputChange($event)">
-<div></div>
-<span>Selected node: {{message$ | async}}</span>
+<span>Selected node: '{{message$ | async}}'</span>
 
 <div #customTemplate>
-  <ng-content></ng-content>
+    <ng-content></ng-content>
 </div>
 
 <ul *ngIf="customTemplate.childNodes.length === 0" style="list-style-type: none">

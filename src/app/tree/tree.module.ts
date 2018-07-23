@@ -6,6 +6,7 @@ import {simpleReducer} from './simple.reducer';
 import {CustomTreeComponent} from '../custom-tree/custom-tree.component';
 import {NodeComponent} from './node/node.component';
 import {TreeComponent} from './tree.component';
+import { CustomNodeComponent } from './custom-node/custom-node.component';
 
 @NgModule({
   imports: [
@@ -14,10 +15,12 @@ import {TreeComponent} from './tree.component';
   ],
   declarations: [
     NodeComponent,
-    TreeComponent
+    TreeComponent,
+    CustomNodeComponent
   ],
   exports: [
-    TreeComponent
+    TreeComponent,
+    CustomNodeComponent
   ]
 })
 export class TreeModule {

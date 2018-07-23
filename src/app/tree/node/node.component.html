@@ -1,4 +1,8 @@
-<div class="node-container" (click)="onClick($event)">
+<div #customTemplate (click)="onClick($event)">
+  <ng-content></ng-content>
+</div>
+
+<div *ngIf="customTemplate.children.length === 0" class="node-container" (click)="onClick($event)">
   <i class="fas fa-caret-right"></i>
   {{outputName}}
 </div>

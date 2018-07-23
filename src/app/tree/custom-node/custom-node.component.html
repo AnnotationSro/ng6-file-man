@@ -1,0 +1,7 @@
+<div *ngFor="let node of tree.nodes">
+  <app-node [node]="node"
+            (nodeClickedEvent)="nodeClickedEvent($event)">
+  <!--<app-node [node]="node">-->
+    <ng-container [ngTemplateOutletContext]="{$implicit: (node)}" [ngTemplateOutlet]="template"></ng-container>
+  </app-node>
+</div>

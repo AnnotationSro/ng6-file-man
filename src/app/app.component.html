@@ -1,3 +1,8 @@
 <app-tree [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
-  <!--<app-custom-tree *ngFor="let node of tree.nodes" [node]="node" [treeModel]="tree"></app-custom-tree>-->
+  <app-custom-node [tree]="tree" (clickedEvent)="onItemClicked($event)">
+    <ng-template let-node>
+      <i class="fas fa-arrow-right"></i>
+      <span class="name" style="color: pink">{{node.pathToNode}}</span>
+    </ng-template>
+  </app-custom-node>
 </app-tree>

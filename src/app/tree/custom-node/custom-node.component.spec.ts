@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomTreeComponent } from './custom-tree.component';
+import { CustomNodeComponent } from './custom-node.component';
 
-describe('CustomTreeComponent', () => {
-  let component: CustomTreeComponent;
-  let fixture: ComponentFixture<CustomTreeComponent>;
+describe('CustomNodeComponent', () => {
+  let component: CustomNodeComponent;
+  let fixture: ComponentFixture<CustomNodeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomTreeComponent ]
+      declarations: [ CustomNodeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomTreeComponent);
+    fixture = TestBed.createComponent(CustomNodeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
