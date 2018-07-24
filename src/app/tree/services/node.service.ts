@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 export class NodeService {
   private _tree: MTree;
 
+  // todo configurable
   url = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) {
@@ -37,6 +38,7 @@ export class NodeService {
             id: node.id,
             parentId: originalPath,
             isFolder: node.isDir,
+            isExpanded: false,
             pathToNode: originalPath + '/' + node.id,
             name: node.name || node.id,
             children: {} // todo momentalne je tu feature (bug) ze vymazem childy a musim ich znovu nacitat ak otvorim folder
@@ -50,11 +52,7 @@ export class NodeService {
     const ids = parentId.split('/');
     ids.splice(0, 1);
 
-    if (ids.length === 0) {
-      return this.tree.nodes;
-    }
-
-    return ids.reduce((value, index) => value['children'][index], this.tree.nodes);
+    return ids.length === 0 ? this.tree.nodes : ids.reduce((value, index) => value['children'][index], this.tree.nodes);
   }
 
   get tree(): MTree {

@@ -32,9 +32,6 @@ export class TreeComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch({type: 'SET_PATH', payload: 'root'});
 
-    this.nodeService.tree = this.treeModel;
-    this.nodes = this.treeModel.nodes;
-
     this.store.select('message').subscribe((path: string) => {
       const requestPath = path.split('/').join('_');
 
@@ -44,6 +41,9 @@ export class TreeComponent implements OnInit {
 
       return this.treeModel.currentPath = path;
     });
+
+    this.nodeService.tree = this.treeModel;
+    this.nodes = this.treeModel.nodes;
   }
 
   nodeClickedEvent(originalEvent: any) {

@@ -73,6 +73,7 @@ ol, ul {
    and the background-size property */
 .flist.showlines li {
   padding: 0 0 0 5px;
+  cursor: pointer;
   background: url('http://www.isochronous.org/fiddles/flist/pixel.png') 0 0 no-repeat
   , url('http://www.isochronous.org/fiddles/flist/pixel.png') 1px 12px no-repeat;
   /* The image itself is only a 1x1px square, but using background-size we can stretch it

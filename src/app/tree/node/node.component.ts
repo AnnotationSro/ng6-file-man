@@ -30,7 +30,19 @@ export class NodeComponent implements OnInit {
     });
 
     if (this.node.isFolder) {
-      this.store.dispatch({type: 'SET_PATH', payload: this.node.pathToNode});
+      // todo state sa nemeni ak niekto otvori zatvori a otvori ten isty folder a teda nepytam update
+
+      if (!this.node.stayOpen) {
+        this.node.isExpanded = !this.node.isExpanded;
+      }
+
+      if (!this.node.stayOpen && this.node.isExpanded) {
+        this.store.dispatch({type: 'SET_PATH', payload: this.node.pathToNode});
+      }
+
+      if (!this.node.isExpanded) {
+        this.node.children = {};
+      }
     }
   }
 }

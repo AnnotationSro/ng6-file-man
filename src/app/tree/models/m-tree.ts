@@ -1,6 +1,4 @@
 import {INode} from '../interfaces/i-node';
-import {NodeService} from '../services/node.service';
-import {OnInit} from '@angular/core';
 
 export class MTree {
   private _currentPath: string;
@@ -19,6 +17,8 @@ export class MTree {
       id: 'root',
       pathToNode: 'root',
       isFolder: true,
+      isExpanded: true,
+      stayOpen: true,
       name: 'root',
       children: {}
     };

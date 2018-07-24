@@ -3,6 +3,8 @@ export interface INode {
   parentId: string;
   pathToNode: string;
   isFolder: boolean;
+  isExpanded: boolean;
+  stayOpen?: boolean;
   name?: string;
   children?: any;
 }
