@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {INode} from '../interfaces/i-node';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {MTree} from '../models/m-tree';
 import {HttpClient} from '@angular/common/http';
 
@@ -18,16 +18,10 @@ export class NodeService {
 
   getNodes(path: string) {
     this.parseNodes(path).subscribe((data: Array<INode>) => {
-        for (let i = 0; i < data.length; i++) {
-          const parent = this.findMyDaddy(data[i].parentId);
-          parent.children[data[i].id] = data[i];
-        }
+      for (let i = 0; i < data.length; i++) {
+        this.findMyDaddy(data[i].parentId).children[data[i].id] = data[i];
       }
-    );
-  }
-
-  private getNodesFromServer(path: string) {
-    return this.http.get(this.url + path);
+    });
   }
 
   private parseNodes(path: string): Observable<INode[]> {
@@ -41,11 +35,15 @@ export class NodeService {
             isExpanded: false,
             pathToNode: originalPath + '/' + node.id,
             name: node.name || node.id,
-            children: {} // todo momentalne je tu feature (bug) ze vymazem childy a musim ich znovu nacitat ak otvorim folder
+            children: {}
           };
         })
       ));
     });
+  }
+
+  private getNodesFromServer(path: string) {
+    return this.http.get(this.url + path);
   }
 
   private findMyDaddy(parentId: string): INode {

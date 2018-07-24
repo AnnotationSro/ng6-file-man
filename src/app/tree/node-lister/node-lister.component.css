@@ -146,3 +146,11 @@ ol, ul {
   -moz-box-shadow: 0 0 3px 0 #ff8300;
   box-shadow: 0 0 3px 0 #ff8300;
 }
+
+.hide-children div {
+  display: none;
+}
+
+.show-children div {
+  display: inline;
+}

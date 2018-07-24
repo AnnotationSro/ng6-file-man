@@ -17,7 +17,6 @@ export class TreeComponent implements OnInit {
   @Input() treeModel: MTree;
   @Output() treeNodeClickedEvent = new EventEmitter();
 
-  obj = Object;
   nodes: INode;
   path$: Observable<string>;
   currentTreeLevel = 'root';
@@ -32,18 +31,19 @@ export class TreeComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch({type: 'SET_PATH', payload: 'root'});
 
+    this.nodeService.tree = this.treeModel;
+    this.nodes = this.treeModel.nodes;
+
     this.store.select('path').subscribe((path: string) => {
       const requestPath = path.split('/').join('_');
 
+      // todo implement cache = kuk ci uz taketo nieco existuje, ak nie getNodes, inak nist nerobim
       this.nodeService.getNodes(requestPath);
 
       this.currentTreeLevel = this.treeModel.currentPath;
 
       return this.treeModel.currentPath = path;
     });
-
-    this.nodeService.tree = this.treeModel;
-    this.nodes = this.treeModel.nodes;
   }
 
   nodeClickedEvent(originalEvent: any) {

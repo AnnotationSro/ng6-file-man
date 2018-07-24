@@ -15,7 +15,7 @@ export class NodeComponent implements OnInit {
   outputName: string;
 
   constructor(
-    private store: Store<IState>
+    private store: Store<IState>,
   ) {
   }
 
@@ -30,18 +30,22 @@ export class NodeComponent implements OnInit {
     });
 
     if (this.node.isFolder) {
-      // todo state sa nemeni ak niekto otvori zatvori a otvori ten isty folder a teda nepytam update
-
-      if (!this.node.stayOpen) {
-        this.node.isExpanded = !this.node.isExpanded;
+      if (this.node.stayOpen) {
+        return
       }
 
-      if (!this.node.stayOpen && this.node.isExpanded) {
+      this.node.isExpanded = !this.node.isExpanded;
+
+      if (this.node.isExpanded) {
         this.store.dispatch({type: 'SET_PATH', payload: this.node.pathToNode});
       }
 
+      // todo recursive collapse vsetkych childov
       if (!this.node.isExpanded) {
-        this.node.children = {};
+        document.getElementById(this.node.pathToNode).setAttribute('class', 'hide-children');
+        this.store.dispatch({type: 'SET_PATH', payload: this.node.parentId});
+      } else {
+        document.getElementById(this.node.pathToNode).setAttribute('class', 'show-children');
       }
     }
   }

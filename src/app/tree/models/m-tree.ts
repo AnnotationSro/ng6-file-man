@@ -5,13 +5,16 @@ export class MTree {
   private _nodes: INode;
   private _treeId: string;
   private _selectedNodeId: string;
+  private _isCache: boolean;
 
   constructor(
     startingPath: string = '',
-    treeId: string = ''
+    treeId: string = '',
+    isCache: boolean = false
   ) {
     this._currentPath = startingPath;
     this._treeId = treeId;
+    this._isCache = isCache;
 
     this.nodes = <INode>{
       id: 'root',
@@ -46,5 +49,13 @@ export class MTree {
 
   set selectedNodeId(value: string) {
     this._selectedNodeId = value;
+  }
+
+  get isCache(): boolean {
+    return this._isCache;
+  }
+
+  set isCache(value: boolean) {
+    this._isCache = value;
   }
 }
