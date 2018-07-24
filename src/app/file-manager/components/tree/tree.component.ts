@@ -1,10 +1,10 @@
 import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {INode} from './interfaces/i-node';
-import {MTree} from './models/m-tree';
+import {INode} from '../../interfaces/i-node';
+import {MTree} from '../../models/m-tree';
 import {NodeService} from './services/node.service';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {IState} from './interfaces/i-state';
+import {IState} from '../../interfaces/i-state';
 
 @Component({
   selector: 'app-tree',

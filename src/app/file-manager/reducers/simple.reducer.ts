@@ -1,4 +1,4 @@
-import {IAction} from './interfaces/i-action';
+import {IAction} from '../interfaces/i-action';
 
 export function simpleReducer(state: string = '', action: IAction) {
   // console.log('Previous state: ', state);

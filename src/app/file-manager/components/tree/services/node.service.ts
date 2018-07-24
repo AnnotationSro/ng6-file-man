@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {INode} from '../interfaces/i-node';
+import {INode} from '../../../interfaces/i-node';
 import {Observable} from 'rxjs';
-import {MTree} from '../models/m-tree';
+import {MTree} from '../../../models/m-tree';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
