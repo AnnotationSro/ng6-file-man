@@ -1,0 +1,15 @@
+.holder {
+  display: flex;
+}
+
+.left {
+  width: 40%;
+  height: 100vh;
+  background-color: #cccccc;
+}
+
+.right{
+  width: 55%;
+  margin-left: 15px;
+  background-color: aliceblue;
+}

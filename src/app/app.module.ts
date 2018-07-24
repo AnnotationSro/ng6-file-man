@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {TreeModule} from './tree/tree.module';
+import {FileViewerModule} from './file-viewer/file-viewer.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import {TreeModule} from './tree/tree.module';
   ],
   imports: [
     TreeModule,
+    FileViewerModule,
     BrowserModule
   ],
   providers: [],
