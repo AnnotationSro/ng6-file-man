@@ -4,5 +4,5 @@ export interface INode {
   pathToNode: string;
   isFolder: boolean;
   name?: string;
-  childrenIds?: string[];
+  children?: any;
 }

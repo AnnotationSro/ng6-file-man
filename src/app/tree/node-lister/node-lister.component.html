@@ -1,0 +1,18 @@
+<ul class="flist showlines" style="background: grey">
+  <li *ngFor="let node of obj.keys(nodes)">
+    <app-node [node]="nodes[node]" (nodeClickedEvent)="nodeClickedEvent($event)">
+      <ng-container [ngTemplateOutletContext]="{$implicit: (nodes[node])}"
+                    [ngTemplateOutlet]="templateRef"></ng-container>
+    </app-node>
+
+
+    <div *ngIf="obj.keys(nodes[node].children).length > 0">
+      <app-node-lister [nodes]="nodes[node].children" (nodeClicked)="nodeClickedEvent($event)">
+        <ng-template let-nodes>
+          <ng-container [ngTemplateOutletContext]="{$implicit: (nodes)}"
+                        [ngTemplateOutlet]="templateRef"></ng-container>
+        </ng-template>
+      </app-node-lister>
+    </div>
+  </li>
+</ul>

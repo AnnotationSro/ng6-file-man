@@ -13,7 +13,6 @@ export class NodeComponent implements OnInit {
   @Output() nodeClickedEvent = new EventEmitter();
 
   outputName: string;
-  parents: string[];
 
   constructor(
     private store: Store<IState>
@@ -21,9 +20,7 @@ export class NodeComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this);
     this.outputName = this.node.name ? this.node.name : this.node.id;
-    this.parents = this.node.pathToNode.split('/');
   }
 
   onClick(event: any) {
@@ -32,7 +29,8 @@ export class NodeComponent implements OnInit {
       node: this.node
     });
 
-    this.store.dispatch({type: 'SET_PATH', payload: this.node.pathToNode});
+    if (this.node.isFolder) {
+      this.store.dispatch({type: 'SET_PATH', payload: this.node.pathToNode});
+    }
   }
-
 }

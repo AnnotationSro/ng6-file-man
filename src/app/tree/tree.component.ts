@@ -17,10 +17,10 @@ export class TreeComponent implements OnInit {
   @Input() treeModel: MTree;
   @Output() treeNodeClickedEvent = new EventEmitter();
 
+  obj = Object;
+  nodes: INode;
   message$: Observable<string>;
-
-  currentTreeLevel = '';
-  nodes: INode[];
+  currentTreeLevel = 'root';
 
   constructor(
     private nodeService: NodeService,
@@ -30,17 +30,20 @@ export class TreeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nodeService.getNodes()
-      .subscribe(nodes => {
-        this.treeModel.nodes = nodes;
-        return this.nodes = nodes;
-      });
-
-    this.currentTreeLevel = this.treeModel.currentPath;
+    this.store.dispatch({type: 'SET_PATH', payload: 'root'});
 
     this.nodeService.tree = this.treeModel;
+    this.nodes = this.treeModel.nodes;
 
-    this.store.select('message').subscribe(path => this.treeModel.currentPath = path);
+    this.store.select('message').subscribe((path: string) => {
+      const requestPath = path.split('/').join('_');
+
+      this.nodeService.getNodes(requestPath);
+
+      this.currentTreeLevel = this.treeModel.currentPath;
+
+      return this.treeModel.currentPath = path;
+    });
   }
 
   nodeClickedEvent(originalEvent: any) {

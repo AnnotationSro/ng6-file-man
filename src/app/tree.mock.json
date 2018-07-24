@@ -1,0 +1,25 @@
+{
+  "root": [
+    {"id": "folder1", "isDir": true},
+    {"id": "folder2", "isDir": true},
+    {"id": "folder3", "isDir": true},
+    {"id": "file1", "isDir": false}
+  ],
+  "root_folder1": [
+    { "id": "folder5", "isDir": true},
+    { "id": "folder6", "isDir": true},
+    { "id": "file2", "isDir": false}
+  ],
+  "root_folder2": [
+    { "id": "folder7", "isDir": true},
+    { "id": "file3", "isDir": false},
+    { "id": "file4", "isDir": false}
+  ],
+  "root_folder3": [
+    { "id": "file5", "isDir": false}
+  ],
+  "root_folder1_folder5": [
+    { "id": "folder7", "isDir": true},
+    { "id": "file6", "isDir": false}
+  ]
+}
