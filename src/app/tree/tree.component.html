@@ -1,4 +1,4 @@
-<span>Selected node: '{{message$ | async}}'</span>
+<span>Selected node: '{{path$ | async}}'</span>
 
 <app-node-lister [nodes]="{children: nodes}" (nodeClicked)="nodeClickedEvent($event)">
   <ng-template let-nodes>

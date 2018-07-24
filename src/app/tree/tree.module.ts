@@ -13,7 +13,7 @@ import {MapToIterablePipe} from './map-to-iterable.pipe';
   imports: [
     CommonModule,
     HttpClientModule,
-    StoreModule.forRoot({message: simpleReducer})
+    StoreModule.forRoot({path: simpleReducer})
   ],
   declarations: [
     NodeComponent,

@@ -19,20 +19,20 @@ export class TreeComponent implements OnInit {
 
   obj = Object;
   nodes: INode;
-  message$: Observable<string>;
+  path$: Observable<string>;
   currentTreeLevel = 'root';
 
   constructor(
     private nodeService: NodeService,
     private store: Store<IState>
   ) {
-    this.message$ = this.store.select('message');
+    this.path$ = this.store.select('path');
   }
 
   ngOnInit() {
     this.store.dispatch({type: 'SET_PATH', payload: 'root'});
 
-    this.store.select('message').subscribe((path: string) => {
+    this.store.select('path').subscribe((path: string) => {
       const requestPath = path.split('/').join('_');
 
       this.nodeService.getNodes(requestPath);
