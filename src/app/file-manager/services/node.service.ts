@@ -3,6 +3,9 @@ import {INode} from '../interfaces/i-node';
 import {Observable} from 'rxjs';
 import {MTree} from '../models/m-tree';
 import {HttpClient} from '@angular/common/http';
+import * as ACTIONS from '../reducers/actions.action';
+import {Store} from '@ngrx/store';
+import {AppStore} from '../reducers/reducer.factory';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,7 @@ export class NodeService {
   // todo configurable
   url = 'http://localhost:3000/';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private store: Store<AppStore>) {
   }
 
   getNodes(path: string) {
@@ -26,7 +29,8 @@ export class NodeService {
 
   private parseNodes(path: string): Observable<INode[]> {
     return new Observable(observer => {
-      this.getNodesFromServer(path).subscribe((data: Array<any>) => observer.next(data.map(node => {
+      this.getNodesFromServer(path).subscribe((data: Array<any>) => {
+        observer.next(data.map(node => {
           const originalPath = path.split('_').join('/');
 
           const cachedNode = this.findParent(originalPath + '/' + node.id);
@@ -40,8 +44,9 @@ export class NodeService {
             name: node.name || node.id,
             children: cachedNode ? cachedNode.children : {}
           };
-        })
-      ));
+        }));
+        this.store.dispatch({type: ACTIONS.SET_LOADING_STATE, payload: false});
+      });
     });
   }
 

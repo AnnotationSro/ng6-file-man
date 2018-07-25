@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {StoreModule} from '@ngrx/store';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {reducers} from './reducers/reducer.factory';
+import {ModalComponent} from './components/modal/modal.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {reducers} from './reducers/reducer.factory';
     TreeComponent,
     NodeListerComponent,
     MapToIterablePipe,
-    NavBarComponent
+    NavBarComponent,
+    ModalComponent
   ],
   exports: [
     FileManagerComponent

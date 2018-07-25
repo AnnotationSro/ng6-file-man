@@ -3,3 +3,5 @@
     <ng-container [ngTemplateOutletContext]="{$implicit: nodes}" [ngTemplateOutlet]="templateRef"></ng-container>
   </ng-template>
 </app-node-lister>
+
+<app-modal *ngIf="loading"></app-modal>

@@ -12,6 +12,7 @@ import {AppStore} from '../../reducers/reducer.factory';
 })
 export class FolderContentComponent implements OnInit {
   @Input() treeModel: MTree;
+  @Input() loading: boolean;
   @Output() treeNodeClickedEvent = new EventEmitter();
 
   obj = Object;

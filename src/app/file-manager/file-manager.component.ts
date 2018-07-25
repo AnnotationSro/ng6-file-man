@@ -11,6 +11,7 @@ import {AppStore} from './reducers/reducer.factory';
 })
 export class FileManagerComponent implements OnInit {
   tree: MTree;
+  loading: boolean;
 
   constructor(
     private store: Store<AppStore>
@@ -20,6 +21,9 @@ export class FileManagerComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch({type: ACTIONS.SET_PATH, payload: 'root'});
+    this.store.select(state => state.fileManagerState.isLoading).subscribe((data: boolean) => {
+      this.loading = data;
+    });
   }
 
   onItemClicked(event: any): void {

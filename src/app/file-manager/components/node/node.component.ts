@@ -4,6 +4,7 @@ import {Store} from '@ngrx/store';
 import {IState} from '../../interfaces/i-state';
 
 import * as ACTIONS from '../../reducers/actions.action';
+import {AppStore} from '../../reducers/reducer.factory';
 
 @Component({
   selector: 'app-node',
@@ -17,7 +18,7 @@ export class NodeComponent implements OnInit {
   outputName: string;
 
   constructor(
-    private store: Store<IState>,
+    private store: Store<AppStore>,
   ) {
   }
 

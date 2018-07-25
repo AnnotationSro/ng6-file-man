@@ -4,7 +4,7 @@
 
 <div class="holder">
   <div class="left">
-    <app-tree [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
+    <app-tree [loading]="loading" [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
       <!--<ng-template let-node>-->
       <!--<i class="fas fa-arrow-right"></i>-->
       <!--<span class="name" style="color: pink">{{node.pathToNode}}</span>-->
@@ -12,7 +12,7 @@
     </app-tree>
   </div>
   <div class="right">
-    <app-file-viewer [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
+    <app-file-viewer [loading]="loading" [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
       <!--<ng-template let-node>-->
       <!--<i class="fas fa-arrow-right"></i>-->
       <!--<span class="name" style="color: pink">{{node.pathToNode}}</span>-->

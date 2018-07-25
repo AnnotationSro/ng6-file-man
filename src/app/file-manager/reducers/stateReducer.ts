@@ -9,11 +9,11 @@ const initialState: IState = {
 
 export function stateReducer(state: IState = initialState, action: ACTIONS.Actions): IState {
   // console.log('Previous state: ', state);
-  // console.log('Next state: ', action);
+  // console.log('ACTION: ', action.type);
 
   switch (action.type) {
     case ACTIONS.SET_PATH :
-      return {...state, path: action.payload};
+      return {...state, path: action.payload, isLoading: true};
     case ACTIONS.SET_LOADING_STATE :
       return {...state, isLoading: action.payload};
     case ACTIONS.SET_SELECTED_NODE :

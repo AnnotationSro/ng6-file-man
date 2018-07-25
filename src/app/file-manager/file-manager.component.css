@@ -12,10 +12,12 @@
   width: 40%;
   height: 95vh;
   background-color: #ccc;
+  position: relative;
 }
 
 .right{
   width: 60%;
   margin-left: 15px;
   background-color: aliceblue;
+  position: relative;
 }
