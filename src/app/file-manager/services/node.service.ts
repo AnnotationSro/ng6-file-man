@@ -28,14 +28,17 @@ export class NodeService {
     return new Observable(observer => {
       this.getNodesFromServer(path).subscribe((data: Array<any>) => observer.next(data.map(node => {
           const originalPath = path.split('_').join('/');
+
+          const cachedNode = this.findParent(originalPath + '/' + node.id);
+
           return <INode>{
             id: node.id,
             parentId: originalPath,
             isFolder: node.isDir,
-            isExpanded: false,
+            isExpanded: cachedNode ? cachedNode.isExpanded : false,
             pathToNode: originalPath + '/' + node.id,
             name: node.name || node.id,
-            children: {}
+            children: cachedNode ? cachedNode.children : {}
           };
         })
       ));
