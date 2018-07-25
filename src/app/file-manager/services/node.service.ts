@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {INode} from '../../../interfaces/i-node';
+import {INode} from '../interfaces/i-node';
 import {Observable} from 'rxjs';
-import {MTree} from '../../../models/m-tree';
+import {MTree} from '../models/m-tree';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class NodeService {
   getNodes(path: string) {
     this.parseNodes(path).subscribe((data: Array<INode>) => {
       for (let i = 0; i < data.length; i++) {
-        this.findMyDaddy(data[i].parentId).children[data[i].id] = data[i];
+        this.findParent(data[i].parentId).children[data[i].id] = data[i];
       }
     });
   }
@@ -46,7 +46,7 @@ export class NodeService {
     return this.http.get(this.url + path);
   }
 
-  public findMyDaddy(parentId: string): INode {
+  public findParent(parentId: string): INode {
     const ids = parentId.split('/');
     ids.splice(0, 1);
 

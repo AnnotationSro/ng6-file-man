@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {IState} from '../../interfaces/i-state';
 import {MTree} from '../../models/m-tree';
-import {NodeService} from '../tree/services/node.service';
+import {NodeService} from '../../services/node.service';
 import {INode} from '../../interfaces/i-node';
 
 @Component({
@@ -25,9 +25,7 @@ export class FolderContentComponent implements OnInit {
 
   ngOnInit() {
     this.store.select('path').subscribe((path: string) => {
-      const requestPath = path.split('/').join('_');
-      this.nodeService.getNodes(requestPath);
-      this.nodes = this.nodeService.findMyDaddy(path);
+      this.nodes = this.nodeService.findParent(path);
     });
   }
 
