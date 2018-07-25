@@ -5,7 +5,7 @@ import {SideViewComponent} from './components/side-view/side-view.component';
 import {FolderContentComponent} from './components/folder-content/folder-content.component';
 import {TreeComponent} from './components/tree/tree.component';
 import {NodeListerComponent} from './components/tree/node-lister/node-lister.component';
-import {NodeComponent} from './components/tree/node/node.component';
+import {NodeComponent} from './components/node/node.component';
 import {MapToIterablePipe} from './pipes/map-to-iterable.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {simpleReducer} from './reducers/simple.reducer';

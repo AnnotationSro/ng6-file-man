@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {INode} from '../../../interfaces/i-node';
+import {INode} from '../../interfaces/i-node';
 import {Store} from '@ngrx/store';
-import {IState} from '../../../interfaces/i-state';
+import {IState} from '../../interfaces/i-state';
 
 @Component({
   selector: 'app-node',
