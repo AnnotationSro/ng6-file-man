@@ -1,4 +1,43 @@
-<p *ngFor="let node of obj.keys(nodes.children)">
-  {{nodes.children[node].name}}
-</p>
-<p> 'special item' </p>
+<div class="item-holder">
+  <div class="item" *ngIf="nodes.parentId">
+    <app-node [node] = nodes>
+      <div>
+        <div class="file-preview">
+          <i class="fas fa-3x fa-ellipsis-h child"></i>
+        </div>
+        <div class="file-name">
+          {{nodes.parentId}}
+        </div>
+      </div>
+    </app-node>
+  </div>
+
+  <div *ngFor="let node of obj.keys(nodes.children)" class="item">
+    <!--todo template-->
+    <app-node [node]="nodes.children[node]">
+      <div>
+        <div class="file-preview">
+          <div *ngIf="nodes.children[node].isFolder; then itIsFolder else showFile"></div>
+          <ng-template #itIsFolder><i class="fas fa-3x fa-folder child"></i></ng-template>
+          <ng-template #showFile><i class="fas fa-3x fa-file child"></i></ng-template>
+        </div>
+        <div class="file-name">
+          {{nodes.children[node].name}}
+        </div>
+      </div>
+    </app-node>
+    <!--todo template-->
+  </div>
+
+  <div class="item">
+      <div>
+        <div class="file-preview">
+          <i class="fas fa-3x fa-plus child"></i>
+        </div>
+        <div class="file-name">
+          New
+        </div>
+      </div>
+  </div>
+</div>
+

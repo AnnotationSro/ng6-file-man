@@ -1,0 +1,30 @@
+.item-holder {
+  display: inline-block;
+  box-sizing: border-box;
+  /*flex-direction: row;*/
+}
+
+.item {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  padding: 5px;
+  display: inline-block;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 3px #aaa;
+  text-align: center;
+  cursor: pointer;
+}
+
+.file-name {
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  position: relative;
+}
+
+.file-preview {
+  width: 100%;
+  height: 80px;
+}
