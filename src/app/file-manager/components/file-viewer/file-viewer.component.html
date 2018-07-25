@@ -1,3 +1,4 @@
-<p>
-  file-viewer works!
+<p *ngFor="let node of obj.keys(nodes.children)">
+  {{nodes.children[node].name}}
 </p>
+<p> 'special item' </p>

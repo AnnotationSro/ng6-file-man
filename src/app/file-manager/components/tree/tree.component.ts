@@ -29,8 +29,6 @@ export class TreeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch({type: 'SET_PATH', payload: 'root'});
-
     this.nodeService.tree = this.treeModel;
     this.nodes = this.treeModel.nodes;
 

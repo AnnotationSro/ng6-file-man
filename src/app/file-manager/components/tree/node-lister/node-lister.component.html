@@ -14,5 +14,11 @@
         </ng-template>
       </app-node-lister>
     </div>
+
+    <ul>
+      <li *ngIf="nodes[node].isExpanded">
+        special item/action
+      </li>
+    </ul>
   </li>
 </ul>

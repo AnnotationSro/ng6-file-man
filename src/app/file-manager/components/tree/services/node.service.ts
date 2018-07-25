@@ -46,7 +46,7 @@ export class NodeService {
     return this.http.get(this.url + path);
   }
 
-  private findMyDaddy(parentId: string): INode {
+  public findMyDaddy(parentId: string): INode {
     const ids = parentId.split('/');
     ids.splice(0, 1);
 
