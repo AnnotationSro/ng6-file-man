@@ -7,10 +7,10 @@ import {INode} from '../../interfaces/i-node';
 
 @Component({
   selector: 'app-file-viewer',
-  templateUrl: './file-viewer.component.html',
-  styleUrls: ['./file-viewer.component.css']
+  templateUrl: './folder-content.component.html',
+  styleUrls: ['./folder-content.component.css']
 })
-export class FileViewerComponent implements OnInit {
+export class FolderContentComponent implements OnInit {
   @Input() treeModel: MTree;
   @Output() treeNodeClickedEvent = new EventEmitter();
 
