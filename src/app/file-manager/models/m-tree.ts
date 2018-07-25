@@ -1,20 +1,15 @@
 import {INode} from '../interfaces/i-node';
+import {IConfig} from '../interfaces/i-config';
 
 export class MTree {
   private _currentPath: string;
   private _nodes: INode;
-  private _treeId: string;
   private _selectedNodeId: string;
-  private _isCache: boolean;
+  public config: IConfig;
 
-  constructor(
-    startingPath: string = '',
-    treeId: string = '',
-    isCache: boolean = false
-  ) {
-    this._currentPath = startingPath;
-    this._treeId = treeId;
-    this._isCache = isCache;
+  constructor(config: IConfig) {
+    this._currentPath = config.startingFolder;
+    this.config = config;
 
     this.nodes = <INode>{
       id: 'root',
@@ -52,10 +47,10 @@ export class MTree {
   }
 
   get isCache(): boolean {
-    return this._isCache;
+    return this.config.isCache;
   }
 
   set isCache(value: boolean) {
-    this._isCache = value;
+    this.config.isCache = value;
   }
 }

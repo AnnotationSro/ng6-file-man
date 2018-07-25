@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MTree} from './models/m-tree';
 import {Store} from '@ngrx/store';
 import * as ACTIONS from './reducers/actions.action';
@@ -10,13 +10,12 @@ import {AppStore} from './reducers/reducer.factory';
   styleUrls: ['./file-manager.component.css']
 })
 export class FileManagerComponent implements OnInit {
-  tree: MTree;
+  @Input() tree: MTree;
   loading: boolean;
 
   constructor(
     private store: Store<AppStore>
   ) {
-    this.tree = new MTree('', 'treeId');
   }
 
   ngOnInit() {

@@ -12,9 +12,7 @@ import {AppStore} from '../reducers/reducer.factory';
 })
 export class NodeService {
   private _tree: MTree;
-
-  // todo configurable
-  url = 'http://localhost:3000/';
+  url: string;
 
   constructor(private http: HttpClient, private store: Store<AppStore>) {
   }
@@ -67,5 +65,9 @@ export class NodeService {
 
   set tree(value: MTree) {
     this._tree = value;
+
+    if (!this.url) {
+      this.url = this.tree.config.baseURL;
+    }
   }
 }
