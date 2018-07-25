@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MTree} from './models/m-tree';
+import {TreeModel} from './models/tree.model';
 import {Store} from '@ngrx/store';
 import * as ACTIONS from './reducers/actions.action';
 import {AppStore} from './reducers/reducer.factory';
@@ -10,7 +10,7 @@ import {AppStore} from './reducers/reducer.factory';
   styleUrls: ['./file-manager.component.css']
 })
 export class FileManagerComponent implements OnInit {
-  @Input() tree: MTree;
+  @Input() tree: TreeModel;
   loading: boolean;
 
   constructor(

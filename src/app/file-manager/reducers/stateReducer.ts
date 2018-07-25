@@ -1,13 +1,13 @@
-import {IState} from '../interfaces/i-state';
+import {StateInterface} from '../interfaces/state.interface';
 import * as ACTIONS from './actions.action';
 
-const initialState: IState = {
+const initialState: StateInterface = {
   path: 'root',
   isLoading: true,
   selectedNode: null
 };
 
-export function stateReducer(state: IState = initialState, action: ACTIONS.Actions): IState {
+export function stateReducer(state: StateInterface = initialState, action: ACTIONS.Actions): StateInterface {
   // console.log('Previous state: ', state);
   // console.log('ACTION: ', action.type);
 

@@ -1,4 +1,4 @@
-export interface IConfig {
+export interface ConfigInterface {
   showFilesInsideTree: boolean;
   baseURL: string;
   startingFolder?: string;

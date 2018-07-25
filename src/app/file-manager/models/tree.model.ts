@@ -1,17 +1,17 @@
-import {INode} from '../interfaces/i-node';
-import {IConfig} from '../interfaces/i-config';
+import {NodeInterface} from '../interfaces/node.interface';
+import {ConfigInterface} from '../interfaces/config.interface';
 
-export class MTree {
+export class TreeModel {
   private _currentPath: string;
-  private _nodes: INode;
+  private _nodes: NodeInterface;
   private _selectedNodeId: string;
-  public config: IConfig;
+  public config: NodeInterface;
 
-  constructor(config: IConfig) {
+  constructor(config: NodeInterface) {
     this._currentPath = config.startingFolder;
     this.config = config;
 
-    this.nodes = <INode>{
+    this.nodes = <NodeInterface>{
       id: 'root',
       pathToNode: 'root',
       isFolder: true,
@@ -22,6 +22,24 @@ export class MTree {
     };
   }
 
+  public foldNode(node: NodeInterface) {
+    if (!node.stayOpen) {
+      node.isExpanded = false;
+    }
+  }
+
+  public foldNodeRecursively(node: NodeInterface) {
+    this.foldNode(node);
+
+    console.log(node);
+
+    for (const childNode in node.children) {
+      if (node.children.hasOwnProperty(childNode)) {
+        this.foldNodeRecursively(node.children[childNode]);
+      }
+    }
+  }
+
   get currentPath(): string {
     return this._currentPath;
   }
@@ -30,11 +48,11 @@ export class MTree {
     this._currentPath = value;
   }
 
-  get nodes(): INode {
+  get nodes(): NodeInterface {
     return this._nodes;
   }
 
-  set nodes(value: INode) {
+  set nodes(value: NodeInterface) {
     this._nodes = value;
   }
 

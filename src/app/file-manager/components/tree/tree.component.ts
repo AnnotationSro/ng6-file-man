@@ -1,10 +1,10 @@
 import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {INode} from '../../interfaces/i-node';
-import {MTree} from '../../models/m-tree';
+import {NodeInterface} from '../../interfaces/node.interface';
+import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {IState} from '../../interfaces/i-state';
+import {StateInterface} from '../../interfaces/state.interface';
 import {AppStore} from '../../reducers/reducer.factory';
 
 @Component({
@@ -15,11 +15,11 @@ import {AppStore} from '../../reducers/reducer.factory';
 export class TreeComponent implements OnInit {
   @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
 
-  @Input() treeModel: MTree;
+  @Input() treeModel: TreeModel;
   @Input() loading: boolean;
   @Output() treeNodeClickedEvent = new EventEmitter();
 
-  nodes: INode;
+  nodes: NodeInterface;
   currentTreeLevel = 'root';
 
   constructor(

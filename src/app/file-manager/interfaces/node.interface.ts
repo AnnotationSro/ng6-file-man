@@ -1,4 +1,4 @@
-export interface INode {
+export interface NodeInterface {
   id: string;
   parentId: string;
   pathToNode: string;

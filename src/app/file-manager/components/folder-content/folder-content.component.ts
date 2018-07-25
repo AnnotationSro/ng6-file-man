@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {MTree} from '../../models/m-tree';
+import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
-import {INode} from '../../interfaces/i-node';
+import {NodeInterface} from '../../interfaces/node.interface';
 import {AppStore} from '../../reducers/reducer.factory';
 
 @Component({
@@ -11,12 +11,12 @@ import {AppStore} from '../../reducers/reducer.factory';
   styleUrls: ['./folder-content.component.css']
 })
 export class FolderContentComponent implements OnInit {
-  @Input() treeModel: MTree;
+  @Input() treeModel: TreeModel;
   @Input() loading: boolean;
   @Output() treeNodeClickedEvent = new EventEmitter();
 
   obj = Object;
-  nodes: INode;
+  nodes: NodeInterface;
 
   constructor(
     private nodeService: NodeService,

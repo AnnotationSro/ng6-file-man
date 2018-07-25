@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {INode} from '../../interfaces/i-node';
+import {NodeInterface} from '../../interfaces/node.interface';
 import {Store} from '@ngrx/store';
-import {IState} from '../../interfaces/i-state';
+import {StateInterface} from '../../interfaces/state.interface';
 
 import * as ACTIONS from '../../reducers/actions.action';
 import {AppStore} from '../../reducers/reducer.factory';
@@ -12,7 +12,7 @@ import {AppStore} from '../../reducers/reducer.factory';
   styleUrls: ['./node.component.css']
 })
 export class NodeComponent implements OnInit {
-  @Input() node: INode;
+  @Input() node: NodeInterface;
   @Output() nodeClickedEvent = new EventEmitter();
 
   outputName: string;

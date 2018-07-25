@@ -1,9 +1,9 @@
 import {stateReducer} from './stateReducer';
 import {ActionReducerMap} from '@ngrx/store';
-import {IState} from '../interfaces/i-state';
+import {StateInterface} from '../interfaces/state.interface';
 
 export interface AppStore {
-  fileManagerState: IState;
+  fileManagerState: StateInterface;
 }
 
 export const reducers: ActionReducerMap<AppStore> = {

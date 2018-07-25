@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {INode} from '../interfaces/i-node';
+import {NodeInterface} from '../interfaces/node.interface';
 import {Observable} from 'rxjs';
-import {MTree} from '../models/m-tree';
+import {TreeModel} from '../models/tree.model';
 import {HttpClient} from '@angular/common/http';
 import * as ACTIONS from '../reducers/actions.action';
 import {Store} from '@ngrx/store';
@@ -11,21 +11,21 @@ import {AppStore} from '../reducers/reducer.factory';
   providedIn: 'root'
 })
 export class NodeService {
-  private _tree: MTree;
+  private _tree: TreeModel;
   url: string;
 
   constructor(private http: HttpClient, private store: Store<AppStore>) {
   }
 
   getNodes(path: string) {
-    this.parseNodes(path).subscribe((data: Array<INode>) => {
+    this.parseNodes(path).subscribe((data: Array<NodeInterface>) => {
       for (let i = 0; i < data.length; i++) {
         this.findParent(data[i].parentId).children[data[i].id] = data[i];
       }
     });
   }
 
-  private parseNodes(path: string): Observable<INode[]> {
+  private parseNodes(path: string): Observable<NodeInterface[]> {
     return new Observable(observer => {
       this.getNodesFromServer(path).subscribe((data: Array<any>) => {
         observer.next(data.map(node => {
@@ -33,7 +33,7 @@ export class NodeService {
 
           const cachedNode = this.findParent(originalPath + '/' + node.id);
 
-          return <INode>{
+          return <NodeInterface>{
             id: node.id,
             parentId: originalPath,
             isFolder: node.isDir,
@@ -52,18 +52,18 @@ export class NodeService {
     return this.http.get(this.url + path);
   }
 
-  public findParent(parentId: string): INode {
+  public findParent(parentId: string): NodeInterface {
     const ids = parentId.split('/');
     ids.splice(0, 1);
 
     return ids.length === 0 ? this.tree.nodes : ids.reduce((value, index) => value['children'][index], this.tree.nodes);
   }
 
-  get tree(): MTree {
+  get tree(): TreeModel {
     return this._tree;
   }
 
-  set tree(value: MTree) {
+  set tree(value: TreeModel) {
     this._tree = value;
 
     if (!this.url) {

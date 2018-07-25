@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {MTree} from './file-manager/models/m-tree';
-import {IConfig} from './file-manager/interfaces/i-config';
+import {TreeModel} from './file-manager/models/tree.model';
+import {ConfigInterface} from './file-manager/interfaces/config.interface';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +8,16 @@ import {IConfig} from './file-manager/interfaces/i-config';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  tree: MTree;
+  tree: TreeModel;
 
   constructor() {
-    const treeConfig: IConfig = {
+    const treeConfig: ConfigInterface = {
       isCache: true, // todo implement
       baseURL: 'http://localhost:3000/',
       startingFolder: 'root', // todo implement
       showFilesInsideTree: false // todo implement
     };
 
-    this.tree = new MTree(treeConfig);
+    this.tree = new TreeModel(treeConfig);
   }
 }
