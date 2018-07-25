@@ -5,6 +5,7 @@ import {NodeService} from '../../services/node.service';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {IState} from '../../interfaces/i-state';
+import {AppStore} from '../../reducers/reducer.factory';
 
 @Component({
   selector: 'app-tree',
@@ -22,7 +23,7 @@ export class TreeComponent implements OnInit {
 
   constructor(
     private nodeService: NodeService,
-    private store: Store<IState>
+    private store: Store<AppStore>
   ) {
   }
 
@@ -30,7 +31,7 @@ export class TreeComponent implements OnInit {
     this.nodeService.tree = this.treeModel;
     this.nodes = this.treeModel.nodes;
 
-    this.store.select('path').subscribe((path: string) => {
+    this.store.select(state => state.fileManagerState.path).subscribe((path: string) => {
       const requestPath = path.split('/').join('_');
 
       // todo implement cache = kuk ci uz taketo nieco existuje, ak nie getNodes, inak nist nerobim

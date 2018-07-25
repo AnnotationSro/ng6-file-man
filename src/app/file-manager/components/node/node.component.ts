@@ -3,6 +3,8 @@ import {INode} from '../../interfaces/i-node';
 import {Store} from '@ngrx/store';
 import {IState} from '../../interfaces/i-state';
 
+import * as ACTIONS from '../../reducers/actions.action';
+
 @Component({
   selector: 'app-node',
   templateUrl: './node.component.html',
@@ -37,13 +39,13 @@ export class NodeComponent implements OnInit {
       this.node.isExpanded = !this.node.isExpanded;
 
       if (this.node.isExpanded) {
-        this.store.dispatch({type: 'SET_PATH', payload: this.node.pathToNode});
+        this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.pathToNode});
       }
 
       // todo recursive collapse vsetkych childov
       if (!this.node.isExpanded) {
         document.getElementById(this.node.pathToNode).setAttribute('class', 'deselected');
-        this.store.dispatch({type: 'SET_PATH', payload: this.node.parentId});
+        this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.parentId});
       } else {
         document.getElementById(this.node.pathToNode).setAttribute('class', 'selected');
       }

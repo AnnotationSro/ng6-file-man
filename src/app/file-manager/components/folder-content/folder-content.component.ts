@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {IState} from '../../interfaces/i-state';
 import {MTree} from '../../models/m-tree';
 import {NodeService} from '../../services/node.service';
 import {INode} from '../../interfaces/i-node';
+import {AppStore} from '../../reducers/reducer.factory';
 
 @Component({
   selector: 'app-file-viewer',
@@ -19,12 +19,12 @@ export class FolderContentComponent implements OnInit {
 
   constructor(
     private nodeService: NodeService,
-    private store: Store<IState>
+    private store: Store<AppStore>
   ) {
   }
 
   ngOnInit() {
-    this.store.select('path').subscribe((path: string) => {
+    this.store.select(state => state.fileManagerState.path).subscribe((path: string) => {
       this.nodes = this.nodeService.findParent(path);
     });
   }

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MTree} from './models/m-tree';
-import {IState} from './interfaces/i-state';
 import {Store} from '@ngrx/store';
+import * as ACTIONS from './reducers/actions.action';
+import {AppStore} from './reducers/reducer.factory';
 
 @Component({
   selector: 'app-file-manager',
@@ -12,13 +13,13 @@ export class FileManagerComponent implements OnInit {
   tree: MTree;
 
   constructor(
-    private store: Store<IState>
+    private store: Store<AppStore>
   ) {
     this.tree = new MTree('', 'treeId');
   }
 
   ngOnInit() {
-    this.store.dispatch({type: 'SET_PATH', payload: 'root'});
+    this.store.dispatch({type: ACTIONS.SET_PATH, payload: 'root'});
   }
 
   onItemClicked(event: any): void {

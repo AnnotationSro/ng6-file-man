@@ -8,14 +8,14 @@ import {NodeListerComponent} from './components/tree/node-lister/node-lister.com
 import {NodeComponent} from './components/node/node.component';
 import {MapToIterablePipe} from './pipes/map-to-iterable.pipe';
 import {HttpClientModule} from '@angular/common/http';
-import {simpleReducer} from './reducers/simple.reducer';
 import {StoreModule} from '@ngrx/store';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import {NavBarComponent} from './components/nav-bar/nav-bar.component';
+import {reducers} from './reducers/reducer.factory';
 
 @NgModule({
   imports: [
     HttpClientModule,
-    StoreModule.forRoot({path: simpleReducer}),
+    StoreModule.forRoot(reducers),
     CommonModule
   ],
   declarations: [
