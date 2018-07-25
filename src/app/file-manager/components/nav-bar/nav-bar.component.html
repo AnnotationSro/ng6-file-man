@@ -1,0 +1,9 @@
+<div>
+  >> <span *ngFor="let to of currentPath; let i = index">
+  <a href="#" (click)="onClick(currentPath, i)">
+    <div *ngIf="to === 'root'; then icon else name"></div>
+    <ng-template #icon><i class="fas fa-home"></i></ng-template>
+    <ng-template #name>{{to}}</ng-template>
+  </a> /
+  </span>
+</div>

@@ -1,5 +1,3 @@
-<span>Selected node: '{{path$ | async}}'</span>
-
 <app-node-lister [nodes]="{children: nodes}" (nodeClicked)="nodeClickedEvent($event)">
   <ng-template let-nodes>
     <ng-container [ngTemplateOutletContext]="{$implicit: nodes}" [ngTemplateOutlet]="templateRef"></ng-container>

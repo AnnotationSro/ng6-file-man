@@ -10,6 +10,7 @@ import {MapToIterablePipe} from './pipes/map-to-iterable.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {simpleReducer} from './reducers/simple.reducer';
 import {StoreModule} from '@ngrx/store';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import {StoreModule} from '@ngrx/store';
     NodeComponent,
     TreeComponent,
     NodeListerComponent,
-    MapToIterablePipe
+    MapToIterablePipe,
+    NavBarComponent
   ],
   exports: [
     FileManagerComponent

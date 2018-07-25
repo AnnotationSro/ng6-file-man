@@ -1,4 +1,4 @@
-<ul class="flist showlines" style="background: grey">
+<ul class="flist showlines">
   <li *ngFor="let node of obj.keys(nodes)" id="{{nodes[node].pathToNode}}">
     <app-node [node]="nodes[node]" (nodeClickedEvent)="nodeClickedEvent($event)">
       <ng-container [ngTemplateOutletContext]="{$implicit: (nodes[node])}"

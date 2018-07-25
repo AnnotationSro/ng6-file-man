@@ -2,14 +2,20 @@
   display: flex;
 }
 
+.navbar {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #aaa;
+}
+
 .left {
   width: 40%;
   height: 95vh;
-  background-color: #cccccc;
+  background-color: #ccc;
 }
 
 .right{
-  width: 55%;
+  width: 60%;
   margin-left: 15px;
   background-color: aliceblue;
 }

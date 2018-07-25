@@ -18,14 +18,12 @@ export class TreeComponent implements OnInit {
   @Output() treeNodeClickedEvent = new EventEmitter();
 
   nodes: INode;
-  path$: Observable<string>;
   currentTreeLevel = 'root';
 
   constructor(
     private nodeService: NodeService,
     private store: Store<IState>
   ) {
-    this.path$ = this.store.select('path');
   }
 
   ngOnInit() {
