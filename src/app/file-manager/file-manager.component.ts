@@ -22,6 +22,6 @@ export class FileManagerComponent implements OnInit {
   }
 
   onItemClicked(event: any): void {
-    console.log('[fm component] onItemClicked', event);
+    // console.log('[fm component] onItemClicked', event);
   }
 }
