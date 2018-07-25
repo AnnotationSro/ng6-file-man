@@ -1,6 +1,6 @@
 <div class="item-holder">
   <div class="item" *ngIf="nodes.parentId">
-    <app-node [node] = nodes>
+    <app-node [node]=nodes (nodeClickedEvent)="nodeClickedEvent($event)">
       <div>
         <div class="file-preview">
           <i class="fas fa-3x fa-ellipsis-h child"></i>
@@ -14,7 +14,7 @@
 
   <div *ngFor="let node of obj.keys(nodes.children)" class="item">
     <!--todo template-->
-    <app-node [node]="nodes.children[node]">
+    <app-node [node]="nodes.children[node]" (nodeClickedEvent)="nodeClickedEvent($event)">
       <div>
         <div class="file-preview">
           <div *ngIf="nodes.children[node].isFolder; then itIsFolder else showFile"></div>
@@ -30,14 +30,14 @@
   </div>
 
   <div class="item">
-      <div>
-        <div class="file-preview">
-          <i class="fas fa-3x fa-plus child"></i>
-        </div>
-        <div class="file-name">
-          New
-        </div>
+    <div>
+      <div class="file-preview">
+        <i class="fas fa-3x fa-plus child"></i>
       </div>
+      <div class="file-name">
+        New
+      </div>
+    </div>
   </div>
 </div>
 
