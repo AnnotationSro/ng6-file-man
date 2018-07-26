@@ -13,6 +13,9 @@ export function stateReducer(state: StateInterface = initialState, action: ACTIO
 
   switch (action.type) {
     case ACTIONS.SET_PATH :
+      if (state.path === action.payload) {
+        return state;
+      }
       return {...state, path: action.payload, isLoading: true};
     case ACTIONS.SET_LOADING_STATE :
       return {...state, isLoading: action.payload};
