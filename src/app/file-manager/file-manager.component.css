@@ -5,19 +5,22 @@
 .navbar {
   margin: 0 0 15px 0;
   padding: 10px;
-  background-color: #aaa;
+  border-bottom: 2px solid #22f;
 }
 
 .left {
   width: 40%;
-  height: 95vh;
-  background-color: #ccc;
+  max-width: 300px;
+  height: 90vh;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #22f;
+  box-shadow: 1px 2px 3px #aaa;
   position: relative;
 }
 
 .right{
   width: 60%;
   margin-left: 15px;
-  background-color: aliceblue;
   position: relative;
 }

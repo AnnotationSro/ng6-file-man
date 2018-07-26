@@ -146,11 +146,7 @@ ol, ul {
   box-shadow: 0 0 3px 0 #ff8300;
 }
 
-.selected > span {
-  color: blue
-}
-
-.deselected div {
+.deselected  div {
   display: none;
 }
 

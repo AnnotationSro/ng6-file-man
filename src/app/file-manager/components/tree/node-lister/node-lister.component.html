@@ -1,22 +1,19 @@
 <ul class="flist showlines">
   <div *ngFor="let node of obj.keys(nodes)">
+
     <li *ngIf="nodes[node].isFolder || showFiles" id="{{nodes[node].pathToNode}}">
-      <app-node [node]="nodes[node]"
-                (nodeClickedEvent)="nodeClickedEvent($event)">
-        <ng-container [ngTemplateOutletContext]="{$implicit: (nodes[node])}"
-                      [ngTemplateOutlet]="templateRef"></ng-container>
+      <app-node [node]="nodes[node]" (nodeClickedEvent)="nodeClickedEvent($event)">
+        <ng-container [ngTemplateOutletContext]="{$implicit: (nodes[node])}" [ngTemplateOutlet]="templateRef"></ng-container>
       </app-node>
 
       <div *ngIf="obj.keys(nodes[node].children).length > 0">
-        <app-node-lister [showFiles]="showFiles"
-                         [nodes]="nodes[node].children"
-                         (nodeClicked)="nodeClickedEvent($event)">
+        <app-node-lister [showFiles]="showFiles" [nodes]="nodes[node].children" (nodeClicked)="nodeClickedEvent($event)">
           <ng-template let-nodes>
-            <ng-container [ngTemplateOutletContext]="{$implicit: (nodes)}"
-                          [ngTemplateOutlet]="templateRef"></ng-container>
+            <ng-container [ngTemplateOutletContext]="{$implicit: (nodes)}" [ngTemplateOutlet]="templateRef"></ng-container>
           </ng-template>
         </app-node-lister>
       </div>
+
     </li>
   </div>
 </ul>
