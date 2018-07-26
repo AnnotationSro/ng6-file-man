@@ -5,9 +5,9 @@ export class TreeModel {
   private _currentPath: string;
   private _nodes: NodeInterface;
   private _selectedNodeId: string;
-  public config: NodeInterface;
+  public config: ConfigInterface;
 
-  constructor(config: NodeInterface) {
+  constructor(config: ConfigInterface) {
     this._currentPath = config.startingFolder;
     this.config = config;
 
