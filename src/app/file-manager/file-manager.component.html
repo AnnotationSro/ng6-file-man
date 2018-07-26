@@ -12,11 +12,7 @@
   </div>
 
   <div class="right">
-    <app-file-viewer [loading]="loading" [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
-      <!--<ng-template let-node>-->
-      <!--<i class="fas fa-arrow-right"></i>-->
-      <!--<span class="name" style="color: pink">{{node.pathToNode}}</span>-->
-      <!--</ng-template>-->
-    </app-file-viewer>
+    <app-folder-content [loading]="loading" [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
+    </app-folder-content>
   </div>
 </div>

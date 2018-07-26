@@ -6,7 +6,7 @@ import {NodeInterface} from '../../interfaces/node.interface';
 import {AppStore} from '../../reducers/reducer.factory';
 
 @Component({
-  selector: 'app-file-viewer',
+  selector: 'app-folder-content',
   templateUrl: './folder-content.component.html',
   styleUrls: ['./folder-content.component.css']
 })
