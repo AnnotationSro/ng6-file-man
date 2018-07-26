@@ -17,6 +17,8 @@
   border: 1px solid var(--main-color);
   box-shadow: 1px 2px 3px #aaa;
   position: relative;
+  padding: 10px 2px;
+  overflow: auto;
 }
 
 .right{

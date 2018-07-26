@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
 import {TreeModel} from './models/tree.model';
 import {Store} from '@ngrx/store';
 import * as ACTIONS from './reducers/actions.action';
@@ -10,6 +10,8 @@ import {AppStore} from './reducers/reducer.factory';
   styleUrls: ['./file-manager.component.css']
 })
 export class FileManagerComponent implements OnInit {
+  @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
+
   @Input() tree: TreeModel;
   loading: boolean;
 
