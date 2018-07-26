@@ -17,6 +17,7 @@ export class ModalComponent implements OnInit {
   }
 
   clicked() {
+    // todo get rid of this ugly workaround
     this.store.dispatch({type: SET_LOADING_STATE, payload: false});
   }
 }

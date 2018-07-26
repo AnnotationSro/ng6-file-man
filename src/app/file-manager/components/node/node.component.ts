@@ -36,6 +36,7 @@ export class NodeComponent implements OnInit {
       if (this.node.stayOpen) {
         return;
       }
+      this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node.id});
 
       this.node.isExpanded = !this.node.isExpanded;
 
