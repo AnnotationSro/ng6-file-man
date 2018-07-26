@@ -11,13 +11,13 @@
 .left {
   width: 40%;
   max-width: 300px;
-  height: 90vh;
+  height: calc(100vh - 100px);
   background-color: white;
   border-radius: 5px;
   border: 1px solid var(--main-color);
   box-shadow: 1px 2px 3px #aaa;
   position: relative;
-  padding: 10px 2px;
+  padding: 3px;
   overflow: auto;
 }
 

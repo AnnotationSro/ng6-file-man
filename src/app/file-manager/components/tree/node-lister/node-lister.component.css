@@ -1,152 +1,35 @@
-ol, ul {
-  list-style: none;
-}
-
 .flist {
-  margin: 0 0 1em 0;
-  padding: 0 0 0 .5em;
+  margin: 5px;
+  padding: 0;
   list-style: none;
+  white-space: nowrap;
 }
 
 .flist ul {
   margin: 0 0 0 1em;
-  padding: 0;
+  padding: 3px;
 }
 
 .flist li {
-  list-style-image: none;
-  list-style-type: none;
-  margin-left: 0;
+  list-style: none none;
+  /*margin-left: 0;*/
   line-height: 1.2em;
   font-size: 1em;
+  padding: 1px 3px;
 }
 
-.flist a {
-  text-decoration: none;
-  display: block;
-  zoom: 1;
-  *display: inline;
-  padding: .2em .5em .2em 1.4em;
-  color: #cccccc;
+.flist app-node:hover {
+  transition: color 0.35s ease-in;
+  color: var(--main-color);
 }
 
-.flist a:hover {
-  color: #2222ff !important;
-  background-color: #cccccc;
-}
-
-.flist a .nmsicon {
-  font-size: 0.85em;
-  vertical-align: 0;
-}
-
-.flist .list-icon {
-  display: inline;
-  float: left;
-  clear: left;
-  font-family: NmsIcons;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
-  opacity: 0.4;
-  line-height: 1.4em;
-  margin: 0;
-  padding: .2em .2em;
-  width: .4em;
-  cursor: default;
-}
-
-.flist .list-icon span {
-  font-size: 0.7em;
-}
-
-/* The showlines class does what it sounds like: shows the lines. */
-.flist.showlines {
-  overflow-x: visible;
-  padding: 0 0 0 1em;
-}
-
-.flist.showlines ul {
-  margin: 0 0 0 1.9em;
-  overflow-x: visible;
-}
-
-/* One requirement for this to work is to have support for multiple backgrounds
-   and the background-size property */
-.flist.showlines li {
-  padding: 0 0 0 5px;
+.flist app-node {
   cursor: pointer;
-  background: url('http://www.isochronous.org/fiddles/flist/pixel.png') 0 0 no-repeat, url('http://www.isochronous.org/fiddles/flist/pixel.png') 1px 12px no-repeat;
-  /* The image itself is only a 1x1px square, but using background-size we can stretch it
-     to any dimensions we want */
-  background-size: 1px 100%, 12px 1px;
-  overflow: visible;
+  transition: color 0.35s ease-out;
+  color: black;
 }
 
-/* The last child needs to be shaped like an 'L', so make one horizontal line and one vertical
-   line, then offset the horizontal line so that it intersects the vertical line at its bottom */
-.flist.showlines li:last-child {
-  background-size: 1px 12px, 12px 1px;
-  background-position: 0 0, 1px 12px;
-}
-
-/* The First child needs to be shaped like an upside-down 'L', so make a vertical line that goes
-   from the top of the element all the way down, a horizontal line that's 1px tall and 12px wide,
-   then offset the lines so that their intersection is vertically centered within the li */
-.flist.showlines > li:first-child {
-  background-size: 1px 100%, 12px 1px;
-  background-position: 0 12px, 1px 12px;
-
-}
-
-/* If it's the first and only direct descendant of the root UL, we only need a single horizontal line,
-   vertically centered within the UL. */
-.flist.showlines > li:first-child:only-child {
-  background: url('http://www.isochronous.org/fiddles/flist/pixel.png') 1px 12px no-repeat;
-  background-size: 12px 1px;
-  background-position: 0 12px;
-}
-
-/* This creates the expand/collapse blocks at the places where the tree can expand or collapse */
-.flist.showlines .list-icon {
-  display: inline-block;
-  font-family: Arial, Verdana, Helvetica, Sans-serif;
-  border: 1px solid #222;
-  color: #444;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background-size: 100%;
-  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #ffffff), color-stop(100%, #dddddd));
-  background-image: -webkit-linear-gradient(left top, #ffffff, #dddddd);
-  background-image: -moz-linear-gradient(left top, #ffffff, #dddddd);
-  background-image: -o-linear-gradient(left top, #ffffff, #dddddd);
-  background-image: linear-gradient(to left top, #ffffff, #dddddd);
-  position: relative;
-  top: .3em;
-  right: .35em;
-  text-align: center;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
-  padding: 1px 2px 1px 1px;
-  width: 10px;
-  height: 10px;
-  font-size: 1.3em;
-  line-height: 0.25;
-}
-
-.flist.showlines .list-icon span {
-  vertical-align: 0;
-}
-
-.flist.showlines .list-icon:hover {
-  -webkit-box-shadow: 0 0 3px 0 #ff8300;
-  -moz-box-shadow: 0 0 3px 0 #ff8300;
-  box-shadow: 0 0 3px 0 #ff8300;
-}
-
-.deselected  div {
+.deselected div {
   display: none;
 }
 
