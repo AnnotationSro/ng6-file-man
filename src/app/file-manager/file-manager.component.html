@@ -5,11 +5,12 @@
 <div class="holder">
   <div class="left">
     <app-tree [loading]="loading" [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
-      <ng-template let-nodes select="tree-node" >
+      <ng-template let-nodes select="tree-node">
         <ng-container [ngTemplateOutletContext]="{$implicit: nodes}" [ngTemplateOutlet]="templateRef"></ng-container>
       </ng-template>
     </app-tree>
   </div>
+
   <div class="right">
     <app-file-viewer [loading]="loading" [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
       <!--<ng-template let-node>-->

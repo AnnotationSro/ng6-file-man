@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {NodeInterface} from '../interfaces/node.interface';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 import {TreeModel} from '../models/tree.model';
 import {HttpClient} from '@angular/common/http';
 import * as ACTIONS from '../reducers/actions.action';
@@ -11,7 +11,7 @@ import {AppStore} from '../reducers/reducer.factory';
   providedIn: 'root'
 })
 export class NodeService {
-  private _tree: TreeModel;
+  public tree: TreeModel;
 
   constructor(private http: HttpClient, private store: Store<AppStore>) {
   }
@@ -61,13 +61,5 @@ export class NodeService {
     ids.splice(0, 1);
 
     return ids.length === 0 ? this.tree.nodes : ids.reduce((value, index) => value['children'][index], this.tree.nodes);
-  }
-
-  get tree(): TreeModel {
-    return this._tree;
-  }
-
-  set tree(value: TreeModel) {
-    this._tree = value;
   }
 }
