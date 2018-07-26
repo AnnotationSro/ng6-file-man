@@ -21,7 +21,7 @@
 
 .item:hover {
   transition: border-color 0.5s ease-in;
-  border-color: #22f;
+  border-color: var(--main-color);
 }
 
 .file-name {

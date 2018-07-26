@@ -2,8 +2,9 @@
 
 * {
   font-family: 'Open Sans', sans-serif;
+  --main-color: #22f;
 }
 
 i {
-  color: #22f;
+  color: var(--main-color);
 }

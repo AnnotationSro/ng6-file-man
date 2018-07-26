@@ -1,4 +1,4 @@
 a {
   text-decoration: none;
-  color: #22f;
+  color: var(--main-color);
 }

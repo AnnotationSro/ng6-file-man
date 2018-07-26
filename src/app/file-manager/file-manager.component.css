@@ -5,7 +5,7 @@
 .navbar {
   margin: 0 0 15px 0;
   padding: 10px;
-  border-bottom: 2px solid #22f;
+  border-bottom: 2px solid var(--main-color);
 }
 
 .left {
@@ -14,7 +14,7 @@
   height: 90vh;
   background-color: white;
   border-radius: 5px;
-  border: 1px solid #22f;
+  border: 1px solid var(--main-color);
   box-shadow: 1px 2px 3px #aaa;
   position: relative;
 }
