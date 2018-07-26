@@ -12,10 +12,10 @@ export class AppComponent {
 
   constructor() {
     const treeConfig: ConfigInterface = {
-      isCache: true, // todo implement
+      offlineMode: false, // todo implement
       baseURL: 'http://localhost:3000/',
       startingFolder: 'root', // todo implement
-      showFilesInsideTree: false // todo implement
+      showFilesInsideTree: false
     };
 
     this.tree = new TreeModel(treeConfig);

@@ -29,13 +29,11 @@ export class TreeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nodeService.tree = this.treeModel;
     this.nodes = this.treeModel.nodes;
 
     this.store.select(state => state.fileManagerState.path).subscribe((path: string) => {
       const requestPath = path.split('/').join('_');
 
-      // todo implement cache = kuk ci uz taketo nieco existuje, ak nie getNodes, inak nist nerobim
       this.nodeService.getNodes(requestPath);
 
       this.currentTreeLevel = this.treeModel.currentPath;

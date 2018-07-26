@@ -3,6 +3,7 @@ import {TreeModel} from './models/tree.model';
 import {Store} from '@ngrx/store';
 import * as ACTIONS from './reducers/actions.action';
 import {AppStore} from './reducers/reducer.factory';
+import {NodeService} from './services/node.service';
 
 @Component({
   selector: 'app-file-manager',
@@ -16,12 +17,16 @@ export class FileManagerComponent implements OnInit {
   loading: boolean;
 
   constructor(
-    private store: Store<AppStore>
+    private store: Store<AppStore>,
+    private nodeService: NodeService
   ) {
   }
 
   ngOnInit() {
-    this.store.dispatch({type: ACTIONS.SET_PATH, payload: 'root'});
+    this.nodeService.tree = this.tree;
+
+    this.nodeService.startManagerAt(this.tree.currentPath);
+
     this.store.select(state => state.fileManagerState.isLoading).subscribe((data: boolean) => {
       this.loading = data;
     });

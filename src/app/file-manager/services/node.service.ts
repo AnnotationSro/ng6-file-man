@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {NodeInterface} from '../interfaces/node.interface';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {TreeModel} from '../models/tree.model';
 import {HttpClient} from '@angular/common/http';
 import * as ACTIONS from '../reducers/actions.action';
@@ -12,9 +12,13 @@ import {AppStore} from '../reducers/reducer.factory';
 })
 export class NodeService {
   private _tree: TreeModel;
-  url: string;
 
   constructor(private http: HttpClient, private store: Store<AppStore>) {
+  }
+
+  // todo server mi da aj strukturu rodicov a tu nasadim
+  public startManagerAt(path: string) {
+    this.store.dispatch({type: ACTIONS.SET_PATH, payload: path});
   }
 
   getNodes(path: string) {
@@ -49,7 +53,7 @@ export class NodeService {
   }
 
   private getNodesFromServer(path: string) {
-    return this.http.get(this.url + path);
+    return this.http.get(this.tree.config.baseURL + path);
   }
 
   public findParent(parentId: string): NodeInterface {
@@ -65,9 +69,5 @@ export class NodeService {
 
   set tree(value: TreeModel) {
     this._tree = value;
-
-    if (!this.url) {
-      this.url = this.tree.config.baseURL;
-    }
   }
 }

@@ -22,12 +22,14 @@ export class TreeModel {
     };
   }
 
+  // todo
   public foldNode(node: NodeInterface) {
     if (!node.stayOpen) {
       node.isExpanded = false;
     }
   }
 
+  // todo
   public foldNodeRecursively(node: NodeInterface) {
     this.foldNode(node);
 
@@ -65,10 +67,10 @@ export class TreeModel {
   }
 
   get isCache(): boolean {
-    return this.config.isCache;
+    return this.config.offlineMode;
   }
 
   set isCache(value: boolean) {
-    this.config.isCache = value;
+    this.config.offlineMode = value;
   }
 }
