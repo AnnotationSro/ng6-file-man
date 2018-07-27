@@ -1,6 +1,8 @@
 <div id="file-manager" class="file-manager">
   <app-file-manager (itemClicked)="sideShowHide($event)" [tree]="tree"></app-file-manager>
-  <app-side-view></app-side-view>
+  <ng-container *ngIf="node">
+  <app-side-view [node]="node"></app-side-view>
+  </ng-container>
 </div>
 
 <!--<app-file-manager [iconTemplate]="iconTemplate"-->
@@ -47,5 +49,19 @@
   <!--</div>-->
   <!--<div class="spinner">-->
     <!--<i class="fas fa-5x fa-spin fa-sync-alt"></i>-->
+  <!--</div>-->
+<!--</ng-template>-->
+
+<!--&lt;!&ndash;#sideViewTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
+<!--<ng-template let-node #sideViewTemplate>-->
+  <!--<div style="text-align: center">-->
+    <!--<p>{{node.name}}</p>-->
+    <!--<hr/>-->
+    <!--<table>-->
+      <!--<tr>-->
+        <!--<td>Path:</td>-->
+        <!--<td>{{node.pathToNode}}</td>-->
+      <!--</tr>-->
+    <!--</table>-->
   <!--</div>-->
 <!--</ng-template>-->

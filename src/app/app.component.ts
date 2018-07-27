@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {TreeModel} from './file-manager/models/tree.model';
 import {ConfigInterface} from './file-manager/interfaces/config.interface';
+import {NodeInterface} from './file-manager/interfaces/node.interface';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import {ConfigInterface} from './file-manager/interfaces/config.interface';
 })
 export class AppComponent {
   tree: TreeModel;
+  node: NodeInterface;
 
   constructor() {
     const treeConfig: ConfigInterface = {
@@ -25,7 +27,15 @@ export class AppComponent {
 
   sideShowHide(event: any) {
     if (!event.node.isFolder) {
+      if (this.node === null) {
+        this.node = event.node;
+      } else if (this.node !== event.node) {
+        this.node = event.node;
+        return;
+      }
+
       this.hidden = !this.hidden;
+
       if (this.hidden) {
         document.getElementById('file-manager').classList.remove('selected');
       } else {

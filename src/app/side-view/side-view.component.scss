@@ -11,3 +11,21 @@
   background-color: white;
   box-shadow: 1px 2px 3px #aaa;
 }
+
+.preview {
+  text-align: center;
+
+  p {
+    font-weight: bold;
+    color: $main-color;
+  }
+
+  hr {
+    color: $main-color
+  }
+
+  div {
+    margin: 0 auto;
+    display: inline-block;
+  }
+}
