@@ -1,0 +1,13 @@
+.right{
+  right: 0;
+  width: 300px;
+  height: 98%;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid var(--main-color);
+  box-shadow: 1px 2px 3px #aaa;
+  position: relative;
+  padding: 3px;
+  overflow: auto;
+  display: block;
+}

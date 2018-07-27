@@ -1,0 +1,24 @@
+#file-manager {
+  /*display: flex;*/
+  overflow: hidden;
+}
+
+#file-manager app-side-view {
+  margin: 10px;
+  transform: translateX(100vw);
+  transition: transform 1s;
+  position: absolute;
+  height: 98%;
+  right: 0;
+  top: 0;
+}
+
+#file-manager.selected app-side-view {
+  display: inline-block;
+  transition: transform 1s;
+  transform: translateX(0);
+  position: absolute;
+  height: 98%;
+  right: 0;
+  top: 0;
+}

@@ -20,4 +20,17 @@ export class AppComponent {
 
     this.tree = new TreeModel(treeConfig);
   }
+
+  private hidden = true;
+
+  sideShowHide() {
+    this.hidden = !this.hidden;
+    if (this.hidden) {
+      document.getElementById('file-manager').classList.remove('selected')
+    } else {
+      document.getElementById('file-manager').setAttribute('class', 'selected');
+    }
+
+
+  }
 }

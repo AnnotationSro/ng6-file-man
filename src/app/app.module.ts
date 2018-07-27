@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {FileManagerModule} from './file-manager/file-manager.module';
+import {SideViewModule} from './side-view/side-view.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import {FileManagerModule} from './file-manager/file-manager.module';
   ],
   imports: [
     BrowserModule,
-    FileManagerModule
+    FileManagerModule,
+    SideViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,8 +2,9 @@
 
 * {
   font-family: 'Open Sans', sans-serif;
-  /*--main-color: #ff671f;*/
-  --main-color: #004983;
+  --main-color: #ff671f;
+  /*--main-color: #004983;*/
+  overflow: hidden;
 }
 
 i {
