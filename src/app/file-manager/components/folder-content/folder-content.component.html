@@ -1,44 +1,25 @@
 <div class="item-holder">
-  <div class="item" *ngIf="nodes.parentId">
+  <ng-container *ngIf="nodes.parentId">
     <app-node [node]=nodes (nodeClickedEvent)="nodeClickedEvent($event)">
-      <div>
-        <div class="file-preview">
-        </div>
-        <div class="file-name">
-          <i class="fas fa-ellipsis-h"></i>
-        </div>
-      </div>
+      <ng-container [ngTemplateOutletContext]="{$implicit: nodes.children[node]}"
+                    [ngTemplateOutlet]="folderContentBackTemplate">
+      </ng-container>
     </app-node>
-  </div>
+  </ng-container>
 
-  <div *ngFor="let node of obj.keys(nodes.children)" class="item">
-    <!--todo template-->
+  <ng-container *ngFor="let node of obj.keys(nodes.children)">
     <app-node [node]="nodes.children[node]" (nodeClickedEvent)="nodeClickedEvent($event)">
-      <div>
-        <div class="file-preview">
-          <div *ngIf="nodes.children[node].isFolder; then itIsFolder else showFile"></div>
-          <ng-template #itIsFolder><i class="fas fa-3x fa-folder child"></i></ng-template>
-          <ng-template #showFile><i class="fas fa-3x fa-file child"></i></ng-template>
-        </div>
-        <div class="file-name">
-          {{nodes.children[node].name}}
-        </div>
-      </div>
+      <ng-container [ngTemplateOutletContext]="{$implicit: nodes.children[node]}"
+                    [ngTemplateOutlet]="folderContentTemplate">
+      </ng-container>
     </app-node>
-    <!--todo template-->
-  </div>
+  </ng-container>
 
-  <div class="item">
-    <div>
-      <div class="file-preview">
-        <i class="fas fa-3x fa-plus child"></i>
-      </div>
-      <div class="file-name">
-        New
-      </div>
-    </div>
+  <div class="new">
+    <ng-container [ngTemplateOutletContext]="{$implicit: nodes.children[node]}"
+                  [ngTemplateOutlet]="folderContentNewTemplate">
+    </ng-container>
   </div>
 </div>
 
-<app-modal *ngIf="loading"></app-modal>
 

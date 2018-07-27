@@ -1,5 +1,6 @@
 <ul class="flist showlines">
-  <div *ngFor="let node of obj.keys(nodes)">
+  <!--In order to avoid having to create that extra div, we can instead use ng-container directive-->
+  <ng-container *ngFor="let node of obj.keys(nodes)">
     <li *ngIf="nodes[node].isFolder || showFiles" id="{{nodes[node].pathToNode}}">
 
       <app-node [node]="nodes[node]" (nodeClickedEvent)="nodeClickedEvent($event)">
@@ -19,5 +20,5 @@
       </app-node-lister>
 
     </li>
-  </div>
+  </ng-container>
 </ul>

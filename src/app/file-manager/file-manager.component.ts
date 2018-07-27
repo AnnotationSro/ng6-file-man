@@ -4,6 +4,7 @@ import {Store} from '@ngrx/store';
 import * as ACTIONS from './reducers/actions.action';
 import {AppStore} from './reducers/reducer.factory';
 import {NodeService} from './services/node.service';
+import {SET_LOADING_STATE} from './reducers/actions.action';
 
 @Component({
   selector: 'app-file-manager',
@@ -11,7 +12,12 @@ import {NodeService} from './services/node.service';
   styleUrls: ['./file-manager.component.css']
 })
 export class FileManagerComponent implements OnInit {
-  @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
+  @Input() iconTemplate: TemplateRef<any>;
+  @Input() modalTemplate: TemplateRef<any>;
+  @Input() folderContentTemplate: TemplateRef<any>;
+  @Input() folderContentBackTemplate: TemplateRef<any>;
+  @Input() folderContentNewTemplate: TemplateRef<any>;
+  @Input() loadingOverlayTemplate: TemplateRef<any>;
 
   @Input() tree: TreeModel;
   loading: boolean;
@@ -24,9 +30,7 @@ export class FileManagerComponent implements OnInit {
 
   ngOnInit() {
     this.nodeService.tree = this.tree;
-
     this.nodeService.startManagerAt(this.tree.currentPath);
-
     this.store.select(state => state.fileManagerState.isLoading).subscribe((data: boolean) => {
       this.loading = data;
     });
@@ -34,5 +38,10 @@ export class FileManagerComponent implements OnInit {
 
   onItemClicked(event: any): void {
     // console.log('[fm component] onItemClicked', event);
+  }
+
+  backdropClicked() {
+    // todo get rid of this ugly workaround
+    this.store.dispatch({type: SET_LOADING_STATE, payload: false});
   }
 }

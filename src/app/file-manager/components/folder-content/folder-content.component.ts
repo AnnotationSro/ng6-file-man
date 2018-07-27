@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
@@ -11,8 +11,11 @@ import {AppStore} from '../../reducers/reducer.factory';
   styleUrls: ['./folder-content.component.css']
 })
 export class FolderContentComponent implements OnInit {
+  @Input() folderContentTemplate: TemplateRef<any>;
+  @Input() folderContentBackTemplate: TemplateRef<any>;
+  @Input() folderContentNewTemplate: TemplateRef<any>;
+
   @Input() treeModel: TreeModel;
-  @Input() loading: boolean;
   @Output() treeNodeClickedEvent = new EventEmitter();
 
   obj = Object;

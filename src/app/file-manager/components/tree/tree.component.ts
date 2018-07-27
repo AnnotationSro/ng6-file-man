@@ -16,7 +16,6 @@ export class TreeComponent implements OnInit {
   @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
 
   @Input() treeModel: TreeModel;
-  @Input() loading: boolean;
   @Output() treeNodeClickedEvent = new EventEmitter();
 
   nodes: NodeInterface;

@@ -1,7 +1,14 @@
 .item-holder {
-  display: inline-block;
   box-sizing: border-box;
   /*flex-direction: row;*/
+}
+
+.item-holder app-node {
+  display: inline-block;
+}
+
+.item-holder div {
+  display: inline;
 }
 
 .item {
@@ -22,17 +29,4 @@
 .item:hover {
   transition: border-color 0.5s ease-in;
   border-color: var(--main-color);
-}
-
-.file-name {
-  bottom: 0;
-  width: 100%;
-  height: 30px;
-  position: relative;
-}
-
-.file-preview {
-  width: 80px;
-  height: 80px;
-  margin: auto;
 }

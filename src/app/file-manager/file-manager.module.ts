@@ -11,7 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {StoreModule} from '@ngrx/store';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {reducers} from './reducers/reducer.factory';
-import {ModalComponent} from './components/modal/modal.component';
+import {LoadingOverlayComponent} from './components/loading-overlay/loading-overlay.component';
 
 @NgModule({
   imports: [
@@ -28,10 +28,11 @@ import {ModalComponent} from './components/modal/modal.component';
     NodeListerComponent,
     MapToIterablePipe,
     NavBarComponent,
-    ModalComponent
+    LoadingOverlayComponent
   ],
   exports: [
-    FileManagerComponent
+    FileManagerComponent,
+    LoadingOverlayComponent
   ]
 })
 export class FileManagerModule {

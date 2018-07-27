@@ -4,15 +4,86 @@
 
 <div class="holder">
   <div class="left">
-    <app-tree [loading]="loading" [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
-      <ng-template let-nodes select="tree-node">
-        <ng-container [ngTemplateOutletContext]="{$implicit: nodes}" [ngTemplateOutlet]="templateRef"></ng-container>
+    <app-tree [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
+      <ng-template let-nodes>
+        <ng-container [ngTemplateOutletContext]="{$implicit: nodes}"
+                      [ngTemplateOutlet]="iconTemplate ? iconTemplate : defaultIconTemplate">
+        </ng-container>
       </ng-template>
     </app-tree>
   </div>
 
   <div class="right">
-    <app-folder-content [loading]="loading" [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
+    <app-folder-content
+      [treeModel]="tree"
+      (treeNodeClickedEvent)="onItemClicked($event)"
+      [folderContentTemplate]="folderContentTemplate ? folderContentTemplate : defaultFolderContentTemplate"
+      [folderContentNewTemplate]="folderContentNewTemplate ? folderContentNewTemplate : defaultFolderContentNewTemplate"
+      [folderContentBackTemplate]="folderContentBackTemplate ? folderContentBackTemplate : defaultFolderContentBackTemplate">
     </app-folder-content>
   </div>
+
+  <app-loading-overlay
+    *ngIf="loading"
+    [loadingOverlayTemplate]="loadingOverlayTemplate ? loadingOverlayTemplate : defaultLoadingOverlayTemplate">
+  </app-loading-overlay>
 </div>
+
+<ng-template let-node #defaultIconTemplate>
+  <div class="node" style="display: inline-block; padding: 3px">
+    <div *ngIf="node.isFolder; then itIsFolder else showFile"></div>
+
+    <ng-template #itIsFolder>
+      <div *ngIf="node.isExpanded; then isFolderExpanded else isFolderClosed"></div>
+    </ng-template>
+
+    <ng-template #showFile><i class="fas fa-file child"></i></ng-template>
+    <ng-template #isFolderExpanded><i class="fas fa-folder-open child"></i></ng-template>
+    <ng-template #isFolderClosed><i class="fas fa-folder child"></i></ng-template>
+
+    <span>  {{node.name}}</span>
+  </div>
+</ng-template>
+
+<ng-template let-node #defaultFolderContentTemplate>
+  <div class="item">
+    <div class="file-preview">
+      <div *ngIf="node.isFolder; then itIsFolder else showFile"></div>
+      <ng-template #itIsFolder><i class="fas fa-3x fa-folder child"></i></ng-template>
+      <ng-template #showFile><i class="fas fa-3x fa-file child"></i></ng-template>
+    </div>
+    <div class="file-name">
+      {{node.name}}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template let-node #defaultFolderContentNewTemplate>
+  <div class="item">
+    <div class="file-preview">
+      <i class="fas fa-3x fa-plus child"></i>
+    </div>
+    <div class="file-name">
+      New
+    </div>
+  </div>
+</ng-template>
+
+<ng-template let-node #defaultFolderContentBackTemplate>
+  <div class="item">
+    <div class="file-preview">
+    </div>
+    <div class="file-name">
+      <i class="fas fa-ellipsis-h"></i>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template let-timeoutMessage #defaultLoadingOverlayTemplate>
+  <div class="backdrop" (click)="backdropClicked()">
+    <div class="error" *ngIf="timeoutMessage">{{timeoutMessage}}</div>
+  </div>
+  <div class="spinner">
+    <i class="fas fa-5x fa-spin fa-sync-alt"></i>
+  </div>
+</ng-template>

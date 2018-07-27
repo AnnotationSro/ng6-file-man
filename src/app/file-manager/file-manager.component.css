@@ -1,3 +1,4 @@
+/*fm layout*/
 .holder {
   display: flex;
 }
@@ -25,4 +26,70 @@
   width: 60%;
   margin-left: 15px;
   position: relative;
+}
+
+/*folder content template*/
+.item {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  padding: 5px;
+  display: inline-block;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 3px #eee;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease-out;
+}
+
+.item:hover {
+  transition: border-color 0.5s ease-in;
+  border-color: var(--main-color);
+}
+
+.file-name {
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  position: relative;
+}
+
+.file-preview {
+  width: 80px;
+  height: 80px;
+  margin: auto;
+}
+
+/*loading overlay template*/
+.backdrop {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(100, 100, 100, 0.5);
+  cursor: progress;
+}
+
+.spinner {
+  z-index: 101;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: progress;
+}
+
+.error {
+  z-index: 101;
+  position: relative;
+  top: 60%;
+  text-align: center;
+  font-weight: bold;
+  color: var(--main-color);
+  width: 80%;
+  margin: 0 auto;
 }

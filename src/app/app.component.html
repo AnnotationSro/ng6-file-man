@@ -1,17 +1,48 @@
-<app-file-manager [tree]="tree">
-  <ng-template let-node>
-    <div class="node" style="display: inline-block; padding: 3px">
-      <div *ngIf="node.isFolder; then itIsFolder else showFile"></div>
+<app-file-manager [tree]="tree"></app-file-manager>
 
-      <ng-template #itIsFolder>
-        <div *ngIf="node.isExpanded; then isFolderExpanded else isFolderClosed"></div>
-      </ng-template>
+<!--<app-file-manager [iconTemplate]="iconTemplate"-->
+                  <!--[folderContentTemplate]="folderContentTemplate"-->
+                  <!--[folderContentBackTemplate]="folderContentBackTemplate"-->
+                  <!--[folderContentNewTemplate]="folderContentNewTemplate"-->
+                  <!--[loadingOverlayTemplate]="loadingOverlayTemplate"-->
+                  <!--[tree]="tree">-->
+<!--</app-file-manager>-->
 
-      <ng-template #showFile><i class="fas fa-file child"></i></ng-template>
-      <ng-template #isFolderExpanded><i class="fas fa-folder-open child"></i></ng-template>
-      <ng-template #isFolderClosed><i class="fas fa-folder child"></i></ng-template>
+<!--&lt;!&ndash;#iconTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
+<!--<ng-template let-node #iconTemplate>-->
+  <!--<i class="fas fa-arrow-alt-circle-right" style="padding: 0 5px"></i>{{node.name}}-->
+<!--</ng-template>-->
 
-      <span>  {{node.name}}</span>
-    </div>
-  </ng-template>
-</app-file-manager>
+<!--&lt;!&ndash;#folderContentTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
+<!--<ng-template let-node #folderContentTemplate>-->
+  <!--<div class="item"-->
+       <!--style="padding: 5px; border: 1px solid #ccc; margin: 3px; border-radius: 5px; width: 150px; cursor: pointer;">-->
+    <!--<i class="fas fa-arrow-alt-circle-right" style="padding: 0 5px"></i>{{node.name}}-->
+  <!--</div>-->
+<!--</ng-template>-->
+
+<!--&lt;!&ndash;#folderContentBackTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
+<!--<ng-template let-node #folderContentBackTemplate>-->
+  <!--<div class="item"-->
+       <!--style="font-weight: bold; padding: 5px; border: 1px solid #ccc; margin: 3px; border-radius: 5px; width: 150px; cursor: pointer;">-->
+    <!--<i class="fas fa-arrow-alt-circle-left" style="padding: 0 5px"></i>BACK-->
+  <!--</div>-->
+<!--</ng-template>-->
+
+<!--&lt;!&ndash;#folderContentNewTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
+<!--<ng-template let-node #folderContentNewTemplate>-->
+  <!--<div class="item"-->
+       <!--style="font-weight: bold;padding: 5px; border: 1px solid #ccc; margin: 3px; border-radius: 5px; width: 150px; cursor: pointer;">-->
+    <!--<i class="fas fa-plus-circle" style="padding: 0 5px"></i>NEW-->
+  <!--</div>-->
+<!--</ng-template>-->
+
+<!--&lt;!&ndash;#folderContentNewTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
+<!--<ng-template let-timeoutMessage #loadingOverlayTemplate>-->
+  <!--<div class="backdrop">-->
+    <!--<div class="error" *ngIf="timeoutMessage">{{timeoutMessage}}</div>-->
+  <!--</div>-->
+  <!--<div class="spinner">-->
+    <!--<i class="fas fa-5x fa-spin fa-sync-alt"></i>-->
+  <!--</div>-->
+<!--</ng-template>-->
