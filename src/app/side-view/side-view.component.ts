@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {NodeInterface} from '../file-manager/interfaces/node.interface';
 
 @Component({
@@ -9,11 +9,16 @@ import {NodeInterface} from '../file-manager/interfaces/node.interface';
 export class SideViewComponent implements OnInit {
   @Input() node: NodeInterface;
   @Input() sideViewTemplate: TemplateRef<any>;
+  @Output() closeEvent = new EventEmitter();
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  onCloseClick(event: any) {
+    this.closeEvent.emit({event: event, node: this.node});
   }
 
 }

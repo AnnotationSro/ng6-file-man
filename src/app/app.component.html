@@ -1,8 +1,6 @@
 <div id="file-manager" class="file-manager">
   <app-file-manager (itemClicked)="sideShowHide($event)" [tree]="tree"></app-file-manager>
-  <ng-container *ngIf="node">
-  <app-side-view [node]="node"></app-side-view>
-  </ng-container>
+  <app-side-view [node]="node" (closeEvent)="sideShowHide($event)"></app-side-view>
 </div>
 
 <!--<app-file-manager [iconTemplate]="iconTemplate"-->

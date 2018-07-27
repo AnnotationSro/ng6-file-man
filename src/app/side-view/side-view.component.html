@@ -8,25 +8,31 @@
 <ng-template let-node #defaultSideViewTemplate>
   <div class="preview">
     <p>{{node.name | uppercase}}</p>
+
     <div>
       <img src="https://picsum.photos/200/300/?random"/>
     </div>
     <hr/>
+
     <div>
       <table style="text-align: left">
         <tr>
-          <td>Path:</td>
+          <td class="name">Path</td>
           <td>{{node.pathToNode}}</td>
         </tr>
         <tr>
-          <td>Parent:</td>
+          <td class="name">Parent</td>
           <td>{{node.parentId}}</td>
         </tr>
         <tr>
-          <td>Id:</td>
+          <td class="name">Id</td>
           <td>{{node.id}}</td>
         </tr>
       </table>
+    </div>
+
+    <div class="close" (click)="onCloseClick($event)">
+      <i class="fas fa-times"></i>
     </div>
   </div>
 </ng-template>

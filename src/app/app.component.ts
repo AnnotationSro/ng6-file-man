@@ -21,6 +21,7 @@ export class AppComponent {
     };
 
     this.tree = new TreeModel(treeConfig);
+    this.node = this.tree.nodes;
   }
 
   private hidden = true;

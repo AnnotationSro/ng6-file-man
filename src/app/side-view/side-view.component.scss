@@ -14,6 +14,7 @@
 
 .preview {
   text-align: center;
+  position: relative;
 
   p {
     font-weight: bold;
@@ -27,5 +28,19 @@
   div {
     margin: 0 auto;
     display: inline-block;
+  }
+
+  .name {
+    color: $main-color;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  .close {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 10px;
   }
 }
