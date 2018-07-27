@@ -4,7 +4,7 @@ import {timer} from 'rxjs';
 @Component({
   selector: 'app-loading-overlay',
   templateUrl: './loading-overlay.component.html',
-  styleUrls: ['./loading-overlay.component.css']
+  styleUrls: ['./loading-overlay.component.scss']
 })
 export class LoadingOverlayComponent implements OnInit {
   @Input() loadingOverlayTemplate: TemplateRef<any>;

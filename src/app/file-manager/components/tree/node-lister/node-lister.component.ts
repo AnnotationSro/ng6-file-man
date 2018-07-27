@@ -4,7 +4,7 @@ import {NodeInterface} from '../../../interfaces/node.interface';
 @Component({
   selector: 'app-node-lister',
   templateUrl: './node-lister.component.html',
-  styleUrls: ['./node-lister.component.css']
+  styleUrls: ['./node-lister.component.scss']
 })
 export class NodeListerComponent implements OnInit {
   @ContentChild(TemplateRef) templateRef: TemplateRef<any>;

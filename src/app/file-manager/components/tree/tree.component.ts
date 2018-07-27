@@ -10,7 +10,7 @@ import {AppStore} from '../../reducers/reducer.factory';
 @Component({
   selector: 'app-tree',
   templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.css']
+  styleUrls: ['./tree.component.scss']
 })
 export class TreeComponent implements OnInit {
   @ContentChild(TemplateRef) templateRef: TemplateRef<any>;

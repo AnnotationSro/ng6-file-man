@@ -6,7 +6,7 @@ import {AppStore} from '../../reducers/reducer.factory';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
   currentPath: string[];

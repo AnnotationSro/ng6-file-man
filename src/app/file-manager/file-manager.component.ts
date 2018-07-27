@@ -9,7 +9,7 @@ import {SET_LOADING_STATE} from './reducers/actions.action';
 @Component({
   selector: 'app-file-manager',
   templateUrl: './file-manager.component.html',
-  styleUrls: ['./file-manager.component.css']
+  styleUrls: ['./file-manager.component.scss']
 })
 export class FileManagerComponent implements OnInit {
   @Input() iconTemplate: TemplateRef<any>;

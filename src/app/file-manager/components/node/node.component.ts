@@ -9,7 +9,7 @@ import {AppStore} from '../../reducers/reducer.factory';
 @Component({
   selector: 'app-node',
   templateUrl: './node.component.html',
-  styleUrls: ['./node.component.css']
+  styleUrls: ['./node.component.scss']
 })
 export class NodeComponent implements OnInit {
   @Input() node: NodeInterface;

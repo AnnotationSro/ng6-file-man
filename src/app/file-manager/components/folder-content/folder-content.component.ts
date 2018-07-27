@@ -8,7 +8,7 @@ import {AppStore} from '../../reducers/reducer.factory';
 @Component({
   selector: 'app-folder-content',
   templateUrl: './folder-content.component.html',
-  styleUrls: ['./folder-content.component.css']
+  styleUrls: ['./folder-content.component.scss']
 })
 export class FolderContentComponent implements OnInit {
   @Input() folderContentTemplate: TemplateRef<any>;
