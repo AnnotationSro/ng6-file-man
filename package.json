@@ -22,6 +22,7 @@
     "@angular/router": "^6.0.3",
     "@fortawesome/fontawesome-free": "^5.1.1",
     "@ngrx/store": "^6.0.1",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
