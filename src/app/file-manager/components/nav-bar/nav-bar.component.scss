@@ -1,4 +1,6 @@
+@import '~src/styles';
+
 a {
   text-decoration: none;
-  color: var(--main-color);
+  color: $main-color;
 }

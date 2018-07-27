@@ -1,4 +1,4 @@
-<div class="wrapper">
+
   <div class="navbar">
     <app-nav-bar></app-nav-bar>
   </div>
@@ -29,7 +29,7 @@
       [loadingOverlayTemplate]="loadingOverlayTemplate ? loadingOverlayTemplate : defaultLoadingOverlayTemplate">
     </app-loading-overlay>
   </div>
-</div>
+
 <ng-template let-node #defaultIconTemplate>
   <div class="node" style="display: inline-block; padding: 3px">
     <div *ngIf="node.isFolder; then itIsFolder else showFile"></div>
@@ -59,7 +59,7 @@
   </div>
 </ng-template>
 
-<ng-template let-node #defaultFolderContentNewTemplate>
+<ng-template #defaultFolderContentNewTemplate>
   <div class="item">
     <div class="file-preview">
       <i class="fas fa-3x fa-plus child"></i>

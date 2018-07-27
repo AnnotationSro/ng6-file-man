@@ -1,7 +1,6 @@
-import {Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {TreeModel} from './models/tree.model';
 import {Store} from '@ngrx/store';
-import * as ACTIONS from './reducers/actions.action';
 import {AppStore} from './reducers/reducer.factory';
 import {NodeService} from './services/node.service';
 import {SET_LOADING_STATE} from './reducers/actions.action';
@@ -20,6 +19,7 @@ export class FileManagerComponent implements OnInit {
   @Input() loadingOverlayTemplate: TemplateRef<any>;
 
   @Input() tree: TreeModel;
+  @Output() itemClicked = new EventEmitter();
   loading: boolean;
 
   constructor(
@@ -37,6 +37,7 @@ export class FileManagerComponent implements OnInit {
   }
 
   onItemClicked(event: any): void {
+    this.itemClicked.emit(event);
     // console.log('[fm component] onItemClicked', event);
   }
 

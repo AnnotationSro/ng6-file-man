@@ -1,7 +1,5 @@
-<button (click)="sideShowHide()">open/close</button>
-
 <div id="file-manager" class="file-manager">
-  <app-file-manager [tree]="tree"></app-file-manager>
+  <app-file-manager (itemClicked)="sideShowHide($event)" [tree]="tree"></app-file-manager>
   <app-side-view></app-side-view>
 </div>
 

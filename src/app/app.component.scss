@@ -1,24 +1,22 @@
 #file-manager {
-  /*display: flex;*/
-  overflow: hidden;
-}
+  display: flex;
 
-#file-manager app-side-view {
-  margin: 10px;
-  transform: translateX(100vw);
-  transition: transform 1s;
-  position: absolute;
-  height: 98%;
-  right: 0;
-  top: 0;
-}
+  app-side-view {
+    transition: width 1s ease-in-out;
+    width: 0;
+    overflow: hidden;
+  }
 
-#file-manager.selected app-side-view {
-  display: inline-block;
-  transition: transform 1s;
-  transform: translateX(0);
-  position: absolute;
-  height: 98%;
-  right: 0;
-  top: 0;
+  app-file-manager {
+    width: 100%;
+  }
+
+  &.selected {
+    app-side-view {
+      overflow: visible;
+      width: 40%;
+      max-width: 450px;
+      transition: width 1s ease-in-out;
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {TreeModel} from './file-manager/models/tree.model';
 import {ConfigInterface} from './file-manager/interfaces/config.interface';
 
@@ -23,14 +23,14 @@ export class AppComponent {
 
   private hidden = true;
 
-  sideShowHide() {
-    this.hidden = !this.hidden;
-    if (this.hidden) {
-      document.getElementById('file-manager').classList.remove('selected')
-    } else {
-      document.getElementById('file-manager').setAttribute('class', 'selected');
+  sideShowHide(event: any) {
+    if (!event.node.isFolder) {
+      this.hidden = !this.hidden;
+      if (this.hidden) {
+        document.getElementById('file-manager').classList.remove('selected');
+      } else {
+        document.getElementById('file-manager').setAttribute('class', 'selected');
+      }
     }
-
-
   }
 }

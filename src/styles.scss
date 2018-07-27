@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import "~node_modules/@fortawesome/fontawesome-free/css/all.css";
+$main-color: #ff671f;
 
 * {
   font-family: 'Open Sans', sans-serif;
-  --main-color: #ff671f;
-  /*--main-color: #004983;*/
-  overflow: hidden;
 }
 
 i {
-  color: var(--main-color);
+  color: $main-color;
+}
+
+html {
+  overflow: hidden;
 }
