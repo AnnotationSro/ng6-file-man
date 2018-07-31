@@ -9,7 +9,9 @@
   </div>
 
   <div *ngIf="newFolder">
-    <app-new-folder></app-new-folder>
+    <div class="buttons">
+      <app-new-folder (buttonClicked)="createNewFolder($event)"></app-new-folder>
+    </div>
   </div>
 
   <div class="drag-and-drop">

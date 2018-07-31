@@ -1,0 +1,24 @@
+@import '~src/styles';
+
+.inp {
+  @include borders;
+  border-color: #ccc;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: 0;
+}
+
+.inp:focus {
+  border-color: $main-color;
+  outline: none;
+}
+
+.sendButton {
+  @include borders;
+  @include buttons;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: 0;
+  background-color: $main-color;
+  color: white;
+}

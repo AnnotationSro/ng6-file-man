@@ -74,9 +74,15 @@ export class UploadComponent implements OnInit {
   }
 
   // todo
-  createNewFolder() {
-    console.log('upload new folder na server');
-    this.newFolder = true;
+  createNewFolder(input?: string) {
+    if (!this.newFolder) {
+      this.newFolder = true;
+    } else {
+      this.newFolder = false;
+      if (input.length > 0) {
+        console.log('vytvor folder s menom: ', input);
+      }
+    }
   }
 
   newClickedAction() {
