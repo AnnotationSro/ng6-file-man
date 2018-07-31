@@ -5,11 +5,18 @@ export class TreeModel {
   private _currentPath: string;
   private _nodes: NodeInterface;
   private _selectedNodeId: string;
-  public config: ConfigInterface;
 
-  constructor(config: ConfigInterface) {
+  constructor(public config: ConfigInterface = {
+    showFilesInsideTree: true,
+    baseURL: null,
+    startingFolder: '/',
+    offlineMode: false,
+    upload: {
+      containsFileTable: true,
+      containsFileCount: true,
+    }
+  }) {
     this._currentPath = config.startingFolder;
-    this.config = config;
 
     this.nodes = <NodeInterface>{
       id: 'root',
@@ -20,6 +27,8 @@ export class TreeModel {
       name: 'root',
       children: {}
     };
+
+    console.log(this.config);
   }
 
   // todo

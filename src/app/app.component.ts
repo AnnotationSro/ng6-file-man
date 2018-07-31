@@ -18,7 +18,7 @@ export class AppComponent {
       baseURL: 'http://localhost:3000/',
       startingFolder: 'root', // todo implement
       showFilesInsideTree: false,
-      upload : {
+      upload: {
         containsFileTable: false,
         containsFileCount: true
       }
