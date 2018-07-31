@@ -3,4 +3,8 @@ export interface ConfigInterface {
   baseURL: string;
   startingFolder?: string;
   offlineMode: boolean;
+  upload: {
+    containsFileTable: boolean;
+    containsFileCount: boolean;
+  };
 }

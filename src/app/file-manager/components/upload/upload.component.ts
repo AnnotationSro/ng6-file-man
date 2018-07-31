@@ -8,6 +8,8 @@ import {FileSystemDirectoryEntry, FileSystemFileEntry, UploadEvent, UploadFile} 
 })
 export class UploadComponent implements OnInit {
   @Input() openDialog;
+  @Input() hasTable: boolean;
+  @Input() hasFileCount: boolean;
   @Output() closeDialog = new EventEmitter();
 
   public files: UploadFile[] = [];
@@ -56,6 +58,7 @@ export class UploadComponent implements OnInit {
         // It was a directory (empty directories are added, otherwise only files)
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
         console.log(droppedFile.relativePath, fileEntry);
+        console.log('vytvor folder s menom: ', fileEntry);
       }
     }
   }
@@ -81,6 +84,7 @@ export class UploadComponent implements OnInit {
       this.newFolder = false;
       if (input.length > 0) {
         console.log('vytvor folder s menom: ', input);
+        this.newClickedAction();
       }
     }
   }

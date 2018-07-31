@@ -17,7 +17,11 @@ export class AppComponent {
       offlineMode: false, // todo implement
       baseURL: 'http://localhost:3000/',
       startingFolder: 'root', // todo implement
-      showFilesInsideTree: false
+      showFilesInsideTree: false,
+      upload : {
+        containsFileTable: false,
+        containsFileCount: true
+      }
     };
 
     this.tree = new TreeModel(treeConfig);

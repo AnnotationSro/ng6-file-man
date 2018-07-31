@@ -1,10 +1,10 @@
+<div class="backdrop" (click)="newClickedAction()"></div>
 <div class="overlay">
   <button class="close-button" (click)="newClickedAction()">
     <i class="fas fa-fw fa-3x fa-times"></i>
   </button>
 
   <div class="buttons">
-    <app-upload-button (selectedFile)="addFile($event)"></app-upload-button>
     <button class="btn" [disabled]="newFolder" (click)="createNewFolder()">Vytvor novy priecinok</button>
   </div>
 
@@ -22,11 +22,11 @@
     >
       <span>Drop files here or&nbsp;</span>
       <label for="fileInput" style="cursor: pointer; font-weight: bold">browse</label>
-      <input id="fileInput" type="file" name="myfile" #uploadFile (change)="addFile($event)"/>
+      <input id="fileInput" type="file" name="myfile" #uploadFile style="display: none" (change)="addFile($event)"/>
     </file-drop>
   </div>
 
-  <div class="upload-content" *ngIf="droppedFiles.length > 0">
+  <div class="upload-content" *ngIf="droppedFiles.length > 0 && hasTable">
     <div class="upload-table">
       <table class="table">
         <thead>
@@ -46,6 +46,8 @@
   </div>
 
   <div class="buttons">
-    <button class="btn" [disabled]="droppedFiles.length === 0" (click)="uploadFiles()">Nahraj</button>
+    <button class="btn btnUpload" [disabled]="droppedFiles.length === 0" (click)="uploadFiles()">Nahraj</button>
+    <p *ngIf="droppedFiles.length > 0 && hasFileCount">Pocet suborov na nahranie: {{droppedFiles.length}}</p>
   </div>
+
 </div>

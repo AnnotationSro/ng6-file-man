@@ -2,6 +2,7 @@
 @import "~node_modules/@fortawesome/fontawesome-free/css/all.css";
 
 $main-color: #ff671f;
+$contrast-color: #fff;
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -34,4 +35,15 @@ html {
 @mixin buttons{
   cursor: pointer;
   outline: none;
+}
+
+@mixin contrast {
+  color: $contrast-color;
+  background-color: $main-color;
+}
+
+@mixin disabled {
+  color: #ccc;
+  background-color: white;
+  border-color: #ccc;
 }

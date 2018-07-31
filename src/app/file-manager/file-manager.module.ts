@@ -13,9 +13,8 @@ import {reducers} from './reducers/reducer.factory';
 import {LoadingOverlayComponent} from './components/loading-overlay/loading-overlay.component';
 import {FileDropModule} from 'ngx-file-drop';
 import {FileSizePipe} from './pipes/file-size.pipe';
-import { UploadComponent } from './components/upload/upload.component';
-import { UploadButtonComponent } from './components/upload/upload-button/upload-button.component';
-import { NewFolderComponent } from './components/upload/new-folder/new-folder.component';
+import {UploadComponent} from './components/upload/upload.component';
+import {NewFolderComponent} from './components/upload/new-folder/new-folder.component';
 
 @NgModule({
   imports: [
@@ -35,7 +34,6 @@ import { NewFolderComponent } from './components/upload/new-folder/new-folder.co
     LoadingOverlayComponent,
     FileSizePipe,
     UploadComponent,
-    UploadButtonComponent,
     NewFolderComponent,
   ],
   exports: [

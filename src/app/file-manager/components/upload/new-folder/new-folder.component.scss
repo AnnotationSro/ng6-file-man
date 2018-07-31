@@ -16,9 +16,13 @@
 .sendButton {
   @include borders;
   @include buttons;
+  @include contrast;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   margin-left: 0;
-  background-color: $main-color;
-  color: white;
+}
+
+p {
+  margin: 0 auto;
+  padding: 0;
 }

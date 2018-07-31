@@ -21,5 +21,5 @@
 </div>
 
 <div *ngIf="this.newDialog" class="overlay">
-  <app-upload [openDialog]="newDialog" (closeDialog)="newClickedAction()"></app-upload>
+  <app-upload [hasFileCount]="treeModel.config.upload.containsFileCount" [hasTable]="treeModel.config.upload.containsFileTable" [openDialog]="newDialog" (closeDialog)="newClickedAction()"></app-upload>
 </div>
