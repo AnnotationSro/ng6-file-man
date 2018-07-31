@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FileManagerComponent} from './file-manager.component';
-import {SideViewComponent} from './components/side-view/side-view.component';
 import {FolderContentComponent} from './components/folder-content/folder-content.component';
 import {TreeComponent} from './components/tree/tree.component';
 import {NodeListerComponent} from './components/tree/node-lister/node-lister.component';
@@ -21,7 +20,6 @@ import {LoadingOverlayComponent} from './components/loading-overlay/loading-over
   ],
   declarations: [
     FileManagerComponent,
-    SideViewComponent,
     FolderContentComponent,
     NodeComponent,
     TreeComponent,
