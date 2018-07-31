@@ -5,7 +5,7 @@
 
   <div class="buttons">
     <app-upload-button (selectedFile)="addFile($event)"></app-upload-button>
-    <button class="btn" (click)="createNewFolder()">Vytvor novy priecinok</button>
+    <button class="btn" [disabled]="newFolder" (click)="createNewFolder()">Vytvor novy priecinok</button>
   </div>
 
   <div *ngIf="newFolder">
