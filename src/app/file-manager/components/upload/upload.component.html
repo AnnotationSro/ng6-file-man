@@ -1,0 +1,49 @@
+<div class="overlay">
+  <button class="close-button" (click)="newClickedAction()">
+    <i class="fas fa-fw fa-3x fa-times"></i>
+  </button>
+
+  <div class="buttons">
+    <app-upload-button (selectedFile)="addFile($event)"></app-upload-button>
+    <button class="btn" (click)="createNewFolder()">Vytvor novy priecinok</button>
+  </div>
+
+  <div *ngIf="newFolder">
+    <app-new-folder></app-new-folder>
+  </div>
+
+  <div class="drag-and-drop">
+    <file-drop [customstyle]="'drag-and-drop'"
+               (onFileDrop)="dropped($event)"
+               (onFileOver)="fileOver($event)"
+               (onFileLeave)="fileLeave($event)"
+    >
+      <span>Drop files here or&nbsp;</span>
+      <label for="fileInput" style="cursor: pointer; font-weight: bold">browse</label>
+      <input id="fileInput" type="file" name="myfile" #uploadFile (change)="addFile($event)"/>
+    </file-drop>
+  </div>
+
+  <div class="upload-content" *ngIf="droppedFiles.length > 0">
+    <div class="upload-table">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th style="width: 25%">Size</th>
+        </tr>
+        </thead>
+        <tbody class="upload-name-style">
+        <tr *ngFor="let item of droppedFiles; let i=index">
+          <td>{{ item.relativePath ? item.relativePath : item.name}}</td>
+          <td>{{ item.size | fileSize}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn" [disabled]="droppedFiles.length === 0" (click)="uploadFiles()">Nahraj</button>
+  </div>
+</div>

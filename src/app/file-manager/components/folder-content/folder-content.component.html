@@ -15,9 +15,11 @@
     </app-node>
   </ng-container>
 
-  <div class="new">
+  <div class="new" (click)="newClickedAction()">
     <ng-container [ngTemplateOutlet]="folderContentNewTemplate"></ng-container>
   </div>
 </div>
 
-
+<div *ngIf="this.newDialog" class="overlay">
+  <app-upload [openDialog]="newDialog" (closeDialog)="newClickedAction()"></app-upload>
+</div>

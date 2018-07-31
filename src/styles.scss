@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import "~node_modules/@fortawesome/fontawesome-free/css/all.css";
+
 $main-color: #ff671f;
 
 * {
@@ -12,4 +13,24 @@ i {
 
 html {
   overflow: hidden;
+}
+
+.drag-and-drop {
+  .content {
+    color: $main-color !important;
+    background: white !important;
+  }
+}
+
+@mixin borders {
+  border: 1px solid $main-color;
+  border-radius: 5px;
+  color: $main-color;
+  background-color: white;
+  padding: 10px;
+  margin: 5px;
+}
+
+@mixin buttons{
+  cursor: pointer;
 }

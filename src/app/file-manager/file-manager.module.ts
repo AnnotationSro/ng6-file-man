@@ -11,12 +11,18 @@ import {StoreModule} from '@ngrx/store';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {reducers} from './reducers/reducer.factory';
 import {LoadingOverlayComponent} from './components/loading-overlay/loading-overlay.component';
+import {FileDropModule} from 'ngx-file-drop';
+import {FileSizePipe} from './pipes/file-size.pipe';
+import { UploadComponent } from './components/upload/upload.component';
+import { UploadButtonComponent } from './components/upload/upload-button/upload-button.component';
+import { NewFolderComponent } from './components/upload/new-folder/new-folder.component';
 
 @NgModule({
   imports: [
     HttpClientModule,
     StoreModule.forRoot(reducers),
-    CommonModule
+    CommonModule,
+    FileDropModule
   ],
   declarations: [
     FileManagerComponent,
@@ -26,7 +32,11 @@ import {LoadingOverlayComponent} from './components/loading-overlay/loading-over
     NodeListerComponent,
     MapToIterablePipe,
     NavBarComponent,
-    LoadingOverlayComponent
+    LoadingOverlayComponent,
+    FileSizePipe,
+    UploadComponent,
+    UploadButtonComponent,
+    NewFolderComponent,
   ],
   exports: [
     FileManagerComponent,

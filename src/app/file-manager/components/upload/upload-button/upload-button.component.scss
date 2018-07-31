@@ -1,0 +1,11 @@
+@import '~src/styles';
+
+.btn {
+  @include borders;
+  @include buttons;
+}
+
+input[type=file] {
+  display: none;
+}
+

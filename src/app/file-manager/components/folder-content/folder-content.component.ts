@@ -1,9 +1,10 @@
-import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
 import {NodeInterface} from '../../interfaces/node.interface';
 import {AppStore} from '../../reducers/reducer.factory';
+import {FileSystemDirectoryEntry, FileSystemFileEntry, UploadEvent, UploadFile} from 'ngx-file-drop';
 
 @Component({
   selector: 'app-folder-content',
@@ -18,8 +19,10 @@ export class FolderContentComponent implements OnInit {
   @Input() treeModel: TreeModel;
   @Output() treeNodeClickedEvent = new EventEmitter();
 
-  obj = Object;
+  newDialog = false;
   nodes: NodeInterface;
+
+  obj = Object;
 
   constructor(
     private nodeService: NodeService,
@@ -35,5 +38,9 @@ export class FolderContentComponent implements OnInit {
 
   nodeClickedEvent(originalEvent: any) {
     this.treeNodeClickedEvent.emit(originalEvent);
+  }
+
+  newClickedAction() {
+    this.newDialog = !this.newDialog;
   }
 }
