@@ -18,7 +18,7 @@ export class AppComponent {
       baseURL: 'http://localhost:8080/',
       startingFolder: '', // todo implement
       showFilesInsideTree: false,
-      upload : {
+      upload: {
         containsFileTable: false,
         containsFileCount: true
       },
@@ -33,24 +33,7 @@ export class AppComponent {
     this.node = this.tree.nodes;
   }
 
-  private hidden = true;
-
-  sideShowHide(event: any) {
-    if (!event.node.isFolder) {
-      if (this.node === null) {
-        this.node = event.node;
-      } else if (this.node !== event.node) {
-        this.node = event.node;
-        return;
-      }
-
-      this.hidden = !this.hidden;
-
-      if (this.hidden) {
-        document.getElementById('file-manager').classList.remove('selected');
-      } else {
-        document.getElementById('file-manager').setAttribute('class', 'selected');
-      }
-    }
+  itemClicked(event: any) {
   }
+
 }

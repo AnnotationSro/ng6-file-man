@@ -1,4 +1,4 @@
-<div class="right">
+<div class="right" *ngIf="node">
   <ng-container
     [ngTemplateOutletContext]="{$implicit: node}"
     [ngTemplateOutlet]="sideViewTemplate ? sideViewTemplate : defaultSideViewTemplate">

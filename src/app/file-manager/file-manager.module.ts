@@ -15,6 +15,7 @@ import {FileDropModule} from 'ngx-file-drop';
 import {FileSizePipe} from './pipes/file-size.pipe';
 import {UploadComponent} from './components/upload/upload.component';
 import {NewFolderComponent} from './components/upload/new-folder/new-folder.component';
+import { SideViewComponent } from './components/side-view/side-view.component';
 
 @NgModule({
   imports: [
@@ -35,10 +36,12 @@ import {NewFolderComponent} from './components/upload/new-folder/new-folder.comp
     FileSizePipe,
     UploadComponent,
     NewFolderComponent,
+    SideViewComponent,
   ],
   exports: [
     FileManagerComponent,
-    LoadingOverlayComponent
+    LoadingOverlayComponent,
+    SideViewComponent
   ]
 })
 export class FileManagerModule {

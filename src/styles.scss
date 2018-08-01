@@ -3,6 +3,7 @@
 
 $main-color: #ff671f;
 $contrast-color: #fff;
+$border-radius: 5px;
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -25,7 +26,7 @@ html {
 
 @mixin borders {
   border: 1px solid $main-color;
-  border-radius: 5px;
+  border-radius: $border-radius;
   color: $main-color;
   background-color: white;
   padding: 10px;

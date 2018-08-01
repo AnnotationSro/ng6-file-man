@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {NodeInterface} from '../file-manager/interfaces/node.interface';
+import {NodeInterface} from '../../interfaces/node.interface';
 
 @Component({
   selector: 'app-side-view',

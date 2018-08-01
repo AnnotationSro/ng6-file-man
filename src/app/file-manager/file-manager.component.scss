@@ -1,8 +1,19 @@
 @import '~src/styles';
 
 /*fm layout*/
+.content {
+  height: 100%;
+  display: flex;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+}
+
 .holder {
   display: flex;
+  height: calc(100% - 70px);
 }
 
 .navbar {
@@ -15,9 +26,9 @@
   width: 30%;
   max-width: 350px;
   min-width: 150px;
-  height: calc(100vh - 90px);
+  height: 100%;
   background-color: white;
-  border-radius: 5px;
+  border-radius: $border-radius;
   border: 1px solid $main-color;
   box-shadow: 1px 2px 3px #aaa;
   position: relative;
@@ -45,7 +56,7 @@
   padding: 5px;
   display: inline-block;
   background-color: white;
-  border-radius: 5px;
+  border-radius: $border-radius;
   border: 1px solid #ccc;
   box-shadow: 0 2px 3px #eee;
   text-align: center;
@@ -73,7 +84,7 @@
 
 /*loading overlay template*/
 .backdrop {
-  z-index: 100;
+  z-index: 998;
   position: absolute;
   top: 0;
   left: 0;
@@ -84,7 +95,7 @@
 }
 
 .spinner {
-  z-index: 101;
+  z-index: 999;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -93,12 +104,28 @@
 }
 
 .error {
-  z-index: 101;
+  z-index: 999;
   position: relative;
   top: 60%;
   text-align: center;
   font-weight: bold;
-  color: var(--main-color);
+  color: $main-color;
   width: 80%;
   margin: 0 auto;
+}
+
+/*sideview*/
+
+#side-view {
+  display: inline-block;
+  transition: width 1s ease-in-out;
+  width: 0;
+  overflow: hidden;
+
+  &.selected {
+    overflow: visible;
+    width: 40%;
+    max-width: 450px;
+    transition: width 1s ease-in-out;
+  }
 }
