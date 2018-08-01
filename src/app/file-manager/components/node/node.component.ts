@@ -1,7 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {NodeInterface} from '../../interfaces/node.interface';
 import {Store} from '@ngrx/store';
-import {StateInterface} from '../../interfaces/state.interface';
 
 import * as ACTIONS from '../../reducers/actions.action';
 import {AppStore} from '../../reducers/reducer.factory';
@@ -23,7 +22,6 @@ export class NodeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.outputName = this.node.name ? this.node.name : this.node.id;
   }
 
   onClick(event: any) {
@@ -33,10 +31,12 @@ export class NodeComponent implements OnInit {
     });
 
     if (this.node.isFolder) {
+      this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node.id});
+
       if (this.node.stayOpen) {
+        this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.pathToNode});
         return;
       }
-      this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node.id});
 
       this.node.isExpanded = !this.node.isExpanded;
 

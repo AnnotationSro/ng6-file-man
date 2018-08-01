@@ -67,8 +67,8 @@ export class NodeService {
   private getNodesFromServer = (path: string) =>
     this.http.get(this.tree.config.baseURL + this.tree.config.api.listFile, {params: new HttpParams().set('path', path)});
 
-  public findParent(parentId: string): NodeInterface {
-    const ids = parentId.split('/');
+  public findParent(parentPath: string): NodeInterface {
+    const ids = parentPath.split('/');
     ids.splice(0, 1);
 
     return ids.length === 0 ? this.tree.nodes : ids.reduce((value, index) => value['children'][index], this.tree.nodes);

@@ -5,36 +5,33 @@
   padding: 0;
   list-style: none;
   white-space: nowrap;
-}
 
-.flist ul {
-  margin: 0 0 0 1em;
-  padding: 3px;
-}
+  ul {
+    margin: 0 0 0 1em;
+    //padding: 3px;
+  }
 
-.flist li {
-  list-style: none none;
-  /*margin-left: 0;*/
-  line-height: 1.2em;
-  font-size: 1em;
-  padding: 1px 3px;
-}
+  li {
+    list-style: none none;
+    line-height: 1.2em;
+    font-size: 1em;
+    display: inline;
 
-.flist app-node:hover {
-  transition: color 0.35s ease-in;
-  color: $main-color;
-}
+    .deselected app-node-lister {
+      ul {
+        display: none;
+      }
+    }
+  }
 
-.flist app-node {
-  cursor: pointer;
-  transition: color 0.35s ease-out;
-  color: black;
-}
+  app-node:hover {
+    transition: color 0.35s ease-in;
+    color: $main-color;
+  }
 
-.deselected div {
-  display: none;
-}
-
-.selected div {
-  display: inline;
+  app-node {
+    cursor: pointer;
+    transition: color 0.35s ease-out;
+    color: black;
+  }
 }
