@@ -12,12 +12,13 @@ export class TreeModel {
     this.config = config;
 
     this.nodes = <NodeInterface>{
-      id: 'root',
-      pathToNode: 'root',
+      id: 0,
+      parentId: -1,
+      pathToNode: '',
       isFolder: true,
       isExpanded: true,
       stayOpen: true,
-      name: 'root',
+      name: '',
       children: {}
     };
   }

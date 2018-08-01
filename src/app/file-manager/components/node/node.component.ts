@@ -47,7 +47,11 @@ export class NodeComponent implements OnInit {
       // todo recursive collapse vsetkych childov
       if (!this.node.isExpanded) {
         document.getElementById(this.node.pathToNode).setAttribute('class', 'deselected');
-        this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.parentId});
+
+        let parentPath = this.node.pathToNode.split('/');
+        parentPath = parentPath.slice(0, parentPath.length - 1);
+
+        this.store.dispatch({type: ACTIONS.SET_PATH, payload: parentPath.join('/')});
       } else {
         document.getElementById(this.node.pathToNode).setAttribute('class', 'selected');
       }

@@ -7,4 +7,9 @@ export interface ConfigInterface {
     containsFileTable: boolean;
     containsFileCount: boolean;
   };
+  api: {
+    listFile: string;
+    uploadFile: string;
+    downloadFile: string;
+  };
 }

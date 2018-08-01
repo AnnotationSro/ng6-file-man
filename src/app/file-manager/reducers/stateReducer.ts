@@ -2,14 +2,15 @@ import {StateInterface} from '../interfaces/state.interface';
 import * as ACTIONS from './actions.action';
 
 const initialState: StateInterface = {
-  path: 'root',
+  path: '',
   isLoading: true,
   selectedNode: null
 };
 
 export function stateReducer(state: StateInterface = initialState, action: ACTIONS.Actions): StateInterface {
   // console.log('Previous state: ', state);
-  // console.log('ACTION: ', action.type);
+  // console.log('ACTION state: ', action.type);
+  // console.log('ACTION payload: ', action.payload);
 
   switch (action.type) {
     case ACTIONS.SET_PATH :

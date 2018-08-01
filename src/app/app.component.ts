@@ -15,12 +15,17 @@ export class AppComponent {
   constructor() {
     const treeConfig: ConfigInterface = {
       offlineMode: false, // todo implement
-      baseURL: 'http://localhost:3000/',
-      startingFolder: 'root', // todo implement
+      baseURL: 'http://localhost:8080/',
+      startingFolder: '', // todo implement
       showFilesInsideTree: false,
       upload : {
         containsFileTable: false,
         containsFileCount: true
+      },
+      api: {
+        listFile: 'api/file/list',
+        uploadFile: 'api/file/upload',
+        downloadFile: 'api/file/download'
       }
     };
 

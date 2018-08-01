@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {StateInterface} from '../../interfaces/state.interface';
 import {AppStore} from '../../reducers/reducer.factory';
+import {SET_PATH} from '../../reducers/actions.action';
 
 @Component({
   selector: 'app-tree',
@@ -19,7 +20,7 @@ export class TreeComponent implements OnInit {
   @Output() treeNodeClickedEvent = new EventEmitter();
 
   nodes: NodeInterface;
-  currentTreeLevel = 'root';
+  currentTreeLevel = '';
 
   constructor(
     private nodeService: NodeService,
@@ -31,9 +32,7 @@ export class TreeComponent implements OnInit {
     this.nodes = this.treeModel.nodes;
 
     this.store.select(state => state.fileManagerState.path).subscribe((path: string) => {
-      const requestPath = path.split('/').join('_');
-
-      this.nodeService.getNodes(requestPath);
+      this.nodeService.getNodes(path);
 
       this.currentTreeLevel = this.treeModel.currentPath;
 

@@ -1,6 +1,6 @@
 export interface NodeInterface {
-  id: string;
-  parentId: string;
+  id: number;
+  parentId: number;
   pathToNode: string;
   isFolder: boolean;
   isExpanded: boolean;
