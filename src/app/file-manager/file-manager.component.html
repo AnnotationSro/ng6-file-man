@@ -1,44 +1,65 @@
-<div class="content">
-  <div class="wrapper">
-    <div class="navbar">
-      <app-nav-bar></app-nav-bar>
-    </div>
+<div *ngIf="isPopup; then itIsPopup else showContent"></div>
 
-    <div class="holder">
-
-      <div class="left">
-        <app-tree [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
-          <ng-template let-nodes>
-            <ng-container [ngTemplateOutletContext]="{$implicit: nodes}"
-                          [ngTemplateOutlet]="iconTemplate ? iconTemplate : defaultIconTemplate">
-            </ng-container>
-          </ng-template>
-        </app-tree>
-      </div>
-
-      <div class="right">
-        <app-folder-content
-          [treeModel]="tree"
-          (treeNodeClickedEvent)="onItemClicked($event)"
-          [folderContentTemplate]="folderContentTemplate ? folderContentTemplate : defaultFolderContentTemplate"
-          [folderContentNewTemplate]="folderContentNewTemplate ? folderContentNewTemplate : defaultFolderContentNewTemplate"
-          [folderContentBackTemplate]="folderContentBackTemplate ? folderContentBackTemplate : defaultFolderContentBackTemplate">
-        </app-folder-content>
-      </div>
-
-      <app-loading-overlay
-        *ngIf="loading"
-        [loadingOverlayTemplate]="loadingOverlayTemplate ? loadingOverlayTemplate : defaultLoadingOverlayTemplate">
-      </app-loading-overlay>
-    </div>
-
-    <!--<div class="close">-->
-
-    <!--</div>-->
+<ng-template #itIsPopup>
+  <div *ngIf="!fmOpen">
+    <button (click)="fmShowHide()">Otvor FM</button>
   </div>
+  <div class="fmModal" *ngIf="fmOpen">
+    <div class="fmModalInside">
+      <div *ngIf="fmOpen; then showContent"></div>
+    </div>
+  </div>
+</ng-template>
 
-  <app-side-view id="side-view" [node]="node" (closeEvent)="sideShowHide($event)"></app-side-view>
-</div>
+<ng-template #showContent>
+  <div class="content">
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="path">
+          <app-nav-bar></app-nav-bar>
+        </div>
+
+        <div class="navigation">
+          <app-navigation></app-navigation>
+
+          <div class="close" (click)="fmShowHide()" *ngIf="isPopup">
+            <i class="fas fa-2x fa-times"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="holder">
+        <div class="left">
+          <app-tree [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
+            <ng-template let-nodes>
+              <ng-container [ngTemplateOutletContext]="{$implicit: nodes}"
+                            [ngTemplateOutlet]="iconTemplate ? iconTemplate : defaultIconTemplate">
+              </ng-container>
+            </ng-template>
+          </app-tree>
+        </div>
+
+        <div class="right">
+          <app-folder-content
+            [treeModel]="tree"
+            (treeNodeClickedEvent)="onItemClicked($event)"
+            [folderContentTemplate]="folderContentTemplate ? folderContentTemplate : defaultFolderContentTemplate"
+            [folderContentNewTemplate]="folderContentNewTemplate ? folderContentNewTemplate : defaultFolderContentNewTemplate"
+            [folderContentBackTemplate]="folderContentBackTemplate ? folderContentBackTemplate : defaultFolderContentBackTemplate">
+          </app-folder-content>
+        </div>
+
+        <app-side-view id="side-view" [node]="node" (closeEvent)="sideShowHide($event)"></app-side-view>
+      </div>
+    </div>
+
+    <app-loading-overlay
+      *ngIf="loading"
+      [loadingOverlayTemplate]="loadingOverlayTemplate ? loadingOverlayTemplate : defaultLoadingOverlayTemplate">
+    </app-loading-overlay>
+  </div>
+</ng-template>
+
 <ng-template let-node #defaultIconTemplate>
   <div class="node" style="display: inline-block; padding: 3px">
     <div *ngIf="node.isFolder; then itIsFolder else showFile"></div>

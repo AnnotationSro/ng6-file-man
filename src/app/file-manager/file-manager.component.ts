@@ -25,7 +25,8 @@ export class FileManagerComponent implements OnInit {
 
   node: NodeInterface;
   loading: boolean;
-  hidden = true;
+  sideMenuClosed = true;
+  fmOpen = false;
 
   constructor(
     private store: Store<AppStore>,
@@ -69,12 +70,16 @@ export class FileManagerComponent implements OnInit {
       return;
     }
 
-    this.hidden = !this.hidden;
+    this.sideMenuClosed = !this.sideMenuClosed;
 
-    if (this.hidden) {
+    if (this.sideMenuClosed) {
       document.getElementById('side-view').classList.remove('selected');
     } else {
       document.getElementById('side-view').setAttribute('class', 'selected');
     }
+  }
+
+  fmShowHide() {
+    this.fmOpen = !this.fmOpen;
   }
 }

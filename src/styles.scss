@@ -27,10 +27,20 @@ html {
 @mixin borders {
   border: 1px solid $main-color;
   border-radius: $border-radius;
-  color: $main-color;
   background-color: white;
   padding: 10px;
   margin: 5px;
+}
+
+@mixin text-color {
+  color: black;
+}
+
+@mixin effects($property:false, $time:false) {
+  box-shadow: 0 2px 3px #eee;
+  @if $property{
+    transition: $property $time ease;
+  }
 }
 
 @mixin buttons{

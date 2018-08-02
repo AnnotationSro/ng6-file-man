@@ -1,33 +1,7 @@
 @import "~src/styles";
 
 #file-manager {
-  top: 30px;
-  left: 30px;
-
-  width: calc(100vw - 120px);
-  height: calc(100vh - 120px);
-
-  @include borders;
-
-  position: fixed;
-  display: flex;
-
-  app-file-manager {
-    width: 100%;
-  }
-
-  &.selected {
-    app-side-view {
-      overflow: visible;
-      width: 40%;
-      max-width: 450px;
-      transition: width 1s ease-in-out;
-    }
-  }
-
-  app-side-view {
-    transition: width 1s ease-in-out;
-    width: 0;
-    overflow: hidden;
-  }
+  //defaultbody {margin: 8px}
+  width: calc(100vw - 16px);
+  height: calc(100vh - 16px);
 }

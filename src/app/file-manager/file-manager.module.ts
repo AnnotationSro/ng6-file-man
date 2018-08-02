@@ -16,6 +16,7 @@ import {FileSizePipe} from './pipes/file-size.pipe';
 import {UploadComponent} from './components/upload/upload.component';
 import {NewFolderComponent} from './components/upload/new-folder/new-folder.component';
 import { SideViewComponent } from './components/side-view/side-view.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { SideViewComponent } from './components/side-view/side-view.component';
     UploadComponent,
     NewFolderComponent,
     SideViewComponent,
+    NavigationComponent,
   ],
   exports: [
     FileManagerComponent,

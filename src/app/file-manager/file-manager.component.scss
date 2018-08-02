@@ -7,8 +7,9 @@
 }
 
 .wrapper {
-  height: 100%;
   width: 100%;
+  display: flex;
+  flex-flow: column;
 }
 
 .holder {
@@ -20,25 +21,42 @@
   margin: 0 0 15px 0;
   padding: 10px;
   border-bottom: 2px solid $main-color;
+
+  display: flex;
+  justify-content: space-between;
+
+  .path {
+    margin: auto 0;
+    display: block;
+  }
+
+  .navigation{
+    margin: auto 0;
+    display: flex;
+
+    .close {
+      margin: auto 10px;
+      cursor: pointer;
+    }
+  }
+
 }
 
 .left {
   width: 30%;
   max-width: 350px;
   min-width: 150px;
-  height: 100%;
-  background-color: white;
-  border-radius: $border-radius;
-  border: 1px solid $main-color;
-  box-shadow: 1px 2px 3px #aaa;
+
   position: relative;
-  padding: 3px;
   overflow: auto;
+
+  @include borders;
+  @include effects
 }
 
 .right {
   width: 100%;
-  margin: 0 15px;
+  margin: 0 5px;
   position: relative;
 }
 
@@ -52,20 +70,19 @@
 .item {
   width: 100px;
   height: 100px;
-  margin: 0 5px 5px 0;
-  padding: 5px;
   display: inline-block;
-  background-color: white;
-  border-radius: $border-radius;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 3px #eee;
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.3s ease-out;
+
+  @include borders;
+  @include text-color;
+  @include effects(border-color, 0.3s);
+  border-color: #ccc;
+
 }
 
 .item:hover {
-  transition: border-color 0.5s ease-in;
+  @include effects(border-color, 0.3s);
   border-color: $main-color;
 }
 
@@ -118,7 +135,7 @@
 
 #side-view {
   display: inline-block;
-  transition: width 1s ease-in-out;
+  @include effects(width, 1s);
   width: 0;
   overflow: hidden;
 
@@ -126,6 +143,25 @@
     overflow: visible;
     width: 40%;
     max-width: 450px;
-    transition: width 1s ease-in-out;
+    @include effects(width, 2s);
+  }
+}
+
+/*fmmodal*/
+.fmModal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(50,50,50,0.8);
+  width: 100vw;
+  height: 100vh;
+
+  .fmModalInside{
+    top: 15px;
+    left: 15px;
+    width: calc(100vw - 60px);
+    height: calc(100vh - 60px);
+    @include borders;
+    position: fixed;
   }
 }
