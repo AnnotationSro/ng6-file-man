@@ -37,13 +37,14 @@ html {
 }
 
 @mixin effects($property:false, $time:false) {
-  box-shadow: 0 2px 3px #eee;
-  @if $property{
-    transition: $property $time ease;
-  }
+  transition: $property $time ease;
 }
 
-@mixin buttons{
+@mixin shadows {
+  box-shadow: 0 2px 3px #eee;
+}
+
+@mixin buttons {
   cursor: pointer;
   outline: none;
 }

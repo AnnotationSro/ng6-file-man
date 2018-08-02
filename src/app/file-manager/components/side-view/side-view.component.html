@@ -13,13 +13,14 @@
 
     <p>{{node.name}}</p>
 
-    <div>
+    <div class="image-preview">
       <img src="https://picsum.photos/200/300/?random"/>
     </div>
 
     <div class="buttons">
       <button (click)="onClick($event, 'download')" class="button">Stiahni</button>
       <button (click)="onClick($event, 'rename')" class="button">Premenuj</button>
+      <button (click)="onClick($event, 'remove')" class="button">Vymaž</button>
     </div>
   </div>
 </ng-template>

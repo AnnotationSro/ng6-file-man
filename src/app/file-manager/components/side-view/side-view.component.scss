@@ -18,14 +18,25 @@
   position: relative;
   @include text-color;
 
+  width: calc(30vw - 10px);
+  max-width: 440px;
+  min-height: 100%;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   p {
     font-weight: bold;
     text-transform: uppercase;
     color: $main-color;
   }
 
-  div {
+  .image-preview {
     margin: 0 auto;
+    border: 1px solid $main-color;
+    border-radius: $border-radius;
   }
 
   .name {
@@ -39,7 +50,7 @@
     cursor: pointer;
     top: 0;
     right: 0;
-    padding: 0 10px;
+    padding: 15px;
   }
 
   .buttons {

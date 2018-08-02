@@ -51,7 +51,7 @@
   overflow: auto;
 
   @include borders;
-  @include effects
+  @include shadows
 }
 
 .right {
@@ -142,15 +142,16 @@
 
 #side-view {
   display: inline-block;
-  @include effects(width, 1s);
-  width: 0;
   overflow: hidden;
+  @include effects(width, 1s);
+  @include shadows;
+  width: 0;
 
   &.selected {
     overflow: visible;
-    width: 40%;
+    width: 30vw;
     max-width: 450px;
-    @include effects(width, 2s);
+    @include effects(width, 1s);
   }
 }
 
