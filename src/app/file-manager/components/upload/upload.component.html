@@ -5,7 +5,7 @@
   </button>
 
   <div class="buttons">
-    <button class="btn" [disabled]="newFolder" (click)="createNewFolder()">Vytvor novy priecinok</button>
+    <button class="btn" [disabled]="newFolder" (click)="createNewFolder()">Vytvor nový priečinok</button>
   </div>
 
   <div *ngIf="newFolder">
@@ -20,8 +20,8 @@
                (onFileOver)="fileOver($event)"
                (onFileLeave)="fileLeave($event)"
     >
-      <span>Drop files here or&nbsp;</span>
-      <label for="fileInput" style="cursor: pointer; font-weight: bold">browse</label>
+      <span>Vlož súbory sem alebo&nbsp;</span>
+      <label for="fileInput" style="cursor: pointer; font-weight: bold">prehľadávaj</label>
       <input id="fileInput" type="file" name="myfile" #uploadFile style="display: none" (change)="addFile($event)"/>
     </file-drop>
   </div>
@@ -31,14 +31,14 @@
       <table class="table">
         <thead>
         <tr>
-          <th>Name</th>
-          <th style="width: 25%">Size</th>
+          <th>Názov</th>
+          <th style="width: 25%">Veľkosť</th>
         </tr>
         </thead>
         <tbody class="upload-name-style">
         <tr *ngFor="let item of droppedFiles; let i=index">
-          <td>{{ item.relativePath ? item.relativePath : item.name}}</td>
-          <td>{{ item.size | fileSize}}</td>
+          <td>{{item.relativePath ? item.relativePath : item.name}}</td>
+          <td>{{item.size | fileSize}}</td>
         </tr>
         </tbody>
       </table>
@@ -46,8 +46,12 @@
   </div>
 
   <div class="buttons">
-    <button class="btn btnUpload" [disabled]="droppedFiles.length === 0" (click)="uploadFiles()">Nahraj</button>
-    <p *ngIf="droppedFiles.length > 0 && hasFileCount">Pocet suborov na nahranie: {{droppedFiles.length}}</p>
+    <button class="btn btnUpload" [disabled]="droppedFiles.length === 0" (click)="uploadFiles()">
+      Nahraj
+    </button>
+    <p *ngIf="droppedFiles.length > 0 && hasFileCount">
+      Počet súborov na nahranie: <strong>{{droppedFiles.length}}</strong>
+    </p>
   </div>
 
 </div>
