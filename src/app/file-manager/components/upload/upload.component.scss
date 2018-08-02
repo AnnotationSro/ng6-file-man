@@ -8,10 +8,11 @@
 }
 
 .table {
-  border: 1px solid #000000;
   width: 100%;
   text-align: left;
   border-collapse: collapse;
+
+  border: 1px solid #000000;
   margin: 10px auto;
   background: white;
 
@@ -81,12 +82,12 @@
       @include buttons;
     }
 
-    .btn.btnUpload {
-      font-size: large;
+    .btn:hover{
+      @include contrast;
     }
 
-    .btn.btnUpload:hover{
-      @include contrast;
+    .btn.btnUpload {
+      font-size: large;
     }
 
     .btn[disabled] {
