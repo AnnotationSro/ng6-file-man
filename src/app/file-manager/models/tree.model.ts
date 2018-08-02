@@ -13,7 +13,6 @@ export class TreeModel {
 
     this.nodes = <NodeInterface>{
       id: 0,
-      parentId: -1,
       pathToNode: '',
       isFolder: true,
       isExpanded: true,

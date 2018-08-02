@@ -55,7 +55,6 @@ export class NodeService {
 
     return <NodeInterface>{
       id: node.id,
-      parentId: node.parentId,
       isFolder: node.dir,
       isExpanded: cachedNode ? cachedNode.isExpanded : false,
       pathToNode: node.path,
