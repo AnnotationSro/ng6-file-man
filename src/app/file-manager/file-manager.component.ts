@@ -20,7 +20,7 @@ export class FileManagerComponent implements OnInit {
   @Input() loadingOverlayTemplate: TemplateRef<any>;
 
   @Input() tree: TreeModel;
-  @Input() isPopup: boolean;
+  @Input() isPopup: boolean = false;
   @Output() itemClicked = new EventEmitter();
 
   node: NodeInterface;
