@@ -17,7 +17,7 @@ export class TreeModel {
       isFolder: true,
       isExpanded: true,
       stayOpen: true,
-      name: '',
+      name: 'root',
       children: {}
     };
   }
