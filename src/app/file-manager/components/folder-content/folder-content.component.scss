@@ -1,12 +1,9 @@
 .item-holder {
   box-sizing: border-box;
-  /*flex-direction: row;*/
-}
+  display: flex;
+  flex-flow: wrap;
 
-.item-holder app-node {
-  display: inline-block;
-}
-
-.item-holder div {
-  display: inline;
+  div {
+    display: inline;
+  }
 }

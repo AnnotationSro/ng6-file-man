@@ -8,13 +8,13 @@
 
 .wrapper {
   width: 100%;
-  display: flex;
-  flex-flow: column;
+  //display: flex;
+  //flex-flow: column;
 }
 
 .holder {
   display: flex;
-  height: calc(100% - 70px);
+  height: calc(100% - 60px);
 }
 
 .navbar {
@@ -58,6 +58,7 @@
   width: 100%;
   margin: 0 5px;
   position: relative;
+  overflow: auto;
 }
 
 .node {
@@ -73,6 +74,7 @@
   display: inline-block;
   text-align: center;
   cursor: pointer;
+  position: relative;
 
   @include borders;
   @include text-color;
@@ -87,16 +89,21 @@
 }
 
 .file-name {
+  left: 0;
   bottom: 0;
   width: 100%;
   height: 30px;
-  position: relative;
+  position: absolute;
 }
 
 .file-preview {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 100%;
   margin: auto;
+
+  i {
+    line-height: 1.5;
+  }
 }
 
 /*loading overlay template*/

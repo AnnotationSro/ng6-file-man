@@ -5,7 +5,8 @@
   height: calc(100% - 5px);
   display: inline-block;
   white-space: nowrap;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   @include borders;
   padding: 0 5px;
@@ -19,6 +20,7 @@
 
   p {
     font-weight: bold;
+    text-transform: uppercase;
     color: $main-color;
   }
 
@@ -44,10 +46,12 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-flow: column;
 
     .button{
       @include borders;
       @include buttons;
+      margin: 5px 0;
     }
 
     .button:hover{

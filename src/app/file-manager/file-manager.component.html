@@ -52,12 +52,12 @@
         <app-side-view id="side-view" [node]="node" (clickEvent)="handleSideViewClickEvent($event)"></app-side-view>
       </div>
     </div>
-
-    <app-loading-overlay
-      *ngIf="loading"
-      [loadingOverlayTemplate]="loadingOverlayTemplate ? loadingOverlayTemplate : defaultLoadingOverlayTemplate">
-    </app-loading-overlay>
   </div>
+
+  <app-loading-overlay
+    *ngIf="loading"
+    [loadingOverlayTemplate]="loadingOverlayTemplate ? loadingOverlayTemplate : defaultLoadingOverlayTemplate">
+  </app-loading-overlay>
 </ng-template>
 
 <ng-template let-node #defaultIconTemplate>
@@ -91,21 +91,16 @@
 
 <ng-template #defaultFolderContentNewTemplate>
   <div class="item">
-    <div class="file-preview">
-      <i class="fas fa-3x fa-plus child"></i>
-    </div>
-    <div class="file-name">
-      New
+    <div class="file-preview" style="width: 100%; height:100%">
+      <i class="fas fa-3x fa-plus child" style="line-height: 2"></i>
     </div>
   </div>
 </ng-template>
 
 <ng-template let-node #defaultFolderContentBackTemplate>
   <div class="item">
-    <div class="file-preview">
-    </div>
-    <div class="file-name">
-      <i class="fas fa-ellipsis-h"></i>
+    <div class="file-preview" style="width: 100%; height:100%">
+      <i class="fas fa-2x fa-ellipsis-h" style="line-height: 5"></i>
     </div>
   </div>
 </ng-template>
