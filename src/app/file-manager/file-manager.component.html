@@ -49,7 +49,7 @@
           </app-folder-content>
         </div>
 
-        <app-side-view id="side-view" [node]="node" (closeEvent)="sideShowHide($event)"></app-side-view>
+        <app-side-view id="side-view" [node]="node" (clickEvent)="handleSideViewClickEvent($event)"></app-side-view>
       </div>
     </div>
 

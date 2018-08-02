@@ -7,32 +7,19 @@
 
 <ng-template let-node #defaultSideViewTemplate>
   <div class="preview">
+    <div class="close" (click)="onClick($event, 'close')">
+      <i class="fas fa-times"></i>
+    </div>
+
     <p>{{node.name | uppercase}}</p>
 
     <div>
       <img src="https://picsum.photos/200/300/?random"/>
     </div>
-    <hr/>
 
-    <div>
-      <table style="text-align: left">
-        <tr>
-          <td class="name">Path</td>
-          <td>{{node.pathToNode}}</td>
-        </tr>
-        <tr>
-          <td class="name">Parent</td>
-          <td>{{node.parentId}}</td>
-        </tr>
-        <tr>
-          <td class="name">Id</td>
-          <td>{{node.id}}</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="close" (click)="onCloseClick($event)">
-      <i class="fas fa-times"></i>
+    <div class="buttons">
+      <button (click)="onClick($event, 'download')" class="button">Stiahni</button>
+      <button (click)="onClick($event, 'rename')" class="button">Premenuj</button>
     </div>
   </div>
 </ng-template>

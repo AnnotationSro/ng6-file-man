@@ -9,7 +9,7 @@ import {NodeInterface} from '../../interfaces/node.interface';
 export class SideViewComponent implements OnInit {
   @Input() node: NodeInterface;
   @Input() sideViewTemplate: TemplateRef<any>;
-  @Output() closeEvent = new EventEmitter();
+  @Output() clickEvent = new EventEmitter();
 
   constructor() {
   }
@@ -17,8 +17,8 @@ export class SideViewComponent implements OnInit {
   ngOnInit() {
   }
 
-  onCloseClick(event: any) {
-    this.closeEvent.emit({event: event, node: this.node});
+  onClick(event: any, type: string) {
+    this.clickEvent.emit({type: type, event: event, node: this.node});
   }
 
 }

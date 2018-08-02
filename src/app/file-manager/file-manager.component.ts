@@ -43,7 +43,7 @@ export class FileManagerComponent implements OnInit {
   }
 
   onItemClicked(event: any): void {
-    if (!event.node.isFolder) {
+    if (!event.node.isFolder && (!event.type || event.type === 'close')) {
       this.sideShowHide(event);
     }
 
@@ -57,6 +57,16 @@ export class FileManagerComponent implements OnInit {
     this.store.dispatch({type: SET_LOADING_STATE, payload: false});
   }
 
+  handleSideViewClickEvent(event: any) {
+    switch (event.type) {
+      case 'close' :
+        return this.sideShowHide(event);
+      case 'download' :
+        return this.onItemClicked(event);
+      case 'rename' :
+        return this.onItemClicked(event);
+    }
+  }
 
   sideShowHide(event: any) {
     if (event.node.isFolder) {
