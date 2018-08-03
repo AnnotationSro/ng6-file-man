@@ -1,11 +1,11 @@
 <div class="backdrop" (click)="newClickedAction()"></div>
 <div class="overlay">
-  <button class="close-button" (click)="newClickedAction()">
-    <i class="fas fa-fw fa-3x fa-times"></i>
+  <button class="button close big" (click)="newClickedAction()">
+    <i class="fas fa-2x fa-fw fa-times"></i>
   </button>
 
   <div class="buttons">
-    <button class="btn" [disabled]="newFolder" (click)="createNewFolder()">Vytvor nový priečinok</button>
+    <button class="button" [disabled]="newFolder" (click)="createNewFolder()">Vytvor nový priečinok</button>
   </div>
 
   <div *ngIf="newFolder">
@@ -46,7 +46,7 @@
   </div>
 
   <div class="buttons">
-    <button class="btn btnUpload" [disabled]="droppedFiles.length === 0" (click)="uploadFiles()">
+    <button class="button big" [disabled]="droppedFiles.length === 0" (click)="uploadFiles()">
       Nahraj
     </button>
     <p *ngIf="droppedFiles.length > 0 && hasFileCount">

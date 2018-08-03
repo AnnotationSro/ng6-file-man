@@ -14,7 +14,7 @@
 
   border: 1px solid #000000;
   margin: 10px auto;
-  background: white;
+  background: #fff;
 
   td, th {
     border: 1px solid #000000;
@@ -28,77 +28,51 @@
   }
 
   td {
-    color: black;
+    color: #000;
   }
 }
 
 .backdrop{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #555;
-  opacity: 0.8;
-  z-index: 1;
+  z-index: $z-index-level-1;
 }
+
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   text-align: center;
-  z-index: 2;
+  z-index: $z-index-level-2;
   overflow: auto;
   box-sizing: border-box;
 
   @include borders;
   border-width: 2px;
-  margin: 20px;
+  margin: 20px auto;
 
-  width: calc(100vw - 40px);
-  max-height: calc(100vh - 40px);
+  width: calc(100vw - 60px);
+  max-height: calc(100vh - 60px);
+  max-width: 1000px;
 
   .drag-and-drop {
     border: 1px dashed $main-color;
   }
 
   .close-button {
+    @include borders;
+    @include buttons;
+
     position: absolute;
     top: 0;
     right: 0;
-    @include borders;
-    @include buttons;
     background-color: transparent;
     border: none;
   }
 
   .buttons {
-    background: white;
+    background: #fff;
     padding: 5px;
     margin: 10px 0;
-
-    .btn {
-      @include borders;
-      @include buttons;
-    }
-
-    .btn:hover{
-      @include contrast;
-    }
-
-    .btn.btnUpload {
-      font-size: large;
-    }
-
-    .btn[disabled] {
-      cursor: not-allowed;
-      @include disabled;
-    }
-
-    .btn[disabled]:hover {
-      cursor: not-allowed;
-      @include disabled;
-    }
   }
 }

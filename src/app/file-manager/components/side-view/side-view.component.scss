@@ -19,7 +19,7 @@
   @include text-color;
 
   width: calc(30vw - 10px);
-  max-width: 440px;
+  max-width: 290px;
   min-height: 100%;
   overflow: hidden;
 
@@ -27,7 +27,7 @@
   flex-direction: column;
   justify-content: space-between;
 
-  p {
+  .title {
     font-weight: bold;
     text-transform: uppercase;
     color: $main-color;
@@ -35,8 +35,8 @@
 
   .image-preview {
     margin: 0 auto;
-    border: 1px solid $main-color;
-    border-radius: $border-radius;
+    justify-content: center;
+    display: flex;
   }
 
   .name {
@@ -60,13 +60,7 @@
     flex-flow: column;
 
     .button{
-      @include borders;
-      @include buttons;
       margin: 5px 0;
-    }
-
-    .button:hover{
-      @include contrast;
     }
   }
 }

@@ -37,9 +37,18 @@ export class FileManagerComponent implements OnInit {
   ngOnInit() {
     this.nodeService.tree = this.tree;
     this.nodeService.startManagerAt(this.tree.currentPath);
-    this.store.select(state => state.fileManagerState.isLoading).subscribe((data: boolean) => {
+
+    this.store
+      .select(state => state.fileManagerState.isLoading)
+      .subscribe((data: boolean) => {
       this.loading = data;
     });
+
+    this.store
+      .select(state => state.fileManagerState.selectedNode)
+      .subscribe((data: NodeInterface) => {
+        console.log(data);
+      });
   }
 
   onItemClicked(event: any): void {

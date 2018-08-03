@@ -4,6 +4,9 @@
 $main-color: #ff671f;
 $contrast-color: #fff;
 $border-radius: 5px;
+$hasAnimations: true;
+$z-index-level-1: 1;
+$z-index-level-2: 2;
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -13,40 +16,25 @@ i {
   color: $main-color;
 }
 
-html {
-  overflow: hidden;
-}
-
 .drag-and-drop {
   .content {
     color: $main-color !important;
-    background: white !important;
+    background: #fff !important;
   }
 }
 
-@mixin borders {
-  border: 1px solid $main-color;
-  border-radius: $border-radius;
-  background-color: white;
-  padding: 10px;
-  margin: 5px;
-}
-
 @mixin text-color {
-  color: black;
-}
-
-@mixin effects($property:false, $time:false) {
-  transition: $property $time ease;
+  color: #000;
 }
 
 @mixin shadows {
   box-shadow: 0 2px 3px #eee;
 }
 
-@mixin buttons {
-  cursor: pointer;
-  outline: none;
+@mixin effects($property:false, $time:false) {
+  @if $hasAnimations {
+    transition: $property $time ease;
+  }
 }
 
 @mixin contrast {
@@ -54,8 +42,70 @@ html {
   background-color: $main-color;
 }
 
+@mixin borders {
+  background-color: #fff;
+
+  border: 1px solid $main-color;
+  border-radius: $border-radius;
+  padding: 10px;
+  margin: 5px;
+}
+
+@mixin buttons {
+  cursor: pointer;
+  outline: none;
+}
+
 @mixin disabled {
-  color: #ccc;
-  background-color: white;
+  background-color: #fff;
   border-color: #ccc;
+  color: #ccc;
+}
+
+.button {
+  @include borders;
+  @include buttons;
+  @include effects(background-color, 0.3s);
+
+  &:hover {
+    @include effects(background-color, 0.3s);
+    @include contrast
+  }
+
+  &.big {
+    font-size: large;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    @include disabled;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  &.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: $main-color;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(50, 50, 50, 0.8);
 }

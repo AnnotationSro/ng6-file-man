@@ -30,8 +30,9 @@ export class NodeComponent implements OnInit {
       node: this.node
     });
 
+    this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node});
+
     if (this.node.isFolder) {
-      this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node.id});
 
       if (this.node.stayOpen) {
         this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.pathToNode});

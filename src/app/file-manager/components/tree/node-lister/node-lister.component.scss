@@ -30,8 +30,8 @@
   }
 
   app-node {
+    @include text-color;
     cursor: pointer;
     transition: color 0.35s ease-out;
-    color: black;
   }
 }
