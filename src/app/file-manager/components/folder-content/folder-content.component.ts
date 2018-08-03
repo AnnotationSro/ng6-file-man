@@ -4,7 +4,6 @@ import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
 import {NodeInterface} from '../../interfaces/node.interface';
 import {AppStore} from '../../reducers/reducer.factory';
-import {FileSystemDirectoryEntry, FileSystemFileEntry, UploadEvent, UploadFile} from 'ngx-file-drop';
 
 @Component({
   selector: 'app-folder-content',

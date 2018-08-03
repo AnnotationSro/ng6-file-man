@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NodeInterface} from '../../interfaces/node.interface';
 import {Store} from '@ngrx/store';
 
@@ -13,8 +13,6 @@ import {AppStore} from '../../reducers/reducer.factory';
 export class NodeComponent implements OnInit {
   @Input() node: NodeInterface;
   @Output() nodeClickedEvent = new EventEmitter();
-
-  outputName: string;
 
   constructor(
     private store: Store<AppStore>,

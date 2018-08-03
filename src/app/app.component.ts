@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {TreeModel} from './file-manager/models/tree.model';
 import {ConfigInterface} from './file-manager/interfaces/config.interface';
 import {NodeInterface} from './file-manager/interfaces/node.interface';

@@ -2,11 +2,8 @@ import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRe
 import {NodeInterface} from '../../interfaces/node.interface';
 import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
-import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {StateInterface} from '../../interfaces/state.interface';
 import {AppStore} from '../../reducers/reducer.factory';
-import {SET_PATH} from '../../reducers/actions.action';
 
 @Component({
   selector: 'app-tree',
