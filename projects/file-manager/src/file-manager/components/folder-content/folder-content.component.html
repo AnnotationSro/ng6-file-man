@@ -1,7 +1,7 @@
 <div class="item-holder">
   <ng-container *ngIf="nodes.id !== 0">
     <app-node [node]=nodes (nodeClickedEvent)="nodeClickedEvent($event)">
-      <ng-container [ngTemplateOutletContext]="{$implicit: nodes.children[node]}"
+      <ng-container [ngTemplateOutletContext]="{$implicit: nodes}"
                     [ngTemplateOutlet]="folderContentBackTemplate">
       </ng-container>
     </app-node>

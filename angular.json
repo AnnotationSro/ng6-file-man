@@ -73,7 +73,8 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
             "scripts": [],
             "assets": [
@@ -116,6 +117,46 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "file-manager": {
+      "root": "projects/file-manager",
+      "sourceRoot": "projects/file-manager/src",
+      "projectType": "library",
+      "prefix": "fm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/file-manager/tsconfig.lib.json",
+            "project": "projects/file-manager/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/file-manager/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/file-manager/src/test.ts",
+            "tsConfig": "projects/file-manager/tsconfig.spec.json",
+            "karmaConfig": "projects/file-manager/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/file-manager/tsconfig.lib.json",
+              "projects/file-manager/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

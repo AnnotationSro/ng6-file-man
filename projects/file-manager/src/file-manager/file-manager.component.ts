@@ -7,7 +7,7 @@ import {SET_LOADING_STATE} from './reducers/actions.action';
 import {NodeInterface} from './interfaces/node.interface';
 
 @Component({
-  selector: 'app-file-manager',
+  selector: 'fm-file-manager',
   templateUrl: './file-manager.component.html',
   styleUrls: ['./file-manager.component.scss']
 })

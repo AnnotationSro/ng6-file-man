@@ -1,5 +1,6 @@
 <div id="file-manager">
-  <app-file-manager (itemClicked)="itemClicked($event)" [tree]="tree"></app-file-manager>
+  <!--<app-file-manager (itemClicked)="itemClicked($event)" [tree]="tree"></app-file-manager>-->
+  <fm-file-manager (itemClicked)="itemClicked($event)" [tree]="tree"></fm-file-manager>
 </div>
 
 <!--<app-file-manager [tree]="tree">-->
@@ -17,7 +18,7 @@
   <!--<i class="fas fa-arrow-alt-circle-right" style="padding: 0 5px"></i>{{node.name}}-->
 <!--</ng-template>-->
 
-<!--&lt;!&ndash;#folderContentTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
+<!--#folderContentTemplate je povinne, let-node je referencia na aktualny node-->
 <!--<ng-template let-node #folderContentTemplate>-->
   <!--<div class="item"-->
        <!--style="padding: 5px; border: 1px solid #ccc; margin: 3px; border-radius: 5px; width: 150px; cursor: pointer;">-->
