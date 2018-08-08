@@ -5,6 +5,7 @@ import {AppStore} from './reducers/reducer.factory';
 import {NodeService} from './services/node.service';
 import {SET_LOADING_STATE} from './reducers/actions.action';
 import {NodeInterface} from './interfaces/node.interface';
+import * as ACTIONS from './reducers/actions.action';
 
 @Component({
   selector: 'fm-file-manager',
@@ -24,7 +25,7 @@ export class FileManagerComponent implements OnInit {
   @Input() isPopup: boolean = false;
   @Output() itemClicked = new EventEmitter();
 
-  node: NodeInterface;
+  selectedNode: NodeInterface;
   loading: boolean;
   sideMenuClosed = true;
   fmOpen = false;
@@ -48,58 +49,93 @@ export class FileManagerComponent implements OnInit {
     this.store
       .pipe(select(state => state.fileManagerState.selectedNode))
       .subscribe((data: NodeInterface) => {
-        console.log(data);
+        if (!data) {
+          return;
+        }
+
+        this.handleFileManagerClickEvent({type: 'select', node: data});
       });
   }
 
   onItemClicked(event: any): void {
-    if (!event.node.isFolder && (!event.type || event.type === 'close')) {
-      this.sideShowHide(event);
+    this.itemClicked.emit(event);
+  }
+
+  handleFileManagerClickEvent(event: any) {
+    switch (event.type) {
+      case 'close' :
+        return this.nodeClickHandler(event.node, true);
+      case 'select' :
+        this.onItemClicked(event);
+        this.highlightSelected(event.node.pathToNode);
+        return this.nodeClickHandler(event.node);
+      case 'download' :
+        return this.onItemClicked(event);
+      case 'rename' :
+        return this.onItemClicked(event);
+      case 'remove' :
+        return this.onItemClicked(event);
+    }
+  }
+
+  nodeClickHandler(node: NodeInterface, closing?: boolean) {
+    if (node.isFolder) {
+      return;
     }
 
-    this.itemClicked.emit(event);
-    // console.log('[fm component] onItemClicked', event);
+    if (closing) {
+      const parentNode = this.nodeService.findParent(node.pathToParent);
+      this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: parentNode});
+      this.sideMenuClosed = true;
+    }
+    else {
+      // todo fix this (kvoli tomu ze sa klika na ten isty node tak store ho ignoruje)
+      if (this.selectedNode === node && this.sideMenuClosed)
+        this.sideMenuClosed = false;
+      else if (this.selectedNode === node && !this.sideMenuClosed)
+        this.sideMenuClosed = true;
+      else if (this.selectedNode !== node && this.sideMenuClosed)
+        this.sideMenuClosed = false;
+      else if (this.selectedNode !== node && !this.sideMenuClosed)
+        this.sideMenuClosed = false;
+    }
+
+    this.selectedNode = node;
+
+    if (this.sideMenuClosed) {
+      document.getElementById('side-view').classList.remove('selected');
+    } else {
+      document.getElementById('side-view').classList.add('selected');
+    }
+  }
+
+  highlightSelected(pathToNode: string) {
+    if (pathToNode.length === 0) {
+      pathToNode = 'root';
+    }
+
+    const element = document.getElementById(pathToNode);
+    if (!element) {
+      console.warn('[File Manager] failed to find requested node for path:', pathToNode);
+      return;
+    }
+
+    Array.from(document.getElementsByClassName('highlighted'))
+      .map((el: HTMLElement) => el.classList.remove('highlighted'));
+
+    element
+      .children[0] // appnode div wrapper
+      .children[0] // ng template first item
+      .classList.add('highlighted');
+  }
+
+  fmShowHide() {
+    this.fmOpen = !this.fmOpen;
   }
 
   backdropClicked() {
     // todo get rid of this ugly workaround
     // todo fire userCanceledLoading event
     this.store.dispatch({type: SET_LOADING_STATE, payload: false});
-  }
-
-  handleSideViewClickEvent(event: any) {
-    switch (event.type) {
-      case 'close' :
-        return this.sideShowHide(event);
-      case 'download' :
-        return this.onItemClicked(event);
-      case 'rename' :
-        return this.onItemClicked(event);
-    }
-  }
-
-  sideShowHide(event: any) {
-    if (event.node.isFolder) {
-      return;
-    }
-
-    if (this.node === null) {
-      this.node = event.node;
-    } else if (this.node !== event.node) {
-      this.node = event.node;
-      return;
-    }
-
-    this.sideMenuClosed = !this.sideMenuClosed;
-
-    if (this.sideMenuClosed) {
-      document.getElementById('side-view').classList.remove('selected');
-    } else {
-      document.getElementById('side-view').setAttribute('class', 'selected');
-    }
-  }
-
-  fmShowHide() {
-    this.fmOpen = !this.fmOpen;
   }
 }

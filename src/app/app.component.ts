@@ -16,7 +16,7 @@ export class AppComponent {
       offlineMode: false, // todo implement
       baseURL: 'http://localhost:8080/',
       startingFolder: '', // todo implement
-      showFilesInsideTree: false,
+      showFilesInsideTree: false, //todo vymaz alebo oprav lebo sa stane ze bude dva krat to iste id
       upload: {
         containsFileTable: false,
         containsFileCount: true
@@ -33,7 +33,8 @@ export class AppComponent {
   }
 
   // noinspection JSUnusedLocalSymbols
+  // noinspection JSMethodCanBeStatic
   itemClicked(event: any) {
-    // console.log(event);
+    // console.log(event.node);
   }
 }

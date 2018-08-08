@@ -1,17 +1,16 @@
 <ul class="flist">
   <!--In order to avoid having to create that extra div, we can instead use ng-container directive-->
   <ng-container *ngFor="let node of obj.keys(nodes)">
-    <li *ngIf="nodes[node].isFolder || showFiles" id="{{nodes[node].pathToNode}}">
+    <li *ngIf="nodes[node].isFolder || showFiles">
 
-      <app-node [node]="nodes[node]" (nodeClickedEvent)="nodeClickedEvent($event)">
+      <app-node [node]="nodes[node]" id="{{nodes[node].id === 0 ? 'root' : nodes[node].pathToNode}}">
         <ng-container [ngTemplateOutletContext]="{$implicit: (nodes[node])}"
                       [ngTemplateOutlet]="templateRef">
         </ng-container>
       </app-node>
 
       <app-node-lister *ngIf="obj.keys(nodes[node].children).length > 0"
-                       [showFiles]="showFiles" [nodes]="nodes[node].children"
-                       (nodeClicked)="nodeClickedEvent($event)">
+                       [showFiles]="showFiles" [nodes]="nodes[node].children">
         <ng-template let-nodes>
           <ng-container [ngTemplateOutletContext]="{$implicit: (nodes)}"
                         [ngTemplateOutlet]="templateRef">

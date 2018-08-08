@@ -61,6 +61,10 @@
   i {
     padding: 0 5px;
   }
+
+  &.highlighted {
+    color: $main-color;
+  }
 }
 
 /*folder content template*/
@@ -81,7 +85,7 @@
 
 }
 
-.item:hover {
+.item:hover, .item.highlighted {
   @include contrast;
   border-color: $main-color;
   i {
@@ -90,6 +94,11 @@
 
   @include effects(border-color, 0.3s);
   @include effects(background-color, 0.3s);
+}
+
+// todo fix this ugly workaround (ngrx state unchanged bug)
+.item.highlighted {
+  cursor: not-allowed;
 }
 
 .file-name {

@@ -9,7 +9,7 @@ const initialState: StateInterface = {
 
 export function stateReducer(state: StateInterface = initialState, action: ACTIONS.Actions): StateInterface {
   // console.log('Previous state: ', state);
-  // console.log('ACTION state: ', action.type);
+  // console.log('ACTION type: ', action.type);
   // console.log('ACTION payload: ', action.payload);
 
   switch (action.type) {

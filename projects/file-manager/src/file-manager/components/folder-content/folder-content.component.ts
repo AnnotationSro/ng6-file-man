@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
@@ -16,7 +16,6 @@ export class FolderContentComponent implements OnInit {
   @Input() folderContentNewTemplate: TemplateRef<any>;
 
   @Input() treeModel: TreeModel;
-  @Output() treeNodeClickedEvent = new EventEmitter();
 
   newDialog = false;
   nodes: NodeInterface;
@@ -33,12 +32,8 @@ export class FolderContentComponent implements OnInit {
     this.store
       .pipe(select(state => state.fileManagerState.path))
       .subscribe((path: string) => {
-      this.nodes = this.nodeService.findParent(path);
-    });
-  }
-
-  nodeClickedEvent(originalEvent: any) {
-    this.treeNodeClickedEvent.emit(originalEvent);
+        this.nodes = this.nodeService.findParent(path);
+      });
   }
 
   newClickedAction() {

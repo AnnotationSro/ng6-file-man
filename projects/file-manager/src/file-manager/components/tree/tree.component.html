@@ -1,7 +1,5 @@
 <app-node-lister [showFiles]="treeModel.config.showFilesInsideTree"
-                 [nodes]="{children: nodes}"
-                 (nodeClicked)="nodeClickedEvent($event)"
->
+                 [nodes]="{children: nodes}">
   <ng-template let-nodes>
     <ng-container [ngTemplateOutletContext]="{$implicit: nodes}" [ngTemplateOutlet]="templateRef"></ng-container>
   </ng-template>

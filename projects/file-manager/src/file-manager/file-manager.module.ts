@@ -15,9 +15,9 @@ import {FileDropModule} from 'ngx-file-drop';
 import {FileSizePipe} from './pipes/file-size.pipe';
 import {UploadComponent} from './components/functions/upload/upload.component';
 import {NewFolderComponent} from './components/functions/upload/new-folder/new-folder.component';
-import { SideViewComponent } from './components/side-view/side-view.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { RenameComponent } from './components/functions/rename/rename.component';
+import {SideViewComponent} from './components/side-view/side-view.component';
+import {NavigationComponent} from './components/navigation/navigation.component';
+import {RenameComponent} from './components/functions/rename/rename.component';
 
 @NgModule({
   imports: [

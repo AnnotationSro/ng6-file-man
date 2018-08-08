@@ -1,6 +1,6 @@
 <div class="item-holder">
   <ng-container *ngIf="nodes.id !== 0">
-    <app-node [node]=nodes (nodeClickedEvent)="nodeClickedEvent($event)">
+    <app-node [node]=nodes id="folder_node{{nodes.pathToNode}}">
       <ng-container [ngTemplateOutletContext]="{$implicit: nodes}"
                     [ngTemplateOutlet]="folderContentBackTemplate">
       </ng-container>
@@ -8,7 +8,7 @@
   </ng-container>
 
   <ng-container *ngFor="let node of obj.keys(nodes.children)">
-    <app-node [node]="nodes.children[node]" (nodeClickedEvent)="nodeClickedEvent($event)">
+    <app-node [node]="nodes.children[node]" id="{{nodes.children[node].isFolder ? null : nodes.children[node].pathToNode}}">
       <ng-container [ngTemplateOutletContext]="{$implicit: nodes.children[node]}"
                     [ngTemplateOutlet]="folderContentTemplate">
       </ng-container>

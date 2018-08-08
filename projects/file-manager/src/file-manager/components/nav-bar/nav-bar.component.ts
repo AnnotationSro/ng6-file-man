@@ -11,12 +11,9 @@ import {AppStore} from '../../reducers/reducer.factory';
 export class NavBarComponent implements OnInit {
   currentPath: string[];
 
-  // path$: Observable<string>;
-
   constructor(
     private store: Store<AppStore>
   ) {
-    // this.path$ = this.store.select(state => state.fileManagerState.path)
   }
 
   ngOnInit() {

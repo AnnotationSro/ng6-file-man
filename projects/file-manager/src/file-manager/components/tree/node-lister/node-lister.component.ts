@@ -1,4 +1,4 @@
-import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
 import {NodeInterface} from '../../../interfaces/node.interface';
 
 @Component({
@@ -10,7 +10,6 @@ export class NodeListerComponent implements OnInit {
   @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
   @Input() nodes: NodeInterface;
   @Input() showFiles: boolean;
-  @Output() nodeClicked = new EventEmitter();
 
   obj = Object;
 
@@ -19,9 +18,5 @@ export class NodeListerComponent implements OnInit {
 
   ngOnInit() {
     // todo has file check
-  }
-
-  nodeClickedEvent(event: any) {
-    this.nodeClicked.emit(event);
   }
 }

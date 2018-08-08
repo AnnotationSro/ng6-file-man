@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NodeInterface} from '../../../interfaces/node.interface';
 import {Store} from '@ngrx/store';
 
@@ -12,7 +12,6 @@ import {AppStore} from '../../../reducers/reducer.factory';
 })
 export class NodeComponent implements OnInit {
   @Input() node: NodeInterface;
-  @Output() nodeClickedEvent = new EventEmitter();
 
   constructor(
     private store: Store<AppStore>,
@@ -22,16 +21,10 @@ export class NodeComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick(event: any) {
-    this.nodeClickedEvent.emit({
-      event: event,
-      node: this.node
-    });
-
+  onClick() {
     this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node});
 
     if (this.node.isFolder) {
-
       if (this.node.stayOpen) {
         this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.pathToNode});
         return;

@@ -29,7 +29,7 @@
 
     <div class="holder">
       <div class="left">
-        <app-tree [treeModel]="tree" (treeNodeClickedEvent)="onItemClicked($event)">
+        <app-tree [treeModel]="tree">
           <ng-template let-nodes>
             <ng-container [ngTemplateOutletContext]="{$implicit: nodes}"
                           [ngTemplateOutlet]="iconTemplate ? iconTemplate : defaultIconTemplate">
@@ -41,14 +41,13 @@
       <div class="right">
         <app-folder-content
           [treeModel]="tree"
-          (treeNodeClickedEvent)="onItemClicked($event)"
           [folderContentTemplate]="folderContentTemplate ? folderContentTemplate : defaultFolderContentTemplate"
           [folderContentNewTemplate]="folderContentNewTemplate ? folderContentNewTemplate : defaultFolderContentNewTemplate"
           [folderContentBackTemplate]="folderContentBackTemplate ? folderContentBackTemplate : defaultFolderContentBackTemplate">
         </app-folder-content>
       </div>
 
-      <app-side-view id="side-view" [node]="node" (clickEvent)="handleSideViewClickEvent($event)"></app-side-view>
+      <app-side-view id="side-view" [node]="selectedNode" (clickEvent)="handleFileManagerClickEvent($event)"></app-side-view>
     </div>
   </div>
 
