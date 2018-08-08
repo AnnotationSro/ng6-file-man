@@ -58,6 +58,7 @@ export class NodeService {
       isFolder: node.dir,
       isExpanded: cachedNode ? cachedNode.isExpanded : false,
       pathToNode: node.path,
+      pathToParent: this.getParentPath(node.path),
       name: node.name || node.id,
       children: cachedNode ? cachedNode.children : {}
     };

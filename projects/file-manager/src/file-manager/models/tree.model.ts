@@ -14,6 +14,7 @@ export class TreeModel {
     this.nodes = <NodeInterface>{
       id: 0,
       pathToNode: '',
+      pathToParent: null,
       isFolder: true,
       isExpanded: true,
       stayOpen: true,
