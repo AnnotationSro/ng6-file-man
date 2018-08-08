@@ -2,7 +2,7 @@ import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRe
 import {NodeInterface} from '../../interfaces/node.interface';
 import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {AppStore} from '../../reducers/reducer.factory';
 
 @Component({
@@ -27,14 +27,16 @@ export class TreeComponent implements OnInit {
 
   ngOnInit() {
     this.nodes = this.treeModel.nodes;
+    
+    this.store
+      .pipe(select(state => state.fileManagerState.path))
+      .subscribe((path: string) => {
+        this.nodeService.getNodes(path);
 
-    this.store.select(state => state.fileManagerState.path).subscribe((path: string) => {
-      this.nodeService.getNodes(path);
+        this.currentTreeLevel = this.treeModel.currentPath;
 
-      this.currentTreeLevel = this.treeModel.currentPath;
-
-      return this.treeModel.currentPath = path;
-    });
+        return this.treeModel.currentPath = path;
+      });
   }
 
   nodeClickedEvent(originalEvent: any) {

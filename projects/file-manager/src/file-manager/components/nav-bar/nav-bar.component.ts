@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import * as ACTIONS from '../../reducers/actions.action';
 import {AppStore} from '../../reducers/reducer.factory';
 
@@ -20,7 +20,9 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.select(state => state.fileManagerState.path).subscribe((data: string) => {
+    this.store
+      .pipe(select(state => state.fileManagerState.path))
+      .subscribe((data: string) => {
       this.currentPath = data.split('/');
     });
   }

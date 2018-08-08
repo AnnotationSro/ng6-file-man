@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
 import {NodeInterface} from '../../interfaces/node.interface';
@@ -30,7 +30,9 @@ export class FolderContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.select(state => state.fileManagerState.path).subscribe((path: string) => {
+    this.store
+      .pipe(select(state => state.fileManagerState.path))
+      .subscribe((path: string) => {
       this.nodes = this.nodeService.findParent(path);
     });
   }

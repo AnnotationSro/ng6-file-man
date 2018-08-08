@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {TreeModel} from './models/tree.model';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {AppStore} from './reducers/reducer.factory';
 import {NodeService} from './services/node.service';
 import {SET_LOADING_STATE} from './reducers/actions.action';
@@ -40,13 +40,13 @@ export class FileManagerComponent implements OnInit {
     this.nodeService.startManagerAt(this.tree.currentPath);
 
     this.store
-      .select(state => state.fileManagerState.isLoading)
+      .pipe(select(state => state.fileManagerState.isLoading))
       .subscribe((data: boolean) => {
-      this.loading = data;
-    });
+        this.loading = data;
+      });
 
     this.store
-      .select(state => state.fileManagerState.selectedNode)
+      .pipe(select(state => state.fileManagerState.selectedNode))
       .subscribe((data: NodeInterface) => {
         console.log(data);
       });
