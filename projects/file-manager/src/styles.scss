@@ -1,9 +1,4 @@
-$main-color: #ff671f !default;
-$contrast-color: #fff;
-$border-radius: 5px;
-$hasAnimations: true;
-$z-index-level-1: 1;
-$z-index-level-2: 2;
+@import 'variables.scss';
 
 * {
   font-family: 'Open Sans', sans-serif;
