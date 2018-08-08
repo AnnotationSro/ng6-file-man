@@ -1,7 +1,4 @@
-//@import "~node_modules/@fortawesome/fontawesome-free/css/all.css";
-//@import "./fontawesome.css";
-
-$main-color: #ff671f;
+$main-color: #ff671f !default;
 $contrast-color: #fff;
 $border-radius: 5px;
 $hasAnimations: true;

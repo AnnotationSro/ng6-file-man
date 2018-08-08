@@ -7,6 +7,9 @@
   margin: 10px auto;
 }
 
+.fa-times:before {
+  content: "\f00d"; }
+
 .table {
   width: 100%;
   text-align: left;
@@ -36,7 +39,7 @@
   z-index: $z-index-level-1;
 }
 
-.overlay {
+.upload-background {
   position: fixed;
   top: 50%;
   left: 50%;

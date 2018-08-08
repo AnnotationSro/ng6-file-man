@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {TreeModel} from './models/tree.model';
 import {Store} from '@ngrx/store';
 import {AppStore} from './reducers/reducer.factory';
@@ -9,7 +9,8 @@ import {NodeInterface} from './interfaces/node.interface';
 @Component({
   selector: 'fm-file-manager',
   templateUrl: './file-manager.component.html',
-  styleUrls: ['./file-manager.component.scss']
+  styleUrls: ['./file-manager.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FileManagerComponent implements OnInit {
   @Input() iconTemplate: TemplateRef<any>;

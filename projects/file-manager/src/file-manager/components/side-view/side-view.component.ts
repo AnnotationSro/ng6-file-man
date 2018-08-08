@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {NodeInterface} from '../../interfaces/node.interface';
 
 @Component({
   selector: 'app-side-view',
   templateUrl: './side-view.component.html',
-  styleUrls: ['./side-view.component.scss']
+  styleUrls: ['./side-view.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SideViewComponent implements OnInit {
   @Input() node: NodeInterface;
