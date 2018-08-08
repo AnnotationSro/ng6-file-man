@@ -4,19 +4,20 @@ import {FileManagerComponent} from './file-manager.component';
 import {FolderContentComponent} from './components/folder-content/folder-content.component';
 import {TreeComponent} from './components/tree/tree.component';
 import {NodeListerComponent} from './components/tree/node-lister/node-lister.component';
-import {NodeComponent} from './components/node/node.component';
+import {NodeComponent} from './components/functions/node/node.component';
 import {MapToIterablePipe} from './pipes/map-to-iterable.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {StoreModule} from '@ngrx/store';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {reducers} from './reducers/reducer.factory';
-import {LoadingOverlayComponent} from './components/loading-overlay/loading-overlay.component';
+import {LoadingOverlayComponent} from './components/functions/loading-overlay/loading-overlay.component';
 import {FileDropModule} from 'ngx-file-drop';
 import {FileSizePipe} from './pipes/file-size.pipe';
-import {UploadComponent} from './components/upload/upload.component';
-import {NewFolderComponent} from './components/upload/new-folder/new-folder.component';
+import {UploadComponent} from './components/functions/upload/upload.component';
+import {NewFolderComponent} from './components/functions/upload/new-folder/new-folder.component';
 import { SideViewComponent } from './components/side-view/side-view.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { RenameComponent } from './components/functions/rename/rename.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     NewFolderComponent,
     SideViewComponent,
     NavigationComponent,
+    RenameComponent,
   ],
   exports: [
     FileManagerComponent,

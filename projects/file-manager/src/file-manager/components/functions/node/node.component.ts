@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {NodeInterface} from '../../interfaces/node.interface';
+import {NodeInterface} from '../../../interfaces/node.interface';
 import {Store} from '@ngrx/store';
 
-import * as ACTIONS from '../../reducers/actions.action';
-import {AppStore} from '../../reducers/reducer.factory';
+import * as ACTIONS from '../../../reducers/actions.action';
+import {AppStore} from '../../../reducers/reducer.factory';
 
 @Component({
   selector: 'app-node',
