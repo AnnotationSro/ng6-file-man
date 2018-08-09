@@ -73,7 +73,7 @@ export class FileManagerComponent implements OnInit {
         return this.nodeClickHandler(event.node, true);
       case 'select' :
         this.onItemClicked(event);
-        this.highlightSelected(event.node.pathToNode);
+        this.highlightSelected(event.node);
         return this.nodeClickHandler(event.node);
       case 'download' :
         return this.onItemClicked(event);
@@ -115,9 +115,16 @@ export class FileManagerComponent implements OnInit {
     }
   }
 
-  highlightSelected(pathToNode: string) {
+  // todo stay DRY!
+  highlightSelected(node: NodeInterface) {
+    let pathToNode = node.pathToNode;
+    let pathToParent = node.isFolder ? null : node.pathToParent;
+
     if (pathToNode.length === 0) {
       pathToNode = 'root';
+    }
+    if (pathToParent !== null && pathToParent.length === 0) {
+      pathToParent = 'root';
     }
 
     const element = document.getElementById(pathToNode);
@@ -130,6 +137,16 @@ export class FileManagerComponent implements OnInit {
       .map((el: HTMLElement) => el.classList.remove('highlighted'));
 
     element
+      .children[0] // appnode div wrapper
+      .children[0] // ng template first item
+      .classList.add('highlighted');
+
+    const parentElement = document.getElementById(pathToParent);
+    if (!parentElement) {
+      return;
+    }
+
+    parentElement
       .children[0] // appnode div wrapper
       .children[0] // ng template first item
       .classList.add('highlighted');
