@@ -75,6 +75,26 @@ export class NodeService {
     return ids.length === 0 ? this.tree.nodes : ids.reduce((value, index) => value['children'][index], this.tree.nodes);
   }
 
+  public foldRecursively(node: NodeInterface) {
+    // console.log('folding ', node);
+    const children = node.children;
+
+    Object.keys(children).map((child: string) => {
+      if (!children.hasOwnProperty(child) || !children[child].isExpanded) {
+        return null;
+      }
+
+      this.foldRecursively(children[child]);
+      //todo put this getElById into one func (curr inside node.component.ts + fm.component.ts) - this won't be maintainable
+      document.getElementById(children[child].pathToNode).classList.add('deselected');
+      children[child].isExpanded = false;
+    });
+  }
+
+  public foldAll() {
+    this.foldRecursively(this.tree.nodes);
+  }
+
   get currentPath(): string {
     return this._path;
   }
