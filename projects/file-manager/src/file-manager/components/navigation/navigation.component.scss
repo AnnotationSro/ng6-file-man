@@ -1,0 +1,31 @@
+@import '../../../styles';
+
+.navigation-comonent {
+}
+
+.search {
+  @include borders;
+  border-color: #ccc;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin: 0;
+  border-right: none;
+
+  font-size: 13px;
+
+  &:focus, &:focus + .search-icon{
+    border-color: $main-color;
+    outline: none;
+  }
+}
+
+.search-icon {
+  @include borders;
+  border-color: #ccc;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin: 0;
+  border-left: none;
+
+  font-size: 13px;
+}

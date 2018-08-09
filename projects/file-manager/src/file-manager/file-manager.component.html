@@ -19,11 +19,11 @@
       </div>
 
       <div class="navigation">
-        <app-navigation></app-navigation>
-
-        <div class="button close" (click)="fmShowHide()" *ngIf="isPopup">
-          <i class="fas fa-2x fa-times"></i>
-        </div>
+        <app-navigation>
+          <div class="button close" (click)="fmShowHide()" *ngIf="isPopup">
+            <i class="fas fa-2x fa-times"></i>
+          </div>
+        </app-navigation>
       </div>
     </div>
 

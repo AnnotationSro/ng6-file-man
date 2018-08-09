@@ -2,7 +2,7 @@
 
 /*fm layout*/
 .content {
-  width: 100%;
+  //width: 100%;
   height: 100%;
   //display: flex;
   //flex-flow: column;
@@ -10,7 +10,7 @@
 
 .holder {
   display: flex;
-  height: calc(100% - 70px);
+  height: calc(100% - 75px);
 }
 
 .navbar {
