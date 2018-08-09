@@ -12,6 +12,7 @@ import {AppStore} from '../reducers/reducer.factory';
 })
 export class NodeService {
   public tree: TreeModel;
+  private _path: string;
 
   constructor(private http: HttpClient, private store: Store<AppStore>) {
   }
@@ -72,5 +73,13 @@ export class NodeService {
     ids.splice(0, 1);
 
     return ids.length === 0 ? this.tree.nodes : ids.reduce((value, index) => value['children'][index], this.tree.nodes);
+  }
+
+  get currentPath(): string {
+    return this._path;
+  }
+
+  set currentPath(value: string) {
+    this._path = value;
   }
 }

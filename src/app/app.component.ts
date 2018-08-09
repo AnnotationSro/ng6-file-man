@@ -35,6 +35,15 @@ export class AppComponent {
   // noinspection JSUnusedLocalSymbols
   // noinspection JSMethodCanBeStatic
   itemClicked(event: any) {
-    // console.log(event.node);
+    switch (event.type) {
+      case 'download' :
+        return this.download(event.node);
+      default:
+        console.log(event);
+    }
+  }
+
+  download(node: NodeInterface) {
+    window.open(this.tree.config.baseURL + this.tree.config.api.downloadFile + '?id=' + node.id, '_blank');
   }
 }

@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation} from '@angular/core';
-import {TreeModel} from './models/tree.model';
 import {select, Store} from '@ngrx/store';
-import {AppStore} from './reducers/reducer.factory';
+import {TreeModel} from './models/tree.model';
 import {NodeService} from './services/node.service';
-import {SET_LOADING_STATE} from './reducers/actions.action';
 import {NodeInterface} from './interfaces/node.interface';
+import {SET_LOADING_STATE} from './reducers/actions.action';
 import * as ACTIONS from './reducers/actions.action';
+import {AppStore} from './reducers/reducer.factory';
 
 @Component({
   selector: 'fm-file-manager',
@@ -53,6 +53,11 @@ export class FileManagerComponent implements OnInit {
           return;
         }
 
+        // fixed highlighting error when closing node but not changing path
+        if (data.isExpanded && data.pathToNode !== this.nodeService.currentPath) {
+          return;
+        }
+
         this.handleFileManagerClickEvent({type: 'select', node: data});
       });
   }
@@ -84,7 +89,7 @@ export class FileManagerComponent implements OnInit {
     }
 
     if (closing) {
-      const parentNode = this.nodeService.findParent(node.pathToParent);
+      const parentNode = this.nodeService.findParent(this.nodeService.currentPath);
       this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: parentNode});
       this.sideMenuClosed = true;
     }
