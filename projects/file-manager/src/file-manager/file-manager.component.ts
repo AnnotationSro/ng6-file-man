@@ -68,7 +68,8 @@ export class FileManagerComponent implements OnInit {
 
   handleFileManagerClickEvent(event: any) {
     switch (event.type) {
-      case 'close' :
+      case 'closeSideView' :
+        // this.nodeService.foldRecursively(event.node);
         return this.nodeClickHandler(event.node, true);
       case 'select' :
         this.onItemClicked(event);
