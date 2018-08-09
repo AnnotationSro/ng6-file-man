@@ -48,17 +48,17 @@ export class FileManagerComponent implements OnInit {
 
     this.store
       .pipe(select(state => state.fileManagerState.selectedNode))
-      .subscribe((data: NodeInterface) => {
-        if (!data) {
+      .subscribe((node: NodeInterface) => {
+        if (!node) {
           return;
         }
 
         // fixed highlighting error when closing node but not changing path
-        if (data.isExpanded && data.pathToNode !== this.nodeService.currentPath) {
+        if ((node.isExpanded && node.pathToNode !== this.nodeService.currentPath) && !node.stayOpen) {
           return;
         }
 
-        this.handleFileManagerClickEvent({type: 'select', node: data});
+        this.handleFileManagerClickEvent({type: 'select', node: node});
       });
   }
 
