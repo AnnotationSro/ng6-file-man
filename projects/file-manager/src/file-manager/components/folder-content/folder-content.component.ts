@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
@@ -17,9 +17,9 @@ export class FolderContentComponent implements OnInit {
 
   @Input() treeModel: TreeModel;
 
-  newDialog = false;
-  nodes: NodeInterface;
+  @Output() openUploadDialog = new EventEmitter();
 
+  nodes: NodeInterface;
   obj = Object;
 
   constructor(
@@ -37,6 +37,6 @@ export class FolderContentComponent implements OnInit {
   }
 
   newClickedAction() {
-    this.newDialog = !this.newDialog;
+    this.openUploadDialog.emit(true);
   }
 }

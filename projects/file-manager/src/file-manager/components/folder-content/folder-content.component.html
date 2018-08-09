@@ -8,7 +8,8 @@
   </ng-container>
 
   <ng-container *ngFor="let node of obj.keys(nodes.children)">
-    <app-node [node]="nodes.children[node]" id="{{nodes.children[node].isFolder ? null : nodes.children[node].pathToNode}}">
+    <app-node [node]="nodes.children[node]"
+              id="{{nodes.children[node].isFolder ? null : nodes.children[node].pathToNode}}">
       <ng-container [ngTemplateOutletContext]="{$implicit: nodes.children[node]}"
                     [ngTemplateOutlet]="folderContentTemplate">
       </ng-container>
@@ -18,8 +19,4 @@
   <div class="new" (click)="newClickedAction()">
     <ng-container [ngTemplateOutlet]="folderContentNewTemplate"></ng-container>
   </div>
-</div>
-
-<div *ngIf="this.newDialog" class="overlay">
-  <app-upload [hasFileCount]="treeModel.config.upload.containsFileCount" [hasTable]="treeModel.config.upload.containsFileTable" [openDialog]="newDialog" (closeDialog)="newClickedAction()"></app-upload>
 </div>

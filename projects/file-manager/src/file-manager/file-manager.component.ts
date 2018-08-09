@@ -26,9 +26,11 @@ export class FileManagerComponent implements OnInit {
   @Output() itemClicked = new EventEmitter();
 
   selectedNode: NodeInterface;
-  loading: boolean;
   sideMenuClosed = true;
+
   fmOpen = false;
+  loading: boolean;
+  newDialog = false;
 
   constructor(
     private store: Store<AppStore>,
@@ -160,5 +162,9 @@ export class FileManagerComponent implements OnInit {
     // todo get rid of this ugly workaround
     // todo fire userCanceledLoading event
     this.store.dispatch({type: SET_LOADING_STATE, payload: false});
+  }
+
+  handleUploadDialog(event: any) {
+    this.newDialog = event;
   }
 }

@@ -35,10 +35,6 @@
   }
 }
 
-.backdrop{
-  z-index: $z-index-level-1;
-}
-
 .upload-background {
   position: fixed;
   top: 50%;
@@ -46,7 +42,6 @@
   transform: translate(-50%, -50%);
 
   text-align: center;
-  z-index: $z-index-level-2;
   overflow: auto;
   box-sizing: border-box;
 

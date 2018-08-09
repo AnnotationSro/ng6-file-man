@@ -41,13 +41,15 @@
       <div class="right">
         <app-folder-content
           [treeModel]="tree"
+          (openUploadDialog)="handleUploadDialog($event)"
           [folderContentTemplate]="folderContentTemplate ? folderContentTemplate : defaultFolderContentTemplate"
           [folderContentNewTemplate]="folderContentNewTemplate ? folderContentNewTemplate : defaultFolderContentNewTemplate"
           [folderContentBackTemplate]="folderContentBackTemplate ? folderContentBackTemplate : defaultFolderContentBackTemplate">
         </app-folder-content>
       </div>
 
-      <app-side-view id="side-view" [node]="selectedNode" (clickEvent)="handleFileManagerClickEvent($event)"></app-side-view>
+      <app-side-view id="side-view" [node]="selectedNode"
+                     (clickEvent)="handleFileManagerClickEvent($event)"></app-side-view>
     </div>
   </div>
 
@@ -55,6 +57,13 @@
     *ngIf="loading"
     [loadingOverlayTemplate]="loadingOverlayTemplate ? loadingOverlayTemplate : defaultLoadingOverlayTemplate">
   </app-loading-overlay>
+
+  <app-upload *ngIf="newDialog"
+              [hasFileCount]="tree.config.upload.containsFileCount"
+              [hasTable]="tree.config.upload.containsFileTable"
+              [openDialog]="newDialog"
+              (closeDialog)="handleUploadDialog(false)">
+  </app-upload>
 </ng-template>
 
 <ng-template let-node #defaultIconTemplate>
