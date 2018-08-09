@@ -49,14 +49,10 @@
       </div>
 
       <app-side-view id="side-view" [node]="selectedNode"
-                     (clickEvent)="handleFileManagerClickEvent($event)"></app-side-view>
+                     (clickEvent)="handleFileManagerClickEvent($event)">
+      </app-side-view>
     </div>
   </div>
-
-  <app-loading-overlay
-    *ngIf="loading"
-    [loadingOverlayTemplate]="loadingOverlayTemplate ? loadingOverlayTemplate : defaultLoadingOverlayTemplate">
-  </app-loading-overlay>
 
   <app-upload *ngIf="newDialog"
               [hasFileCount]="tree.config.upload.containsFileCount"
@@ -64,6 +60,11 @@
               [openDialog]="newDialog"
               (closeDialog)="handleUploadDialog(false)">
   </app-upload>
+
+  <app-loading-overlay
+    *ngIf="loading"
+    [loadingOverlayTemplate]="loadingOverlayTemplate ? loadingOverlayTemplate : defaultLoadingOverlayTemplate">
+  </app-loading-overlay>
 </ng-template>
 
 <ng-template let-node #defaultIconTemplate>

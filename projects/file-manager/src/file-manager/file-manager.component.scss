@@ -137,7 +137,6 @@
 }
 
 .spinner {
-  z-index: $z-index-level-2;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -146,7 +145,6 @@
 }
 
 .error {
-  z-index: $z-index-level-2;
   position: relative;
   top: 60%;
   text-align: center;
@@ -157,7 +155,6 @@
 }
 
 /*sideview*/
-
 #side-view {
   display: inline-block;
   overflow: hidden;
