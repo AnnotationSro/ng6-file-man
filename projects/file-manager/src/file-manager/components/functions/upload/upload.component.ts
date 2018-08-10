@@ -1,80 +1,59 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FileSystemDirectoryEntry, FileSystemFileEntry, UploadEvent, UploadFile} from 'ngx-file-drop';
+import {HttpClient} from '@angular/common/http';
+import {FineUploader} from 'fine-uploader';
+import {NodeService} from '../../../services/node.service';
 
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.scss'],
+  styleUrls: ['./upload.component.scss', './fine-uploader/fine-uploader.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class UploadComponent implements OnInit {
+export class UploadComponent implements OnInit, AfterViewInit {
   @Input() openDialog;
   @Input() hasTable: boolean;
   @Input() hasFileCount: boolean;
   @Output() closeDialog = new EventEmitter();
 
-  public files: UploadFile[] = [];
-
-  // todo use JS Sets to eliminate duplicates
-  public droppedFiles: File[] = [];
+  uploader: FineUploader;
   newFolder = false;
 
-  constructor() {
+  constructor(private http: HttpClient,
+              private nodeService: NodeService) {
+  }
+
+  ngAfterViewInit() {
+    this.uploader = new FineUploader({
+      debug: false,
+      autoUpload: false,
+      element: document.getElementById('fine-uploader'),
+      template: document.getElementById('fine-uploader-template'),
+      request: {
+        endpoint: 'http://localhost:8080/api/file/upload',
+        // forceMultipart: false,
+        paramsInBody: false,
+        // params: {
+        //   id: this.getCurrentPathId
+        // }
+      },
+      retry: {
+        enableAuto: false
+      }
+    });
   }
 
   ngOnInit() {
   }
 
-  public dropped(event: UploadEvent) {
-    this.files = event.files;
-    for (const droppedFile of event.files) {
-
-      // Is it a file?
-      if (droppedFile.fileEntry.isFile) {
-        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-        fileEntry.file((file: File) => {
-          // todo extend File class to contain relativePath (webkitRelativePath is readonly)
-          // @ts-ignore
-          file.relativePath = droppedFile.relativePath;
-          this.droppedFiles.push(file);
-          // console.log(droppedFile.relativePath, file);
-          /**
-           // You could upload it like this:
-           const formData = new FormData()
-           formData.append('logo', file, relativePath)
-
-           // Headers
-           const headers = new HttpHeaders({
-            'security-token': 'mytoken'
-          })
-
-           this.http.post('https://mybackend.com/api/upload/sanitize-and-save-logo', formData, { headers: headers, responseType: 'blob' })
-           .subscribe(data => {
-            // Sanitized logo returned from backend
-          })
-           **/
-
-        });
-      } else {
-        // It was a directory (empty directories are added, otherwise only files)
-        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
-        console.log('vytvor folder s menom: ', fileEntry);
-      }
-    }
-  }
-
-  public fileOver(event) {
-    console.log(event);
-  }
-
-  public fileLeave(event) {
-    console.log(event);
+  get getCurrentPathId() {
+    const parentId = this.nodeService.findParent(this.nodeService.currentPath).id;
+    return parentId === 0 ? null : parentId;
   }
 
   // todo
   uploadFiles() {
-    console.log('upload this.droppedFiles na server');
+    this.uploader.uploadStoredFiles();
   }
 
   // todo
@@ -92,10 +71,5 @@ export class UploadComponent implements OnInit {
 
   newClickedAction() {
     this.closeDialog.emit();
-    this.droppedFiles = [];
-  }
-
-  addFile(event) {
-    this.droppedFiles.push(event.target.files[0]);
   }
 }

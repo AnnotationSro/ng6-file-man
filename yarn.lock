@@ -2425,6 +2425,10 @@ find-up@^2.0.0, find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
+fine-uploader@5.16.2:
+  version "5.16.2"
+  resolved "https://registry.yarnpkg.com/fine-uploader/-/fine-uploader-5.16.2.tgz#0d878da1cd2753f80683ac091df5daff9ffb8c44"
+
 flush-write-stream@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.0.3.tgz#c5d586ef38af6097650b49bc41b55fabb19f35bd"

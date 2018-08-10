@@ -10,6 +10,7 @@
   "dependencies": {
     "ngx-file-drop": "^4.0.6",
     "@fortawesome/fontawesome-free": "^5.1.1",
-    "@ngrx/store": "^6.1.0"
+    "@ngrx/store": "^6.1.0",
+    "fine-uploader": "5.16.2"
   }
 }
