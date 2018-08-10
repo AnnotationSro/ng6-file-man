@@ -78,6 +78,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
   }
 
   newClickedAction() {
+    this.uploader.cancelAll();
     this.closeDialog.emit();
   }
 }
