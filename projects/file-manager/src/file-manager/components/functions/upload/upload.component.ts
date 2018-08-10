@@ -28,6 +28,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
     this.uploader = new FineUploader({
       debug: false,
       autoUpload: false,
+      maxConnections: 10,
       element: document.getElementById('fine-uploader'),
       template: document.getElementById('fine-uploader-template'),
       request: {
@@ -59,7 +60,6 @@ export class UploadComponent implements OnInit, AfterViewInit {
     return parentId === 0 ? null : parentId;
   }
 
-  // todo
   uploadFiles() {
     this.uploader.uploadStoredFiles();
   }
