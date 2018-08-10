@@ -13,6 +13,7 @@ import {NodeService} from '../../../services/node.service';
 })
 export class NodeComponent implements OnInit {
   @Input() node: NodeInterface;
+  isSingleClick = true;
 
   constructor(
     private store: Store<AppStore>,
@@ -20,18 +21,37 @@ export class NodeComponent implements OnInit {
   ) {
   }
 
+  method1CallForClick(event: MouseEvent) {
+    event.preventDefault();
+
+    this.isSingleClick = true;
+    setTimeout(() => {
+      if (this.isSingleClick) {
+        this.showMenu();
+      }
+    }, 200);
+  }
+
+  // todo event.preventDefault for double click
+  method2CallForDblClick(event: any) {
+    event.preventDefault();
+
+    this.isSingleClick = false;
+    this.open();
+  }
+
   ngOnInit() {
   }
 
-  onClick() {
-    this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node});
-
+  open() {
     if (!this.node.isFolder) {
+      console.log('download me');
       return;
     }
 
     if (this.node.stayOpen) {
       if (this.node.name == 'root') {
+        console.log('[Node] I\'m (g)root');
         this.nodeService.foldAll();
       }
 
@@ -47,12 +67,15 @@ export class NodeComponent implements OnInit {
 
     // todo recursive collapse vsetkych childov
     if (!this.node.isExpanded) {
-      document.getElementById(this.node.pathToNode).classList.add('deselected');
+      document.getElementById('tree_' + this.node.pathToNode).classList.add('deselected');
       this.nodeService.foldRecursively(this.node);
       this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.pathToParent});
     } else {
-      document.getElementById(this.node.pathToNode).classList.remove('deselected');
+      document.getElementById('tree_' + this.node.pathToNode).classList.remove('deselected');
     }
+  }
 
+  showMenu() {
+    this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node});
   }
 }

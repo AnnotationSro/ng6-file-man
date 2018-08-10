@@ -1,3 +1,3 @@
-<div #customTemplate (click)="onClick($event)">
+<div #customTemplate (dblclick)="method2CallForDblClick($event)" (click)="method1CallForClick($event)">
   <ng-content></ng-content>
 </div>

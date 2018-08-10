@@ -86,7 +86,7 @@ export class NodeService {
 
       this.foldRecursively(children[child]);
       //todo put this getElById into one func (curr inside node.component.ts + fm.component.ts) - this won't be maintainable
-      document.getElementById(children[child].pathToNode).classList.add('deselected');
+      document.getElementById('tree_' + children[child].pathToNode).classList.add('deselected');
       children[child].isExpanded = false;
     });
   }

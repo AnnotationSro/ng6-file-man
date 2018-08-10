@@ -71,7 +71,6 @@ export class FileManagerComponent implements OnInit {
   handleFileManagerClickEvent(event: any) {
     switch (event.type) {
       case 'closeSideView' :
-        // this.nodeService.foldRecursively(event.node);
         return this.nodeClickHandler(event.node, true);
       case 'select' :
         this.onItemClicked(event);
@@ -87,7 +86,7 @@ export class FileManagerComponent implements OnInit {
   }
 
   nodeClickHandler(node: NodeInterface, closing?: boolean) {
-    if (node.isFolder) {
+    if (node.name === 'root') {
       return;
     }
 
@@ -120,17 +119,14 @@ export class FileManagerComponent implements OnInit {
   // todo stay DRY!
   highlightSelected(node: NodeInterface) {
     let pathToNode = node.pathToNode;
-    let pathToParent = node.isFolder ? null : node.pathToParent;
 
     if (pathToNode.length === 0) {
       pathToNode = 'root';
     }
-    if (pathToParent !== null && pathToParent.length === 0) {
-      pathToParent = 'root';
-    }
 
-    const element = document.getElementById(pathToNode);
-    if (!element) {
+    const treeElement = this.getElementById(pathToNode, 'tree_');
+    const fcElement = this.getElementById(pathToNode, 'fc_');
+    if (!treeElement && !fcElement) {
       console.warn('[File Manager] failed to find requested node for path:', pathToNode);
       return;
     }
@@ -138,20 +134,39 @@ export class FileManagerComponent implements OnInit {
     Array.from(document.getElementsByClassName('highlighted'))
       .map((el: HTMLElement) => el.classList.remove('highlighted'));
 
-    element
-      .children[0] // appnode div wrapper
-      .children[0] // ng template first item
-      .classList.add('highlighted');
+    if (fcElement)
+      this.highilghtChildElement(fcElement);
+    if (treeElement)
+      this.highilghtChildElement(treeElement);
 
-    const parentElement = document.getElementById(pathToParent);
-    if (!parentElement) {
+    // parent node highlight
+    let pathToParent = node.pathToParent;
+    if (pathToParent === null || node.isFolder) {
       return;
     }
 
-    parentElement
-      .children[0] // appnode div wrapper
+    if (pathToParent.length === 0) {
+      pathToParent = 'root';
+    }
+
+    const parentElement = this.getElementById(pathToParent, 'tree_');
+    if (!parentElement) {
+      console.warn('[File Manager] failed to find requested parent node for path:', pathToParent);
+      return;
+    }
+
+    this.highilghtChildElement(parentElement);
+  }
+
+  private highilghtChildElement(el: HTMLElement) {
+    el.children[0] // appnode div wrapper
       .children[0] // ng template first item
       .classList.add('highlighted');
+  }
+
+  private getElementById(id: string, prefix: string = ''): HTMLElement {
+    const fullId = prefix + id;
+    return document.getElementById(fullId);
   }
 
   fmShowHide() {

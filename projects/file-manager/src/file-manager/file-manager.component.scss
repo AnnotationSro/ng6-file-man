@@ -97,11 +97,6 @@
   @include effects(background-color, 0.3s);
 }
 
-// todo fix this ugly workaround (ngrx state unchanged bug)
-.item.highlighted {
-  cursor: not-allowed;
-}
-
 .file-name {
   left: 0;
   bottom: 0;
