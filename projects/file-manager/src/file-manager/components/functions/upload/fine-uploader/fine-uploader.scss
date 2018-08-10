@@ -1,3 +1,4 @@
+@import '../../../../../styles';
 /* ---------------------------------------
 /* Fine Uploader Styles
 /* ---------------------------------------
@@ -6,10 +7,6 @@
 ------------------------------------------ */
 .qq-btn
 {
-  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.37) inset,
-  1px 0 1px rgba(255, 255, 255, 0.07) inset,
-  0 1px 0 rgba(0, 0, 0, 0.36),
-  0 -2px 12px rgba(0, 0, 0, 0.08) inset;
   padding: 3px 4px;
   border: 1px solid #CCCCCC;
   border-radius: 2px;
@@ -18,41 +15,56 @@
 }
 .qq-upload-delete, .qq-upload-pause, .qq-upload-continue {
   display: inline;
+  @include borders;
 }
 .qq-upload-delete
 {
   background-color: #e65c47;
   color: #FAFAFA;
   border-color: #dc523d;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+  @include borders;
+  @include text-color;
+  @include effects(background-color, 0.3s);
 }
 .qq-upload-delete:hover {
-  background-color: #f56b56;
+  @include contrast;
+  @include effects(background-color, 0.3s);
 }
 .qq-upload-cancel
 {
   background-color: #F5D7D7;
   border-color: #e6c8c8;
+  @include borders;
+  @include text-color;
+  @include effects(background-color, 0.3s);
 }
 .qq-upload-cancel:hover {
-  background-color: #ffe1e1;
+  @include contrast;
+  @include effects(background-color, 0.3s);
 }
 .qq-upload-retry
 {
   background-color: #EBF6E0;
   border-color: #d2ddc7;
+  @include borders;
+  @include text-color;
+  @include effects(background-color, 0.3s);
 }
 .qq-upload-retry:hover {
-  background-color: #f7ffec;
+  @include contrast;
+  @include effects(background-color, 0.3s);
 }
 .qq-upload-pause, .qq-upload-continue {
   background-color: #00ABC7;
   color: #FAFAFA;
   border-color: #2dadc2;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+  @include borders;
+  @include text-color;
+  @include effects(background-color, 0.3s);
 }
 .qq-upload-pause:hover, .qq-upload-continue:hover {
-  background-color: #0fbad6;
+  @include contrast;
+  @include effects(background-color, 0.3s);
 }
 
 /* Upload Button
@@ -64,20 +76,22 @@
   padding: 7px 10px;
   text-align: center;
   float: left;
-  background: #00ABC7;
-  color: #FFFFFF;
-  border-radius: 2px;
-  border: 1px solid #2dadc2;
-  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.37) inset,
-  1px 0 1px rgba(255, 255, 255, 0.07) inset,
-  0 1px 0 rgba(0, 0, 0, 0.36),
-  0 -2px 12px rgba(0, 0, 0, 0.08) inset;
+  font-size: 14px;
+
+  @include buttons;
+  @include borders;
+  @include effects(background-color, 0.3s);
+  @include text-color;
+}
+.qq-upload-button div{
+  line-height: 25px;
 }
 .qq-upload-button-hover {
-  background: #33B6CC;
+  @include contrast;
+  @include effects(background-color, 0.3s);
 }
 .qq-upload-button-focus {
-  outline: 1px dotted #000000;
+  outline: none;
 }
 
 
@@ -144,7 +158,6 @@
   list-style: none;
   max-height: 450px;
   overflow-y: auto;
-  box-shadow: 0px 1px 0px rgba(15, 15, 50, 0.14);
   clear: both;
 }
 
@@ -241,26 +254,24 @@
   border-bottom: 1px solid #DECACA;
   border-top: 1px solid #FCE6E6;
 }
+
 .qq-progress-bar {
   display: block;
-  display: block;
-  background: #00abc7;
-  width: 0%;
-  height: 15px;
+  background: $main-color;
+  width: 0;
+  height: 18px;
   border-radius: 6px;
-  margin-bottom: 3px;
 }
-
 .qq-total-progress-bar {
   height: 25px;
   border-radius: 9px;
 }
-
 .qq-total-progress-bar-container {
   margin-left: 9px;
   display: inline;
   float: right;
-  width: 500px;
+  @include borders;
+  width: calc(100% - 190px);
 }
 
 INPUT.qq-edit-filename {

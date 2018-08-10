@@ -74,3 +74,10 @@
     margin: 10px 0;
   }
 }
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: 2px solid $main-color;
+}

@@ -7,7 +7,7 @@ import {NodeService} from '../../../services/node.service';
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.scss', './fine-uploader/fine-uploader.css'],
+  styleUrls: ['./upload.component.scss', './fine-uploader/fine-uploader.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class UploadComponent implements OnInit, AfterViewInit {
@@ -18,6 +18,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
 
   uploader: FineUploader;
   newFolder = false;
+  counter = 0;
 
   constructor(private http: HttpClient,
               private nodeService: NodeService) {
@@ -39,8 +40,15 @@ export class UploadComponent implements OnInit, AfterViewInit {
       },
       retry: {
         enableAuto: false
+      },
+      callbacks: {
+        onSubmitted: () => this.counter++,
+        onCancel: () => {
+          this.counter < 0 ? console.warn('wtf?') : this.counter--;
+        }
       }
-    });
+    })
+    ;
   }
 
   ngOnInit() {
