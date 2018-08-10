@@ -131,17 +131,17 @@ export class FileManagerComponent implements OnInit {
       return;
     }
 
-    Array.from(document.getElementsByClassName('highlighted'))
-      .map((el: HTMLElement) => el.classList.remove('highlighted'));
+    this.removeClass('highlighted');
+    this.removeClass('light');
 
     if (fcElement)
       this.highilghtChildElement(fcElement);
     if (treeElement)
-      this.highilghtChildElement(treeElement);
+      this.highilghtChildElement(treeElement, true);
 
     // parent node highlight
     let pathToParent = node.pathToParent;
-    if (pathToParent === null || node.isFolder) {
+    if (pathToParent === null || node.pathToNode === this.nodeService.currentPath) {
       return;
     }
 
@@ -158,15 +158,25 @@ export class FileManagerComponent implements OnInit {
     this.highilghtChildElement(parentElement);
   }
 
-  private highilghtChildElement(el: HTMLElement) {
+  private highilghtChildElement(el: HTMLElement, light: boolean = false) {
     el.children[0] // appnode div wrapper
       .children[0] // ng template first item
       .classList.add('highlighted');
+
+    if (light)
+      el.children[0]
+        .children[0]
+        .classList.add('light');
   }
 
   private getElementById(id: string, prefix: string = ''): HTMLElement {
     const fullId = prefix + id;
     return document.getElementById(fullId);
+  }
+
+  private removeClass(className: string){
+    Array.from(document.getElementsByClassName(className))
+      .map((el: HTMLElement) => el.classList.remove(className));
   }
 
   fmShowHide() {

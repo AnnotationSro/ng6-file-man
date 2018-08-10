@@ -65,6 +65,10 @@
   &.highlighted {
     color: $main-color;
     font-weight: bold;
+
+    &.light {
+      font-weight: normal;
+    }
   }
 }
 
