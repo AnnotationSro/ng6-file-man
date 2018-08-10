@@ -18,7 +18,7 @@
     </div>
 
     <div class="buttons">
-      <button (click)="onClick($event, 'download')" class="button">Stiahni</button>
+      <button (click)="onClick($event, 'download')" [disabled]="!allowFolderDownload && node.isFolder" class="button">Stiahni</button>
       <button (click)="onClick($event, 'rename')" class="button">Premenuj</button>
       <button (click)="onClick($event, 'remove')" class="button">Vymaž</button>
     </div>

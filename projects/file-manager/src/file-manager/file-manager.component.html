@@ -48,7 +48,9 @@
         </app-folder-content>
       </div>
 
-      <app-side-view id="side-view" [node]="selectedNode"
+      <app-side-view id="side-view"
+                     [node]="selectedNode"
+                     [allowFolderDownload]="tree.config.options.allowFolderDownload"
                      (clickEvent)="handleFileManagerClickEvent($event)">
       </app-side-view>
     </div>

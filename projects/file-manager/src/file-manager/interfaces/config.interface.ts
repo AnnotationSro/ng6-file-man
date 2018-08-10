@@ -1,5 +1,4 @@
 export interface ConfigInterface {
-  showFilesInsideTree: boolean;
   baseURL: string;
   startingFolder?: string;
   offlineMode: boolean;
@@ -11,5 +10,10 @@ export interface ConfigInterface {
     listFile: string;
     uploadFile: string;
     downloadFile: string;
+    deleteFile: string;
   };
+  options: {
+    allowFolderDownload: boolean;
+    showFilesInsideTree: boolean;
+  }
 }
