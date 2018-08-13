@@ -22,6 +22,11 @@ export class NodeService {
     this.store.dispatch({type: ACTIONS.SET_PATH, payload: path});
   }
 
+  public refreshCurrentPath() {
+    this.findParent(this.currentPath).children = {};
+    this.getNodes(this.currentPath);
+  }
+
   getNodes(path: string) {
     this.parseNodes(path).subscribe((data: Array<NodeInterface>) => {
       for (let i = 0; i < data.length; i++) {
@@ -52,6 +57,12 @@ export class NodeService {
       node.path = '/' + node.path;
     }
 
+    const ids = node.path.split('/');
+    if (ids.length > 2 && ids[ids.length - 1] === '') {
+      ids.splice(-1, 1);
+      node.path = ids.join('/');
+    }
+
     const cachedNode = this.findParent(node.path);
 
     return <NodeInterface>{
@@ -65,8 +76,15 @@ export class NodeService {
     };
   }
 
-  private getNodesFromServer = (path: string) =>
-    this.http.get(this.tree.config.baseURL + this.tree.config.api.listFile, {params: new HttpParams().set('path', path)});
+  private getNodesFromServer = (path: string) => {
+    let folderId: any = this.findParent(path).id;
+    folderId = folderId === 0 ? '' : folderId;
+
+    return this.http.get(
+      this.tree.config.baseURL + this.tree.config.api.listFile,
+      {params: new HttpParams().set('parentId', folderId)}
+    );
+  };
 
   public findParent(parentPath: string): NodeInterface {
     const ids = parentPath.split('/');

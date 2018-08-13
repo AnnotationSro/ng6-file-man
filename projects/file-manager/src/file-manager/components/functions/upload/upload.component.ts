@@ -35,9 +35,9 @@ export class UploadComponent implements OnInit, AfterViewInit {
         endpoint: 'http://localhost:8080/api/file/upload',
         // forceMultipart: false,
         paramsInBody: false,
-        // params: {
-        //   id: this.getCurrentPathId
-        // }
+        params: {
+          parentId: this.getCurrentPathId
+        }
       },
       retry: {
         enableAuto: false
@@ -46,6 +46,12 @@ export class UploadComponent implements OnInit, AfterViewInit {
         onSubmitted: () => this.counter++,
         onCancel: () => {
           this.counter < 0 ? console.warn('wtf?') : this.counter--;
+        },
+        onAllComplete: (succ: any, fail: any) => {
+          if (succ.length > 0) {
+            this.counter = 0;
+            this.nodeService.refreshCurrentPath();
+          }
         }
       }
     })
@@ -57,7 +63,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
 
   get getCurrentPathId() {
     const parentId = this.nodeService.findParent(this.nodeService.currentPath).id;
-    return parentId === 0 ? null : parentId;
+    return parentId === 0 ? '' : parentId;
   }
 
   uploadFiles() {
