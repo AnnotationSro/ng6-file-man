@@ -3,14 +3,15 @@
   "version": "0.0.4",
   "peerDependencies": {
     "@angular/common": "^6.0.3",
-    "@angular/http": "^6.0.3",
     "@angular/core": "^6.0.3",
+    "@angular/http": "^6.0.3",
     "rxjs": "^6.0.0"
   },
   "dependencies": {
-    "ngx-file-drop": "^4.0.6",
     "@fortawesome/fontawesome-free": "^5.1.1",
     "@ngrx/store": "^6.1.0",
-    "fine-uploader": "5.16.2"
+    "fine-uploader": "5.16.2",
+    "ngx-file-drop": "^4.0.6",
+    "ngx-smart-modal": "^7.0.3"
   }
 }

@@ -6,6 +6,7 @@ import {NodeInterface} from './interfaces/node.interface';
 import {SET_LOADING_STATE} from './reducers/actions.action';
 import * as ACTIONS from './reducers/actions.action';
 import {AppStore} from './reducers/reducer.factory';
+// import {NgxSmartModalService} from 'ngx-smart-modal';
 
 @Component({
   selector: 'fm-file-manager',
@@ -34,7 +35,8 @@ export class FileManagerComponent implements OnInit {
 
   constructor(
     private store: Store<AppStore>,
-    private nodeService: NodeService
+    private nodeService: NodeService,
+    // public ngxSmartModalService: NgxSmartModalService
   ) {
   }
 

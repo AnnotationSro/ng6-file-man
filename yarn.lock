@@ -4252,6 +4252,10 @@ ngx-file-drop@^4.0.6:
   dependencies:
     tslib "^1.9.0"
 
+ngx-smart-modal@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/ngx-smart-modal/-/ngx-smart-modal-7.0.3.tgz#17ca06282c948faa959fc0276700351e50b04d59"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"

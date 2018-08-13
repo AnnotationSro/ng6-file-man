@@ -26,6 +26,7 @@
     "core-js": "^2.5.4",
     "fine-uploader": "5.16.2",
     "ngx-file-drop": "^4.0.6",
+    "ngx-smart-modal": "^7.0.3",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
