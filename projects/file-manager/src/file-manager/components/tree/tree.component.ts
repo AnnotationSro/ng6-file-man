@@ -5,6 +5,7 @@ import {NodeService} from '../../services/node.service';
 import {select, Store} from '@ngrx/store';
 import {AppStore} from '../../reducers/reducer.factory';
 import * as ACTIONS from '../../reducers/actions.action';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-tree',
@@ -43,6 +44,7 @@ export class TreeComponent implements AfterViewInit, OnInit {
   ngAfterViewInit() {
     this.store
       .pipe(select(state => state.fileManagerState.path))
+      .pipe(first())
       .subscribe((path: string) => {
         const nodes = this.nodeService.findParent(path);
         this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: nodes});
