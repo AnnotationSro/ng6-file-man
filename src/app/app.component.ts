@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
-// import {TreeModel, NodeInterface, ConfigInterface} from 'ng6-file-man';
+// import {TreeModel, NodeInterface, ConfigInterface, NodeService} from 'ng6-file-man';
 import {TreeModel, NodeInterface, ConfigInterface} from '../../projects/file-manager/src/public_api';
+import {HttpClient} from '@angular/common/http';
+import {HttpParams} from '../../node_modules/@angular/common/http';
+import {NodeService} from '../../projects/file-manager/src/file-manager/services/node.service';
+import {ParamsInterface} from './interfaces/params.interface';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +15,7 @@ export class AppComponent {
   tree: TreeModel;
   node: NodeInterface;
 
-  constructor() {
+  constructor(private http: HttpClient, private nodeService: NodeService) {
     const treeConfig: ConfigInterface = {
       offlineMode: false, // todo implement
       baseURL: 'http://localhost:8080/',
@@ -42,6 +46,10 @@ export class AppComponent {
     switch (event.type) {
       case 'download' :
         return this.download(event.node);
+      case 'remove' :
+        return this.remove(event.node);
+      case 'createFolder' :
+        return this.createFolder(event.currentParent, event.newDirName);
       default:
         console.log(event);
     }
@@ -49,5 +57,52 @@ export class AppComponent {
 
   download(node: NodeInterface) {
     window.open(this.tree.config.baseURL + this.tree.config.api.downloadFile + '?id=' + node.id, '_blank');
+  }
+
+  createFolder(currentParent: number, newDirName: string) {
+    const params: ParamsInterface[] = [{
+      key: 'dirName',
+      value: newDirName
+    }, {
+      key: 'parentId',
+      value: currentParent === 0 ? null : currentParent
+    }];
+
+    this.http.post(this.tree.config.baseURL + 'api/file/directory' + this.parseParams(params), {})
+      .subscribe(res => {
+        console.log(res);
+        this.nodeService.refreshCurrentPath();
+      });
+  }
+
+  parseParams(params: ParamsInterface[]): string {
+    let query = '?';
+
+    console.log(params)
+
+    params = params.filter(i => i.value != null);
+
+    for (let i = 0; i < params.length; i++) {
+      query += params[i].key + '=' + params[i].value;
+      if (i < params.length - 1) {
+        query += '&';
+      }
+    }
+
+    return query;
+  }
+
+  remove(node: NodeInterface) {
+    if (!confirm('You are going to delete an item! \nAre you sure?'))
+      return;
+
+    this.http.delete(
+      this.tree.config.baseURL + this.tree.config.api.deleteFile,
+      {params: new HttpParams().set('id', node.id.toString())}
+    ).subscribe(res => {
+      console.log(res);
+      this.nodeService.refreshCurrentPath();
+    });
+    // window.open(this.tree.config.baseURL + this.tree.config.api.deleteFile + '?id=' + node.id, '_blank');
   }
 }
