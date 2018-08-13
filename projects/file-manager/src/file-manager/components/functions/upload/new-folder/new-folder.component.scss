@@ -1,27 +1,4 @@
-@import '../../../../../styles';
-
-
-.inp {
-  @include borders;
-  border-color: #ccc;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  margin-right: 0;
-}
-
-.inp:focus {
-  border-color: $main-color;
-  outline: none;
-}
-
-.send {
-  @include contrast;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  margin-left: 0;
-}
-
-p {
+.new-folder-description {
   margin: 0 auto;
   padding: 0;
 }

@@ -1,37 +1,20 @@
-@import '../../../../styles';
-
-.flist {
-  margin: 5px;
+.node-lister-flist {
+  margin: 0 0 0 1em;
   padding: 0;
   list-style: none;
   white-space: nowrap;
+}
 
-  ul {
-    margin: 0 0 0 1em;
-    //padding: 3px;
-  }
+.node-lister-list-item {
+  list-style: none none;
+  line-height: 1.2em;
+  font-size: 1em;
+  display: inline;
 
-  li {
-    list-style: none none;
-    line-height: 1.2em;
-    font-size: 1em;
-    display: inline;
-
-    app-node.deselected + app-node-lister {
-      ul {
-        display: none;
-      }
+  // todo check ked bude viac foldrov vo foldri + zmenit 'ul' na '.node-lister-flist'
+  .node-lister-app-node.deselected + .node-lister {
+    ul {
+      display: none;
     }
-  }
-
-  app-node:hover {
-    transition: color 0.35s ease-in;
-    color: $main-color;
-  }
-
-  app-node {
-    @include text-color;
-    cursor: pointer;
-    transition: color 0.35s ease-out;
   }
 }

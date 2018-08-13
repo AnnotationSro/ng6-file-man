@@ -1,11 +1,15 @@
-<div class="navigation-comonent">
-  <input class="search" (keyup)="evaluateSearch($event.target.value)" placeholder="Zadajte hľadaný výraz">
-  <span class="search-icon" *ngIf="!hasFilter">
+<div class="navigation-component">
+  <input class="navigation-search" (keyup)="evaluateSearch($event.target.value)" placeholder="Zadajte hľadaný výraz">
+  <span class="navigation-search-icon">
     <i class="fas fa-search"></i>
   </span>
-  <span (click)="onClick()" class="search-icon" *ngIf="hasFilter">
-    <i class="fas fa-times"></i>
-  </span>
+
+  <!--<span class="navigation-search-icon" *ngIf="!hasFilter">-->
+    <!--<i class="fas fa-search"></i>-->
+  <!--</span>-->
+  <!--<span (click)="onClick()" class="navigation-search-icon" *ngIf="hasFilter">-->
+    <!--<i class="fas fa-times"></i>-->
+  <!--</span>-->
   <ng-content></ng-content>
 </div>
 

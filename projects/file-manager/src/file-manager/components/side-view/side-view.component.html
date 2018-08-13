@@ -6,18 +6,18 @@
 </div>
 
 <ng-template let-node #defaultSideViewTemplate>
-  <div class="preview">
-    <div class="close" (click)="onClick($event, 'closeSideView')">
+  <div class="side-view-preview">
+    <div class="side-view-close" (click)="onClick($event, 'closeSideView')">
       <i class="fas fa-times"></i>
     </div>
 
-    <p class="title">{{node.name}}</p>
+    <p class="side-view-preview-title">{{node.name}}</p>
 
     <div class="image-preview">
       <img src=""/>
     </div>
 
-    <div class="buttons">
+    <div class="side-view-buttons">
       <button (click)="onClick($event, 'download')" [disabled]="!allowFolderDownload && node.isFolder" class="button">Stiahni</button>
       <button (click)="onClick($event, 'rename')" class="button">Premenuj</button>
       <button (click)="onClick($event, 'remove')" class="button">Vymaž</button>

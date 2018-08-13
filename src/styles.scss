@@ -1,2 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+//$main-color: black;
+//$text-color: #999;
+//$contrast-color: white;
+//$hasAnimations: false;
+//$border-radius: 10px;
+
+@import "~projects/file-manager/src/styles";
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}

@@ -1,23 +1,16 @@
-@import 'variables.scss';
+$main-color: #ff671f !default;
+$contrast-color: #fff !default;
+$text-color: #000 !default;
+$border-radius: 5px !default;
+$hasAnimations: true !default;
+
 @import "~ngx-smart-modal/ngx-smart-modal";
 
-* {
-  font-family: 'Open Sans', sans-serif;
-}
-
-i {
-  color: $main-color;
-}
-
-.drag-and-drop {
-  .content {
-    color: $main-color !important;
-    background: #fff !important;
-  }
-}
-
+////////////
+// mixins //
+////////////
 @mixin text-color {
-  color: #000;
+  color: $text-color;
 }
 
 @mixin shadows {
@@ -53,6 +46,14 @@ i {
   background-color: #fff;
   border-color: #ccc;
   color: #ccc;
+}
+
+////////////
+// global //
+////////////
+
+i {
+  color: $main-color;
 }
 
 .button {
@@ -101,4 +102,361 @@ i {
   height: 100vh;
 
   background-color: rgba(50, 50, 50, 0.8);
+}
+
+/////////////////////////////
+// FM MAIN COMPONENT STYLE //
+/////////////////////////////
+.file-manager-navbar {
+  margin: 0 0 15px 0;
+  padding: 10px;
+  border-bottom: 2px solid $main-color;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.file-manager-left {
+  width: 30%;
+  max-width: 350px;
+  min-width: 150px;
+
+  position: relative;
+  overflow: auto;
+
+  @include borders;
+  @include shadows
+}
+
+.file-manager-node {
+  i {
+    padding: 0 5px;
+  }
+
+  &.highlighted {
+    color: $main-color;
+    font-weight: bold;
+
+    &.light {
+      font-weight: normal;
+    }
+  }
+}
+
+
+///////////////////////
+// new-folder styles //
+///////////////////////
+.new-folder-input {
+  @include borders;
+  border-color: #ccc;
+
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: 0;
+}
+
+.new-folder-input:focus {
+  border-color: $main-color;
+  outline: none;
+}
+
+.new-folder-send {
+  @include contrast;
+
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: 0;
+}
+
+/* folder content template
+-------------------------- */
+.file-manager-item {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+
+  @include borders;
+  @include text-color;
+  border-color: #ccc;
+
+  @include effects(border-color, 0.3s);
+  @include effects(background-color, 0.3s);
+
+}
+
+.file-manager-item:hover, .file-manager-item.highlighted {
+  @include contrast;
+  border-color: $main-color;
+  i {
+    color: $contrast-color
+  }
+
+  @include effects(border-color, 0.3s);
+  @include effects(background-color, 0.3s);
+}
+
+.file-manager-backdrop {
+  .fmModalInside {
+    top: 15px;
+    left: 15px;
+    width: calc(100vw - 60px);
+    height: calc(100vh - 60px);
+    @include borders;
+    position: fixed;
+  }
+
+  &.loading {
+    cursor: progress;
+  }
+}
+
+.file-manager-error {
+  position: relative;
+  top: 60%;
+  text-align: center;
+  font-weight: bold;
+  color: $main-color;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#side-view {
+  display: inline-block;
+  overflow: hidden;
+  @include effects(width, 1s);
+  width: 0;
+
+  &.selected {
+    overflow: visible;
+    width: 30vw;
+    max-width: 300px;
+    @include effects(width, 1s);
+  }
+}
+
+///////////////////
+// fine-uploader //
+///////////////////
+/* Buttons
+------------------------------------------ */
+.qq-upload-delete, .qq-upload-pause, .qq-upload-continue {
+  display: inline;
+  @include borders;
+}
+
+.qq-upload-delete {
+  background-color: #e65c47;
+  color: #FAFAFA;
+  border-color: #dc523d;
+
+  @include borders;
+  @include text-color;
+  @include effects(background-color, 0.3s);
+}
+
+.qq-upload-delete:hover {
+  @include contrast;
+  @include effects(background-color, 0.3s);
+}
+
+.qq-upload-cancel {
+  background-color: #F5D7D7;
+  border-color: #e6c8c8;
+
+  @include borders;
+  @include text-color;
+  @include effects(background-color, 0.3s);
+}
+
+.qq-upload-cancel:hover {
+  @include contrast;
+  @include effects(background-color, 0.3s);
+}
+
+.qq-upload-retry {
+  background-color: #EBF6E0;
+  border-color: #d2ddc7;
+
+  @include borders;
+  @include text-color;
+  @include effects(background-color, 0.3s);
+}
+
+.qq-upload-retry:hover {
+  @include contrast;
+  @include effects(background-color, 0.3s);
+}
+
+.qq-upload-pause, .qq-upload-continue {
+  background-color: #00ABC7;
+  color: #FAFAFA;
+  border-color: #2dadc2;
+
+  @include borders;
+  @include text-color;
+  @include effects(background-color, 0.3s);
+}
+
+.qq-upload-pause:hover, .qq-upload-continue:hover {
+  @include contrast;
+  @include effects(background-color, 0.3s);
+}
+
+/* Upload Button
+------------------------------------------ */
+.qq-upload-button {
+  display: inline;
+  width: 105px;
+  margin-bottom: 10px;
+  padding: 7px 10px;
+  text-align: center;
+  float: left;
+  font-size: 14px;
+
+  @include buttons;
+  @include borders;
+  @include effects(background-color, 0.3s);
+  @include text-color;
+}
+
+.qq-upload-button-hover {
+  @include contrast;
+  @include effects(background-color, 0.3s);
+}
+
+/* Upload Elements
+--------------------------------------------- */
+.qq-progress-bar {
+  display: block;
+  width: 0;
+  height: 18px;
+  border-radius: 6px;
+  background: $main-color;
+}
+
+.qq-total-progress-bar-container {
+  margin-left: 9px;
+  display: inline;
+  float: right;
+  width: calc(100% - 190px);
+
+  @include borders;
+}
+
+////////////////
+// navigation //
+////////////////
+.navigation-search {
+  @include borders;
+  border-color: #ccc;
+
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin: 0;
+  border-right: none;
+
+  font-size: 13px;
+
+  &:focus, &:focus + .navigation-search-icon{
+    outline: none;
+    border-color: $main-color;
+  }
+}
+
+.navigation-search-icon {
+  @include borders;
+  border-color: #ccc;
+
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin: 0;
+  border-left: none;
+
+  font-size: 11px;
+}
+
+/////////////////
+// node-lister //
+/////////////////
+.node-lister-app-node:hover {
+  transition: color 0.35s ease-in;
+  color: $main-color;
+}
+
+.node-lister-app-node {
+  @include text-color;
+  cursor: pointer;
+  transition: color 0.35s ease-out;
+}
+
+///////////////
+// side-view //
+///////////////
+.side-view {
+  width: calc(100% - 10px);
+  height: calc(100% - 5px);
+  display: inline-block;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  @include borders;
+  padding: 0 5px;
+  margin: 0;
+}
+
+.side-view-preview {
+  text-align: center;
+  position: relative;
+  @include text-color;
+
+  width: calc(30vw - 10px);
+  max-width: 290px;
+  min-height: 100%;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.side-view-preview-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $main-color;
+  white-space: pre-wrap;
+  padding: 0 30px
+}
+
+////////////
+// upload //
+////////////
+.upload-top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: 2px solid $main-color;
+}
+
+.upload-background {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+  overflow: auto;
+  box-sizing: border-box;
+
+  @include borders;
+  border-width: 2px;
+  margin: 20px auto;
+
+  width: calc(100vw - 60px);
+  max-height: calc(100vh - 60px);
+  max-width: 1000px;
 }

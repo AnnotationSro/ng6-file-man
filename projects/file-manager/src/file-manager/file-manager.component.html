@@ -4,7 +4,7 @@
   <div *ngIf="!fmOpen">
     <button class="button big" (click)="fmShowHide()">Otvor FM</button>
   </div>
-  <div class="backdrop" *ngIf="fmOpen">
+  <div class="file-manager-backdrop" *ngIf="fmOpen">
     <div class="fmModalInside">
       <div *ngIf="fmOpen; then showContent"></div>
     </div>
@@ -13,7 +13,7 @@
 
 <ng-template #showContent>
   <div class="content">
-    <div class="navbar">
+    <div class="file-manager-navbar">
       <div class="path">
         <app-nav-bar></app-nav-bar>
       </div>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="holder">
-      <div class="left">
+      <div class="file-manager-left">
         <app-tree [treeModel]="tree">
           <ng-template let-nodes>
             <ng-container [ngTemplateOutletContext]="{$implicit: nodes}"
@@ -71,7 +71,7 @@
 </ng-template>
 
 <ng-template let-node #defaultIconTemplate>
-  <div class="node" style="display: inline-block; padding: 3px">
+  <div class="file-manager-node" style="display: inline-block; padding: 3px">
     <div *ngIf="node.isFolder; then itIsFolder else showFile"></div>
 
     <ng-template #itIsFolder>
@@ -87,7 +87,7 @@
 </ng-template>
 
 <ng-template let-node #defaultFolderContentTemplate>
-  <div class="item">
+  <div class="file-manager-item">
     <div class="file-preview">
       <div *ngIf="node.isFolder; then itIsFolder else showFile"></div>
       <ng-template #itIsFolder><i class="fas fa-3x fa-folder child"></i></ng-template>
@@ -100,7 +100,7 @@
 </ng-template>
 
 <ng-template #defaultFolderContentNewTemplate>
-  <div class="item">
+  <div class="file-manager-item">
     <div class="file-preview" style="width: 100%; height:100%">
       <i class="fas fa-3x fa-plus child" style="line-height: 2"></i>
     </div>
@@ -108,7 +108,7 @@
 </ng-template>
 
 <ng-template let-node #defaultFolderContentBackTemplate>
-  <div class="item">
+  <div class="file-manager-item">
     <div class="file-preview" style="width: 100%; height:100%">
       <i class="fas fa-2x fa-ellipsis-h" style="line-height: 5"></i>
     </div>
@@ -116,8 +116,8 @@
 </ng-template>
 
 <ng-template let-timeoutMessage #defaultLoadingOverlayTemplate>
-  <div class="backdrop loading" (click)="backdropClicked()">
-    <div class="error" *ngIf="timeoutMessage">{{timeoutMessage}}</div>
+  <div class="file-manager-backdrop loading" (click)="backdropClicked()">
+    <div class="file-manager-error" *ngIf="timeoutMessage">{{timeoutMessage}}</div>
   </div>
   <div class="spinner">
     <i class="fas fa-5x fa-spin fa-sync-alt"></i>

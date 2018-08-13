@@ -1,72 +1,29 @@
-@import '../../../styles';
-
-.side-view {
-  width: calc(100% - 10px);
-  height: calc(100% - 5px);
-  display: inline-block;
-  white-space: nowrap;
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  @include borders;
-  padding: 0 5px;
-  margin: 0;
-}
-
-.preview {
-  text-align: center;
-  position: relative;
-  @include text-color;
-
-  width: calc(30vw - 10px);
-  max-width: 290px;
-  min-height: 100%;
-  overflow: hidden;
-
+.image-preview {
+  margin: 0 auto;
+  justify-content: center;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  background: transparent url("https://picsum.photos/200/300/?random");
+  width: 100%;
+  height: 40vh;
+  min-height: 300px;
+}
 
-  .title {
-    font-weight: bold;
-    text-transform: uppercase;
-    color: $main-color;
-    white-space: pre-wrap;
-    padding: 0 30px
-  }
+.side-view-close {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  padding: 15px;
+}
 
-  .image-preview {
-    margin: 0 auto;
-    justify-content: center;
-    display: flex;
-    background: transparent url("https://picsum.photos/200/300/?random");
-    width: 100%;
-    height: 40vh;
-    min-height: 300px;
-  }
+.side-view-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
 
-  .name {
-    color: $main-color;
-    font-weight: bold;
-    text-align: right;
-  }
-
-  .close {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    right: 0;
-    padding: 15px;
-  }
-
-  .buttons {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-flow: column;
-
-    .button{
-      margin: 5px 0;
-    }
+  .button {
+    margin: 5px 0;
   }
 }
+
