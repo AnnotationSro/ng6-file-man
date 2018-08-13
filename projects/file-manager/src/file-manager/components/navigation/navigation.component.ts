@@ -8,9 +8,15 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  evaluateSearch(input: string) {
+  }
+
+  onClick() {
+  }
 }
