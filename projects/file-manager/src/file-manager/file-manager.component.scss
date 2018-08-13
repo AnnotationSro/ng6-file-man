@@ -104,9 +104,12 @@
 .file-name {
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 100px;
   height: 30px;
   position: absolute;
+  margin: 5px 10px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .file-preview {
