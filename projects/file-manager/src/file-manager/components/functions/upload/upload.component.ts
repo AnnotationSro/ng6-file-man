@@ -14,7 +14,9 @@ export class UploadComponent implements OnInit, AfterViewInit {
   @Input() openDialog;
   @Input() hasTable: boolean;
   @Input() hasFileCount: boolean;
+
   @Output() closeDialog = new EventEmitter();
+  @Output() createDir = new EventEmitter();
 
   uploader: FineUploader;
   newFolder = false;
@@ -77,7 +79,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
     } else {
       this.newFolder = false;
       if (input.length > 0) {
-        console.log('vytvor folder s menom: ', input);
+        this.createDir.emit(input);
         this.newClickedAction();
       }
     }

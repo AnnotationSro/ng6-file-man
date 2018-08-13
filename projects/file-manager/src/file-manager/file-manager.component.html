@@ -60,7 +60,8 @@
               [hasFileCount]="tree.config.upload.containsFileCount"
               [hasTable]="tree.config.upload.containsFileTable"
               [openDialog]="newDialog"
-              (closeDialog)="handleUploadDialog(false)">
+              (closeDialog)="handleUploadDialog(false)"
+              (createDir)="handleFileManagerClickEvent({type: 'createFolder', payload: $event})">
   </app-upload>
 
   <app-loading-overlay

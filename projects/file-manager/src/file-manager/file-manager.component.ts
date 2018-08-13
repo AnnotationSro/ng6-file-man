@@ -82,6 +82,13 @@ export class FileManagerComponent implements OnInit {
         return this.onItemClicked(event);
       case 'remove' :
         return this.onItemClicked(event);
+      case 'createFolder' :
+        const evt = {
+          type: event.type,
+          currentParent: this.nodeService.findParent(this.nodeService.currentPath).id,
+          newDirName: event.payload
+        };
+        return this.onItemClicked(evt);
     }
   }
 
@@ -174,7 +181,7 @@ export class FileManagerComponent implements OnInit {
     return document.getElementById(fullId);
   }
 
-  private removeClass(className: string){
+  private removeClass(className: string) {
     Array.from(document.getElementsByClassName(className))
       .map((el: HTMLElement) => el.classList.remove(className));
   }
