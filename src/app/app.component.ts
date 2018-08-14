@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 // import {TreeModel, NodeInterface, ConfigInterface, NodeService} from 'ng6-file-man';
 import {TreeModel, NodeInterface, ConfigInterface} from '../../projects/file-manager/src/public_api';
-import {HttpClient} from '@angular/common/http';
-import {HttpParams} from '../../node_modules/@angular/common/http';
+import {HttpClient,HttpParams} from '@angular/common/http';
 import {NodeService} from '../../projects/file-manager/src/file-manager/services/node.service';
 import {ParamsInterface} from './interfaces/params.interface';
 
@@ -67,9 +66,10 @@ export class AppComponent {
     }];
 
     this.http.post(this.tree.config.baseURL + 'api/file/rename' + this.parseParams(params), {})
-      .subscribe(res => {
-        console.log(res);
+      .subscribe(() => {
         this.nodeService.refreshCurrentPath();
+      }, error => {
+        console.warn('Oooops, something went wrong!', error);
       });
   }
 
@@ -87,9 +87,10 @@ export class AppComponent {
     }];
 
     this.http.post(this.tree.config.baseURL + 'api/file/directory' + this.parseParams(params), {})
-      .subscribe(res => {
-        console.log(res);
+      .subscribe(() => {
         this.nodeService.refreshCurrentPath();
+      }, error => {
+        console.warn('Oooops, something went wrong!', error);
       });
   }
 
@@ -114,9 +115,10 @@ export class AppComponent {
     this.http.delete(
       this.tree.config.baseURL + this.tree.config.api.deleteFile,
       {params: new HttpParams().set('id', node.id.toString())}
-    ).subscribe(res => {
-      console.log(res);
+    ).subscribe(() => {
       this.nodeService.refreshCurrentPath();
+    }, error => {
+      console.warn('Oooops, something went wrong!', error);
     });
   }
 }
