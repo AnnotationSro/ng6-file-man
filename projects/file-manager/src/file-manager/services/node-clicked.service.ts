@@ -28,44 +28,45 @@ export class NodeClickedService {
   }
 
   public initDelete(node: NodeInterface): void {
-    const parameters = this.parseParams({id: node.id});
-
-    this.ngxSmartModalService.getModal('waitModal').open();
-
-    this.reachServer('delete', this.tree.config.api.deleteFile + parameters)
-      .subscribe(
-        () => this.deleteSuccess(),
-        (err) => this.deleteFailed(err)
-      );
+    this.sideEffectHelper(
+      'Delete',
+      {id: node.id},
+      'delete',
+      this.tree.config.api.deleteFile,
+      () => this.deleteSuccess()
+    );
   }
 
   public createFolder(currentParent: number, newDirName: string) {
-    const params = this.parseParams({
-      dirName: newDirName,
-      parentId: currentParent === 0 ? null : currentParent
-    });
-
-    this.ngxSmartModalService.getModal('waitModal').open();
-
-    this.reachServer('post', this.tree.config.api.createFolder + params)
-      .subscribe(
-        () => this.actionSuccess(),
-        (err) => this.createFolderFailed(err)
-      );
+    this.sideEffectHelper(
+      'Create Folder',
+      {dirName: newDirName, parentId: currentParent === 0 ? null : currentParent},
+      'post',
+      this.tree.config.api.createFolder
+    );
   }
 
   public rename(id: number, newName: string) {
-    const params = this.parseParams({
-      newName: newName,
-      id: id
-    });
+    this.sideEffectHelper(
+      'Rename',
+      {id: id, newName: newName},
+      'post',
+      this.tree.config.api.renameFile
+    );
+  }
+
+  private sideEffectHelper(name: string, parameters: {}, httpMethod: string, apiURL: string,
+                           successMethod = () => this.actionSuccess(),
+                           failMethod = (a, b) => this.actionFailed(a, b)
+  ) {
+    const params = this.parseParams(parameters);
 
     this.ngxSmartModalService.getModal('waitModal').open();
 
-    this.reachServer('post', this.tree.config.api.renameFile + params)
+    this.reachServer(httpMethod, apiURL + params)
       .subscribe(
-        () => this.actionSuccess(),
-        (err) => this.renameFailed(err)
+        () => successMethod(),
+        (err) => failMethod(name, err)
       );
   }
 
@@ -101,26 +102,14 @@ export class NodeClickedService {
     document.getElementById('side-view').classList.remove('selected');
   }
 
-  private deleteFailed(error: any) {
-    this.ngxSmartModalService.getModal('waitModal').close();
-    this.ngxSmartModalService.getModal('errorModal').open();
-    console.warn('[NodeClickedService] Remove failed', error);
-  }
-
-  private createFolderFailed(error: any) {
-    this.ngxSmartModalService.getModal('waitModal').close();
-    this.ngxSmartModalService.getModal('errorModal').open();
-    console.warn('[NodeClickedService] Create folder failed', error);
-  }
-
-  private renameFailed(error: any) {
-    this.ngxSmartModalService.getModal('waitModal').close();
-    this.ngxSmartModalService.getModal('errorModal').open();
-    console.warn('[NodeClickedService] Rename failed', error);
-  }
-
   private actionSuccess() {
     this.nodeService.refreshCurrentPath();
     this.ngxSmartModalService.getModal('waitModal').close();
+  }
+
+  private actionFailed(name: string, error: any) {
+    this.ngxSmartModalService.getModal('waitModal').close();
+    this.ngxSmartModalService.getModal('errorModal').open();
+    console.warn('[NodeClickedService] Action "' + name + '" failed', error);
   }
 }
