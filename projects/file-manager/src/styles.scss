@@ -193,7 +193,7 @@ i {
 
 }
 
-.file-manager-item:hover, .file-manager-item.highlighted {
+.file-manager-item.highlighted {
   @include contrast;
   border-color: $main-color;
   i {
@@ -202,6 +202,25 @@ i {
 
   @include effects(border-color, 0.3s);
   @include effects(background-color, 0.3s);
+}
+
+.file-manager-item:hover {
+  @extend .file-manager-item.highlighted;
+  border: 1px solid white;
+
+  transition: background-color 0s;
+  .file-name {
+    height: auto;
+    width: 100%;
+    z-index: 1; // todo try this without z-index
+    @include borders;
+    @include contrast;
+    margin: 0;
+    padding: 5px;
+    position: absolute;
+    left: 0;
+    word-wrap:break-word;
+  }
 }
 
 .file-manager-backdrop {
@@ -385,7 +404,7 @@ i {
 
   font-size: 11px;
 
-  &:hover i{
+  &:hover i {
     color: $contrast-color;
   }
 }
