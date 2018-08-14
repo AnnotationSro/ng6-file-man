@@ -44,6 +44,10 @@ export class FileManagerComponent implements OnInit {
   }
 
   ngOnInit() {
+    // @ts-ignore
+    window.console = window.console || {};
+    window.console.log = window.console.log || function(){};
+
     this.nodeService.tree = this.tree;
     this.nodeClickedService.tree = this.tree;
     this.nodeService.startManagerAt(this.tree.currentPath);
