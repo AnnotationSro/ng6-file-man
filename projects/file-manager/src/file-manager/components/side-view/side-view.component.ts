@@ -8,10 +8,12 @@ import {NodeInterface} from '../../interfaces/node.interface';
   encapsulation: ViewEncapsulation.None
 })
 export class SideViewComponent implements OnInit {
-  @Input() node: NodeInterface;
   @Input() sideViewTemplate: TemplateRef<any>;
-  @Output() clickEvent = new EventEmitter();
+
+  @Input() node: NodeInterface;
   @Input() allowFolderDownload = false;
+
+  @Output() clickEvent = new EventEmitter();
 
   constructor() {
   }

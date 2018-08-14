@@ -21,6 +21,7 @@ export class FileManagerComponent implements OnInit {
   @Input() folderContentBackTemplate: TemplateRef<any>;
   @Input() folderContentNewTemplate: TemplateRef<any>;
   @Input() loadingOverlayTemplate: TemplateRef<any>;
+  @Input() sideViewTemplate: TemplateRef<any>;
 
   @Input() tree: TreeModel;
   @Input() isPopup: boolean = false;

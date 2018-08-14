@@ -5,7 +5,7 @@
     <div class="side-view-preview-content">
       <ng-container
         [ngTemplateOutletContext]="{$implicit: node}"
-        [ngTemplateOutlet]="sideViewTemplate ? sideViewTemplate : defaultSideViewTemplate">
+        [ngTemplateOutlet]="sideViewTemplate">
       </ng-container>
     </div>
 
@@ -19,7 +19,3 @@
     </div>
   </div>
 </div>
-
-<ng-template let-node #defaultSideViewTemplate>
-  totoje template
-</ng-template>

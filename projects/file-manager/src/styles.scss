@@ -429,8 +429,8 @@ i {
   text-transform: uppercase;
   color: $main-color;
   white-space: pre-wrap;
-  padding: 0 30px;
-  margin: 10px auto;
+  padding: 0 10px;
+  margin: 15px auto;
 }
 
 .side-view-preview-content {
@@ -438,7 +438,8 @@ i {
   border-bottom: 1px solid $main-color;
   min-height: 100%;
   flex-grow: 1;
-  margin: 10px 0;
+  margin-bottom: 10px;
+  padding: 5px;
 }
 
 ////////////

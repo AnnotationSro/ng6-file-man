@@ -11,6 +11,7 @@
                   <!--[folderContentBackTemplate]="folderContentBackTemplate"-->
                   <!--[folderContentNewTemplate]="folderContentNewTemplate"-->
                   <!--[loadingOverlayTemplate]="loadingOverlayTemplate"-->
+                  <!--[sideViewTemplate]="sideViewTemplate"-->
 <!--</app-file-manager>-->
 
 <!--&lt;!&ndash;#iconTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
@@ -55,12 +56,14 @@
 <!--&lt;!&ndash;#sideViewTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
 <!--<ng-template let-node #sideViewTemplate>-->
   <!--<div style="text-align: center">-->
-    <!--<p>{{node.name}}</p>-->
-    <!--<hr/>-->
     <!--<table>-->
       <!--<tr>-->
         <!--<td>Path:</td>-->
         <!--<td>{{node.pathToNode}}</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>ID:</td>-->
+        <!--<td>{{node.id}}</td>-->
       <!--</tr>-->
     <!--</table>-->
   <!--</div>-->

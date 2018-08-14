@@ -50,6 +50,7 @@
 
       <app-side-view id="side-view"
                      [node]="selectedNode"
+                     [sideViewTemplate]="sideViewTemplate ? sideViewTemplate : defaultSideViewTemplate"
                      [allowFolderDownload]="tree.config.options.allowFolderDownload"
                      (clickEvent)="handleFileManagerClickEvent($event)">
       </app-side-view>
@@ -85,7 +86,6 @@
     <span>{{node.name}}</span>
   </div>
 </ng-template>
-
 <ng-template let-node #defaultFolderContentTemplate>
   <div class="file-manager-item">
     <div class="file-preview">
@@ -98,7 +98,6 @@
     </div>
   </div>
 </ng-template>
-
 <ng-template #defaultFolderContentNewTemplate>
   <div class="file-manager-item">
     <div class="file-preview" style="width: 100%; height:100%">
@@ -106,7 +105,6 @@
     </div>
   </div>
 </ng-template>
-
 <ng-template let-node #defaultFolderContentBackTemplate>
   <div class="file-manager-item">
     <div class="file-preview" style="width: 100%; height:100%">
@@ -114,13 +112,17 @@
     </div>
   </div>
 </ng-template>
-
 <ng-template let-timeoutMessage #defaultLoadingOverlayTemplate>
   <div class="file-manager-backdrop loading" (click)="backdropClicked()">
     <div class="file-manager-error" *ngIf="timeoutMessage">{{timeoutMessage}}</div>
   </div>
   <div class="spinner">
     <i class="fas fa-5x fa-spin fa-sync-alt"></i>
+  </div>
+</ng-template>
+<ng-template let-node #defaultSideViewTemplate>
+  <div>
+    No data available for this {{node.isFolder ? 'folder' : 'file'}}
   </div>
 </ng-template>
 
