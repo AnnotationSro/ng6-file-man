@@ -88,9 +88,9 @@ export class FileManagerComponent implements OnInit {
         this.nodeClickedService.startDownload(event.node);
         return this.onItemClicked(event);
 
-      case 'rename' :
+      case 'renameConfirm' :
         return this.ngxSmartModalService.getModal('renameModal').open();
-      case 'renameSend' :
+      case 'rename' :
         this.ngxSmartModalService.getModal('renameModal').close();
 
         this.nodeClickedService.rename(this.selectedNode.id, event.value);

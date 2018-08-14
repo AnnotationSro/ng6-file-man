@@ -134,7 +134,7 @@
   <input placeholder="New name" type="text" class="rename-input" [value]="selectedNode.name" #renameInput>
   <br>
   <button class="button big rename-button"
-          (click)="handleFileManagerClickEvent({type: 'renameSend', value: renameInput.value})"
+          (click)="handleFileManagerClickEvent({type: 'rename', value: renameInput.value})"
           [disabled]="renameInput.value === selectedNode.name || renameInput.value.length === 0">Rename
   </button>
 </ngx-smart-modal>
