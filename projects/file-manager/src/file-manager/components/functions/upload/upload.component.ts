@@ -30,7 +30,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
     this.uploader = new FineUploader({
       debug: false,
       autoUpload: false,
-      maxConnections: 10,
+      maxConnections: 1, // todo configurable
       element: document.getElementById('fine-uploader'),
       template: document.getElementById('fine-uploader-template'),
       request: {
