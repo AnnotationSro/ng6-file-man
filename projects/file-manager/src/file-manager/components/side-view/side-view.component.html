@@ -1,5 +1,7 @@
 <div class="side-view" *ngIf="node">
   <div class="side-view-preview">
+    <i (click)="onClick($event, 'closeSideView')" class="fas fa-times side-float"></i>
+
     <div class="side-view-preview-title">{{node.name}}</div>
 
     <div class="side-view-preview-content">
@@ -15,7 +17,6 @@
       </button>
       <button (click)="onClick($event, 'rename')" class="button">Premenuj</button>
       <button (click)="onClick($event, 'remove')" class="button">Vymaž</button>
-      <button (click)="onClick($event, 'closeSideView')" class="button">Zatvor</button>
     </div>
   </div>
 </div>

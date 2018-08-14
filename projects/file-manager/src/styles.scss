@@ -374,6 +374,7 @@ i {
 }
 
 .navigation-search-icon {
+  @extend .button;
   @include borders;
   border-color: #ccc;
 
@@ -383,6 +384,10 @@ i {
   border-left: none;
 
   font-size: 11px;
+
+  &:hover i{
+    color: $contrast-color;
+  }
 }
 
 /////////////////
@@ -435,7 +440,7 @@ i {
   text-transform: uppercase;
   color: $main-color;
   white-space: pre-wrap;
-  padding: 0 10px;
+  padding: 0 30px;
   margin: 15px auto;
 }
 
@@ -484,6 +489,7 @@ i {
 .nsm-content {
   @extend .nsm-content;
   @include borders;
+  border-width: 2px;
 }
 
 .nsm-dialog-btn-close {
