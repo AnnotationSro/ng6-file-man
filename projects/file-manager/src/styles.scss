@@ -199,6 +199,7 @@ i {
 }
 
 .file-manager-backdrop {
+  @extend .backdrop;
   .fmModalInside {
     top: 15px;
     left: 15px;
