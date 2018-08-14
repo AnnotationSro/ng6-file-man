@@ -1,9 +1,5 @@
 <div class="backdrop" (click)="newClickedAction()"></div>
 <div class="upload-background">
-  <button class="button close big" (click)="newClickedAction()">
-    <i class="fas fa-2x fa-fw fa-times"></i>
-  </button>
-
   <div class="buttons">
     <button class="button" [disabled]="newFolder" (click)="createNewFolder()">Vytvor nový priečinok</button>
   </div>
@@ -21,6 +17,9 @@
   <div class="buttons">
     <button class="button big" [disabled]="this.counter < 1" (click)="uploadFiles()">
       Nahraj
+    </button>
+    <button class="button big" (click)="newClickedAction()">
+      Zruš
     </button>
   </div>
 

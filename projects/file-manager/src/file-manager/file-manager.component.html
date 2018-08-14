@@ -126,30 +126,47 @@
   </div>
 </ng-template>
 
-<ngx-smart-modal identifier="renameModal" [closable]="true" *ngIf="selectedNode">
+<ngx-smart-modal identifier="renameModal" [dismissable]="false" [closable]="false" *ngIf="selectedNode" #renameModal>
   <h2 style="margin-top: 5px">Rename file</h2>
   <p class="rename-name">Old name</p>
   <span style="margin: 8px">{{selectedNode.name}}</span>
   <p class="rename-name">New name</p>
   <input placeholder="New name" type="text" class="rename-input" [value]="selectedNode.name" #renameInput>
   <br>
-  <button class="button big rename-button"
-          (click)="handleFileManagerClickEvent({type: 'rename', value: renameInput.value})"
-          [disabled]="renameInput.value === selectedNode.name || renameInput.value.length === 0">Rename
-  </button>
+
+  <div class="rename-button">
+    <button class="button big"
+            (click)="handleFileManagerClickEvent({type: 'rename', value: renameInput.value})"
+            [disabled]="renameInput.value === selectedNode.name || renameInput.value.length === 0">
+      Rename
+    </button>
+    <button class="button big" (click)="renameModal.close()">
+      Cancel
+    </button>
+  </div>
+
 </ngx-smart-modal>
 
-<ngx-smart-modal identifier="confirmDeleteModal" [closable]="true" *ngIf="selectedNode">
-  <h2 style="margin-top: 5px; text-align: center">You are trying to delete following {{selectedNode.isFolder ? 'folder' : 'file'}}</h2>
+<ngx-smart-modal identifier="confirmDeleteModal" [dismissable]="false" [closable]="false" *ngIf="selectedNode"
+                 #deleteModal>
+  <h2 style="margin-top: 5px; text-align: center">
+    You are trying to delete following {{selectedNode.isFolder ? 'folder' : 'file'}}
+  </h2>
+
   <div style="width: 100%; margin: 5px auto; text-align: center">{{selectedNode.name}}</div>
 
-  <button class="button big rename-button"
-          (click)="handleFileManagerClickEvent({type: 'remove'})">
-    Yes, delete this  {{selectedNode.isFolder ? 'folder' : 'file'}}
-  </button>
+  <div class="rename-button">
+    <button class="button big"
+            (click)="handleFileManagerClickEvent({type: 'remove'})">
+      Yes, <strong>delete</strong> this {{selectedNode.isFolder ? 'folder' : 'file'}}
+    </button>
+    <button class="button big " (click)="deleteModal.close()">
+      Cancel
+    </button>
+  </div>
 </ngx-smart-modal>
 
-<ngx-smart-modal identifier="waitModal" [closable]="false">
+<ngx-smart-modal identifier="waitModal" [closable]="false" [dismissable]="false" [escapable]="false">
   <h2 style="margin-top: 5px; text-align: center">Processing request...</h2>
 
   <div style="text-align: center">
