@@ -38,8 +38,8 @@ export class AppComponent {
     this.node = this.tree.nodes;
   }
 
+  // noinspection JSUnusedLocalSymbols
   itemClicked(event: any) {
-    console.log(event);
-
+    // console.log(event);
   }
 }
