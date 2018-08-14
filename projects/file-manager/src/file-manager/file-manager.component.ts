@@ -90,8 +90,18 @@ export class FileManagerComponent implements OnInit {
           node: this.selectedNode,
           newName: event.value
         });
+      case 'removeAsk':
+        return this.ngxSmartModalService.getModal('confirmDeleteModal').open();
       case 'remove':
-        return this.onItemClicked(event);
+        this.ngxSmartModalService.getModal('confirmDeleteModal').close();
+
+        this.onItemClicked({
+          type: event.type,
+          node: this.selectedNode
+        });
+
+        document.getElementById('side-view').classList.remove('selected');
+        return this.selectedNode = null;
       case 'createFolder' :
         return this.onItemClicked({
           type: event.type,

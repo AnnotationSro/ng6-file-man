@@ -111,9 +111,6 @@ export class AppComponent {
   }
 
   remove(node: NodeInterface) {
-    if (!confirm('You are going to delete an item! \nAre you sure?'))
-      return;
-
     this.http.delete(
       this.tree.config.baseURL + this.tree.config.api.deleteFile,
       {params: new HttpParams().set('id', node.id.toString())}
@@ -121,6 +118,5 @@ export class AppComponent {
       console.log(res);
       this.nodeService.refreshCurrentPath();
     });
-    // window.open(this.tree.config.baseURL + this.tree.config.api.deleteFile + '?id=' + node.id, '_blank');
   }
 }
