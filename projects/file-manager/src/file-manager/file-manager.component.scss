@@ -32,8 +32,10 @@
 
 .file-name {
   width: 100px;
-  height: 30px;
+  height: 25px;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   box-sizing: border-box;
 }
 
@@ -53,7 +55,7 @@
   cursor: progress;
 }
 
-.rename-button{
+.rename-button {
   margin: 20px auto;
   display: block;
   text-align: center;

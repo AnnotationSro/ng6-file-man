@@ -190,7 +190,6 @@ i {
 
   @include effects(border-color, 0.3s);
   @include effects(background-color, 0.3s);
-
 }
 
 .file-manager-item.highlighted {
@@ -219,7 +218,8 @@ i {
     padding: 5px;
     position: absolute;
     left: 0;
-    word-wrap:break-word;
+    word-wrap: break-word;
+    white-space: normal;
   }
 }
 
