@@ -3,27 +3,30 @@
   <fm-file-manager (itemClicked)="itemClicked($event)" [isPopup]="false" [tree]="tree"></fm-file-manager>
 </div>
 
-<!--<app-file-manager [tree]="tree">-->
-                  <!--[isPopup]="true"-->
-                  <!--(itemClicked)="itemClicked($event)-->
-                  <!--[iconTemplate]="iconTemplate"-->
-                  <!--[folderContentTemplate]="folderContentTemplate"-->
-                  <!--[folderContentBackTemplate]="folderContentBackTemplate"-->
-                  <!--[folderContentNewTemplate]="folderContentNewTemplate"-->
-                  <!--[loadingOverlayTemplate]="loadingOverlayTemplate"-->
-                  <!--[sideViewTemplate]="sideViewTemplate"-->
-<!--</app-file-manager>-->
+<!--<div id="file-manager">-->
+  <!--<fm-file-manager [tree]="tree"-->
+                   <!--[isPopup]="true"-->
+                   <!--(itemClicked)="itemClicked($event)"-->
+                   <!--[iconTemplate]="iconTemplate"-->
+                   <!--[folderContentTemplate]="folderContentTemplate"-->
+                   <!--[folderContentBackTemplate]="folderContentBackTemplate"-->
+                   <!--[folderContentNewTemplate]="folderContentNewTemplate"-->
+                   <!--[loadingOverlayTemplate]="loadingOverlayTemplate"-->
+                   <!--[sideViewTemplate]="sideViewTemplate">-->
+  <!--</fm-file-manager>-->
+<!--</div>-->
 
 <!--&lt;!&ndash;#iconTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
 <!--<ng-template let-node #iconTemplate>-->
-  <!--<i class="fas fa-arrow-alt-circle-right" style="padding: 0 5px"></i>{{node.name}}-->
+  <!--<i class="fas fa-arrow-alt-circle-right" style="padding: 5px"></i>{{node.name}}-->
 <!--</ng-template>-->
 
-<!--#folderContentTemplate je povinne, let-node je referencia na aktualny node-->
+<!--&lt;!&ndash;#folderContentTemplate je povinne, let-node je referencia na aktualny node&ndash;&gt;-->
 <!--<ng-template let-node #folderContentTemplate>-->
   <!--<div class="item"-->
-       <!--style="padding: 5px; border: 1px solid #ccc; margin: 3px; border-radius: 5px; width: 150px; cursor: pointer;">-->
-    <!--<i class="fas fa-arrow-alt-circle-right" style="padding: 0 5px"></i>{{node.name}}-->
+       <!--style="padding: 5px; border: 1px solid #ccc; margin: 3px; border-radius: 5px; cursor: pointer;">-->
+    <!--<i class="fas fa-arrow-alt-circle-right" style="padding: 0 5px"></i>-->
+    <!--<span style="padding: 0 5px">{{node.name}}</span>-->
   <!--</div>-->
 <!--</ng-template>-->
 
