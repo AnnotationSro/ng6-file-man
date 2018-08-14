@@ -408,8 +408,8 @@ i {
 // side-view //
 ///////////////
 .side-view {
-  width: calc(100% - 10px);
-  height: calc(100% - 5px);
+  width: 285px;
+  height: calc(100% - 15px);
   display: inline-block;
   white-space: nowrap;
   overflow-x: hidden;
@@ -417,7 +417,6 @@ i {
 
   @include borders;
   padding: 0 5px;
-  margin: 0;
 }
 
 .side-view-preview {
@@ -425,8 +424,7 @@ i {
   position: relative;
   @include text-color;
 
-  width: calc(30vw - 10px);
-  max-width: 290px;
+  width: 280px;
   min-height: 100%;
   overflow: hidden;
 
@@ -529,6 +527,6 @@ i {
 }
 
 .rename-button{
-  margin: 10px auto;
+  margin: 20px auto;
   display: block;
 }
