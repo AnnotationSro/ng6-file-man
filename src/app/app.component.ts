@@ -3,7 +3,6 @@ import {Component} from '@angular/core';
 import {TreeModel, NodeInterface, ConfigInterface} from '../../projects/file-manager/src/public_api';
 import {HttpClient,HttpParams} from '@angular/common/http';
 import {NodeService} from '../../projects/file-manager/src/file-manager/services/node.service';
-import {ParamsInterface} from './interfaces/params.interface';
 
 @Component({
   selector: 'app-root',
@@ -57,13 +56,10 @@ export class AppComponent {
   }
 
   rename(id: number, newName: string) {
-    const params: ParamsInterface[] = [{
-      key: 'newName',
-      value: newName
-    }, {
-      key: 'id',
-      value: id
-    }];
+    const params = {
+      newName: newName,
+      id: id
+    };
 
     this.http.post(this.tree.config.baseURL + 'api/file/rename' + this.parseParams(params), {})
       .subscribe(() => {
@@ -78,13 +74,10 @@ export class AppComponent {
   }
 
   createFolder(currentParent: number, newDirName: string) {
-    const params: ParamsInterface[] = [{
-      key: 'dirName',
-      value: newDirName
-    }, {
-      key: 'parentId',
-      value: currentParent === 0 ? null : currentParent
-    }];
+    const params = {
+      dirName: newDirName,
+      parentId: currentParent === 0 ? null : currentParent
+    };
 
     this.http.post(this.tree.config.baseURL + 'api/file/directory' + this.parseParams(params), {})
       .subscribe(() => {
@@ -94,21 +87,16 @@ export class AppComponent {
       });
   }
 
-  private parseParams(params: ParamsInterface[]): string {
+  private parseParams(params: {}): string {
     let query = '?';
 
-    console.log(params);
+    Object.keys(params).filter(item => params[item] !== null).map(key => {
+      query += key + '=' + params[key] + '&';
+    });
 
-    params = params.filter(i => i.value != null);
+    console.log(query.slice(0,-1));
 
-    for (let i = 0; i < params.length; i++) {
-      query += params[i].key + '=' + params[i].value;
-      if (i < params.length - 1) {
-        query += '&';
-      }
-    }
-
-    return query;
+    return query.slice(0,-1);
   }
 
   remove(node: NodeInterface) {
