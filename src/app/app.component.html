@@ -1,5 +1,6 @@
 <div id="file-manager">
-  <fm-file-manager (itemClicked)="itemClicked($event)" [tree]="tree"></fm-file-manager>
+  <!--<fm-file-manager (itemClicked)="itemClicked($event)" [isPopup]="true" [tree]="tree"></fm-file-manager>-->
+  <fm-file-manager (itemClicked)="itemClicked($event)" [isPopup]="false" [tree]="tree"></fm-file-manager>
 </div>
 
 <!--<app-file-manager [tree]="tree">-->
