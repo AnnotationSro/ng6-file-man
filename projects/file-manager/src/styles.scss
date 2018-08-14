@@ -428,7 +428,16 @@ i {
   text-transform: uppercase;
   color: $main-color;
   white-space: pre-wrap;
-  padding: 0 30px
+  padding: 0 30px;
+  margin: 10px auto;
+}
+
+.side-view-preview-content {
+  border-top: 1px solid $main-color;
+  border-bottom: 1px solid $main-color;
+  min-height: 100%;
+  flex-grow: 1;
+  margin: 10px 0;
 }
 
 ////////////

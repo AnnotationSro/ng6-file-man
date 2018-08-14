@@ -1,26 +1,25 @@
 <div class="side-view" *ngIf="node">
-  <ng-container
-    [ngTemplateOutletContext]="{$implicit: node}"
-    [ngTemplateOutlet]="sideViewTemplate ? sideViewTemplate : defaultSideViewTemplate">
-  </ng-container>
-</div>
-
-<ng-template let-node #defaultSideViewTemplate>
   <div class="side-view-preview">
-    <div class="side-view-close" (click)="onClick($event, 'closeSideView')">
-      <i class="fas fa-times"></i>
-    </div>
+    <div class="side-view-preview-title">{{node.name}}</div>
 
-    <p class="side-view-preview-title">{{node.name}}</p>
-
-    <div class="image-preview">
-      <img src=""/>
+    <div class="side-view-preview-content">
+      <ng-container
+        [ngTemplateOutletContext]="{$implicit: node}"
+        [ngTemplateOutlet]="sideViewTemplate ? sideViewTemplate : defaultSideViewTemplate">
+      </ng-container>
     </div>
 
     <div class="side-view-buttons">
-      <button (click)="onClick($event, 'download')" [disabled]="!allowFolderDownload && node.isFolder" class="button">Stiahni</button>
+      <button (click)="onClick($event, 'download')" [disabled]="!allowFolderDownload && node.isFolder" class="button">
+        Stiahni
+      </button>
       <button (click)="onClick($event, 'rename')" class="button">Premenuj</button>
       <button (click)="onClick($event, 'remove')" class="button">Vymaž</button>
+      <button (click)="onClick($event, 'closeSideView')" class="button">Zatvor</button>
     </div>
   </div>
+</div>
+
+<ng-template let-node #defaultSideViewTemplate>
+  totoje template
 </ng-template>
