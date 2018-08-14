@@ -11,6 +11,8 @@ export interface ConfigInterface {
     uploadFile: string;
     downloadFile: string;
     deleteFile: string;
+    createFolder: string;
+    renameFile: string;
   };
   options: {
     allowFolderDownload: boolean;

@@ -5,6 +5,7 @@ import {Store} from '@ngrx/store';
 import * as ACTIONS from '../../../reducers/actions.action';
 import {AppStore} from '../../../reducers/reducer.factory';
 import {NodeService} from '../../../services/node.service';
+import {NodeClickedService} from '../../../services/node-clicked.service';
 
 @Component({
   selector: 'app-node',
@@ -17,11 +18,12 @@ export class NodeComponent implements OnInit {
 
   constructor(
     private store: Store<AppStore>,
-    private nodeService: NodeService
+    private nodeService: NodeService,
+    private nodeClickedService: NodeClickedService
   ) {
   }
 
-  method1CallForClick(event: MouseEvent) {
+  public method1CallForClick(event: MouseEvent) {
     event.preventDefault();
 
     this.isSingleClick = true;
@@ -33,7 +35,7 @@ export class NodeComponent implements OnInit {
   }
 
   // todo event.preventDefault for double click
-  method2CallForDblClick(event: any) {
+  public method2CallForDblClick(event: any) {
     event.preventDefault();
 
     this.isSingleClick = false;
@@ -43,15 +45,14 @@ export class NodeComponent implements OnInit {
   ngOnInit() {
   }
 
-  open() {
+  private open() {
     if (!this.node.isFolder) {
-      console.log('download me');
+      this.nodeClickedService.startDownload(this.node);
       return;
     }
 
     if (this.node.stayOpen) {
       if (this.node.name == 'root') {
-        console.log('[Node] I\'m (g)root');
         this.nodeService.foldAll();
       }
 
@@ -59,23 +60,32 @@ export class NodeComponent implements OnInit {
       return;
     }
 
-    this.node.isExpanded = !this.node.isExpanded;
+    this.toggleNodeExpanded();
 
     if (this.node.isExpanded) {
       this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.pathToNode});
     }
 
-    // todo recursive collapse vsetkych childov
+    this.setNodeSelectedState();
+  }
+
+  private showMenu() {
+    this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node});
+  }
+
+  private toggleNodeExpanded() {
+    this.node.isExpanded = !this.node.isExpanded;
+  }
+
+  private setNodeSelectedState() {
     if (!this.node.isExpanded) {
       document.getElementById('tree_' + this.node.pathToNode).classList.add('deselected');
+
       this.nodeService.foldRecursively(this.node);
+
       this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.pathToParent});
     } else {
       document.getElementById('tree_' + this.node.pathToNode).classList.remove('deselected');
     }
-  }
-
-  showMenu() {
-    this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node});
   }
 }

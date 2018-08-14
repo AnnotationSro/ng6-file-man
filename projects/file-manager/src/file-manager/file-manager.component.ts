@@ -7,6 +7,7 @@ import {SET_LOADING_STATE} from './reducers/actions.action';
 import * as ACTIONS from './reducers/actions.action';
 import {AppStore} from './reducers/reducer.factory';
 import {NgxSmartModalService} from 'ngx-smart-modal';
+import {NodeClickedService} from './services/node-clicked.service';
 
 @Component({
   selector: 'fm-file-manager',
@@ -37,12 +38,14 @@ export class FileManagerComponent implements OnInit {
   constructor(
     private store: Store<AppStore>,
     private nodeService: NodeService,
+    private nodeClickedService: NodeClickedService,
     public ngxSmartModalService: NgxSmartModalService
   ) {
   }
 
   ngOnInit() {
     this.nodeService.tree = this.tree;
+    this.nodeClickedService.tree = this.tree;
     this.nodeService.startManagerAt(this.tree.currentPath);
 
     this.store
@@ -75,37 +78,46 @@ export class FileManagerComponent implements OnInit {
     switch (event.type) {
       case 'closeSideView' :
         return this.nodeClickHandler(event.node, true);
+
       case 'select' :
         this.onItemClicked(event);
         this.highlightSelected(event.node);
         return this.nodeClickHandler(event.node);
+
       case 'download' :
+        this.nodeClickedService.startDownload(event.node);
         return this.onItemClicked(event);
+
       case 'rename' :
         return this.ngxSmartModalService.getModal('renameModal').open();
       case 'renameSend' :
         this.ngxSmartModalService.getModal('renameModal').close();
+
+        this.nodeClickedService.rename(this.selectedNode.id, event.value);
         return this.onItemClicked({
           type: event.type,
           node: this.selectedNode,
           newName: event.value
         });
+
       case 'removeAsk':
         return this.ngxSmartModalService.getModal('confirmDeleteModal').open();
       case 'remove':
         this.ngxSmartModalService.getModal('confirmDeleteModal').close();
 
-        this.onItemClicked({
+        this.nodeClickedService.initDelete(this.selectedNode);
+        return this.onItemClicked({
           type: event.type,
           node: this.selectedNode
         });
 
-        document.getElementById('side-view').classList.remove('selected');
-        return this.selectedNode = null;
       case 'createFolder' :
+        const parentId = this.nodeService.findParent(this.nodeService.currentPath).id;
+
+        this.nodeClickedService.createFolder(parentId, event.payload);
         return this.onItemClicked({
           type: event.type,
-          currentParent: this.nodeService.findParent(this.nodeService.currentPath).id,
+          parentId: parentId,
           newDirName: event.payload
         });
     }

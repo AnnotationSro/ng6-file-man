@@ -148,3 +148,15 @@
     Yes, delete this  {{selectedNode.isFolder ? 'folder' : 'file'}}
   </button>
 </ngx-smart-modal>
+
+<ngx-smart-modal identifier="waitModal" [closable]="false">
+  <h2 style="margin-top: 5px; text-align: center">Processing request...</h2>
+
+  <div style="text-align: center">
+    <i class="fas fa-spinner fa-spin fa-4x"></i>
+  </div>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="errorModal" [closable]="true">
+  <h2 style="margin: 5px; text-align: center">Something went wrong with your request...</h2>
+</ngx-smart-modal>
