@@ -6,7 +6,7 @@ import {NodeInterface} from './interfaces/node.interface';
 import {SET_LOADING_STATE} from './reducers/actions.action';
 import * as ACTIONS from './reducers/actions.action';
 import {AppStore} from './reducers/reducer.factory';
-// import {NgxSmartModalService} from 'ngx-smart-modal';
+import {NgxSmartModalService} from 'ngx-smart-modal';
 
 @Component({
   selector: 'fm-file-manager',
@@ -37,7 +37,7 @@ export class FileManagerComponent implements OnInit {
   constructor(
     private store: Store<AppStore>,
     private nodeService: NodeService,
-    // public ngxSmartModalService: NgxSmartModalService
+    public ngxSmartModalService: NgxSmartModalService
   ) {
   }
 
@@ -82,16 +82,22 @@ export class FileManagerComponent implements OnInit {
       case 'download' :
         return this.onItemClicked(event);
       case 'rename' :
-        return this.onItemClicked(event);
-      case 'remove' :
+        return this.ngxSmartModalService.getModal('renameModal').open();
+      case 'renameSend' :
+        this.ngxSmartModalService.getModal('renameModal').close();
+        return this.onItemClicked({
+          type: event.type,
+          node: this.selectedNode,
+          newName: event.value
+        });
+      case 'remove':
         return this.onItemClicked(event);
       case 'createFolder' :
-        const evt = {
+        return this.onItemClicked({
           type: event.type,
           currentParent: this.nodeService.findParent(this.nodeService.currentPath).id,
           newDirName: event.payload
-        };
-        return this.onItemClicked(evt);
+        });
     }
   }
 

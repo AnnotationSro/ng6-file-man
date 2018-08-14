@@ -4,6 +4,12 @@ $text-color: #000 !default;
 $border-radius: 5px !default;
 $hasAnimations: true !default;
 
+@if $hasAnimations {
+  $transition-duration: 500ms;
+} @else {
+  $transition-duration: 0ms;
+}
+
 @import "~ngx-smart-modal/ngx-smart-modal";
 
 ////////////
@@ -470,4 +476,53 @@ i {
   width: calc(100vw - 60px);
   max-height: calc(100vh - 60px);
   max-width: 1000px;
+}
+
+/////////////////////
+// ngx-smart-modal //
+/////////////////////
+.nsm-content {
+  @extend .nsm-content;
+  @include borders;
+}
+
+.nsm-dialog-btn-close {
+  outline: none;
+}
+
+.nsm-dialog {
+  @extend .nsm-dialog;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*
+  Rename modal
+---------------- */
+.rename-name {
+  color: $main-color;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.rename-input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  margin: 3px;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 15px;
+
+  &:focus {
+    border-bottom: 1px solid $main-color;
+  }
+}
+
+.rename-button{
+  margin: 10px auto;
+  display: block;
 }

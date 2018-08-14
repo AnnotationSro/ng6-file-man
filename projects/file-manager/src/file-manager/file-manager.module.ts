@@ -18,7 +18,7 @@ import {NewFolderComponent} from './components/functions/upload/new-folder/new-f
 import {SideViewComponent} from './components/side-view/side-view.component';
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {RenameComponent} from './components/functions/rename/rename.component';
-// import {NgxSmartModalModule} from 'ngx-smart-modal';
+import {NgxSmartModalModule} from 'ngx-smart-modal';
 
 @NgModule({
   imports: [
@@ -26,7 +26,7 @@ import {RenameComponent} from './components/functions/rename/rename.component';
     StoreModule.forRoot(reducers),
     CommonModule,
     FileDropModule,
-    // NgxSmartModalModule.forRoot()
+    NgxSmartModalModule.forRoot()
   ],
   declarations: [
     FileManagerComponent,

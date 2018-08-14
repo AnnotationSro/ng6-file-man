@@ -50,9 +50,27 @@ export class AppComponent {
         return this.remove(event.node);
       case 'createFolder' :
         return this.createFolder(event.currentParent, event.newDirName);
+      case 'renameSend' :
+        return this.rename(event.node.id, event.newName);
       default:
         console.log(event);
     }
+  }
+
+  rename(id: number, newName: string) {
+    const params: ParamsInterface[] = [{
+      key: 'newName',
+      value: newName
+    }, {
+      key: 'id',
+      value: id
+    }];
+
+    this.http.post(this.tree.config.baseURL + 'api/file/rename' + this.parseParams(params), {})
+      .subscribe(res => {
+        console.log(res);
+        this.nodeService.refreshCurrentPath();
+      });
   }
 
   download(node: NodeInterface) {
@@ -75,10 +93,10 @@ export class AppComponent {
       });
   }
 
-  parseParams(params: ParamsInterface[]): string {
+  private parseParams(params: ParamsInterface[]): string {
     let query = '?';
 
-    console.log(params)
+    console.log(params);
 
     params = params.filter(i => i.value != null);
 
