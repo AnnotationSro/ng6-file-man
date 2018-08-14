@@ -406,8 +406,13 @@ i {
 
   font-size: 11px;
 
-  &:hover i {
+  &:hover  {
     color: $contrast-color;
+    background: #fff;
+  }
+
+  &:disabled i {
+    color: #ccc;
   }
 }
 

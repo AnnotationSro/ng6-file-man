@@ -1,15 +1,9 @@
 <div class="navigation-component">
-  <input class="navigation-search" (keyup)="evaluateSearch($event.target.value)" placeholder="Zadajte hľadaný výraz">
-  <span class="navigation-search-icon">
-    <i class="fas fa-search"></i>
-  </span>
+  <input #input class="navigation-search" (keyup.enter)="onClick(input.value)" placeholder="Zadajte hľadaný výraz">
 
-  <!--<span class="navigation-search-icon" *ngIf="!hasFilter">-->
-    <!--<i class="fas fa-search"></i>-->
-  <!--</span>-->
-  <!--<span (click)="onClick()" class="navigation-search-icon" *ngIf="hasFilter">-->
-    <!--<i class="fas fa-times"></i>-->
-  <!--</span>-->
+  <button [disabled]="input.value.length === 0" class="navigation-search-icon" (click)="onClick(input.value)">
+    <i class="fas fa-search"></i>
+  </button>
 
   <div>
     <ng-content></ng-content>

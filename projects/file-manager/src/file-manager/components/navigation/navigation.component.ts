@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {NgxSmartModalService} from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-navigation',
@@ -8,15 +9,20 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private ngxSmartModalService: NgxSmartModalService
+  ) {
   }
 
   ngOnInit() {
   }
 
-  evaluateSearch(input: string) {
-  }
+  onClick(input: string) {
+    const obj: Object = {
+      searchString: input
+    };
 
-  onClick() {
+    this.ngxSmartModalService.setModalData(obj, 'searchModal');
+    this.ngxSmartModalService.getModal('searchModal').open();
   }
 }

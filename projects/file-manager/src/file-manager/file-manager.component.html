@@ -127,7 +127,9 @@
 </ng-template>
 
 <ngx-smart-modal identifier="renameModal" [dismissable]="false" [closable]="false" *ngIf="selectedNode" #renameModal>
-  <h2 style="margin-top: 5px">Rename file</h2>
+  <h2 class="modal-title">
+    Rename file
+  </h2>
   <p class="rename-name">Old name</p>
   <span style="margin: 8px">{{selectedNode.name}}</span>
   <p class="rename-name">New name</p>
@@ -147,9 +149,9 @@
 
 </ngx-smart-modal>
 
-<ngx-smart-modal identifier="confirmDeleteModal" [dismissable]="false" [closable]="false" *ngIf="selectedNode"
-                 #deleteModal>
-  <h2 style="margin-top: 5px; text-align: center">
+<ngx-smart-modal *ngIf="selectedNode" identifier="confirmDeleteModal" #deleteModal
+                 [dismissable]="false" [closable]="false">
+  <h2 class="modal-title">
     You are trying to delete following {{selectedNode.isFolder ? 'folder' : 'file'}}
   </h2>
 
@@ -166,8 +168,21 @@
   </div>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="searchModal" #searchModal [closable]="true">
+  <h2 class="modal-title" style="margin-bottom: 2px">
+    Search results for
+  </h2>
+  <div style="text-align: center" *ngIf="searchModal.hasData()">{{searchModal.getData().searchString}}</div>
+
+  <div *ngIf="searchModal.hasData()">
+    <pre>{{ searchModal.getData() | json }}</pre>
+  </div>
+</ngx-smart-modal>
+
 <ngx-smart-modal identifier="waitModal" [closable]="false" [dismissable]="false" [escapable]="false">
-  <h2 style="margin-top: 5px; text-align: center">Processing request...</h2>
+  <h2 class="modal-title">
+    Processing request...
+  </h2>
 
   <div style="text-align: center">
     <i class="fas fa-spinner fa-spin fa-4x"></i>
@@ -175,5 +190,7 @@
 </ngx-smart-modal>
 
 <ngx-smart-modal identifier="errorModal" [closable]="true">
-  <h2 style="margin: 5px; text-align: center">Something went wrong with your request...</h2>
+  <h2 class="modal-title">
+    Something went wrong with your request...
+  </h2>
 </ngx-smart-modal>
