@@ -143,7 +143,6 @@ i {
   }
 }
 
-
 ///////////////////////
 // new-folder styles //
 ///////////////////////
@@ -361,7 +360,7 @@ i {
 
   font-size: 13px;
 
-  &:focus, &:focus + .navigation-search-icon{
+  &:focus, &:focus + .navigation-search-icon {
     outline: none;
     border-color: $main-color;
   }
