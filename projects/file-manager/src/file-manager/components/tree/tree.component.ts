@@ -46,7 +46,7 @@ export class TreeComponent implements AfterViewInit, OnInit {
       .pipe(select(state => state.fileManagerState.path))
       .pipe(first())
       .subscribe((path: string) => {
-        const nodes = this.nodeService.findParent(path);
+        const nodes = this.nodeService.findNodeByPath(path);
         this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: nodes});
       });
   }

@@ -23,7 +23,7 @@ export class NodeService {
   }
 
   public refreshCurrentPath() {
-    this.findParent(this.currentPath).children = {};
+    this.findNodeByPath(this.currentPath).children = {};
     this.getNodes(this.currentPath);
   }
 
@@ -31,7 +31,7 @@ export class NodeService {
     this.parseNodes(path).subscribe((data: Array<NodeInterface>) => {
       for (let i = 0; i < data.length; i++) {
         const parentPath = this.getParentPath(data[i].pathToNode);
-        this.findParent(parentPath).children[data[i].name] = data[i];
+        this.findNodeByPath(parentPath).children[data[i].name] = data[i];
       }
     });
   }
@@ -63,7 +63,7 @@ export class NodeService {
       node.path = ids.join('/');
     }
 
-    const cachedNode = this.findParent(node.path);
+    const cachedNode = this.findNodeByPath(node.path);
 
     return <NodeInterface>{
       id: node.id,
@@ -77,7 +77,7 @@ export class NodeService {
   }
 
   private getNodesFromServer = (path: string) => {
-    let folderId: any = this.findParent(path).id;
+    let folderId: any = this.findNodeByPath(path).id;
     folderId = folderId === 0 ? '' : folderId;
 
     return this.http.get(
@@ -86,8 +86,10 @@ export class NodeService {
     );
   };
 
-  public findParent(parentPath: string): NodeInterface {
-    const ids = parentPath.split('/');
+  public findNodeByPath(nodePath: string): NodeInterface {
+    console.log(nodePath);
+
+    const ids = nodePath.split('/');
     ids.splice(0, 1);
 
     return ids.length === 0 ? this.tree.nodes : ids.reduce((value, index) => value['children'][index], this.tree.nodes);

@@ -64,7 +64,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
   }
 
   get getCurrentPathId() {
-    const parentId = this.nodeService.findParent(this.nodeService.currentPath).id;
+    const parentId = this.nodeService.findNodeByPath(this.nodeService.currentPath).id;
     return parentId === 0 ? '' : parentId;
   }
 

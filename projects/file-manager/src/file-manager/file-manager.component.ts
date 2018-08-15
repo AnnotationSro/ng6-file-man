@@ -116,7 +116,7 @@ export class FileManagerComponent implements OnInit {
         });
 
       case 'createFolder' :
-        const parentId = this.nodeService.findParent(this.nodeService.currentPath).id;
+        const parentId = this.nodeService.findNodeByPath(this.nodeService.currentPath).id;
 
         this.nodeClickedService.createFolder(parentId, event.payload);
         return this.onItemClicked({
@@ -133,7 +133,7 @@ export class FileManagerComponent implements OnInit {
     }
 
     if (closing) {
-      const parentNode = this.nodeService.findParent(this.nodeService.currentPath);
+      const parentNode = this.nodeService.findNodeByPath(this.nodeService.currentPath);
       this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: parentNode});
       this.sideMenuClosed = true;
     }

@@ -32,7 +32,7 @@ export class FolderContentComponent implements OnInit {
     this.store
       .pipe(select(state => state.fileManagerState.path))
       .subscribe((path: string) => {
-        this.nodes = this.nodeService.findParent(path);
+        this.nodes = this.nodeService.findNodeByPath(path);
       });
   }
 
