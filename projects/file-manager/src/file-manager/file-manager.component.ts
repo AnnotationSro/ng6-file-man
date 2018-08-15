@@ -46,7 +46,8 @@ export class FileManagerComponent implements OnInit {
   ngOnInit() {
     // @ts-ignore
     window.console = window.console || {};
-    window.console.log = window.console.log || function(){};
+    window.console.log = window.console.log || function () {
+    };
 
     this.nodeService.tree = this.tree;
     this.nodeClickedService.tree = this.tree;
@@ -76,6 +77,12 @@ export class FileManagerComponent implements OnInit {
 
   onItemClicked(event: any): void {
     this.itemClicked.emit(event);
+  }
+
+  searchClicked(data: any) {
+    const node = this.nodeService.findNodeById(data.id);
+    this.ngxSmartModalService.getModal('searchModal').close();
+    this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: node});
   }
 
   handleFileManagerClickEvent(event: any) {

@@ -87,12 +87,38 @@ export class NodeService {
   };
 
   public findNodeByPath(nodePath: string): NodeInterface {
-    console.log(nodePath);
-
     const ids = nodePath.split('/');
     ids.splice(0, 1);
 
     return ids.length === 0 ? this.tree.nodes : ids.reduce((value, index) => value['children'][index], this.tree.nodes);
+  }
+
+  public findNodeById(id: number): NodeInterface {
+    const result = this.findNodeByIdHelper(id);
+
+    if (result === null) {
+      console.warn('[Node Service] Cannot find node by id. Id not existing or not fetched. Returning root.');
+      return this.tree.nodes;
+    }
+
+    return result;
+  }
+
+  public findNodeByIdHelper(id: number, node: NodeInterface = this.tree.nodes): NodeInterface {
+    if (node.id === id)
+      return node;
+
+    const keys = Object.keys(node.children);
+
+    for (let i = 0; i < keys.length; i++) {
+      if (typeof node.children[keys[i]] == 'object') {
+        const obj = this.findNodeByIdHelper(id, node.children[keys[i]]);
+        if (obj != null)
+          return obj;
+      }
+    }
+
+    return null;
   }
 
   public foldRecursively(node: NodeInterface) {

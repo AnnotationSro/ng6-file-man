@@ -175,7 +175,24 @@
   <div style="text-align: center" *ngIf="searchModal.hasData()">{{searchModal.getData().searchString}}</div>
 
   <div *ngIf="searchModal.hasData()">
-    <pre>{{ searchModal.getData() | json }}</pre>
+    <table style="margin: 0 auto">
+      <tr>
+        <td class="table-item table-head">Názov</td>
+        <td class="table-item-short table-head">Veľkosť</td>
+      </tr>
+      <tr *ngFor="let item of searchModal.getData().response" (click)="searchClicked(item)">
+        <td style="cursor: pointer">
+          <ng-container *ngIf="item.fileCategory === 'D'; else file">
+            <i class="fas fa-folder"></i>
+          </ng-container>
+          <ng-template #file>
+            <i class="fas fa-file"></i>
+          </ng-template>
+          {{item.name}}
+        </td>
+        <td class="table-item-short">{{item.size}}</td>
+      </tr>
+    </table>
   </div>
 </ngx-smart-modal>
 

@@ -13,6 +13,7 @@ export interface ConfigInterface {
     deleteFile: string;
     createFolder: string;
     renameFile: string;
+    searchFiles: string;
   };
   options: {
     allowFolderDownload: boolean;

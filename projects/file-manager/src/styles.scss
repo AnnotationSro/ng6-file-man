@@ -406,7 +406,7 @@ i {
 
   font-size: 11px;
 
-  &:hover  {
+  &:hover {
     color: $contrast-color;
     background: #fff;
   }
@@ -514,10 +514,16 @@ i {
   @extend .nsm-content;
   @include borders;
   border-width: 2px;
+  max-height: 90vh;
 }
 
 .nsm-dialog-btn-close {
   outline: none;
+}
+
+.nsm-body {
+  @extend .nsm-body;
+  overflow: auto;
 }
 
 .nsm-dialog {
@@ -526,6 +532,7 @@ i {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-height: 90vh;
 }
 
 /*
@@ -541,7 +548,7 @@ i {
   border: none;
   border-bottom: 1px solid #ccc;
   outline: none;
-  margin: 3px;
+  margin: 3px 0;
   padding: 5px;
   box-sizing: border-box;
   width: 100%;
@@ -550,4 +557,12 @@ i {
   &:focus {
     border-bottom: 1px solid $main-color;
   }
+}
+
+/*
+  Search modal
+ ---------------*/
+.table-head {
+  color: $main-color;
+  font-weight: bold;
 }

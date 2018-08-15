@@ -26,7 +26,8 @@ export class AppComponent {
         downloadFile: 'api/file/download',
         deleteFile: 'api/file/remove',
         createFolder: 'api/file/directory',
-        renameFile: 'api/file/rename'
+        renameFile: 'api/file/rename',
+        searchFiles: 'api/file/list'
       },
       options: {
         allowFolderDownload: false,

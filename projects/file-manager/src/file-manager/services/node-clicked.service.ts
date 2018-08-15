@@ -37,6 +37,16 @@ export class NodeClickedService {
     );
   }
 
+  public searchForString(input: string): void {
+    this.sideEffectHelper(
+      'Search',
+      {},// {search: input},
+      'get',
+      this.tree.config.api.searchFiles,
+      (res) => this.searchSuccess(input, res)
+    );
+  }
+
   public createFolder(currentParent: number, newDirName: string) {
     this.sideEffectHelper(
       'Create Folder',
@@ -56,7 +66,7 @@ export class NodeClickedService {
   }
 
   private sideEffectHelper(name: string, parameters: {}, httpMethod: string, apiURL: string,
-                           successMethod = () => this.actionSuccess(),
+                           successMethod = (a) => this.actionSuccess(a),
                            failMethod = (a, b) => this.actionFailed(a, b)
   ) {
     const params = this.parseParams(parameters);
@@ -65,7 +75,7 @@ export class NodeClickedService {
 
     this.reachServer(httpMethod, apiURL + params)
       .subscribe(
-        () => successMethod(),
+        (a) => successMethod(a),
         (err) => failMethod(name, err)
       );
   }
@@ -102,7 +112,19 @@ export class NodeClickedService {
     document.getElementById('side-view').classList.remove('selected');
   }
 
-  private actionSuccess() {
+  private searchSuccess(input:string, data: any) {
+    const obj = {
+      searchString: input,
+      response: data
+    };
+
+    this.actionSuccess();
+
+    this.ngxSmartModalService.setModalData(obj, 'searchModal');
+    this.ngxSmartModalService.getModal('searchModal').open();
+  }
+
+  private actionSuccess(response: string = "") {
     this.nodeService.refreshCurrentPath();
     this.ngxSmartModalService.getModal('waitModal').close();
   }
