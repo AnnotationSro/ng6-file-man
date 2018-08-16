@@ -10,6 +10,7 @@ import {TreeModel, NodeInterface, ConfigInterface} from '../../projects/file-man
 export class AppComponent {
   tree: TreeModel;
   node: NodeInterface;
+  appLanguage = 'sk';
 
   constructor() {
     const treeConfig: ConfigInterface = {

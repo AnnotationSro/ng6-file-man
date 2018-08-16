@@ -1,3 +1,4 @@
+// import {ModuleWithProviders, NgModule} from '@angular/core';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FileManagerComponent} from './file-manager.component';
@@ -18,6 +19,7 @@ import {NewFolderComponent} from './components/functions/upload/new-folder/new-f
 import {SideViewComponent} from './components/side-view/side-view.component';
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {NgxSmartModalModule} from 'ngx-smart-modal';
+// import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
@@ -61,4 +63,10 @@ export function createTranslateLoader(http: HttpClient) {
   ]
 })
 export class FileManagerModule {
+  // static forRoot(): ModuleWithProviders {
+  //   return {
+  //     ngModule: FileManagerModule,
+  //     providers: [TranslateService]
+  //   };
+  // }
 }

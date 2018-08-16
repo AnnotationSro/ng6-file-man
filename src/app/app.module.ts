@@ -11,7 +11,7 @@ import {FileManagerModule} from '../../projects/file-manager/src/public_api';
   ],
   imports: [
     BrowserModule,
-    FileManagerModule
+    FileManagerModule/*.forRoot(),*/
   ],
   providers: [],
   bootstrap: [AppComponent]

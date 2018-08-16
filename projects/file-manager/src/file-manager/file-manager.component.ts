@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, SimpleChange, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {TreeModel} from './models/tree.model';
 import {NodeService} from './services/node.service';
@@ -29,6 +29,16 @@ export class FileManagerComponent implements OnInit {
   @Input() isPopup: boolean = false;
   @Output() itemClicked = new EventEmitter();
 
+  _language: string = 'en';
+  @Input() set language(value: string) {
+    this._language = value;
+    this.translate.use(value);
+  }
+
+  get language(): string {
+    return this._language;
+  }
+
   selectedNode: NodeInterface;
   sideMenuClosed = true;
 
@@ -44,8 +54,6 @@ export class FileManagerComponent implements OnInit {
     public translate: TranslateService
   ) {
     translate.setDefaultLang('en');
-    // translate.use('en');
-    translate.use('sk');
   }
 
   ngOnInit() {
