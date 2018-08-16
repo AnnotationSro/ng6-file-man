@@ -23,17 +23,17 @@ export class NodeClickedService {
   }
 
   public startDownload(node: NodeInterface): void {
-    const parameters = this.parseParams({id: node.id});
+    const parameters = this.parseParams({path: node.id});
     this.reachServer('download', this.tree.config.api.downloadFile + parameters);
   }
 
   public initDelete(node: NodeInterface): void {
     this.sideEffectHelper(
       'Delete',
-      {id: node.id},
+      {path: node.id},
       'delete',
       this.tree.config.api.deleteFile,
-      () => this.deleteSuccess()
+      () => this.successWithModalClose()
     );
   }
 
@@ -50,7 +50,7 @@ export class NodeClickedService {
   public createFolder(currentParent: number, newDirName: string) {
     this.sideEffectHelper(
       'Create Folder',
-      {dirName: newDirName, parentId: currentParent === 0 ? null : currentParent},
+      {dirName: newDirName, parentPath: currentParent === 0 ? null : currentParent},
       'post',
       this.tree.config.api.createFolder
     );
@@ -59,9 +59,10 @@ export class NodeClickedService {
   public rename(id: number, newName: string) {
     this.sideEffectHelper(
       'Rename',
-      {id: id, newName: newName},
+      {path: id, newName: newName},
       'post',
-      this.tree.config.api.renameFile
+      this.tree.config.api.renameFile,
+      () => this.successWithModalClose()
     );
   }
 
@@ -107,7 +108,7 @@ export class NodeClickedService {
     return query.slice(0, -1);
   }
 
-  private deleteSuccess() {
+  private successWithModalClose() {
     this.actionSuccess();
     document.getElementById('side-view').classList.remove('selected');
   }

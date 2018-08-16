@@ -82,7 +82,7 @@ export class NodeService {
 
     return this.http.get(
       this.tree.config.baseURL + this.tree.config.api.listFile,
-      {params: new HttpParams().set('parentId', folderId)}
+      {params: new HttpParams().set('parentPath', folderId)}
     );
   };
 

@@ -38,7 +38,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
         // forceMultipart: false,
         paramsInBody: false,
         params: {
-          parentId: this.getCurrentPathId
+          parentPath: this.getCurrentPath
         }
       },
       retry: {
@@ -63,9 +63,9 @@ export class UploadComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
 
-  get getCurrentPathId() {
-    const parentId = this.nodeService.findNodeByPath(this.nodeService.currentPath).id;
-    return parentId === 0 ? '' : parentId;
+  get getCurrentPath() {
+    const parentPath = this.nodeService.findNodeByPath(this.nodeService.currentPath).id;
+    return parentPath === 0 ? '' : parentPath;
   }
 
   uploadFiles() {
