@@ -43,8 +43,9 @@ export class FileManagerComponent implements OnInit {
     public ngxSmartModalService: NgxSmartModalService,
     public translate: TranslateService
   ) {
-    translate.use('en');
-    // translate.use('sk');
+    translate.setDefaultLang('en');
+    // translate.use('en');
+    translate.use('sk');
   }
 
   ngOnInit() {
