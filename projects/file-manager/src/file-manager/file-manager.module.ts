@@ -6,7 +6,7 @@ import {TreeComponent} from './components/tree/tree.component';
 import {NodeListerComponent} from './components/tree/node-lister/node-lister.component';
 import {NodeComponent} from './components/functions/node/node.component';
 import {MapToIterablePipe} from './pipes/map-to-iterable.pipe';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {StoreModule} from '@ngrx/store';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {reducers} from './reducers/reducer.factory';
@@ -17,8 +17,13 @@ import {UploadComponent} from './components/functions/upload/upload.component';
 import {NewFolderComponent} from './components/functions/upload/new-folder/new-folder.component';
 import {SideViewComponent} from './components/side-view/side-view.component';
 import {NavigationComponent} from './components/navigation/navigation.component';
-import {RenameComponent} from './components/functions/rename/rename.component';
 import {NgxSmartModalModule} from 'ngx-smart-modal';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -26,7 +31,13 @@ import {NgxSmartModalModule} from 'ngx-smart-modal';
     StoreModule.forRoot(reducers),
     CommonModule,
     FileDropModule,
-    NgxSmartModalModule.forRoot()
+    NgxSmartModalModule.forRoot(),
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]}
+    })
   ],
   declarations: [
     FileManagerComponent,
@@ -41,8 +52,7 @@ import {NgxSmartModalModule} from 'ngx-smart-modal';
     UploadComponent,
     NewFolderComponent,
     SideViewComponent,
-    NavigationComponent,
-    RenameComponent
+    NavigationComponent
   ],
   exports: [
     FileManagerComponent,

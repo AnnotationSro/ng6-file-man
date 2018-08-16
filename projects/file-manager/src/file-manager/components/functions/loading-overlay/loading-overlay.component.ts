@@ -1,4 +1,5 @@
 import {Component, Input, OnInit, TemplateRef} from '@angular/core';
+import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import {timer} from 'rxjs';
 
 @Component({
@@ -8,11 +9,11 @@ import {timer} from 'rxjs';
 })
 export class LoadingOverlayComponent implements OnInit {
   @Input() loadingOverlayTemplate: TemplateRef<any>;
-  timeoutMessage: string;
+  timeoutMessage: any;
 
   ngOnInit() {
     timer(2000).subscribe(() => {
-      this.timeoutMessage = 'Troubles with loading? Klik sem na zrusenie nacitavania.';
+      this.timeoutMessage = _('Troubles with loading? Click anywhere to cancel loading');
     });
   }
 }

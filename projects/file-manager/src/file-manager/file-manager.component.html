@@ -2,7 +2,7 @@
 
 <ng-template #itIsPopup>
   <div *ngIf="!fmOpen">
-    <button class="button big" (click)="fmShowHide()">Otvor FM</button>
+    <button class="button big" (click)="fmShowHide()" translate="">Open file manager</button>
   </div>
   <div class="file-manager-backdrop" *ngIf="fmOpen">
     <div class="fmModalInside">
@@ -114,7 +114,7 @@
 </ng-template>
 <ng-template let-timeoutMessage #defaultLoadingOverlayTemplate>
   <div class="file-manager-backdrop loading" (click)="backdropClicked()">
-    <div class="file-manager-error" *ngIf="timeoutMessage">{{timeoutMessage}}</div>
+    <div class="file-manager-error" *ngIf="timeoutMessage">{{timeoutMessage | translate}}</div>
   </div>
   <div class="spinner">
     <i class="fas fa-5x fa-spin fa-sync-alt"></i>
@@ -122,54 +122,60 @@
 </ng-template>
 <ng-template let-node #defaultSideViewTemplate>
   <div style="position: absolute; bottom: 0; width: 100%; margin: 5px auto">
-    No data available for this {{node.isFolder ? 'folder' : 'file'}}
+    <span *ngIf="node.isFolder" translate>No data available for this folder</span>
+    <span *ngIf="!node.isFolder" translate>No data available for this file</span>
   </div>
 </ng-template>
 
 <ngx-smart-modal identifier="renameModal" [dismissable]="false" [closable]="false" *ngIf="selectedNode" #renameModal>
-  <h2 class="modal-title">
+  <h2 class="modal-title" translate>
     Rename file
   </h2>
-  <p class="rename-name">Old name</p>
+  <p class="rename-name" translate>
+    Old name
+  </p>
   <span style="margin: 8px">{{selectedNode.name}}</span>
-  <p class="rename-name">New name</p>
+  <p class="rename-name" translate>
+    New name
+  </p>
   <input placeholder="New name" type="text" class="rename-input" [value]="selectedNode.name" #renameInput>
   <br>
 
   <div class="rename-button">
-    <button class="button big"
+    <button class="button big" translate
             (click)="handleFileManagerClickEvent({type: 'rename', value: renameInput.value})"
             [disabled]="renameInput.value === selectedNode.name || renameInput.value.length === 0">
       Rename
     </button>
-    <button class="button big" (click)="renameModal.close()">
+    <button class="button big" (click)="renameModal.close()" translate>
       Cancel
     </button>
   </div>
 
 </ngx-smart-modal>
-
 <ngx-smart-modal *ngIf="selectedNode" identifier="confirmDeleteModal" #deleteModal
                  [dismissable]="false" [closable]="false">
   <h2 class="modal-title">
-    You are trying to delete following {{selectedNode.isFolder ? 'folder' : 'file'}}
+    <span translate>You are trying to delete following </span>
+    <span *ngIf="selectedNode.isFolder" translate>folder</span>
+    <span *ngIf="!selectedNode.isFolder" translate>file</span>
   </h2>
 
   <div style="width: 100%; margin: 5px auto; text-align: center">{{selectedNode.name}}</div>
 
   <div class="rename-button">
-    <button class="button big"
-            (click)="handleFileManagerClickEvent({type: 'remove'})">
-      Yes, <strong>delete</strong> this {{selectedNode.isFolder ? 'folder' : 'file'}}
+    <button class="button big" (click)="handleFileManagerClickEvent({type: 'remove'})">
+      <span translate>Yes, delete this </span>
+      <span *ngIf="selectedNode.isFolder" translate>folder</span>
+      <span *ngIf="!selectedNode.isFolder" translate>file</span>
     </button>
-    <button class="button big " (click)="deleteModal.close()">
+    <button class="button big " (click)="deleteModal.close()" translate>
       Cancel
     </button>
   </div>
 </ngx-smart-modal>
-
 <ngx-smart-modal identifier="searchModal" #searchModal [closable]="true">
-  <h2 class="modal-title" style="margin-bottom: 2px">
+  <h2 class="modal-title" style="margin-bottom: 2px" translate>
     Search results for
   </h2>
   <div style="text-align: center" *ngIf="searchModal.hasData()">{{searchModal.getData().searchString}}</div>
@@ -177,8 +183,8 @@
   <div *ngIf="searchModal.hasData()">
     <table style="margin: 0 auto">
       <tr>
-        <td class="table-item table-head">Názov</td>
-        <td class="table-item-short table-head">Veľkosť</td>
+        <td class="table-item table-head" translate>File name</td>
+        <td class="table-item-short table-head" translate>Size</td>
       </tr>
       <tr *ngFor="let item of searchModal.getData().response" (click)="searchClicked(item)">
         <td style="cursor: pointer">
@@ -195,19 +201,17 @@
     </table>
   </div>
 </ngx-smart-modal>
-
 <ngx-smart-modal identifier="waitModal" [closable]="false" [dismissable]="false" [escapable]="false">
   <h2 class="modal-title">
-    Processing request...
+    {{'Processing request' | translate}}...
   </h2>
 
   <div style="text-align: center">
     <i class="fas fa-spinner fa-spin fa-4x"></i>
   </div>
 </ngx-smart-modal>
-
 <ngx-smart-modal identifier="errorModal" [closable]="true">
-  <h2 class="modal-title">
-    Something went wrong with your request...
+  <h2 class="modal-title" style="margin-top: 20px">
+    {{'Something went wrong with your request' | translate}}...
   </h2>
 </ngx-smart-modal>

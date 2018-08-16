@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {NgxSmartModalService} from 'ngx-smart-modal';
 import {NodeClickedService} from '../../services/node-clicked.service';
 
 @Component({

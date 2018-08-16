@@ -12,11 +12,12 @@
     </div>
 
     <div class="side-view-buttons">
-      <button (click)="onClick($event, 'download')" [disabled]="!allowFolderDownload && node.isFolder" class="button">
-        Stiahni
+      <button (click)="onClick($event, 'download')" class="button"
+              [disabled]="!allowFolderDownload && node.isFolder" translate>
+        Download
       </button>
-      <button (click)="onClick($event, 'renameConfirm')" class="button">Premenuj</button>
-      <button (click)="onClick($event, 'removeAsk')" class="button">Vymaž</button>
+      <button (click)="onClick($event, 'renameConfirm')" class="button" translate>Rename</button>
+      <button (click)="onClick($event, 'removeAsk')" class="button" translate>Delete</button>
     </div>
   </div>
 </div>

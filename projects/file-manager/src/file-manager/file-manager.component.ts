@@ -8,6 +8,7 @@ import * as ACTIONS from './reducers/actions.action';
 import {AppStore} from './reducers/reducer.factory';
 import {NgxSmartModalService} from 'ngx-smart-modal';
 import {NodeClickedService} from './services/node-clicked.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'fm-file-manager',
@@ -39,8 +40,11 @@ export class FileManagerComponent implements OnInit {
     private store: Store<AppStore>,
     private nodeService: NodeService,
     private nodeClickedService: NodeClickedService,
-    public ngxSmartModalService: NgxSmartModalService
+    public ngxSmartModalService: NgxSmartModalService,
+    public translate: TranslateService
   ) {
+    translate.use('en');
+    // translate.use('sk');
   }
 
   ngOnInit() {
