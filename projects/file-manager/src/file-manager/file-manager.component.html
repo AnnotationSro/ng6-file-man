@@ -175,12 +175,15 @@
   </div>
 </ngx-smart-modal>
 <ngx-smart-modal identifier="searchModal" #searchModal [closable]="true">
-  <h2 class="modal-title" style="margin-bottom: 2px" translate>
+  <h2 class="modal-title" style="margin-bottom: 2px" translate *ngIf="searchModal.hasData() && searchModal.getData().response.length !== 0">
     Search results for
+  </h2>
+  <h2 class="modal-title" style="margin-bottom: 2px" translate *ngIf="!searchModal.hasData() || searchModal.getData().response.length === 0">
+    No results found for
   </h2>
   <div style="text-align: center" *ngIf="searchModal.hasData()">{{searchModal.getData().searchString}}</div>
 
-  <div *ngIf="searchModal.hasData()">
+  <div *ngIf="searchModal.hasData() && searchModal.getData().response.length !== 0">
     <table style="margin: 0 auto">
       <tr>
         <td class="table-item table-head" translate>File name</td>
@@ -189,12 +192,12 @@
       <tr *ngFor="let item of searchModal.getData().response" (click)="searchClicked(item)">
         <td style="cursor: pointer">
           <ng-container *ngIf="item.fileCategory === 'D'; else file">
-            <i class="fas fa-folder"></i>
+            <i class="fas fa-folder search-output-icon"></i>
           </ng-container>
           <ng-template #file>
-            <i class="fas fa-file"></i>
+            <i class="fas fa-file search-output-icon"></i>
           </ng-template>
-          {{item.name}}
+          <span style="text-overflow: ellipsis">{{item.name}}</span>
         </td>
         <td class="table-item-short">{{item.size}}</td>
       </tr>
