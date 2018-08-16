@@ -40,7 +40,7 @@ export class NodeClickedService {
   public searchForString(input: string): void {
     this.sideEffectHelper(
       'Search',
-      {},// {search: input},
+      {query: input},
       'get',
       this.tree.config.api.searchFiles,
       (res) => this.searchSuccess(input, res)
@@ -112,7 +112,7 @@ export class NodeClickedService {
     document.getElementById('side-view').classList.remove('selected');
   }
 
-  private searchSuccess(input:string, data: any) {
+  private searchSuccess(input: string, data: any) {
     const obj = {
       searchString: input,
       response: data
@@ -120,11 +120,11 @@ export class NodeClickedService {
 
     this.actionSuccess();
 
-    this.ngxSmartModalService.setModalData(obj, 'searchModal');
+    this.ngxSmartModalService.setModalData(obj, 'searchModal', true);
     this.ngxSmartModalService.getModal('searchModal').open();
   }
 
-  private actionSuccess(response: string = "") {
+  private actionSuccess(response: string = '') {
     this.nodeService.refreshCurrentPath();
     this.ngxSmartModalService.getModal('waitModal').close();
   }
