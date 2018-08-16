@@ -17,7 +17,7 @@ export class NodeService {
   constructor(private http: HttpClient, private store: Store<AppStore>) {
   }
 
-  // todo server mi da aj strukturu rodicov a tu nasadim
+  // todo ask server to get parent structure
   public startManagerAt(path: string) {
     this.store.dispatch({type: ACTIONS.SET_PATH, payload: path});
   }

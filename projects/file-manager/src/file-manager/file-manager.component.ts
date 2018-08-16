@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, SimpleChange, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {TreeModel} from './models/tree.model';
 import {NodeService} from './services/node.service';
@@ -18,7 +18,6 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class FileManagerComponent implements OnInit {
   @Input() iconTemplate: TemplateRef<any>;
-  @Input() modalTemplate: TemplateRef<any>;
   @Input() folderContentTemplate: TemplateRef<any>;
   @Input() folderContentBackTemplate: TemplateRef<any>;
   @Input() folderContentNewTemplate: TemplateRef<any>;
@@ -29,10 +28,10 @@ export class FileManagerComponent implements OnInit {
   @Input() isPopup: boolean = false;
   @Output() itemClicked = new EventEmitter();
 
-  _language: string = 'en';
+  private _language: string = 'en';
   @Input() set language(value: string) {
     this._language = value;
-    this.translate.use(value);
+    this.translate.use(this.language);
   }
 
   get language(): string {
@@ -54,6 +53,7 @@ export class FileManagerComponent implements OnInit {
     public translate: TranslateService
   ) {
     translate.setDefaultLang('en');
+    translate.use('en');
   }
 
   ngOnInit() {
@@ -93,6 +93,8 @@ export class FileManagerComponent implements OnInit {
   }
 
   searchClicked(data: any) {
+    console.log(data)
+
     const node = this.nodeService.findNodeById(data.id);
     this.ngxSmartModalService.getModal('searchModal').close();
     this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: node});

@@ -17,6 +17,5 @@ export class NodeListerComponent implements OnInit {
   }
 
   ngOnInit() {
-    // todo has file check
   }
 }

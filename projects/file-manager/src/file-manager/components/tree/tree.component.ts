@@ -29,7 +29,7 @@ export class TreeComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.nodes = this.treeModel.nodes;
 
-    //todo tento store select tu neparti Kajo
+    //todo move this store to proper place
     this.store
       .pipe(select(state => state.fileManagerState.path))
       .subscribe((path: string) => {

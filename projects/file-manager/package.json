@@ -1,6 +1,21 @@
 {
   "name": "ng6-file-man",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Angular 6 File Manager component",
+  "keywords": [
+    "Angular 6",
+    "Angular 2",
+    "ng2",
+    "file-manage",
+    "file manager",
+    "uploader",
+    "i18n",
+    "SASS",
+    "themeable",
+    "customizable"
+  ],
+  "license": "MIT",
+  "author": "Martin Filo <martinxfilo@gmail.com> (https://github.com/Chiff/)",
   "scripts": {
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
   },
@@ -11,12 +26,11 @@
     "rxjs": "^6.0.0"
   },
   "dependencies": {
-    "@biesbjerg/ngx-translate-extract": "^2.3.4",
-    "@fortawesome/fontawesome-free": "^5.1.1",
     "@ngrx/store": "^6.1.0",
     "@ngx-translate/core": "^10.0.2",
+    "@ngx-translate/http-loader": "^3.0.1",
     "fine-uploader": "5.16.2",
-    "ngx-file-drop": "^4.0.6",
-    "ngx-smart-modal": "^7.0.3"
+    "ngx-smart-modal": "^7.0.3",
+    "@biesbjerg/ngx-translate-extract": "^2.3.4"
   }
 }

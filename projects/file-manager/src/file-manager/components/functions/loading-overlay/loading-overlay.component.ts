@@ -11,6 +11,7 @@ export class LoadingOverlayComponent implements OnInit {
   @Input() loadingOverlayTemplate: TemplateRef<any>;
   timeoutMessage: any;
 
+  // todo unsubscribe from 'list' event - now we are only dismissing this component
   ngOnInit() {
     timer(2000).subscribe(() => {
       this.timeoutMessage = _('Troubles with loading? Click anywhere to cancel loading');

@@ -8,7 +8,8 @@ export class TreeModel {
   public config: ConfigInterface;
 
   constructor(config: ConfigInterface) {
-    this._currentPath = config.startingFolder;
+    // this._currentPath = config.startingFolder; // todo implement (config.interfce.ts)
+    this._currentPath = '';
     this.config = config;
 
     this.nodes = <NodeInterface>{
@@ -21,26 +22,6 @@ export class TreeModel {
       name: 'root',
       children: {}
     };
-  }
-
-  // todo
-  public foldNode(node: NodeInterface) {
-    if (!node.stayOpen) {
-      node.isExpanded = false;
-    }
-  }
-
-  // todo
-  public foldNodeRecursively(node: NodeInterface) {
-    this.foldNode(node);
-
-    console.log(node);
-
-    for (const childNode in node.children) {
-      if (node.children.hasOwnProperty(childNode)) {
-        this.foldNodeRecursively(node.children[childNode]);
-      }
-    }
   }
 
   get currentPath(): string {
@@ -67,11 +48,12 @@ export class TreeModel {
     this._selectedNodeId = value;
   }
 
-  get isCache(): boolean {
-    return this.config.offlineMode;
-  }
-
-  set isCache(value: boolean) {
-    this.config.offlineMode = value;
-  }
+  // todo implement (config.interfce.ts)
+  // get isCache(): boolean {
+  //   return this.config.offlineMode;
+  // }
+  //
+  // set isCache(value: boolean) {
+  //   this.config.offlineMode = value;
+  // }
 }
