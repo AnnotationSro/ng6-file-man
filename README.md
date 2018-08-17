@@ -12,7 +12,7 @@ Angular 6 File Manager library.
 * [Customizing](#customizing)
 * [i18n](#i18n)
 
-##Features
+## Features
 
 * themeable
 * i18n support
@@ -20,7 +20,7 @@ Angular 6 File Manager library.
 * customizable parts
 * FileManager as button popup
 
-##Installing
+## Installing
 
 #### Prerequisities
 * Downloaded and added `fontawesome@^5.1.1`
@@ -105,7 +105,7 @@ Finaly, add it into html
 <fm-file-manager [tree]="tree"></fm-file-manager>
 ````
 
-##Backend
+## Backend
 
 #### List files / folders
 
@@ -206,7 +206,7 @@ This request is in form for [Fine Uploader traditional server](https://docs.fine
 ````
 
 
-##Outputs
+## Outputs
 ````
 <fm-file-manager (itemClicked)="itemClicked($event)" ... ></fm-file-manager>
 ````
@@ -221,7 +221,7 @@ This request is in form for [Fine Uploader traditional server](https://docs.fine
 
 Every event has `node` property
 
-##Inputs
+## Inputs
 
 name | type | required | default value
 --- | --- | --- | ---
@@ -235,7 +235,7 @@ folderContentNewTemplate | TemplateRef | false | -
 sideViewTemplate | TemplateRef | false | -
 loadingOverlayTemplate | TemplateRef | false | -
 
-##SASS
+## SASS
 
 #### Prerequisites
 * Global SASS file included in angular.json
@@ -260,7 +260,7 @@ $border-radius: 20px;
 @import "~ng6-file-man/assets/ng6-file-man-styles.scss";
 ````
 
-##Customizing
+## Customizing
 ````
 <fm-file-manager [iconTemplate]="iconTemplate" ... ></fm-file-manager>
 
@@ -297,7 +297,7 @@ loadingOverlayTemplate | let-timeoutMessage | string | loading overlay screen
 |--------------------------------------------------|
 ````
 
-##i18n
+## i18n
 * Copy `i18n` file from `~node_modules/ng6-file-man/assets`
 * Put it in `~src/assets/i18n/[language].json` (e.g. `~src/assets/i18n/fr.json`) 
 * Fill empty strings with your translations (e.g. `"Download": "Télécharger"`)
@@ -323,8 +323,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **Martin Filo** - *Initial work* - [Chiff](https://github.com/Chiff)
 
-<!---See also the list of [contributors](https://github.com/your/project/contributors)
- who participated in this project. -->
+See also the list of [contributors](https://github.com/AnnotationSro/ng6-file-man/contributors)
+ who participated in this project. 
 
 ## License
 
