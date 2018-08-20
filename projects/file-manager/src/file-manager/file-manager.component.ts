@@ -93,7 +93,7 @@ export class FileManagerComponent implements OnInit {
   }
 
   searchClicked(data: any) {
-    console.log(data)
+    // console.log(data);
 
     const node = this.nodeService.findNodeById(data.id);
     this.ngxSmartModalService.getModal('searchModal').close();

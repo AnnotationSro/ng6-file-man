@@ -1,13 +1,14 @@
 {
   "name": "ng6-file-man",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Angular 6 File Manager component",
   "keywords": [
     "Angular 6",
     "Angular 2",
     "ng2",
-    "file-manage",
+    "file-manager",
     "file manager",
+    "filemanager",
     "uploader",
     "i18n",
     "SASS",
