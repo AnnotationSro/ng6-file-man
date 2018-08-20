@@ -334,7 +334,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Repository
 * Playground: https://github.com/Chiff/ng6-file-man-test
 
-
-## Changes
-1.0.2
-  * removed href="#" from navbar because it interfered with router
