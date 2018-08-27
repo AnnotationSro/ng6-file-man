@@ -160,7 +160,6 @@ export class FileManagerComponent implements OnInit {
       this.sideMenuClosed = true;
     }
     else {
-      // todo fix this (kvoli tomu ze sa klika na ten isty node tak store ho ignoruje)
       if (this.selectedNode === node && this.sideMenuClosed)
         this.sideMenuClosed = false;
       else if (this.selectedNode === node && !this.sideMenuClosed)
@@ -172,6 +171,11 @@ export class FileManagerComponent implements OnInit {
     }
 
     this.selectedNode = node;
+
+    // todo investigate this workaround - warning: [File Manager] failed to find requested node for path: [path]
+    if(!document.getElementById('side-view')) {
+      return;
+    }
 
     if (this.sideMenuClosed) {
       document.getElementById('side-view').classList.remove('selected');
