@@ -11,7 +11,6 @@ Angular 6 File Manager library.
 * [SASS theming](#sass)
 * [Customizing](#customizing)
 * [i18n](#i18n)
-* [Change Log](#changes)
 
 ## Features
 
