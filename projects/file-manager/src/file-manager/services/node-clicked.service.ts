@@ -126,11 +126,15 @@ export class NodeClickedService {
   }
 
   private actionSuccess(response: string = '') {
+    document.body.classList.remove('dialog-open');
+
     this.nodeService.refreshCurrentPath();
     this.ngxSmartModalService.getModal('waitModal').close();
   }
 
   private actionFailed(name: string, error: any) {
+    document.body.classList.remove('dialog-open');
+
     this.ngxSmartModalService.getModal('waitModal').close();
     this.ngxSmartModalService.getModal('errorModal').open();
     console.warn('[NodeClickedService] Action "' + name + '" failed', error);
