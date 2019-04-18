@@ -113,13 +113,12 @@ Finaly, add it into html
 * Get
 
 <strong>Parameters we are sending</strong>
-* parentPath (e.g. `localhost:8080/api/file/list?parenthPath=/folder1/folder2`)
+* parentPath (e.g. `localhost:8080/api/file/list?parentPath=/folder1/folder2`)
 
 <strong>We are expecting response </strong>
 * Array of nodes with:
 ````
 {
-  contentType?: string    // 
   size: string           // e.g. '3 KB'
   url?: string            // download url
   id: string | number;   // id can be path or database id
@@ -195,7 +194,6 @@ This request is in form for [Fine Uploader traditional server](https://docs.fine
 * Array of nodes with:
 ````
 {
-  contentType?: string    // 
   size: string           // e.g. '3 KB'
   url?: string            // download url
   id: string | number;   // id can be path or database id
