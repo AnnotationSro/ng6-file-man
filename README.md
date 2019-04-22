@@ -107,6 +107,8 @@ Finaly, add it into html
 
 ## Backend
 
+**UPDATE:** Express API availible at https://github.com/Chiff/ng6-file-man-express
+
 #### List files / folders
 
 <strong>Method</strong>
@@ -146,7 +148,7 @@ This request is in form for [Fine Uploader traditional server](https://docs.fine
 * Get
 
 <strong>Parameters we are sending</strong>
-* path (e.g. `localhost:8080/api/file/download?parenthPath=/folder1/someFile.txt`)
+* path (e.g. `localhost:8080/api/file/download?parentPath=/folder1/someFile.txt`)
 
 #### Create directory
 
@@ -157,7 +159,7 @@ This request is in form for [Fine Uploader traditional server](https://docs.fine
 * dirName 
 * parentPath 
 
-(e.g. `localhost:8080/api/file/directory?parenthPath=/folder1&dirName=newDir`)
+(e.g. `localhost:8080/api/file/directory?parentPath=/folder1&dirName=newDir`)
 
 #### Remove file / folder
 
@@ -330,4 +332,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Repository
 * Playground: https://github.com/Chiff/ng6-file-man-test
+* Simple Express API: https://github.com/Chiff/ng6-file-man-express
 
