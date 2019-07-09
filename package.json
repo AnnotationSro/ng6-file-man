@@ -27,7 +27,7 @@
     "@ngx-translate/http-loader": "^3.0.1",
     "classlist.js": "^1.1.20150312",
     "fine-uploader": "5.16.2",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-rename": "^1.4.0",
     "ngx-file-drop": "^8.0.3",
     "ngx-smart-modal": "^7.1.1",
