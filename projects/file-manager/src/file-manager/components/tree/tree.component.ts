@@ -13,7 +13,7 @@ import {first} from 'rxjs/operators';
   styleUrls: ['./tree.component.scss']
 })
 export class TreeComponent implements AfterViewInit, OnInit {
-  @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
+  @ContentChild(TemplateRef, {static: false}) templateRef: TemplateRef<any>;
 
   @Input() treeModel: TreeModel;
 

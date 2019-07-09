@@ -207,7 +207,7 @@ i {
 }
 
 .file-manager-item:hover {
-  @extend .file-manager-item.highlighted;
+  @extend .file-manager-item, .highlighted;
   border: 1px solid white;
 
   transition: background-color 0s;
