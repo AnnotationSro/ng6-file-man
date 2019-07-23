@@ -235,6 +235,10 @@ i {
     height: calc(100vh - 60px);
     @include borders;
     position: fixed;
+
+    .content{
+      height: calc(100% - 50px);
+    }
   }
 
   &.loading {

@@ -3,8 +3,8 @@ import {select, Store} from '@ngrx/store';
 import {TreeModel} from './models/tree.model';
 import {NodeService} from './services/node.service';
 import {NodeInterface} from './interfaces/node.interface';
-import {SET_LOADING_STATE} from './reducers/actions.action';
 import * as ACTIONS from './reducers/actions.action';
+import {SET_LOADING_STATE} from './reducers/actions.action';
 import {AppStore} from './reducers/reducer.factory';
 import {NgxSmartModalService} from 'ngx-smart-modal';
 import {NodeClickedService} from './services/node-clicked.service';
@@ -27,6 +27,7 @@ export class FileManagerComponent implements OnInit {
   @Input() tree: TreeModel;
   @Input() isPopup: boolean = false;
   @Output() itemClicked = new EventEmitter();
+  @Output() itemSelected = new EventEmitter();
 
   private _language: string = 'en';
   @Input() set language(value: string) {
@@ -57,11 +58,6 @@ export class FileManagerComponent implements OnInit {
   }
 
   ngOnInit() {
-    // @ts-ignore
-    window.console = window.console || {};
-    window.console.log = window.console.log || function () {
-    };
-
     this.nodeService.tree = this.tree;
     this.nodeClickedService.tree = this.tree;
     this.nodeService.startManagerAt(this.tree.currentPath);
@@ -202,10 +198,12 @@ export class FileManagerComponent implements OnInit {
     this.removeClass('highlighted');
     this.removeClass('light');
 
-    if (fcElement)
+    if (fcElement) {
       this.highilghtChildElement(fcElement);
-    if (treeElement)
+    }
+    if (treeElement) {
       this.highilghtChildElement(treeElement, true);
+    }
 
     // parent node highlight
     let pathToParent = node.pathToParent;
@@ -231,10 +229,11 @@ export class FileManagerComponent implements OnInit {
       .children[0] // ng template first item
       .classList.add('highlighted');
 
-    if (light)
+    if (light) {
       el.children[0]
         .children[0]
         .classList.add('light');
+    }
   }
 
   private getElementById(id: string, prefix: string = ''): HTMLElement {
@@ -259,5 +258,14 @@ export class FileManagerComponent implements OnInit {
 
   handleUploadDialog(event: any) {
     this.newDialog = event;
+  }
+
+  confirmSelection() {
+    this.fmOpen = false;
+    this.itemSelected.emit(this.selectedNode);
+  }
+
+  cancelSelection() {
+    this.fmOpen = false;
   }
 }

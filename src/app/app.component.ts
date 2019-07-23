@@ -16,13 +16,13 @@ export class AppComponent {
     const treeConfig: ConfigInterface = {
       baseURL: 'http://localhost:8080/',
       api: {
-        listFile: 'api/file/list',
-        uploadFile: 'api/file/upload',
-        downloadFile: 'api/file/download',
-        deleteFile: 'api/file/remove',
-        createFolder: 'api/file/directory',
-        renameFile: 'api/file/rename',
-        searchFiles: 'api/file/search'
+        listFile: 'api/list',
+        uploadFile: 'api/upload',
+        downloadFile: 'api/download',
+        deleteFile: 'api/remove',
+        createFolder: 'api/directory',
+        renameFile: 'api/rename',
+        searchFiles: 'api/search'
       },
       options: {
         allowFolderDownload: false,
@@ -35,7 +35,7 @@ export class AppComponent {
   }
 
   // noinspection JSUnusedLocalSymbols
-  itemClicked(event: any) {
-    // console.log(event);
+  itemSelected(event: any) {
+    console.log(event);
   }
 }

@@ -1,7 +1,7 @@
 <div class="backdrop" (click)="newClickedAction()"></div>
 <div class="upload-background">
   <div class="buttons">
-    <button class="button" [disabled]="newFolder" (click)="createNewFolder()" translate>Create new folder</button>
+    <button class="button" [disabled]="newFolder" (click)="createNewFolder()">{{'filemanager.create_new_folder' | translate}}</button>
   </div>
 
   <div *ngIf="newFolder">
@@ -15,11 +15,11 @@
 
 
   <div class="buttons">
-    <button class="button big" [disabled]="this.counter < 1" (click)="uploadFiles()" translate>
-      Upload
+    <button class="button big" [disabled]="this.counter < 1" (click)="uploadFiles()">
+      {{'filemanager.upload' | translate }}
     </button>
-    <button class="button big" (click)="newClickedAction()" translate>
-      Close
+    <button class="button big" (click)="newClickedAction()">
+      {{'filemanager.close' | translate }}
     </button>
   </div>
 
@@ -33,7 +33,7 @@
 
     <div class="upload-top-bar">
       <div class="qq-upload-button-selector qq-upload-button">
-        <div translate>Upload a file</div>
+        <div>{{'filemanager.upload_file' | translate}}</div>
       </div>
 
       <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
@@ -43,7 +43,7 @@
     </div>
 
     <span class="qq-drop-processing-selector qq-drop-processing">
-            <span translate>Processing dropped files</span>...
+            <span>{{'filemanager.processing_dropped_files'}}</span>...
             <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
     </span>
 
@@ -59,9 +59,9 @@
         <span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="Edit filename"></span>
         <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
         <span class="qq-upload-size-selector qq-upload-size"></span>
-        <button type="button" class="qq-btn qq-upload-cancel-selector qq-upload-cancel" translate>Cancel</button>
-        <button type="button" class="qq-btn qq-upload-retry-selector qq-upload-retry" translate>Retry</button>
-        <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete" translate>Delete</button>
+        <button type="button" class="qq-btn qq-upload-cancel-selector qq-upload-cancel">{{'filemanager.cancel' | translate }}</button>
+        <button type="button" class="qq-btn qq-upload-retry-selector qq-upload-retry">{{'filemanager.retry' | translate}}</button>
+        <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">{{'filemanager.delete' | translate}}</button>
         <span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
       </li>
     </ul>
@@ -69,15 +69,15 @@
     <dialog class="qq-alert-dialog-selector">
       <div class="qq-dialog-message-selector"></div>
       <div class="qq-dialog-buttons">
-        <button type="button" class="qq-cancel-button-selector" translate>Close</button>
+        <button type="button" class="qq-cancel-button-selector">{{'filemanager.close' | translate }}</button>
       </div>
     </dialog>
 
     <dialog class="qq-confirm-dialog-selector">
       <div class="qq-dialog-message-selector"></div>
       <div class="qq-dialog-buttons">
-        <button type="button" class="qq-cancel-button-selector" translate>No</button>
-        <button type="button" class="qq-ok-button-selector" translate>Yes</button>
+        <button type="button" class="qq-cancel-button-selector">{{'filemanager.no' | translate}}</button>
+        <button type="button" class="qq-ok-button-selector">{{'filemanager.yes' | translate}}</button>
       </div>
     </dialog>
 
@@ -85,8 +85,8 @@
       <div class="qq-dialog-message-selector"></div>
       <input type="text">
       <div class="qq-dialog-buttons">
-        <button type="button" class="qq-cancel-button-selector" translate>Cancel</button>
-        <button type="button" class="qq-ok-button-selector" translate>Ok</button>
+        <button type="button" class="qq-cancel-button-selector">{{'filemanager.cancel' | translate }}</button>
+        <button type="button" class="qq-ok-button-selector">{{'filemanager.ok' | translate }}</button>
       </div>
     </dialog>
   </div>

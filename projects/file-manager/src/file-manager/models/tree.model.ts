@@ -20,7 +20,8 @@ export class TreeModel {
       isExpanded: true,
       stayOpen: true,
       name: 'root',
-      children: {}
+      children: {},
+      isRoot: true
     };
   }
 

@@ -84,7 +84,7 @@ export class NodeService {
       this.tree.config.baseURL + this.tree.config.api.listFile,
       {params: new HttpParams().set('parentPath', folderId)}
     );
-  };
+  }
 
   public findNodeByPath(nodePath: string): NodeInterface {
     const ids = nodePath.split('/');
@@ -105,16 +105,18 @@ export class NodeService {
   }
 
   public findNodeByIdHelper(id: number, node: NodeInterface = this.tree.nodes): NodeInterface {
-    if (node.id === id)
+    if (node.id === id) {
       return node;
+    }
 
     const keys = Object.keys(node.children);
 
     for (let i = 0; i < keys.length; i++) {
-      if (typeof node.children[keys[i]] == 'object') {
+      if (typeof node.children[keys[i]] === 'object') {
         const obj = this.findNodeByIdHelper(id, node.children[keys[i]]);
-        if (obj != null)
+        if (obj != null) {
           return obj;
+        }
       }
     }
 

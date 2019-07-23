@@ -1,6 +1,6 @@
 <div class="navigation-component">
   <input #input class="navigation-search" onclick="this.select();" (keyup.enter)="onClick(input.value)"
-         placeholder="{{'Search' | translate}}">
+         placeholder="{{'filemanager.search' | translate}}">
 
   <button [disabled]="input.value.length === 0" class="navigation-search-icon" (click)="onClick(input.value)">
     <i class="fas fa-search"></i>

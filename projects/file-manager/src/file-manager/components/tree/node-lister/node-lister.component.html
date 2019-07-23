@@ -3,7 +3,7 @@
   <ng-container *ngFor="let node of obj.keys(nodes)">
     <li class="node-lister-list-item" *ngIf="nodes[node].isFolder || showFiles">
 
-      <app-node class="node-lister-app-node" [node]="nodes[node]" id="tree_{{nodes[node].id === 0 ? 'root' : nodes[node].pathToNode}}">
+      <app-node class="node-lister-app-node" [node]="nodes[node]" id="tree_{{nodes[node].isRoot ? 'root' : nodes[node].pathToNode}}">
         <ng-container [ngTemplateOutletContext]="{$implicit: (nodes[node])}"
                       [ngTemplateOutlet]="templateRef">
         </ng-container>

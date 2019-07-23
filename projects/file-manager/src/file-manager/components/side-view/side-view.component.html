@@ -13,11 +13,11 @@
 
     <div class="side-view-buttons">
       <button (click)="onClick($event, 'download')" class="button"
-              [disabled]="!allowFolderDownload && node.isFolder" translate>
-        Download
+              [disabled]="!allowFolderDownload && node.isFolder">
+        {{'filemanager.download' | translate }}
       </button>
-      <button (click)="onClick($event, 'renameConfirm')" class="button" translate>Rename</button>
-      <button (click)="onClick($event, 'removeAsk')" class="button" translate>Delete</button>
+      <button (click)="onClick($event, 'renameConfirm')" class="button">{{'filemanager.rename' | translate }}</button>
+      <button (click)="onClick($event, 'removeAsk')" class="button">{{'filemanager.delete' | translate }}</button>
     </div>
   </div>
 </div>
