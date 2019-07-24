@@ -309,6 +309,13 @@ loadingOverlayTemplate | let-timeoutMessage | string | loading overlay screen
 * [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 * [ng-packagr](https://github.com/dherges/ng-packagr)
 
+### Build instructions
+1. Change package version
+2. yarn run libProd
+3. gulp prod
+4. cd ../fml
+5. npm publish
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.

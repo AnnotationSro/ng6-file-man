@@ -26,9 +26,11 @@ export class FileManagerComponent implements OnInit {
 
   @Input() tree: TreeModel;
   @Input() isPopup: boolean = false;
+  @Input() openFilemanagerButtonLabelKey = 'filemanager.open_file_manager';
   @Output() itemClicked = new EventEmitter();
   @Output() itemSelected = new EventEmitter();
 
+  private openFilemanagerButtonLabel: string;
   private _language: string = 'en';
   @Input() set language(value: string) {
     this._language = value;
@@ -61,6 +63,10 @@ export class FileManagerComponent implements OnInit {
     this.nodeService.tree = this.tree;
     this.nodeClickedService.tree = this.tree;
     this.nodeService.startManagerAt(this.tree.currentPath);
+
+    this.translate.get(this.openFilemanagerButtonLabelKey).subscribe((translation) => {
+      this.openFilemanagerButtonLabel = translation;
+    });
 
     this.store
       .pipe(select(state => state.fileManagerState.isLoading))
