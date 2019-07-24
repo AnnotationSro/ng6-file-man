@@ -313,7 +313,7 @@ loadingOverlayTemplate | let-timeoutMessage | string | loading overlay screen
 1. Change package version
 2. yarn run libProd
 3. gulp prod
-4. cd ../fml
+4. cd ../file-manager-lib
 5. npm publish
 
 ## Contributing
@@ -329,6 +329,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Martin Filo** - *Initial work* - [Chiff](https://github.com/Chiff)
+* **Igor Kvasnicka** - improvements and fine tuning
 
 See also the list of [contributors](https://github.com/AnnotationSro/ng6-file-man/contributors)
  who participated in this project. 
