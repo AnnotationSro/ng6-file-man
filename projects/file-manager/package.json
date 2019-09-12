@@ -25,10 +25,10 @@
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
   },
   "peerDependencies": {
-    "@angular/common": "^6.0.3",
-    "@angular/core": "^6.0.3",
+    "@angular/common": "^8.2.6",
+    "@angular/core": "^8.2.6",
     "@angular/http": "^6.0.3",
-    "rxjs": "^6.0.0"
+    "rxjs": "^6.4.0"
   },
   "dependencies": {
     "@ngrx/store": "^8.3.0",
