@@ -6,6 +6,7 @@ import {select, Store} from '@ngrx/store';
 import {AppStore} from '../../reducers/reducer.factory';
 import * as ACTIONS from '../../reducers/actions.action';
 import {first} from 'rxjs/operators';
+import { fileManagerSelectedPath } from '../../reducers/stateReducer';
 
 @Component({
   selector: 'app-tree',
@@ -31,7 +32,7 @@ export class TreeComponent implements AfterViewInit, OnInit {
 
     //todo move this store to proper place
     this.store
-      .pipe(select(state => state.fileManagerState.path))
+      .pipe(select(fileManagerSelectedPath))
       .subscribe((path: string) => {
         this.nodeService.getNodes(path);
 
@@ -43,11 +44,11 @@ export class TreeComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     this.store
-      .pipe(select(state => state.fileManagerState.path))
+      .pipe(select(fileManagerSelectedPath))
       .pipe(first())
       .subscribe((path: string) => {
         const nodes = this.nodeService.findNodeByPath(path);
-        this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: nodes});
+        this.store.dispatch(new ACTIONS.SetSelectedNode(nodes));
       });
   }
 }

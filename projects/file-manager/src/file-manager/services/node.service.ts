@@ -19,7 +19,7 @@ export class NodeService {
 
   // todo ask server to get parent structure
   public startManagerAt(path: string) {
-    this.store.dispatch({type: ACTIONS.SET_PATH, payload: path});
+    this.store.dispatch(new ACTIONS.SetPath(path));
   }
 
   public refreshCurrentPath() {
@@ -46,7 +46,7 @@ export class NodeService {
     return new Observable(observer => {
       this.getNodesFromServer(path).subscribe((data: Array<any>) => {
         observer.next(data.map(node => this.createNode(path, node)));
-        this.store.dispatch({type: ACTIONS.SET_LOADING_STATE, payload: false});
+        this.store.dispatch(new ACTIONS.SetLoadingState(false));
       });
     });
   }

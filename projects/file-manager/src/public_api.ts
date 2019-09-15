@@ -8,3 +8,4 @@ export * from './file-manager/models/tree.model';
 export * from './file-manager/interfaces/config.interface';
 export * from './file-manager/interfaces/node.interface';
 export * from './file-manager/services/node.service';
+export * from './file-manager/interfaces/node.interface';

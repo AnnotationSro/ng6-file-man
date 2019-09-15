@@ -1,4 +1,4 @@
-<div class="item-holder">
+<div *ngIf="nodes" class="item-holder">
   <ng-container *ngIf="nodes.id !== 0">
     <app-node [node]=nodes id="{{nodes.pathToNode}}">
       <ng-container [ngTemplateOutletContext]="{$implicit: nodes}"
