@@ -34,6 +34,7 @@
     "file": "súbor",
     "folder": "priečinok",
     "confirm_selection": "Potvrdiť",
-    "cancel_selection": "Zrušiť"
+    "cancel_selection": "Zrušiť",
+    "drop_zone_label": "Sem môžete potiahnuť súbor"
   }
 }
