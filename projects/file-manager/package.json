@@ -21,6 +21,7 @@
   },
   "license": "MIT",
   "author": "Martin Filo <martinxfilo@gmail.com> (https://github.com/Chiff/)",
+  "contributors":["Igor Kvasnicka <igor.kvasnicka@gmail.com>"],
   "scripts": {
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
   },
