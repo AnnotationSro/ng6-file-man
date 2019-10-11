@@ -19,8 +19,6 @@ export class UploadComponent implements OnInit, AfterViewInit {
   newFolder = false;
   counter = 0;
 
-  dropText = 'ahoj';
-
   constructor(private http: HttpClient,
               private nodeService: NodeService) {
   }
