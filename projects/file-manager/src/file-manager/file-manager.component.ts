@@ -30,6 +30,7 @@ export class FileManagerComponent implements OnInit {
   @Output() itemClicked = new EventEmitter();
   @Output() itemSelected = new EventEmitter();
 
+
   openFilemanagerButtonLabel: string;
   private _language: string = 'en';
   @Input() set language(value: string) {

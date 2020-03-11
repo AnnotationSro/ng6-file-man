@@ -145,8 +145,7 @@
     {{'filemanager.new_name' | translate}}
   </p>
   <input type="text" class="rename-input" [value]="selectedNode.name" #renameInput
-         (keyup.enter)="handleFileManagerClickEvent({type: 'rename', value: renameInput.value})"
-         onclick="this.select();">
+         (keyup.enter)="handleFileManagerClickEvent({type: 'rename', value: renameInput.value})">
   <br>
 
   <div class="rename-button">

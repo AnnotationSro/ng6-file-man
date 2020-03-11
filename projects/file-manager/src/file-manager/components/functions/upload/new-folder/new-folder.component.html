@@ -1,4 +1,4 @@
 <p class="new-folder-description">{{'filemanager.type_new_folder_name' | translate}}</p>
 <input #uploadFolder placeholder="{{'filemanager.folder_name' | translate}}" (keyup)="onInputChange($event)"
-       (keyup.enter)="onClick()" onclick="this.select();" type="text" class="new-folder-input"/>
+       (keyup.enter)="onClick()" type="text" class="new-folder-input"/>
 <button class="button new-folder-send" (click)="onClick()">{{buttonText | translate}}</button>

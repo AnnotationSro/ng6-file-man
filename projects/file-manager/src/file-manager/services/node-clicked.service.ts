@@ -102,10 +102,11 @@ export class NodeClickedService {
     let query = '?';
 
     Object.keys(params).filter(item => params[item] !== null).map(key => {
-      query += key + '=' + params[key] + '&';
+      query += key + '=' + btoa(params[key]) + '&';
     });
 
     return query.slice(0, -1);
+
   }
 
   private successWithModalClose() {
