@@ -20,6 +20,7 @@ import {NavigationComponent} from './components/navigation/navigation.component'
 import {NgxSmartModalModule} from 'ngx-smart-modal';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TranslateService} from '@ngx-translate/core';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
@@ -56,8 +57,10 @@ export function createTranslateLoader(http: HttpClient) {
   exports: [
     FileManagerComponent,
     LoadingOverlayComponent,
-    SideViewComponent
-  ]
+	  SideViewComponent
+  ],
+  providers: [TranslateService]
+
 })
 export class FileManagerModule {
   // static forRoot(): ModuleWithProviders {

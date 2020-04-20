@@ -17,10 +17,6 @@
     typescript "2.4.1"
     yargs "8.0.2"
 
-"@fortawesome/fontawesome-free@^5.1.1":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.2.0.tgz#50cd9856774351c56c0b1b0db4efe122d7913e58"
-
 "@ngrx/store@^6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-6.1.0.tgz#5b027647a797bf027912568214b10375dd75af38"
@@ -28,6 +24,13 @@
 "@ngx-translate/core@^10.0.2":
   version "10.0.2"
   resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-10.0.2.tgz#5eeb78f47845b476a1e892fb2fb153dbbaf72850"
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngx-translate/http-loader@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-3.0.1.tgz#20b0f98bc6c25321129d3e3302ab3cc489c0a42a"
+  integrity sha1-ILD5i8bCUyESnT4zAqs8xInApCo=
   dependencies:
     tslib "^1.9.0"
 
@@ -400,12 +403,6 @@ mkdirp@0.5.1:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
-
-ngx-file-drop@^4.0.6:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/ngx-file-drop/-/ngx-file-drop-4.0.6.tgz#a7da98eb4c268b40759057597ba496f16cde19fc"
-  dependencies:
-    tslib "^1.9.0"
 
 ngx-smart-modal@^7.0.3:
   version "7.0.3"

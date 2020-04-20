@@ -3,7 +3,7 @@ const rename = require('gulp-rename');
 const exec = require('child_process').exec;
 
 gulp.task('prod', function (cb) {
-  exec('ng build file-manager --prod', function (err, stdout, stderr) {
+  exec('./node_modules/@angular/cli/bin/ng build file-manager --prod', function (err, stdout, stderr) {
 
     console.log('## Copying styles..');
     gulp.src('./projects/file-manager/src/styles.scss')
