@@ -3,12 +3,9 @@
   "version": "1.0.6",
   "description": "Angular 6 File Manager component",
   "keywords": [
-    "Angular 6",
-    "Angular 2",
+    "Angular",
     "ng2",
     "file-manager",
-    "file manager",
-    "filemanager",
     "uploader",
     "i18n",
     "SASS",
@@ -25,13 +22,13 @@
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
   },
   "peerDependencies": {
-    "@angular/common": "^6.0.3",
-    "@angular/core": "^6.0.3",
-    "@angular/http": "^6.0.3",
-    "rxjs": "^6.0.0"
+    "@angular/common": "^7.2.16",
+    "@angular/core": "^7.2.16",
+    "@angular/http": "^7.2.16",
+    "rxjs": "^6.3.3"
   },
   "dependencies": {
-    "@ngrx/store": "^6.1.0",
+    "@ngrx/store": "^7.4.0",
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
     "fine-uploader": "5.16.2",
