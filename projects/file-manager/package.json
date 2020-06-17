@@ -22,13 +22,13 @@
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
   },
   "peerDependencies": {
-    "@angular/common": "^7.2.16",
-    "@angular/core": "^7.2.16",
-    "@angular/http": "^7.2.16",
-    "rxjs": "^6.3.3"
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14",
+    "@angular/http": "^8.2.14",
+    "rxjs": "^6.4.0"
   },
   "dependencies": {
-    "@ngrx/store": "^7.4.0",
+    "@ngrx/store": "^8.6.0",
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
     "fine-uploader": "5.16.2",
