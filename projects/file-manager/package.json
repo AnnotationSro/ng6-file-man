@@ -22,17 +22,17 @@
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
   },
   "peerDependencies": {
-    "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14",
-    "@angular/http": "^8.2.14",
-    "rxjs": "^6.4.0"
+    "@angular/common": "^9.1.11",
+    "@angular/core": "^9.1.11",
+    "@angular/http": "^9.1.11",
+    "rxjs": "^6.5.5"
   },
   "dependencies": {
-    "@ngrx/store": "^8.6.0",
+    "@ngrx/store": "^9.2.0",
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
     "fine-uploader": "5.16.2",
-    "ngx-smart-modal": "^7.0.3",
+    "ngx-smart-modal": "^7.4.1",
     "@biesbjerg/ngx-translate-extract": "^2.3.4"
   }
 }

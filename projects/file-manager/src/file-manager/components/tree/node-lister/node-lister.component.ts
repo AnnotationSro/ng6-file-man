@@ -7,7 +7,7 @@ import {NodeInterface} from '../../../interfaces/node.interface';
   styleUrls: ['./node-lister.component.scss']
 })
 export class NodeListerComponent implements OnInit {
-  @ContentChild(TemplateRef, {static: false}) templateRef: TemplateRef<any>;
+  @ContentChild(TemplateRef) templateRef: TemplateRef<any>;
   @Input() nodes: NodeInterface;
   @Input() showFiles: boolean;
 
