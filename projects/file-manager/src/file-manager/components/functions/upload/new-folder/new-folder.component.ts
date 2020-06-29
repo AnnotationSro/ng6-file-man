@@ -7,7 +7,7 @@ import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
   styleUrls: ['./new-folder.component.scss']
 })
 export class NewFolderComponent implements OnInit {
-  @ViewChild('uploadFolder', {static: false}) uploadFolder: ElementRef;
+  @ViewChild('uploadFolder') uploadFolder: ElementRef;
   @Output() buttonClicked = new EventEmitter();
 
   buttonText = _('filemanager.close').toString();

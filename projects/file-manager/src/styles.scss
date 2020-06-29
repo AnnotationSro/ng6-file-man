@@ -211,6 +211,7 @@ i {
   border: 1px solid white;
 
   transition: background-color 0s;
+
   .file-name {
     height: auto;
     width: 100%;
@@ -218,7 +219,7 @@ i {
     @include borders;
     @include contrast;
     margin: 0;
-    padding: 5px;
+    padding: 0 5px 5px;
     position: absolute;
     left: 0;
     word-wrap: break-word;
