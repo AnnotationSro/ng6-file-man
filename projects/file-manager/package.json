@@ -25,9 +25,9 @@
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
   },
   "peerDependencies": {
-    "@angular/common": "^9.1.11",
-    "@angular/core": "^9.1.11",
-    "@angular/http": "^9.1.11",
+    "@angular/common": "^9.1.9",
+    "@angular/core": "^9.1.9",
+    "@angular/http": "^9.1.9",
     "rxjs": "^6.5.5"
   },
   "dependencies": {
