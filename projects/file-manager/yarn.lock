@@ -17,10 +17,10 @@
     typescript "2.4.1"
     yargs "8.0.2"
 
-"@ngrx/store@^7.4.0":
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-7.4.0.tgz#525a343aa45d7f6ca60f3301a23a27669c14bbce"
-  integrity sha512-kwTUHgfgBeAL4RQBjZO46z9v4Xzg8PXAgY4WwXdt3zUk1tF4ZvijMleFvFRUoiJJfxF/UM6jgIZ/yGrX2dXQuA==
+"@ngrx/store@^9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-9.2.0.tgz#39f663f98b5332b33c8d197be3ab08bafd85bc88"
+  integrity sha512-V8AI3mxbMztVpbZpALkLZYlGkofKcu9GaOCY5e+sZ1VcJ90oxhFjBpnmd6MuVdmhep1XAHALb1B8ZbBFn+xsgQ==
 
 "@ngx-translate/core@^10.0.2":
   version "10.0.2"
@@ -405,9 +405,10 @@ mkdirp@0.5.1:
   dependencies:
     minimist "0.0.8"
 
-ngx-smart-modal@^7.0.3:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/ngx-smart-modal/-/ngx-smart-modal-7.0.3.tgz#17ca06282c948faa959fc0276700351e50b04d59"
+ngx-smart-modal@^7.4.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/ngx-smart-modal/-/ngx-smart-modal-7.4.1.tgz#e4051a61c7469c82170c685033ae681842cd5c78"
+  integrity sha512-1vvqavgJYa06lMAgAniuoaLDCNN4i4M7GzWdSTfndrdtknPUwLlXjmr0uJG7NvgeOnZYICWwx/c/dtgHsMjH/Q==
 
 normalize-package-data@^2.3.2:
   version "2.4.0"
