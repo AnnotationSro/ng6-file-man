@@ -3,9 +3,7 @@ import {NodeInterface} from '../interfaces/node.interface';
 import {Observable} from 'rxjs';
 import {TreeModel} from '../models/tree.model';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import * as ACTIONS from '../reducers/actions.action';
-import {Store} from '@ngrx/store';
-import {AppStore} from '../reducers/reducer.factory';
+import {FileManagerStoreService, SET_LOADING_STATE, SET_PATH, SET_SELECTED_NODE} from './file-manager-store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,26 +12,34 @@ export class NodeService {
   public tree: TreeModel;
   private _path: string;
 
-  constructor(private http: HttpClient, private store: Store<AppStore>) {
+  constructor(private http: HttpClient, private store: FileManagerStoreService) {
   }
 
   // todo ask server to get parent structure
   public startManagerAt(path: string) {
-    this.store.dispatch({type: ACTIONS.SET_PATH, payload: path});
+    this.currentPath = path;
+    this.refreshCurrentPath();
   }
 
   public refreshCurrentPath() {
     this.findNodeByPath(this.currentPath).children = {};
-    this.getNodes(this.currentPath);
+    this.getNodes(this.currentPath).then(() => {
+      this.store.dispatch({type: SET_SELECTED_NODE, payload: this.tree.nodes});
+      this.store.dispatch({type: SET_PATH, payload: this.currentPath});
+    });
   }
 
   getNodes(path: string) {
-    this.parseNodes(path).subscribe((data: Array<NodeInterface>) => {
-      for (let i = 0; i < data.length; i++) {
-        const parentPath = this.getParentPath(data[i].pathToNode);
-        this.findNodeByPath(parentPath).children[data[i].name] = data[i];
-      }
-    });
+    return new Promise((resolve => {
+      this.parseNodes(path).subscribe((data: Array<NodeInterface>) => {
+        for (let i = 0; i < data.length; i++) {
+          const parentPath = this.getParentPath(data[i].pathToNode);
+          this.findNodeByPath(parentPath).children[data[i].name] = data[i];
+        }
+
+        resolve();
+      });
+    }));
   }
 
   private getParentPath(path: string): string {
@@ -46,7 +52,7 @@ export class NodeService {
     return new Observable(observer => {
       this.getNodesFromServer(path).subscribe((data: Array<any>) => {
         observer.next(data.map(node => this.createNode(path, node)));
-        this.store.dispatch({type: ACTIONS.SET_LOADING_STATE, payload: false});
+        this.store.dispatch({type: SET_LOADING_STATE, payload: false});
       });
     });
   }
@@ -84,7 +90,7 @@ export class NodeService {
       this.tree.config.baseURL + this.tree.config.api.listFile,
       {params: new HttpParams().set('parentPath', folderId)}
     );
-  }
+  };
 
   public findNodeByPath(nodePath: string): NodeInterface {
     const ids = nodePath.split('/');

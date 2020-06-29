@@ -1,4 +1,3 @@
-// ngrx store app state
 import {NodeInterface} from './node.interface';
 
 export interface StateInterface {

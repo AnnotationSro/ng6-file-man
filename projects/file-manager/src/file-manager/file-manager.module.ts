@@ -8,9 +8,7 @@ import {NodeListerComponent} from './components/tree/node-lister/node-lister.com
 import {NodeComponent} from './components/functions/node/node.component';
 import {MapToIterablePipe} from './pipes/map-to-iterable.pipe';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {StoreModule} from '@ngrx/store';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
-import {reducers} from './reducers/reducer.factory';
 import {LoadingOverlayComponent} from './components/functions/loading-overlay/loading-overlay.component';
 import {FileSizePipe} from './pipes/file-size.pipe';
 import {UploadComponent} from './components/functions/upload/upload.component';
@@ -18,9 +16,8 @@ import {NewFolderComponent} from './components/functions/upload/new-folder/new-f
 import {SideViewComponent} from './components/side-view/side-view.component';
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {NgxSmartModalModule} from 'ngx-smart-modal';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {TranslateService} from '@ngx-translate/core';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
@@ -29,7 +26,6 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   imports: [
     HttpClientModule,
-    StoreModule.forRoot(reducers),
     CommonModule,
     NgxSmartModalModule.forRoot(),
     TranslateModule.forRoot({

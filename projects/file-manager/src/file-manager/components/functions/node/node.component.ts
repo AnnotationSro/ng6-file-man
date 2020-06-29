@@ -1,11 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NodeInterface} from '../../../interfaces/node.interface';
-import {Store} from '@ngrx/store';
 
-import * as ACTIONS from '../../../reducers/actions.action';
-import {AppStore} from '../../../reducers/reducer.factory';
 import {NodeService} from '../../../services/node.service';
 import {NodeClickedService} from '../../../services/node-clicked.service';
+import {FileManagerStoreService, SET_PATH, SET_SELECTED_NODE} from '../../../services/file-manager-store.service';
 
 @Component({
   selector: 'app-node',
@@ -17,7 +15,7 @@ export class NodeComponent implements OnInit {
   isSingleClick = true;
 
   constructor(
-    private store: Store<AppStore>,
+    private store: FileManagerStoreService,
     private nodeService: NodeService,
     private nodeClickedService: NodeClickedService
   ) {
@@ -56,21 +54,21 @@ export class NodeComponent implements OnInit {
         this.nodeService.foldAll();
       }
 
-      this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.pathToNode});
+      this.store.dispatch({type: SET_PATH, payload: this.node.pathToNode});
       return;
     }
 
     this.toggleNodeExpanded();
 
     if (this.node.isExpanded) {
-      this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.pathToNode});
+      this.store.dispatch({type: SET_PATH, payload: this.node.pathToNode});
     }
 
     this.setNodeSelectedState();
   }
 
   private showMenu() {
-    this.store.dispatch({type: ACTIONS.SET_SELECTED_NODE, payload: this.node});
+    this.store.dispatch({type: SET_SELECTED_NODE, payload: this.node});
   }
 
   private toggleNodeExpanded() {
@@ -83,7 +81,7 @@ export class NodeComponent implements OnInit {
 
       this.nodeService.foldRecursively(this.node);
 
-      this.store.dispatch({type: ACTIONS.SET_PATH, payload: this.node.pathToParent});
+      this.store.dispatch({type: SET_PATH, payload: this.node.pathToParent});
     } else {
       document.getElementById('tree_' + this.node.pathToNode).classList.remove('deselected');
     }

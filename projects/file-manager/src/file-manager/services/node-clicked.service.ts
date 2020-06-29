@@ -5,8 +5,6 @@ import {TreeModel} from '../models/tree.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {NgxSmartModalService} from 'ngx-smart-modal';
-import {AppStore} from '../reducers/reducer.factory';
-import {Store} from '@ngrx/store';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +15,6 @@ export class NodeClickedService {
   constructor(
     public ngxSmartModalService: NgxSmartModalService,
     private nodeService: NodeService,
-    private store: Store<AppStore>,
     private http: HttpClient
   ) {
   }

@@ -1,9 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {select, Store} from '@ngrx/store';
-import {TreeModel} from '../../models/tree.model';
 import {NodeService} from '../../services/node.service';
 import {NodeInterface} from '../../interfaces/node.interface';
-import {AppStore} from '../../reducers/reducer.factory';
+import {FileManagerStoreService} from '../../services/file-manager-store.service';
 
 @Component({
   selector: 'app-folder-content',
@@ -15,8 +13,6 @@ export class FolderContentComponent implements OnInit {
   @Input() folderContentBackTemplate: TemplateRef<any>;
   @Input() folderContentNewTemplate: TemplateRef<any>;
 
-  @Input() treeModel: TreeModel;
-
   @Output() openUploadDialog = new EventEmitter();
 
   nodes: NodeInterface;
@@ -24,13 +20,15 @@ export class FolderContentComponent implements OnInit {
 
   constructor(
     private nodeService: NodeService,
-    private store: Store<AppStore>
+    private store: FileManagerStoreService
   ) {
   }
 
   ngOnInit() {
+    this.nodes = this.nodeService.tree.nodes;
+
     this.store
-      .pipe(select(state => state.fileManagerState.path))
+      .getState(state => state.fileManagerState.path)
       .subscribe((path: string) => {
         this.nodes = this.nodeService.findNodeByPath(path);
       });

@@ -31,7 +31,6 @@
     "rxjs": "^6.5.5"
   },
   "dependencies": {
-    "@ngrx/store": "^9.2.0",
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
     "fine-uploader": "5.16.2",
