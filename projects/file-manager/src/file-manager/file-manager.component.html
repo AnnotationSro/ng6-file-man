@@ -44,7 +44,6 @@
 
       <div class="right">
         <app-folder-content
-          [treeModel]="tree"
           (openUploadDialog)="handleUploadDialog($event)"
           [folderContentTemplate]="folderContentTemplate ? folderContentTemplate : defaultFolderContentTemplate"
           [folderContentNewTemplate]="folderContentNewTemplate ? folderContentNewTemplate : defaultFolderContentNewTemplate"
