@@ -31,7 +31,7 @@ export class FileManagerStoreService {
   dispatch(param: Actions) {
     Object.assign(this.state.fileManagerState, stateReducer(this.state.fileManagerState, param));
     this.sub.next(this.state);
-    if (isDevMode()) console.warn('[FileManagerStoreService] dispatch', param, JSON.parse(JSON.stringify(this.state)));
+    // if (isDevMode()) console.warn('[FileManagerStoreService] dispatch', param, JSON.parse(JSON.stringify(this.state)));
   }
 
   getState<R>(mapFn: (value: AppStore, index: number) => R): Observable<R> {
