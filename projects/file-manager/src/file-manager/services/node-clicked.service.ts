@@ -2,9 +2,10 @@ import {Injectable} from '@angular/core';
 import {NodeInterface} from '../interfaces/node.interface';
 import {NodeService} from './node.service';
 import {TreeModel} from '../models/tree.model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {NgxSmartModalService} from 'ngx-smart-modal';
+import {first} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,24 +21,24 @@ export class NodeClickedService {
   }
 
   public startDownload(node: NodeInterface): void {
-    const parameters = this.parseParams({path: node.id});
-    this.reachServer('download', this.tree.config.api.downloadFile + parameters);
+    const parameters = new HttpParams().append('path', node.id + '');
+    this.reachServer('download', this.tree.config.api.downloadFile, parameters);
   }
 
   public initDelete(node: NodeInterface): void {
     this.sideEffectHelper(
       'Delete',
-      {path: node.id},
+      new HttpParams().append('path', node.id + ''),
       'delete',
       this.tree.config.api.deleteFile,
-      () => this.successWithModalClose()
+      () => this.successWithSideViewClose()
     );
   }
 
   public searchForString(input: string): void {
     this.sideEffectHelper(
       'Search',
-      {query: input},
+      new HttpParams().append('query', input),
       'get',
       this.tree.config.api.searchFiles,
       (res) => this.searchSuccess(input, res)
@@ -47,7 +48,15 @@ export class NodeClickedService {
   public createFolder(currentParent: number, newDirName: string) {
     this.sideEffectHelper(
       'Create Folder',
-      {dirName: newDirName, parentPath: currentParent === 0 ? null : currentParent},
+      (() => {
+        let httpParams = new HttpParams().append('dirName', newDirName);
+        if (currentParent !== 0) {
+          httpParams = httpParams.append('parentPath', currentParent + '');
+        }
+
+        console.log(currentParent, httpParams.get('dirName'), httpParams.get('parentPath'));
+        return httpParams;
+      })(),
       'post',
       this.tree.config.api.createFolder
     );
@@ -56,36 +65,34 @@ export class NodeClickedService {
   public rename(id: number, newName: string) {
     this.sideEffectHelper(
       'Rename',
-      {path: id, newName: newName},
+      new HttpParams().append('path', id + '').append('newName', newName),
       'post',
       this.tree.config.api.renameFile,
-      () => this.successWithModalClose()
+      () => this.successWithSideViewClose()
     );
   }
 
-  private sideEffectHelper(name: string, parameters: {}, httpMethod: string, apiURL: string,
+  private sideEffectHelper(name: string, parameters: HttpParams, httpMethod: string, apiURL: string,
                            successMethod = (a) => this.actionSuccess(a),
                            failMethod = (a, b) => this.actionFailed(a, b)
   ) {
-    const params = this.parseParams(parameters);
-
     this.ngxSmartModalService.getModal('waitModal').open();
 
-    this.reachServer(httpMethod, apiURL + params)
+    this.reachServer(httpMethod, apiURL, parameters)
       .subscribe(
         (a) => successMethod(a),
         (err) => failMethod(name, err)
       );
   }
 
-  private reachServer(method: string, apiUrl: string, data: any = {}): Observable<Object> {
+  private reachServer(method: string, apiUrl: string, parameters: HttpParams, data: any = {}): Observable<Object> {
     switch (method.toLowerCase()) {
       case 'get':
-        return this.http.get(this.tree.config.baseURL + apiUrl);
+        return this.http.get(this.tree.config.baseURL + apiUrl, {params: parameters});
       case 'post':
-        return this.http.post(this.tree.config.baseURL + apiUrl, data);
+        return this.http.post(this.tree.config.baseURL + apiUrl, data, {params: parameters});
       case 'delete':
-        return this.http.delete(this.tree.config.baseURL + apiUrl);
+        return this.http.delete(this.tree.config.baseURL + apiUrl, {params: parameters});
       case 'download':
         window.open(this.tree.config.baseURL + apiUrl, '_blank');
         return null;
@@ -95,18 +102,7 @@ export class NodeClickedService {
     }
   }
 
-  private parseParams(params: {}): string {
-    let query = '?';
-
-    Object.keys(params).filter(item => params[item] !== null).map(key => {
-      query += key + '=' + btoa(params[key]) + '&';
-    });
-
-    return query.slice(0, -1);
-
-  }
-
-  private successWithModalClose() {
+  private successWithSideViewClose() {
     this.actionSuccess();
     document.getElementById('side-view').classList.remove('selected');
   }
@@ -127,7 +123,10 @@ export class NodeClickedService {
     document.body.classList.remove('dialog-open');
 
     this.nodeService.refreshCurrentPath();
-    this.ngxSmartModalService.getModal('waitModal').close();
+
+    const modal = this.ngxSmartModalService.getModal('waitModal');
+    modal.onOpenFinished.pipe(first()).subscribe(() => modal.close());
+    modal.close();
   }
 
   private actionFailed(name: string, error: any) {
