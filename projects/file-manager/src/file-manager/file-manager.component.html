@@ -214,12 +214,14 @@
   </div>
 </ngx-smart-modal>
 <ngx-smart-modal identifier="waitModal" [closable]="false" [dismissable]="false" [escapable]="false">
-  <h2 class="modal-title" style="margin-top: 20px">
-    {{'filemanager.processing_request' | translate}}...
-  </h2>
+  <div style="overflow-y: hidden">
+    <h2 class="modal-title" style="margin-top: 20px">
+      {{'filemanager.processing_request' | translate}}...
+    </h2>
 
-  <div style="text-align: center; height: 70px">
-    <i class="fas fa-spinner fa-spin fa-4x"></i>
+    <div style="text-align: center; height: 70px">
+      <i class="fas fa-spinner fa-spin fa-4x"></i>
+    </div>
   </div>
 </ngx-smart-modal>
 <ngx-smart-modal identifier="errorModal" [closable]="true">
