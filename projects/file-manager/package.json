@@ -1,6 +1,6 @@
 {
   "name": "ng6-file-man",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Angular 6 File Manager component",
   "keywords": [
     "Angular",
@@ -27,7 +27,6 @@
   "peerDependencies": {
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9",
-    "@angular/http": "^9.1.9",
     "rxjs": "^6.5.5"
   },
   "dependencies": {
