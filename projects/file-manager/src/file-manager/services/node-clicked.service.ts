@@ -94,7 +94,7 @@ export class NodeClickedService {
       case 'delete':
         return this.http.delete(this.tree.config.baseURL + apiUrl, {params: parameters});
       case 'download':
-        window.open(this.tree.config.baseURL + apiUrl, '_blank');
+        window.open(this.tree.config.baseURL + apiUrl + '?path=' + parameters.get('path'), '_blank');
         return null;
       default:
         console.warn('[NodeClickedService] Incorrect params for this side-effect');

@@ -148,7 +148,7 @@ This request is in form for [Fine Uploader traditional server](https://docs.fine
 * Get
 
 <strong>Parameters we are sending</strong>
-* path (e.g. `localhost:8080/api/file/download?parentPath=/folder1/someFile.txt`)
+* path (e.g. `localhost:8080/api/file/download?path=/folder1/someFile.txt`)
 
 #### Create directory
 
