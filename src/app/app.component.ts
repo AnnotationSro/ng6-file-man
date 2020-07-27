@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 // import {TreeModel, NodeInterface, ConfigInterface} from 'ng6-file-man';
-import {TreeModel, NodeInterface, ConfigInterface} from '../../projects/file-manager/src/public_api';
+import {ConfigInterface, NodeInterface, TreeModel} from '../../projects/file-manager/src/public_api';
+import {DownloadModeEnum} from '../../projects/file-manager/src/file-manager/enums/download-mode.enum';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ export class AppComponent {
         searchFiles: 'api/search'
       },
       options: {
-        allowFolderDownload: false,
+        allowFolderDownload: DownloadModeEnum.DOWNLOAD_DISABLED,
         showFilesInsideTree: false
       }
     };

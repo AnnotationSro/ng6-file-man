@@ -4,6 +4,7 @@ import {NodeInterface} from '../../../interfaces/node.interface';
 import {NodeService} from '../../../services/node.service';
 import {NodeClickedService} from '../../../services/node-clicked.service';
 import {FileManagerStoreService, SET_PATH, SET_SELECTED_NODE} from '../../../services/file-manager-store.service';
+import {DownloadModeEnum} from '../../../enums/download-mode.enum';
 
 @Component({
   selector: 'app-node',
@@ -45,6 +46,12 @@ export class NodeComponent implements OnInit {
 
   private open() {
     if (!this.node.isFolder) {
+      if (this.nodeService?.tree?.config?.options?.allowFolderDownload === DownloadModeEnum.DOWNLOAD_DISABLED) {
+        this.isSingleClick = true;
+        this.showMenu();
+        return;
+      }
+
       this.nodeClickedService.startDownload(this.node);
       return;
     }

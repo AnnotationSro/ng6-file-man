@@ -1,6 +1,6 @@
 # FileMan
 
-Angular 6 File Manager library.
+Angular File Manager library.
 
 ## Table of contents
 * [Features](#features)
@@ -87,7 +87,7 @@ const treeConfig: ConfigInterface = {
     searchFiles: 'api/file/search'
   },
   options: {
-    allowFolderDownload: false,
+    allowFolderDownload: DownloadModeEnum.DOWNLOAD_FILES, //alternatively DOWNLOAD_DISABLED,DOWNLOAD_ALL
     showFilesInsideTree: false
   }
 };
@@ -339,6 +339,6 @@ See also the list of [contributors](https://github.com/AnnotationSro/ng6-file-ma
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Repository
-* Playground: https://github.com/Chiff/ng6-file-man-test
+* Playground: https://github.com/Chiff/ng6-file-man-test \[outdated\]
 * Simple Express API: https://github.com/Chiff/ng6-file-man-express
 

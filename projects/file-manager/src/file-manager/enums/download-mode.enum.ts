@@ -1,0 +1,3 @@
+export enum DownloadModeEnum {
+  DOWNLOAD_DISABLED, DOWNLOAD_FILES, DOWNLOAD_ALL
+}

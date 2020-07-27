@@ -1,3 +1,5 @@
+import {DownloadModeEnum} from '../enums/download-mode.enum';
+
 export interface ConfigInterface {
   baseURL: string;
   // startingFolder?: string; // todo implement
@@ -12,7 +14,7 @@ export interface ConfigInterface {
     searchFiles: string;
   };
   options: {
-    allowFolderDownload: boolean;
+    allowFolderDownload: DownloadModeEnum;
     showFilesInsideTree: boolean;
   }
 }

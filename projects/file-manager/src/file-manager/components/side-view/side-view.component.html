@@ -13,7 +13,7 @@
 
     <div class="side-view-buttons">
       <button (click)="onClick($event, 'download')" class="button"
-              [disabled]="!allowFolderDownload && node.isFolder">
+              [disabled]="isDisabled()">
         {{'filemanager.download' | translate }}
       </button>
       <button (click)="onClick($event, 'renameConfirm')" class="button">{{'filemanager.rename' | translate }}</button>

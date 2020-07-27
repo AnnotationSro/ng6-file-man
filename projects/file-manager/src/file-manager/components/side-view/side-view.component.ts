@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {NodeInterface} from '../../interfaces/node.interface';
+import {DownloadModeEnum} from '../../enums/download-mode.enum';
 
 @Component({
   selector: 'app-side-view',
@@ -11,7 +12,7 @@ export class SideViewComponent implements OnInit {
   @Input() sideViewTemplate: TemplateRef<any>;
 
   @Input() node: NodeInterface;
-  @Input() allowFolderDownload = false;
+  @Input() allowFolderDownload: DownloadModeEnum = DownloadModeEnum.DOWNLOAD_DISABLED;
 
   @Output() clickEvent = new EventEmitter();
 
@@ -23,6 +24,16 @@ export class SideViewComponent implements OnInit {
 
   onClick(event: any, type: string) {
     this.clickEvent.emit({type: type, event: event, node: this.node});
+  }
+
+  isDisabled() {
+    if (this.allowFolderDownload === DownloadModeEnum.DOWNLOAD_DISABLED) {
+      return true;
+    } else if (this.allowFolderDownload === DownloadModeEnum.DOWNLOAD_FILES && this.node.isFolder) {
+      return true;
+    }
+
+    return false;
   }
 
 }
