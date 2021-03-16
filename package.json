@@ -29,7 +29,7 @@
     "fine-uploader": "5.16.2",
     "gulp": "^4.0.2",
     "gulp-rename": "^1.4.0",
-    "ngx-file-drop": "^8.0.8",
+    "ngx-file-drop": "^11.0.2",
     "ngx-smart-modal": "^7.4.1",
     "rxjs": "^6.5.5",
     "zone.js": "~0.10.2"
@@ -55,7 +55,7 @@
     "ng-packagr": "^9.0.0",
     "protractor": "~5.4.2",
     "ts-node": "~7.0.1",
-    "tsickle": ">=0.25.5",
+    "tsickle": "0.39.1",
     "tslib": "^1.11.2",
     "tslint": "~5.15.0",
     "typescript": "~3.8.3"
