@@ -22,7 +22,8 @@
     "Igor Kvasnicka <igor.kvasnicka@gmail.com>"
   ],
   "scripts": {
-    "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
+    "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _",
+    "postinstall": "ngcc"
   },
   "peerDependencies": {
     "@angular/common": "^9.1.9",
@@ -30,10 +31,11 @@
     "rxjs": "^6.5.5"
   },
   "dependencies": {
+    "@angular/localize": "9.1.13",
+    "@biesbjerg/ngx-translate-extract": "^2.3.4",
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
     "fine-uploader": "5.16.2",
-    "ngx-smart-modal": "^7.4.1",
-    "@biesbjerg/ngx-translate-extract": "^2.3.4"
+    "ngx-smart-modal": "^7.4.1"
   }
 }
