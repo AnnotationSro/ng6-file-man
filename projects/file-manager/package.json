@@ -22,8 +22,7 @@
     "Igor Kvasnicka <igor.kvasnicka@gmail.com>"
   ],
   "scripts": {
-    "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _",
-    "postinstall": "ngcc"
+    "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
   },
   "peerDependencies": {
     "@angular/common": "^9.1.9",
