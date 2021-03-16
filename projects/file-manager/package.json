@@ -25,8 +25,8 @@
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
   },
   "peerDependencies": {
-    "@angular/common": "^9.1.9",
-    "@angular/core": "^9.1.9",
+    "@angular/common": "^10.2.4",
+    "@angular/core": "^10.2.4",
     "rxjs": "^6.5.5"
   },
   "dependencies": {
@@ -35,6 +35,7 @@
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
     "fine-uploader": "5.16.2",
-    "ngx-smart-modal": "^7.4.1"
+    "ngx-smart-modal": "^7.4.1",
+    "tslib": "^2.0.0"
   }
 }
