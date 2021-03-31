@@ -1,6 +1,6 @@
 {
   "name": "ng6-file-man",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Angular 6 File Manager component",
   "keywords": [
     "Angular",
@@ -22,12 +22,10 @@
     "Igor Kvasnicka <igor.kvasnicka@gmail.com>"
   ],
   "scripts": {
-    "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ --clean --sort --format namespaced-json -m _"
   },
   "peerDependencies": {
     "@angular/common": "^10.2.4",
     "@angular/core": "^10.2.4",
-    "@biesbjerg/ngx-translate-extract": "^2.3.4",
     "rxjs": "^6.5.5"
   },
   "dependencies": {
