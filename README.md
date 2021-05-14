@@ -10,6 +10,7 @@ Angular File Manager library.
 * [Inputs](#inputs)
 * [SASS theming](#sass)
 * [Customizing](#customizing)
+* [Preview](#preview)
 * [i18n](#i18n)
 
 ## Features
@@ -296,6 +297,20 @@ loadingOverlayTemplate | let-timeoutMessage | string | loading overlay screen
 |              |                   |               |
 |--------------------------------------------------|
 ````
+
+
+## Preview
+
+#### By default, this is what component looks like (+ selected folder)
+![non customized default view + opened info popup](images/default_plus_right_popup.png)
+
+#### Example of customization and theming
+![customized default view + opened info popup](images/default_plus_right_popup_custom_layout.png)
+
+#### File upload
+![File upload](images/upload.png)
+
+*Note: in pictures above there are no translations availible, words will be translated after \[lang\].json is filled*
 
 ## i18n
 * Copy `i18n` file from `~node_modules/ng6-file-man/assets`

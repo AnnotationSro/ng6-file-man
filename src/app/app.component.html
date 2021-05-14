@@ -1,5 +1,5 @@
 <div id="file-manager">
-  <fm-file-manager (itemSelected)="itemSelected($event)" [language]="appLanguage" [isPopup]="true" [tree]="tree"
+  <fm-file-manager (itemSelected)="itemSelected($event)" [language]="appLanguage" [isPopup]="false" [tree]="tree"
                    [openFilemanagerButtonLabelKey]="'hello.test'"></fm-file-manager>
 <!--  <fm-file-manager (itemClicked)="itemClicked($event)" [language]="appLanguage" [tree]="tree"></fm-file-manager>-->
 </div>
@@ -7,7 +7,6 @@
 <!--<div id="file-manager">-->
   <!--<fm-file-manager [tree]="tree"-->
                    <!--[isPopup]="true"-->
-                   <!--(itemClicked)="itemClicked($event)"-->
                    <!--[iconTemplate]="iconTemplate"-->
                    <!--[folderContentTemplate]="folderContentTemplate"-->
                    <!--[folderContentBackTemplate]="folderContentBackTemplate"-->
