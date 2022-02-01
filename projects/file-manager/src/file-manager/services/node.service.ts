@@ -37,7 +37,7 @@ export class NodeService {
           this.findNodeByPath(parentPath).children[data[i].name] = data[i];
         }
 
-        resolve();
+        resolve(null);
       });
     }));
   }

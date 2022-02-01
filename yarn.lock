@@ -1451,10 +1451,10 @@
   resolved "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.6.tgz#d5e0706cf8c6acd8c6032f8d54070af261bbbb2f"
   integrity sha512-ws57AidsDvREKrZKYffXddNkyaF14iHNHm8VQnZH6t99E8gczjNN0GpvcGny0imC80yQ0tHz1xVUKk/KFQSUyA==
 
-"@fortawesome/fontawesome-free@^5.9.0":
-  version "5.13.1"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.13.1.tgz#c53b4066edae16cd1fd669f687baf031b45fb9d6"
-  integrity sha512-D819f34FLHeBN/4xvw0HR0u7U2G7RqjPSggXqf7LktsxWQ48VAfGwvMrhcVuaZV2fF069c/619RdgCCms0DHhw==
+"@fortawesome/fontawesome-free@^5.15.4":
+  version "5.15.4"
+  resolved "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.4.tgz#ecda5712b61ac852c760d8b3c79c96adca5554e5"
+  integrity sha512-eYm8vijH/hpzr/6/1CJ/V/Eb1xQFW2nnUKArb3z+yUWv7HTwj6M7SP957oMjfZjAHU6qpoNc2wQvIxBLWYa/Jg==
 
 "@gar/promisify@^1.0.1":
   version "1.1.2"
@@ -1487,19 +1487,19 @@
   resolved "https://registry.npmjs.org/@ngtools/webpack/-/webpack-13.2.1.tgz#20887a22ecde77d3f022f7fdace8aead2e425bab"
   integrity sha512-NugLJfzp0EFX2Pdbr94bsktE/qniUE6mEgmv3ZkmimPBBHhAd1M73XBx8lesjLh7D3SRecHCjD5yyygF8gNO0g==
 
-"@ngx-translate/core@^10.0.2":
-  version "10.0.2"
-  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-10.0.2.tgz#5eeb78f47845b476a1e892fb2fb153dbbaf72850"
-  integrity sha512-7nM3DrJaqKswwtJlbu2kuKNl+hE8Isr18sKsKvGGpSxQk+G0gO0reDlx2PhUNus7TJTkA1C59vU/JoN8hIvZ4g==
+"@ngx-translate/core@^14.0.0":
+  version "14.0.0"
+  resolved "https://registry.npmjs.org/@ngx-translate/core/-/core-14.0.0.tgz#af421d0e1a28376843f0fed375cd2fae7630a5ff"
+  integrity sha512-UevdwNCXMRCdJv//0kC8h2eSfmi02r29xeE8E9gJ1Al4D4jEJ7eiLPdjslTMc21oJNGguqqWeEVjf64SFtvw2w==
   dependencies:
-    tslib "^1.9.0"
+    tslib "^2.3.0"
 
-"@ngx-translate/http-loader@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-3.0.1.tgz#20b0f98bc6c25321129d3e3302ab3cc489c0a42a"
-  integrity sha1-ILD5i8bCUyESnT4zAqs8xInApCo=
+"@ngx-translate/http-loader@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.npmjs.org/@ngx-translate/http-loader/-/http-loader-7.0.0.tgz#905f38d8d13342621516635bf480ff9a4f73e9fc"
+  integrity sha512-j+NpXXlcGVdyUNyY/qsJrqqeAdJdizCd+GKh3usXExSqy1aE9866jlAIL+xrfDU4w+LiMoma5pgE4emvFebZmA==
   dependencies:
-    tslib "^1.9.0"
+    tslib "^2.3.0"
 
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"
@@ -1782,10 +1782,10 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-14.14.35.tgz#42c953a4e2b18ab931f72477e7012172f4ffa313"
   integrity sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
 
-"@types/node@^12.11.1":
-  version "12.12.47"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.47.tgz#5007b8866a2f9150de82335ca7e24dd1d59bdfb5"
-  integrity sha512-yzBInQFhdY8kaZmqoL2+3U5dSTMrKaYcb561VU+lDzAYvqt+2lojvBEy+hmpSNuXnPTx7m9+04CzWYOUqWME2A==
+"@types/node@~16.10.0":
+  version "16.10.9"
+  resolved "https://registry.npmjs.org/@types/node/-/node-16.10.9.tgz#8f1cdd517972f76a3b928298f4c0747cd6fef25a"
+  integrity sha512-H9ReOt+yqIJPCutkTYjFjlyK6WEMQYT9hLZMlWtOjFQY2ItppsWZ6RJf8Aw+jz5qTYceuHvFgPIaKOHtLAEWBw==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -3077,10 +3077,10 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codelyzer@^6.0.0:
-  version "6.0.1"
-  resolved "https://registry.npmjs.org/codelyzer/-/codelyzer-6.0.1.tgz#c0e9668e847255b37c759e68fb2700b11e277d0f"
-  integrity sha512-cOyGQgMdhnRYtW2xrJUNrNYDjEgwQ+BrE2y93Bwz3h4DJ6vJRLfupemU5N3pbYsUlBHJf0u1j1UGk+NLW4d97g==
+codelyzer@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/codelyzer/-/codelyzer-6.0.2.tgz#25d72eae641e8ff13ffd7d99b27c9c7ad5d7e135"
+  integrity sha512-v3+E0Ucu2xWJMOJ2fA/q9pDT/hlxHftHGPUay1/1cTgyPV5JTHFdO9hqo837Sx2s9vKBMTt5gO+lhF95PO6J+g==
   dependencies:
     "@angular/compiler" "9.0.0"
     "@angular/core" "9.0.0"
@@ -3314,15 +3314,10 @@ core-js-compat@^3.20.0, core-js-compat@^3.20.2:
     browserslist "^4.19.1"
     semver "7.0.0"
 
-core-js@3.20.3:
+core-js@3.20.3, core-js@^3.20.3:
   version "3.20.3"
   resolved "https://registry.npmjs.org/core-js/-/core-js-3.20.3.tgz#c710d0a676e684522f3db4ee84e5e18a9d11d69a"
   integrity sha512-vVl8j8ph6tRS3B8qir40H7yw7voy17xL0piAjlbBUsH7WIfzoedL/ZOr1OV9FyZQLWXsayOJyV4tnRyXR85/ag==
-
-core-js@^2.5.4:
-  version "2.6.11"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
-  integrity sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -6751,10 +6746,10 @@ ng-packagr@^13.2.1:
   optionalDependencies:
     esbuild "^0.14.0"
 
-ngx-file-drop@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.npmjs.org/ngx-file-drop/-/ngx-file-drop-11.0.2.tgz#3981b02d7f0d30dd12e51b682bbc6aa777487398"
-  integrity sha512-JWHE2334uH1S3tc/GmYP2TOaU8wguQwLwW5uwnQXQs2obE5BdR1Ut+reCLRPPwKyfvCjrwOHAqutRoNqIHLLfA==
+ngx-file-drop@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.npmjs.org/ngx-file-drop/-/ngx-file-drop-13.0.0.tgz#96506076d0d66c3c167c8fe42a52faa534b403ea"
+  integrity sha512-1OF9ln2ZesfNxWEBXMpkkFpUuggejpZtNlGFuyaVAmXyYO4NlCHsOWrgfWB7d8SliHgePD/7s0e60IQs/zqr9g==
   dependencies:
     tslib "^2.0.0"
 
@@ -8389,14 +8384,7 @@ rxjs@^6.5.3:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^6.5.5:
-  version "6.5.5"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.5.tgz#c5c884e3094c8cfee31bf27eb87e54ccfc87f9ec"
-  integrity sha512-WfQI+1gohdf0Dai/Bbmk5L5ItH5tYqm3ki2c5GdWhKjalzjg93N3avFjVStyZZz+A2Em+ZxKH5bNghw9UeylGQ==
-  dependencies:
-    tslib "^1.9.0"
-
-rxjs@^7.0.0, rxjs@^7.2.0:
+rxjs@^7.0.0, rxjs@^7.2.0, rxjs@^7.5.2:
   version "7.5.2"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.5.2.tgz#11e4a3a1dfad85dbf7fb6e33cbba17668497490b"
   integrity sha512-PwDt186XaL3QN5qXj/H9DGyHhP3/RYYgZZwqBv9Tv8rsAaiwFH1IsJJlcgD37J7UW5a6O67qX0KWKS3/pu0m4w==

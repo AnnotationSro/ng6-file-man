@@ -11,7 +11,7 @@ import {DownloadModeEnum} from '../../projects/file-manager/src/file-manager/enu
 export class AppComponent {
   tree: TreeModel;
   node: NodeInterface;
-  appLanguage = 'en';
+  appLanguage = 'sk';
 
   constructor() {
     const treeConfig: ConfigInterface = {
