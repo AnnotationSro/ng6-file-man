@@ -29,12 +29,12 @@
     "upload": "Nahrať",
     "upload_file": "Nahrať súbor",
     "yes": "Áno",
-    "yes_delete_this": "Áno, vymaž tento",
+    "yes_delete_this": "Vymazať  ",
     "file_delete_confirm": "Naozaj chcete vymazať tento",
     "file": "súbor",
     "folder": "priečinok",
     "confirm_selection": "Potvrdiť",
     "cancel_selection": "Zrušiť",
-    "drop_zone_label": "Sem môžete potiahnuť súbor"
+    "drop_zone_label": "Sem môžete potiahnuť súbory"
   }
 }
