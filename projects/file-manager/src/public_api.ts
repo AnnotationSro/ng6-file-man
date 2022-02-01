@@ -2,6 +2,8 @@
  * Public API Surface of file-manager
  */
 
+export * from './file-manager/components/functions/loading-overlay/loading-overlay.component';
+export * from './file-manager/components/side-view/side-view.component';
 export * from './file-manager/file-manager.component';
 export * from './file-manager/file-manager.module';
 export * from './file-manager/models/tree.model';

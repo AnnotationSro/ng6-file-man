@@ -326,7 +326,6 @@ loadingOverlayTemplate | let-timeoutMessage | string | loading overlay screen
 
 ### Build instructions
 1. Change package version
-2. yarn run libProd
 3. gulp prod
 4. cd ../file-manager-lib
 5. npm publish

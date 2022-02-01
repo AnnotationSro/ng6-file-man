@@ -3,7 +3,7 @@ const rename = require('gulp-rename');
 const exec = require('child_process').exec;
 
 gulp.task('prod', function (cb) {
-  exec('./node_modules/@angular/cli/bin/ng build file-manager --prod', function (err, stdout, stderr) {
+  exec('yarn run libProd', function (err, stdout, stderr) {
 
     console.log('## Copying styles..');
     gulp.src('./projects/file-manager/src/styles.scss')
@@ -23,6 +23,8 @@ gulp.task('prod', function (cb) {
 
     console.log('## Copying i18n..');
     gulp.src('./projects/file-manager/src/assets/sk.json')
+      .pipe(gulp.dest('../file-manager-lib/assets'));
+    gulp.src('./projects/file-manager/src/assets/en.json')
       .pipe(gulp.dest('../file-manager-lib/assets'));
     gulp.src('./projects/file-manager/src/assets/i18n')
       .pipe(gulp.dest('../file-manager-lib/assets'));

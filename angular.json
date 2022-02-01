@@ -135,10 +135,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/file-manager/ng-package.prod.json",
               "tsConfig": "projects/file-manager/tsconfig.lib.prod.json"
-            },
-            "development": {}
+            }
           },
           "defaultConfiguration": "production"
         },
