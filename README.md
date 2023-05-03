@@ -356,3 +356,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Playground: https://github.com/Chiff/ng6-file-man-test \[outdated\]
 * Simple Express API: https://github.com/Chiff/ng6-file-man-express
 
+## Version
+
+ng6-file-name | angular 
+--- |-------------
+4.0.0 | 14.3.0 
+5.0.0 | 15.2.8 

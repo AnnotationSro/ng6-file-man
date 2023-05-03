@@ -1,6 +1,6 @@
 {
   "name": "ng6-file-man",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Angular File Manager component",
   "keywords": [
     "Angular",
@@ -19,7 +19,8 @@
   "license": "MIT",
   "author": "Martin Filo <martinxfilo@gmail.com> (https://github.com/Chiff/)",
   "contributors": [
-    "Igor Kvasnicka <igor.kvasnicka@gmail.com>"
+    "Igor Kvasnicka <igor.kvasnicka@gmail.com>",
+    "Dinh Nguyen Tien <dinh@annotation.sk (https://github.com/Mr-SvaRoq)>"
   ],
   "scripts": {
   },
