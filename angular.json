@@ -151,7 +151,6 @@
       }
     }
   },
-  "defaultProject": "file-man",
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss"
