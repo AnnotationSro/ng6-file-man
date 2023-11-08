@@ -89,7 +89,9 @@ const treeConfig: ConfigInterface = {
   },
   options: {
     allowFolderDownload: DownloadModeEnum.DOWNLOAD_FILES, //alternatively DOWNLOAD_DISABLED,DOWNLOAD_ALL
-    showFilesInsideTree: false
+    showFilesInsideTree: false,
+    openFolderOnDoubleClick: true,
+    showFolderOptions: false
   }
 };
 ````
