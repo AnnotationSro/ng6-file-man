@@ -27,7 +27,9 @@ export class AppComponent {
       },
       options: {
         allowFolderDownload: DownloadModeEnum.DOWNLOAD_DISABLED,
-        showFilesInsideTree: false
+        showFilesInsideTree: false,
+        openFolderOnDoubleClick: true,
+        showFolderOptions: false
       }
     };
 

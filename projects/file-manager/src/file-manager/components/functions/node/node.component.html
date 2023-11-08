@@ -1,3 +1,8 @@
-<div #customTemplate (dblclick)="method2CallForDblClick($event)" (click)="method1CallForClick($event)">
-  <ng-content></ng-content>
+<div class="node-container">
+  <div class="node-option" *ngIf="showFolderOptions && !this.node?.isExpanded && this.node.isFolder">
+    <i class="fas fa-1x fa-ellipsis-v" (click)="showMenu()"></i>
+  </div>
+  <div #customTemplate (dblclick)="method2CallForDblClick($event)" (click)="method1CallForClick($event)">
+    <ng-content></ng-content>
+  </div>
 </div>

@@ -130,6 +130,12 @@ i {
 
   position: relative;
   overflow: auto;
+  .node-lister-flist .node-lister-list-item .node-container {
+    display: block;
+    .node-option {
+      display: none;
+    }
+  }
 
   @include borders;
   @include shadows
@@ -198,6 +204,7 @@ i {
 .file-manager-item.highlighted {
   @include contrast;
   border-color: $main-color;
+
   i {
     color: $contrast-color
   }
@@ -229,6 +236,7 @@ i {
 
 .file-manager-backdrop {
   @extend .backdrop;
+
   .fmModalInside {
     top: 15px;
     left: 15px;
@@ -237,7 +245,7 @@ i {
     @include borders;
     position: fixed;
 
-    .content{
+    .content {
       height: calc(100% - 50px);
     }
   }
@@ -306,8 +314,8 @@ i {
 }
 
 .qq-upload-cancel:hover {
-  @include contrast;
-  @include effects(background-color, 0.3s);
+  //@include contrast;
+  //@include effects(background-color, 0.3s);
 }
 
 .qq-upload-retry {
@@ -342,16 +350,20 @@ i {
 /* Upload Button
 ------------------------------------------ */
 .qq-upload-button {
-  display: inline;
-  width: 105px;
-  margin-bottom: 10px;
-  padding: 7px 10px;
+  //display: inline;
+  width: fit-content;
   text-align: center;
-  float: left;
   font-size: 14px;
+  background-color: #fff;
+  margin: 35px auto 5px;
+  border: 1px solid $main-color;
+  border-radius: $border-radius;
+  padding: 10px;
+
+  //padding: 7px 10px;
+  //@include borders;
 
   @include buttons;
-  @include borders;
   @include effects(background-color, 0.3s);
   @include text-color;
 }
@@ -372,12 +384,17 @@ i {
 }
 
 .qq-total-progress-bar-container {
-  margin-left: 9px;
+  //margin-left: 9px;
   display: inline;
   float: right;
   width: calc(100% - 190px);
+  height: 0;
+  background-color: #fff;
+  border: 1px solid $main-color;
+  border-radius: $border-radius;
+  padding: 10px;
+  margin: auto 5px;
 
-  @include borders;
 }
 
 ////////////////
@@ -488,10 +505,10 @@ i {
 // upload //
 ////////////
 .upload-top-bar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  border-bottom: 2px solid $main-color;
+  //display: flex;
+  //justify-content: space-between;
+  //margin-bottom: 10px;
+  //border-bottom: 2px solid $main-color;
 }
 
 .upload-background {
@@ -511,6 +528,11 @@ i {
   width: calc(100vw - 60px);
   max-height: calc(100vh - 60px);
   max-width: 1000px;
+
+  min-height: 340px;
+  .fa-upload {
+    font-size: 1.8em;
+  }
 }
 
 /////////////////////
@@ -571,4 +593,16 @@ i {
 .table-head {
   color: $main-color;
   font-weight: bold;
+}
+
+.close {
+  display: flex;
+  justify-content: flex-end;
+
+  .fas {
+    margin-right: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

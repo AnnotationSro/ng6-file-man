@@ -1,4 +1,11 @@
-.new-folder-description {
-  margin: 0 auto;
-  padding: 0;
+.new-folder-container {
+  display: block;
+  min-height: 200px;
+  .new-folder-child {
+    transform: translate(0, 100%);
+  }
+  .new-folder-description {
+    margin: auto;
+    //font-size: 20px;
+  }
 }

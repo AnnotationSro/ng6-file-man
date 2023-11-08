@@ -18,6 +18,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
   uploader: FineUploader;
   newFolder = false;
   counter = 0;
+  showProgressBar = false;
 
   constructor(private http: HttpClient,
               private nodeService: NodeService) {
@@ -67,6 +68,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
 
   uploadFiles() {
     this.uploader.uploadStoredFiles();
+    this.showProgressBar = true;
   }
 
   createNewFolder(input?: string) {
@@ -74,7 +76,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
       this.newFolder = true;
     } else {
       this.newFolder = false;
-      if (input.length > 0) {
+      if (input?.length > 0) {
         this.createDir.emit(input);
         this.newClickedAction();
       }

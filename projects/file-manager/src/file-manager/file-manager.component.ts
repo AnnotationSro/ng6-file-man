@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation} from '@angular/core';
-import {TreeModel} from './models/tree.model';
-import {NodeService} from './services/node.service';
-import {NodeInterface} from './interfaces/node.interface';
-import {NgxSmartModalService} from 'ngx-smart-modal';
-import {NodeClickedService} from './services/node-clicked.service';
-import {TranslateService} from '@ngx-translate/core';
-import {FileManagerStoreService, SET_LOADING_STATE, SET_SELECTED_NODE} from './services/file-manager-store.service';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { TreeModel } from './models/tree.model';
+import { NodeService } from './services/node.service';
+import { NodeInterface } from './interfaces/node.interface';
+import { NgxSmartModalService } from 'ngx-smart-modal';
+import { NodeClickedService } from './services/node-clicked.service';
+import { TranslateService } from '@ngx-translate/core';
+import { FileManagerStoreService, SET_LOADING_STATE, SET_SELECTED_NODE } from './services/file-manager-store.service';
 
 @Component({
   selector: 'fm-file-manager',
@@ -22,14 +22,14 @@ export class FileManagerComponent implements OnInit {
   @Input() sideViewTemplate: TemplateRef<any>;
 
   @Input() tree: TreeModel;
-  @Input() isPopup: boolean = false;
+  @Input() isPopup = false;
   @Input() openFilemanagerButtonLabelKey = 'filemanager.open_file_manager';
   @Output() itemClicked = new EventEmitter();
   @Output() itemSelected = new EventEmitter();
 
 
   openFilemanagerButtonLabel: string;
-  private _language: string = 'en';
+  private _language = 'en';
   @Input() set language(value: string) {
     this._language = value;
     this.translate.use(this.language);
@@ -163,14 +163,15 @@ export class FileManagerComponent implements OnInit {
       this.store.dispatch({type: SET_SELECTED_NODE, payload: parentNode});
       this.sideMenuClosed = true;
     } else {
-      if (this.selectedNode === node && this.sideMenuClosed)
+      if (this.selectedNode === node && this.sideMenuClosed) {
         this.sideMenuClosed = false;
-      else if (this.selectedNode === node && !this.sideMenuClosed)
+      } else if (this.selectedNode === node && !this.sideMenuClosed) {
         this.sideMenuClosed = true;
-      else if (this.selectedNode !== node && this.sideMenuClosed)
+      } else if (this.selectedNode !== node && this.sideMenuClosed) {
         this.sideMenuClosed = false;
-      else if (this.selectedNode !== node && !this.sideMenuClosed)
+      } else if (this.selectedNode !== node && !this.sideMenuClosed) {
         this.sideMenuClosed = false;
+      }
     }
 
     this.selectedNode = node;

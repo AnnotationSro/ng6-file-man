@@ -10,11 +10,11 @@ export class NewFolderComponent implements OnInit {
   @ViewChild('uploadFolder') uploadFolder: ElementRef;
   @Output() buttonClicked = new EventEmitter();
 
-  buttonText: string;
+  // buttonText: string;
   inputValue = '';
 
   constructor(private translateService: TranslateService) {
-    this.buttonText = this.translateService.instant('filemanager.close');
+    // this.buttonText = this.translateService.instant('filemanager.close');
   }
 
   ngOnInit() {
@@ -28,10 +28,10 @@ export class NewFolderComponent implements OnInit {
 
   onInputChange(event: any) {
     this.inputValue = event.target.value;
-    if (this.inputValue.length > 0) {
-      this.buttonText = this.translateService.instant('filemanager.confirm').toString();
-    } else {
-      this.buttonText = this.translateService.instant('filemanager.close').toString();
-    }
+    // if (this.inputValue.length > 0) {
+    //   this.buttonText = this.translateService.instant('filemanager.confirm').toString();
+    // } else {
+    //   this.buttonText = this.translateService.instant('filemanager.close').toString();
+    // }
   }
 }

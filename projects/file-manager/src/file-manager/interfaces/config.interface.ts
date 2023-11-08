@@ -16,5 +16,7 @@ export interface ConfigInterface {
   options: {
     allowFolderDownload: DownloadModeEnum;
     showFilesInsideTree: boolean;
-  }
+    openFolderOnDoubleClick: boolean;
+    showFolderOptions: boolean;
+  };
 }

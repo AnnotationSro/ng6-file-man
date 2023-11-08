@@ -14,15 +14,23 @@ import {DownloadModeEnum} from '../../../enums/download-mode.enum';
 export class NodeComponent implements OnInit {
   @Input() node: NodeInterface;
   isSingleClick = true;
+  showFolderOptions = false;
+  openFolderOnDoubleClick = true;
 
   constructor(
     private store: FileManagerStoreService,
     private nodeService: NodeService,
     private nodeClickedService: NodeClickedService
   ) {
+    this.openFolderOnDoubleClick = this.nodeService.tree?.config?.options?.openFolderOnDoubleClick;
+    this.showFolderOptions = this.nodeService.tree?.config?.options?.showFolderOptions;
   }
 
   public method1CallForClick(event: MouseEvent) {
+    if (this.node.isFolder && !this.openFolderOnDoubleClick) {
+      this.method2CallForDblClick(event);
+      return;
+    }
     event.preventDefault();
 
     this.isSingleClick = true;
@@ -74,7 +82,7 @@ export class NodeComponent implements OnInit {
     this.setNodeSelectedState();
   }
 
-  private showMenu() {
+  public showMenu() {
     this.store.dispatch({type: SET_SELECTED_NODE, payload: this.node});
   }
 
