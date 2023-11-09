@@ -133,18 +133,28 @@
 </ng-template>
 
 <ngx-smart-modal identifier="renameModal" [dismissable]="false" [closable]="false" *ngIf="selectedNode" #renameModal>
-  <h2 class="modal-title">
+  <h2 class="modal-title" *ngIf="!selectedNode.isFolder">
     {{'filemanager.rename_file' | translate}}
   </h2>
-  <p class="rename-name">
-    {{'filemanager.old_name' | translate}}
-  </p>
-  <span style="margin: 8px">{{selectedNode.name}}</span>
-  <p class="rename-name">
-    {{'filemanager.new_name' | translate}}
-  </p>
-  <input type="text" class="rename-input" [value]="selectedNode.name" #renameInput
-         (keyup.enter)="handleFileManagerClickEvent({type: 'rename', value: renameInput.value})">
+
+  <h2 class="modal-title" *ngIf="selectedNode.isFolder">
+    {{'filemanager.rename_folder' | translate}}
+  </h2>
+  <div class="old-name">
+    <p class="rename-name">
+      {{'filemanager.old_name' | translate}}
+    </p>
+    <span style="margin: 8px">{{selectedNode.name}}</span>
+  </div>
+
+  <div class="new-name">
+    <p class="rename-name">
+      {{'filemanager.new_name' | translate}}
+    </p>
+    <input type="text" class="rename-input" [value]="selectedNode.name" #renameInput
+           (keyup.enter)="handleFileManagerClickEvent({type: 'rename', value: renameInput.value})">
+  </div>
+
   <br>
 
   <div class="rename-button">
