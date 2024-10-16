@@ -226,17 +226,18 @@ Every event has `node` property
 
 ## Inputs
 
-name | type | required | default value
---- | --- | --- | ---
-tree | TreeModel | true | -
-isPopup | bool | false | false
-language | string | false | 'en'
-iconTemplate | TemplateRef | false | -
-folderContentTemplate | TemplateRef | false | -
-folderContentBackTemplate | TemplateRef | false | -
-folderContentNewTemplate | TemplateRef | false | -
-sideViewTemplate | TemplateRef | false | -
-loadingOverlayTemplate | TemplateRef | false | -
+name | type        | required | default value
+--- |-------------|----------| ---
+tree | TreeModel   | true     | -
+whiteList | string[]    | false    | null
+isPopup | bool        | false    | false
+language | string      | false    | 'en'
+iconTemplate | TemplateRef | false    | -
+folderContentTemplate | TemplateRef | false    | -
+folderContentBackTemplate | TemplateRef | false    | -
+folderContentNewTemplate | TemplateRef | false    | -
+sideViewTemplate | TemplateRef | false    | -
+loadingOverlayTemplate | TemplateRef | false    | -
 
 ## SASS
 
