@@ -62,6 +62,7 @@
 
   <app-upload *ngIf="newDialog"
               [openDialog]="newDialog"
+              [whiteList]="whiteList"
               (closeDialog)="handleUploadDialog(false)"
               (createDir)="handleFileManagerClickEvent({type: 'createFolder', payload: $event})">
   </app-upload>

@@ -11,6 +11,7 @@ import {NodeService} from '../../../services/node.service';
 })
 export class UploadComponent implements OnInit, AfterViewInit {
   @Input() openDialog;
+  @Input() whiteList;
 
   @Output() closeDialog = new EventEmitter();
   @Output() createDir = new EventEmitter();
@@ -25,7 +26,7 @@ export class UploadComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.uploader = new FineUploader({
+    const fileUploadConfig = {
       debug: false,
       autoUpload: false,
       maxConnections: 1, // todo configurable
@@ -38,6 +39,9 @@ export class UploadComponent implements OnInit, AfterViewInit {
         params: {
           parentPath: this.getCurrentPath
         }
+      },
+      validation: {
+        allowedExtensions:  this.whiteList ?? [],
       },
       retry: {
         enableAuto: false
@@ -54,8 +58,9 @@ export class UploadComponent implements OnInit, AfterViewInit {
           }
         }
       }
-    })
-    ;
+    };
+
+    this.uploader = new FineUploader(fileUploadConfig);
   }
 
   ngOnInit() {
