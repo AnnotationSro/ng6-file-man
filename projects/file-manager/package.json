@@ -25,8 +25,8 @@
   "scripts": {
   },
   "peerDependencies": {
-    "@angular/common": "^15.2.8",
-    "@angular/core": "^15.2.8",
+    "@angular/common": "^16.2.12",
+    "@angular/core": "^16.2.12",
     "rxjs": "^7.5.2"
   },
   "dependencies": {
@@ -34,7 +34,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "fine-uploader": "5.16.2",
-    "ngx-smart-modal": "^7.4.1",
+    "ngx-smart-modal": "^14.0.3",
     "tslib": "^2.3.1"
   },
   "publishConfig": {
