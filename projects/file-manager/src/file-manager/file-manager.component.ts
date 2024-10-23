@@ -279,4 +279,8 @@ export class FileManagerComponent implements OnInit {
   cancelSelection() {
     this.fmOpen = false;
   }
+
+  getModalData(): any {
+    return  this.ngxSmartModalService.getModal('searchModal').getData() as any;
+  }
 }

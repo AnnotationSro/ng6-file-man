@@ -193,22 +193,22 @@
 </ngx-smart-modal>
 <ngx-smart-modal identifier="searchModal" #searchModal [closable]="true">
   <h2 class="modal-title" style="margin-bottom: 2px"
-      *ngIf="searchModal.hasData() && searchModal.getData().response.length !== 0">
+      *ngIf="searchModal.hasData() && getModalData().response.length !== 0">
     {{'filemanager.search_results_for' | translate}}
   </h2>
   <h2 class="modal-title" style="margin-bottom: 2px"
-      *ngIf="!searchModal.hasData() || searchModal.getData().response.length === 0">
+      *ngIf="!searchModal.hasData() || getModalData().response.length === 0">
     {{'filemanager.no_results' | translate}}
   </h2>
-  <div style="text-align: center" *ngIf="searchModal.hasData()">{{searchModal.getData().searchString}}</div>
+  <div style="text-align: center" *ngIf="searchModal.hasData()">{{getModalData().searchString}}</div>
 
-  <div *ngIf="searchModal.hasData() && searchModal.getData().response.length !== 0">
+  <div *ngIf="searchModal.hasData() && getModalData().response.length !== 0">
     <table style="margin: 0 auto">
       <tr>
         <td class="table-item table-head">{{'filemanager.file_name' | translate}}</td>
         <td class="table-item-short table-head">{{'filemanager.size' | translate}}</td>
       </tr>
-      <tr *ngFor="let item of searchModal.getData().response" (click)="searchClicked(item)">
+      <tr *ngFor="let item of getModalData().response" (click)="searchClicked(item)">
         <td style="cursor: pointer">
           <ng-container *ngIf="item.fileCategory === 'D'; else file">
             <i class="fas fa-folder search-output-icon"></i>
