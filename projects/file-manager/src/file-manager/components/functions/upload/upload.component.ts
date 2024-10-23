@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {FineUploader} from 'fine-uploader';
 import {NodeService} from '../../../services/node.service';
 

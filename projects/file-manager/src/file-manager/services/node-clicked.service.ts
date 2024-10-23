@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {NodeInterface} from '../interfaces/node.interface';
 import {NodeService} from './node.service';
 import {TreeModel} from '../models/tree.model';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {NgxSmartModalService} from 'ngx-smart-modal';
 import {first} from 'rxjs/operators';

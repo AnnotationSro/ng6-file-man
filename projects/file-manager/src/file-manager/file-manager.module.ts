@@ -7,7 +7,7 @@ import {TreeComponent} from './components/tree/tree.component';
 import {NodeListerComponent} from './components/tree/node-lister/node-lister.component';
 import {NodeComponent} from './components/functions/node/node.component';
 import {MapToIterablePipe} from './pipes/map-to-iterable.pipe';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {LoadingOverlayComponent} from './components/functions/loading-overlay/loading-overlay.component';
 import {FileSizePipe} from './pipes/file-size.pipe';
@@ -23,41 +23,34 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
 }
 
-@NgModule({
-  imports: [
-    HttpClientModule,
-    CommonModule,
-    NgxSmartModalModule.forRoot(),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]}
-    })
-  ],
-  declarations: [
-    FileManagerComponent,
-    FolderContentComponent,
-    NodeComponent,
-    TreeComponent,
-    NodeListerComponent,
-    MapToIterablePipe,
-    NavBarComponent,
-    LoadingOverlayComponent,
-    FileSizePipe,
-    UploadComponent,
-    NewFolderComponent,
-    SideViewComponent,
-    NavigationComponent
-  ],
-  exports: [
-    FileManagerComponent,
-    LoadingOverlayComponent,
-	  SideViewComponent
-  ],
-  providers: [TranslateService]
-
-})
+@NgModule({ declarations: [
+        FileManagerComponent,
+        FolderContentComponent,
+        NodeComponent,
+        TreeComponent,
+        NodeListerComponent,
+        MapToIterablePipe,
+        NavBarComponent,
+        LoadingOverlayComponent,
+        FileSizePipe,
+        UploadComponent,
+        NewFolderComponent,
+        SideViewComponent,
+        NavigationComponent
+    ],
+    exports: [
+        FileManagerComponent,
+        LoadingOverlayComponent,
+        SideViewComponent
+    ], imports: [CommonModule,
+        NgxSmartModalModule.forRoot(),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        })], providers: [TranslateService, provideHttpClient(withInterceptorsFromDi())] })
 export class FileManagerModule {
   // static forRoot(): ModuleWithProviders {
   //   return {
