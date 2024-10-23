@@ -67,10 +67,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "file-man:build:production"
+              "buildTarget": "file-man:build:production"
             },
             "development": {
-              "browserTarget": "file-man:build:development"
+              "buildTarget": "file-man:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "file-man:build"
+            "buildTarget": "file-man:build"
           }
         },
         "test": {
