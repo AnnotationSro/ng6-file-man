@@ -23,6 +23,7 @@ export class FileManagerComponent implements OnInit {
 
   @Input() tree: TreeModel;
   @Input() isPopup = false;
+  @Input() allowRename = false;
   @Input() openFilemanagerButtonLabelKey = 'filemanager.open_file_manager';
 
   @Input() whiteList: string[] = null; // ['mp4', 'mp3'];

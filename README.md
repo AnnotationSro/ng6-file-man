@@ -231,6 +231,7 @@ name | type        | required | default value
 tree | TreeModel   | true     | -
 whiteList | string[]    | false    | null
 isPopup | bool        | false    | false
+allowRename | bool        | false    | false
 language | string      | false    | 'en'
 iconTemplate | TemplateRef | false    | -
 folderContentTemplate | TemplateRef | false    | -

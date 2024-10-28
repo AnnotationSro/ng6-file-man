@@ -16,7 +16,7 @@
               [disabled]="isDisabled()">
         {{'filemanager.download' | translate }}
       </button>
-      <button (click)="onClick($event, 'renameConfirm')" class="button">{{'filemanager.rename' | translate }}</button>
+      <button *ngIf="allowRename" (click)="onClick($event, 'renameConfirm')" class="button">{{'filemanager.rename' | translate }}</button>
       <button (click)="onClick($event, 'removeAsk')" class="button">{{'filemanager.delete' | translate }}</button>
     </div>
   </div>

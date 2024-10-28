@@ -55,6 +55,7 @@
                      [node]="selectedNode"
                      [sideViewTemplate]="sideViewTemplate ? sideViewTemplate : defaultSideViewTemplate"
                      [allowFolderDownload]="tree.config.options.allowFolderDownload"
+                     [allowRename]="allowRename"
                      (clickEvent)="handleFileManagerClickEvent($event)">
       </app-side-view>
     </div>

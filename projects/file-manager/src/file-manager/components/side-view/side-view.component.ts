@@ -12,6 +12,7 @@ export class SideViewComponent implements OnInit {
   @Input() sideViewTemplate: TemplateRef<any>;
 
   @Input() node: NodeInterface;
+  @Input() allowRename = false;
   @Input() allowFolderDownload: DownloadModeEnum = DownloadModeEnum.DOWNLOAD_DISABLED;
 
   @Output() clickEvent = new EventEmitter();
